@@ -10,6 +10,8 @@ public class App {
         System.out.println("ciao scrivo questa cosa");
         System.out.println("ARia mi vedi?");
         System.out.println("Ciao sono debbi");
-System.out.println("provola");
+        System.out.println("provola");
+        System.out.println("Ciao sono ari");
+
     }
 }
