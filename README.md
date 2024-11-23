@@ -1,7 +1,7 @@
 # Rubrica Contatti - Progetto di Ingegneria del Software - Gruppo 09 
 
 ## Team 
-- [Iannuzzi Gioia Isabelle](https://github.com/Gioia1909)
-- [Montonetti Luigi]
-- [Paletta Arianna](https://github.com/Ari19)
-- [Villano Debora](https://github.com/deboravillano)
+- [Gioia Isabelle Iannuzzi](https://github.com/Gioia1909)
+- [Luigi Montonetti](https://github.com/Luigi1503)
+- [Arianna Paletta](https://github.com/Ari19)
+- [Debora Villano](https://github.com/deboravillano)
