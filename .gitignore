@@ -1,1 +1,12 @@
-/target/
+# Ignora la cartella target che contiene i file di build
+target/
+
+# Ignora i file di sistema su macOS
+.DS_Store
+
+# Ignora i file di log
+*.log
+
+# Ignora i file di NetBeans (opzionale)
+nbproject/private/.DS_Store
+
