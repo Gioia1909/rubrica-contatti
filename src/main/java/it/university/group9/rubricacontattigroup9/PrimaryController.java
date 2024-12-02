@@ -12,7 +12,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private Button primaryButton;
-    private TextField textfield;
+    private TextField textf;
 
     @FXML
     private void switchToSecondary() throws IOException {
