@@ -23,7 +23,9 @@ public class InterfacciaUtenteController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public void initialize(URL location, ResourceBundle resources) {
+    if (searchButton != null && searchButton.getScene() != null) {
+        searchButton.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
+}
 }
