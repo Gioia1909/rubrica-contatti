@@ -12,11 +12,7 @@ import java.util.List;
  */
 public interface Rubrica {
     public void aggiungiContatto(Contatto contatto);
-    public Contatto rimuoviContatto();
-    public void modificaContatto(); 
-    public List<Contatto> cercaContatto(String parametro);    
-    
-    
-    
-    
+    public boolean rimuoviContatto(String identificatore);
+    public boolean modificaContatto(String identificatore); 
+    public List<Contatto> cercaContatto(String parametro);   
 }
