@@ -22,9 +22,9 @@ public class Contatto {
     public Contatto(String nome, String cognome, List<String> numeri, List<String> emails, String note) {
         this.nome = nome;
         this.cognome = cognome;
-        this.numeri = numeri;
+        this.numeri = new ArrayList<>();
         this.email = new ArrayList<>();
-        this.note = new ArrayList<>();
+        this.note = note;
     }
 
 }
