@@ -13,4 +13,4 @@ Il documento SRS del progetto può essere scaricato o visualizzato [qui](Require
 ## Schizzo della Grafica
 Ecco una rappresentazione della grafica che intendiamo realizzare per il progetto:
 
-![Schizzo della grafica](schizzo-grafica.jpeg)
+![Schizzo della grafica](Design/schizzo.jpeg)
