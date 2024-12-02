@@ -15,4 +15,5 @@ public interface Rubrica {
     public boolean rimuoviContatto(String identificatore);
     public boolean modificaContatto(String identificatore); 
     public List<Contatto> cercaContatto(String parametro);   
+    
 }
