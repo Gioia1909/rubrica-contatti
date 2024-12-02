@@ -16,15 +16,35 @@ public class Contatto {
     private String nome;
     private String cognome;
     private List<String> numeri;
-    private List<String> email;
+    private List<String> emails;
     private String note;
 
     public Contatto(String nome, String cognome, List<String> numeri, List<String> emails, String note) {
         this.nome = nome;
         this.cognome = cognome;
         this.numeri = new ArrayList<>();
-        this.email = new ArrayList<>();
+        this.emails = new ArrayList<>();
         this.note = note;
     }
+    
+    
+    public String getNome(){
+        return nome;
+    }
+    
+    public String getCognome(){
+        return cognome;
+    }
+    
+    public List<String> getNumeri(){
+        return numeri;
+    }
+    
+    public List<String> getEmails(){
+        return emails;
+    }
+    
+    
+    
 
 }
