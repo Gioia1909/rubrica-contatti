@@ -13,6 +13,9 @@ public class InterfacciaUtenteController implements Initializable {
     @FXML
     private Button primaryButton;
     private TextField textf;
+    
+    @FXML
+    private Button searchButton;
 
     @FXML
     private void switchToSecondary() throws IOException {
