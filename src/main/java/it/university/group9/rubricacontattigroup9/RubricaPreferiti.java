@@ -8,6 +8,6 @@ package it.university.group9.rubricacontattigroup9;
  *
  * @author ari19
  */
-public class RubricaPreferiti {
+public class RubricaPreferiti implements Rubrica {
     
 }
