@@ -5,10 +5,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
-public class PrimaryController implements Initializable {
+public class InterfacciaUtenteController implements Initializable {
 
+    @FXML 
+    private TextField barraDiRicerca;
     @FXML
+    private ListView<?> vistaLista;
+
+    
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
