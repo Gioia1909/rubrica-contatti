@@ -1,0 +1,6 @@
+#searchButton {
+    -fx-background-color: transparent; /* Rimuove il colore di sfondo */
+    -fx-border-color: transparent;    /* Rimuove il bordo */
+    -fx-padding: 0;                   /* Rimuove i margini interni */
+    -fx-cursor: hand;                 /* Cambia il cursore al passaggio */
+}
