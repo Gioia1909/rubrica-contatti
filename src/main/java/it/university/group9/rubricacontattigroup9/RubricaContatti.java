@@ -8,7 +8,7 @@ package it.university.group9.rubricacontattigroup9;
  *
  * @author ari19
  */
-public class RubricaContatti {
+public class RubricaContatti implements Rubrica {
     
     
 }
