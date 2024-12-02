@@ -13,7 +13,7 @@ import java.util.List;
 public interface Rubrica {
     public void aggiungiContatto(Contatto contatto);
     public boolean rimuoviContatto(String identificatore);
-    public boolean modificaContatto(String identificatore); 
+    public boolean modificaContatto(String identificatore, Contatto nuovoContatto); 
     public List<Contatto> cercaContatto(String parametro);   
     
 }
