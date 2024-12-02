@@ -4,6 +4,7 @@
  */
 package it.university.group9.rubricacontattigroup9;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
