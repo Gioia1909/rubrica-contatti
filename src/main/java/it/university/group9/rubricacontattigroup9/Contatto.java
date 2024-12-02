@@ -44,6 +44,15 @@ public class Contatto {
         return emails;
     }
     
+    @Override
+    public String toString(){
+        StringBuffer sb= new StringBuffer();
+        sb.append(nome);
+        sb.append(" ");
+        sb.append(cognome);
+        
+   
+    }
     
     
 
