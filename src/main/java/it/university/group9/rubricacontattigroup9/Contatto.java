@@ -4,7 +4,7 @@
  */
 package it.university.group9.rubricacontattigroup9;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,8 +22,8 @@ public class Contatto {
     public Contatto(String nome, String cognome, List<String> numeri, List<String> emails, String note) {
         this.nome = nome;
         this.cognome = cognome;
-        this.numeri = new ArrayList<>();
-        this.emails = new ArrayList<>();
+        this.numeri = new LinkedList<>();
+        this.emails = new LinkedList<>();
         this.note = note;
     }
     
@@ -44,14 +44,28 @@ public class Contatto {
         return emails;
     }
     
+    public String getNote(){
+        return note;
+    }
+    
     @Override
     public String toString(){
         StringBuffer sb= new StringBuffer();
         sb.append(nome);
         sb.append(" ");
         sb.append(cognome);
+        for(String numero : numeri){
+            sb.append(numero);
+            sb.append(" ");
+        }
+        for(String email : emails){
+            sb.append(email);
+            sb.append(" ");
+                   
+        }
         
-   
+        sb.append(note);
+        return sb.toString();
     }
     
     
