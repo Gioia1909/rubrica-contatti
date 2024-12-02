@@ -9,3 +9,8 @@
 ## Specifica dei Requisiti del Software (SRS)
 
 Il documento SRS del progetto può essere scaricato o visualizzato [qui](SRS_Gruppo09.pdf).
+
+## Schizzo della Grafica
+Ecco una rappresentazione della grafica che intendiamo realizzare per il progetto:
+
+![Schizzo della grafica](assets/schizzo-grafica.png)
