@@ -27,6 +27,11 @@
                   <TextField layoutX="14.0" layoutY="48.0" prefHeight="27.0" prefWidth="151.0" />
                   <ListView editable="true" layoutX="11.0" layoutY="88.0" prefHeight="363.0" prefWidth="216.0" />
                   <ScrollBar layoutX="206.0" layoutY="94.0" orientation="VERTICAL" prefHeight="358.0" prefWidth="17.0" />
+                  <Button fx:id="deleteButton" layoutX="206.0" layoutY="46.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="17.0" text="Button">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="7.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
                   <Button fx:id="searchButton" layoutX="167.0" layoutY="46.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="30.0">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
