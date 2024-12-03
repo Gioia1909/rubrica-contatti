@@ -16,6 +16,8 @@ public class InterfacciaUtenteController implements Initializable {
     
     @FXML
     private Button searchButton;
+    @FXML
+    private Button deleteButton;
 
     @FXML
     private void switchToSecondary() throws IOException {
@@ -27,5 +29,7 @@ public void initialize(URL location, ResourceBundle resources) {
     if (searchButton != null && searchButton.getScene() != null) {
         searchButton.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
+    
+    
 }
 }
