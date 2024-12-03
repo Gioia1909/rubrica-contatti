@@ -34,7 +34,7 @@ public class RubricaPreferiti implements Rubrica {
 
     @Override
     public boolean modificaContatto(String identificatore) {
-    
+        
     }
 
     @Override

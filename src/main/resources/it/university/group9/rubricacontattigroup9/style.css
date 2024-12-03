@@ -4,3 +4,10 @@
     -fx-padding: 0;                   /* Rimuove i margini interni */
     -fx-cursor: hand;                 /* Cambia il cursore al passaggio */
 }
+
+#scrittaPreferiti{
+    -fx-font-family: "Grantham Sangam MN";
+    -fx-font-size: 14px;
+    -fx-text-fill: black;  /* Colore personalizzato */
+    -fx-font-weight: bold;  /* Grassetto */
+}
