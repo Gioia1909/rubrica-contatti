@@ -23,5 +23,19 @@ public class RubricaContatti implements Rubrica {
     public void aggiungiContatto(Contatto contatto) {
         contatti.add(contatto);
     }
+    
+   @Override
+    public boolean rimuoviContatto(String identificatore){
+        
+    }
+    
+    @Override
+    public boolean modificaContatto(String identificatore, Contatto nuovoContatto){   
+    }
+    
+    @Override
+    public List<Contatto> cercaContatto(String parametro){
+        
+    }
 
 }
