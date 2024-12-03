@@ -1,5 +1,6 @@
 package it.university.group9.rubricacontattigroup9;
 
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,19 +13,32 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class InterfacciaUtenteController implements Initializable {
+    
+    
+    
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private ListView<String> myListView;
 
     @FXML
     private Button primaryButton;
-    
+
     @FXML
-    private ListView<String> myListView;
-    
-    
+    private TextField textBar;
+
     @FXML
     private Button searchButton;
+    
+      
     @FXML
-    private Button deleteButton;
+    public void addName(MouseEvent event) {
+        myListView.getItems().add(textBar.getText());
+    }
 
+    
+   
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
