@@ -25,6 +25,7 @@ public class Contatto {
     private List<String> numeri;
     private List<String> emails;
     private String note;
+    
 /**
      * @brief Costruttore della classe Contatto.
      * 
