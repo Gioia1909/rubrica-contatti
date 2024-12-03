@@ -12,6 +12,7 @@ import java.util.List;
  *
  * @author ari19
  */
+
 public class RubricaPreferiti implements Rubrica {
     
     List<Contatto> contatti; 
@@ -41,7 +42,6 @@ public class RubricaPreferiti implements Rubrica {
     public List<Contatto> cercaContatto(String parametro) {
 
     }
-
     
     
 
