@@ -32,11 +32,12 @@
                         <Image url="@lente.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="17.0" fitWidth="18.0" layoutX="288.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="279.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@plus.png" />
+                        <Image url="@add.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="83.0" layoutY="437.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Menu Preferiti" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="414.0" />
