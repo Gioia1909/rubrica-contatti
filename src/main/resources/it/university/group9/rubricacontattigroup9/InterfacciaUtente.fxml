@@ -32,7 +32,7 @@
                         <ImageView fitHeight="15.0" fitWidth="7.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="searchButton" layoutX="167.0" layoutY="46.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="30.0">
+                  <Button fx:id="searchButton" layoutX="167.0" layoutY="46.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="23.0" prefWidth="30.0">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
