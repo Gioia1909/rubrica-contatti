@@ -7,7 +7,7 @@
  * contatti all'interno di una rubrica.
  *
  * @author Gruppo09
- * @date 3 Dicembre 2024
+ * @date 03/12/2024
  * @version 1.0
  */
 
