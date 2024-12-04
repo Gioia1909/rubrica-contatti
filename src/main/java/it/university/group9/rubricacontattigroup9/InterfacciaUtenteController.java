@@ -83,6 +83,11 @@ public class InterfacciaUtenteController implements Initializable {
     private void switchToFavorite() throws IOException {
         App.setRoot("MenuPreferiti");
     }
+    
+      @FXML
+    private void switchToAdd() throws IOException {
+        App.setRoot("InterfacciaAggiungi");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
