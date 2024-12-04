@@ -34,7 +34,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button layoutX="83.0" layoutY="437.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Menu Preferiti" />
+                  <Button fx:id="favoriteButton" layoutX="83.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#switchToFavorite" prefHeight="26.0" prefWidth="118.0" text="Menu Preferiti" />
                   <Button fx:id="addButton" layoutX="281.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#addContact" prefHeight="29.0" prefWidth="30.0">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
