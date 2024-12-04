@@ -15,7 +15,7 @@
 <SplitPane dividerPositions="0.34782608695652173" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.MenuPreferitiController">
        <stylesheets>
     <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
-</stylesheets>
+        </stylesheets>
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -28,7 +28,8 @@
                </graphic>
             </Button>
             <Button fx:id="addPrefButton" layoutX="165.0" layoutY="1.0" mnemonicParsing="false" onAction="#addPrefButton" prefHeight="27.0" prefWidth="31.0">
-               <graphic>
+               <AnchorPane.rightAnchor>10.0</AnchorPane.rightAnchor>
+                <graphic>
                   <ImageView fitHeight="59.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@add.png" />
