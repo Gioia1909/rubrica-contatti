@@ -16,19 +16,6 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <TextArea fx:id="scrittaPreferiti" layoutY="35.0" prefHeight="44.0" prefWidth="205.0" stylesheets="@style.css" text="Preferiti">
-               <effect>
-                  <Blend>
-                     <topInput>
-                        <ImageInput />
-                     </topInput>
-                  </Blend>
-               </effect>
-               <font>
-                  <Font name="System Font" size="43.0" />
-               </font>
-            </TextArea>
-            <ListView layoutY="67.0" prefHeight="327.0" prefWidth="204.0" />
             <Button fx:id="editButton" layoutX="2.0" layoutY="1.0" mnemonicParsing="false" onAction="#editAction" prefHeight="27.0" prefWidth="31.0">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -46,8 +33,19 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Text layoutX="10.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferiti" wrappingWidth="152.21630859375">
+               <font>
+                  <Font name="Georgia Bold" size="24.0" />
+               </font>
+            </Text>
+            <ListView fx:id="listViewPreferiti">
+  <AnchorPane.topAnchor>80.0</AnchorPane.topAnchor>
+  <AnchorPane.bottomAnchor>10.0</AnchorPane.bottomAnchor>
+  <AnchorPane.leftAnchor>10.0</AnchorPane.leftAnchor>
+  <AnchorPane.rightAnchor>10.0</AnchorPane.rightAnchor>
+</ListView>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="373.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="495.0">
          <children>
             <Button fx:id="secondaryButton" layoutX="39.0" layoutY="312.0" onAction="#switchToPrimary" text="Switch to Primary View" />
          </children></AnchorPane>

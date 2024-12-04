@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,23 +17,22 @@ public class InterfacciaUtenteController implements Initializable {
     
     
     
-    @FXML
-    private Button addButton;
 
     @FXML
     private ListView<String> myListView;
 
     @FXML
     private Button primaryButton;
-
+    
     @FXML
     private TextField textBar;
 
     @FXML
     private Button searchButton;
+    @FXML
+    private Button deleteButton;
     
       
-    @FXML
     public void addName(MouseEvent event) {
         myListView.getItems().add(textBar.getText());
     }
@@ -55,6 +55,10 @@ public void initialize(URL location, ResourceBundle resources) {
 
 
 }
+
+    @FXML
+    private void searchAction(ActionEvent event) {
+    }
 
 }
 
