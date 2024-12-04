@@ -17,6 +17,14 @@ public class InterfacciaUtenteController implements Initializable {
     
     
     
+    @FXML
+    private Button addButton;
+    
+    @FXML
+    private Button deleteButton;
+    
+    @FXML
+    private Button searchButton;
 
     @FXML
     private ListView<String> myListView;
@@ -27,14 +35,18 @@ public class InterfacciaUtenteController implements Initializable {
     @FXML
     private TextField textBar;
 
-    @FXML
-    private Button searchButton;
-    @FXML
-    private Button deleteButton;
-    
       
-    public void addName(MouseEvent event) {
+  //metodo provvisorio per vedere la listView
+    @FXML
+    public void addContact(MouseEvent event) {
         myListView.getItems().add(textBar.getText());
+    }
+    
+    //metodo provvisorio per vedere la listView
+    @FXML
+    public void deleteContact(MouseEvent event) {
+        int selezionato=myListView.getSelectionModel().getSelectedIndex();
+        myListView.getItems().remove(selezionato);
     }
 
     

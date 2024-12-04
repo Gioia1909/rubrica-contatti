@@ -6,8 +6,8 @@
 }
 
 #addButton {
-    -fx-background-color: transparent;
-    -fx-cursor: hand;    
+     -fx-cursor: hand;    
+     -fx-background-color: transparent; 
 }
 
 #scrittaPreferiti{
