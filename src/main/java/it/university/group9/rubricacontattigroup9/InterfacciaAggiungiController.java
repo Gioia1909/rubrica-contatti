@@ -69,6 +69,15 @@ public class InterfacciaAggiungiController implements Initializable {
      
     @FXML
     void addContact(MouseEvent event) throws IOException {
+        /*
+          String nome = nameField.getText();
+          String cognome = surnameField.getText();
+          String email = email1Field.getText();
+          String numero = number1Field.getText();
+          String note = noteField.getText();
+          Contatto nuovoContatto = new Contatto(nome,cognome,email,numero);
+         InterfacciaUtenteController.getListaContatti().add(nuovoContatto);
+         */
           App.setRoot("InterfacciaUtente");
     }
        
