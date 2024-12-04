@@ -41,6 +41,7 @@
                <font>
                   <Font name="Georgia Bold" size="24.0" />
                </font>
+               <AnchorPane.leftAnchor>10.0</AnchorPane.leftAnchor>
             </Text>
             <ListView fx:id="listViewPreferiti">
   <AnchorPane.topAnchor>80.0</AnchorPane.topAnchor>
