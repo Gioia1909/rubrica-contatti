@@ -61,14 +61,14 @@ public class InterfacciaAggiungiController implements Initializable {
     }
       
       @FXML
-    void switchToInterfaccia(MouseEvent event) {
+    void switchToInterfaccia(MouseEvent event) throws IOException {
          App.setRoot("InterfacciaUtente");
 
     }
  
      
     @FXML
-    void addContact(MouseEvent event) {
+    void addContact(MouseEvent event) throws IOException {
           App.setRoot("InterfacciaUtente");
     }
        
