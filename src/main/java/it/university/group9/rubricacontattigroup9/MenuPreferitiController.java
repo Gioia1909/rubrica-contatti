@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,33 +13,32 @@ import javafx.scene.control.*;
 
 public class MenuPreferitiController implements Initializable {
     @FXML
-    private ListView<Label> listViewPreferiti;
+    private ListView<Contatto> listViewPreferiti;
     @FXML
     private Button editButton;
     @FXML
     private Button addPrefButton;
     @FXML
     private Button secondaryButton;
+    
+    private ObservableList<Contatto> preferitiList;
+    private ObservableList<Contatto> contactList; // Riferimento alla lista utenti
+    
 
     @FXML
     private void switchToInterfaccia() throws IOException {
         App.setRoot("InterfacciaUtente");
     }
+    
+    // Metodo per ricevere la lista utenti
+    public void setContactList(ObservableList<Contatto> contactList) {
+        this.contactList = contactList;
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
-    // Se hai una ListView definita nel file FXML:
-    if (listViewPreferiti != null) {
-        // Puoi aggiungere elementi di esempio alla ListView
-        Contatto mario = new Contatto(
-        "Mario", 
-        "Rossi", 
-        Arrays.asList("123456789"), 
-        Arrays.asList("mario.rossi@email.com"), 
-        "Amico"
-        );
-        Label labelMario = creaLabelContatto(mario);
-        listViewPreferiti.getItems().add(labelMario);
-        }
+        preferitiList=FXCollections.observableArrayList();
+        // Associa la lista degli utenti alla ListView
+        listViewPreferiti.setItems(preferitiList); // Preferiti parte vuota
     }
     
     
