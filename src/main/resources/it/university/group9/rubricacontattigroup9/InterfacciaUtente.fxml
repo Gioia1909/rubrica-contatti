@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.SplitPane?>
@@ -21,7 +22,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="353.0">
                <children>
-                  <TextField fx:id="textBar" layoutX="15.0" layoutY="53.0" prefHeight="27.0" prefWidth="211.0" />
+                  <TextField fx:id="textBar" layoutX="15.0" layoutY="53.0" prefHeight="27.0" prefWidth="211.0" promptText="Cerca contatto" />
                   <ListView fx:id="myListView" editable="true" layoutX="15.0" layoutY="100.0" prefHeight="322.0" prefWidth="306.0" />
                   <ScrollBar layoutX="303.0" layoutY="98.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="18.0" />
                   <Button fx:id="searchButton" layoutX="242.0" layoutY="48.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0">
@@ -34,7 +35,7 @@
                         </ImageView>
                      </graphic></Button>
                   <Button layoutX="83.0" layoutY="437.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Menu Preferiti" />
-                  <Button fx:id="addButton" layoutX="281.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#addName" prefHeight="29.0" prefWidth="30.0">
+                  <Button fx:id="addButton" layoutX="281.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#addContact" prefHeight="29.0" prefWidth="30.0">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -45,7 +46,18 @@
                      </graphic></Button>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="414.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="414.0">
+               <children>
+                  <Label fx:id="nameField" layoutX="95.0" layoutY="185.0" text="Nome" />
+                  <Label fx:id="surnameField" layoutX="270.0" layoutY="185.0" text="Cognome" />
+                  <Label fx:id="number1Field" layoutX="95.0" layoutY="231.0" text="Numero 1" />
+                  <Label fx:id="number2Field" layoutX="95.0" layoutY="274.0" text="Numero 2" />
+                  <Label fx:id="number3Field" layoutX="95.0" layoutY="320.0" text="Numero 3" />
+                  <Label fx:id="email1Field" layoutX="270.0" layoutY="230.0" text="Mail 1" />
+                  <Label fx:id="email2Field" layoutX="270.0" layoutY="274.0" text="Mail 2" />
+                  <Label fx:id="email3Field" layoutX="270.0" layoutY="320.0" text="Mail 3" />
+                  <Button fx:id="deleteButton" layoutX="322.0" layoutY="428.0" mnemonicParsing="false" onMouseClicked="#deleteContact" text="Elimina" />
+               </children></AnchorPane>
         </items>
       </SplitPane>
       <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
