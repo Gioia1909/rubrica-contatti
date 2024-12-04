@@ -24,6 +24,9 @@ public class InterfacciaUtenteController implements Initializable {
 
     @FXML
     private Button searchButton;
+    
+     @FXML
+    private Button favoriteButton;
 
     @FXML
     private ListView<String> myListView;
@@ -74,6 +77,11 @@ public class InterfacciaUtenteController implements Initializable {
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
+    }
+    
+    @FXML
+    private void switchToFavorite() throws IOException {
+        App.setRoot("MenuPreferiti");
     }
 
     @Override
