@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 public class InterfacciaUtenteController implements Initializable {
 
     @FXML
-    private Button addButton;
+    private Button viewAddButton;
 
     @FXML
     private Button deleteButton;
@@ -29,7 +29,7 @@ public class InterfacciaUtenteController implements Initializable {
     private Button favoriteButton;
 
     @FXML
-    private ListView<String> myListView;
+    private ListView<Contatto> myListView;
 
     @FXML
     private Button primaryButton;
@@ -61,12 +61,8 @@ public class InterfacciaUtenteController implements Initializable {
     @FXML
     private Label number3Field;
 
-    //metodo provvisorio per vedere la listView
-    @FXML
-    public void addContact(MouseEvent event) {
-        myListView.getItems().add(textBar.getText());
-    }
-
+  private ObservableList<Contatto> contactList;
+   
     //metodo provvisorio per vedere la listView
     @FXML
     public void deleteContact(MouseEvent event) {
@@ -74,11 +70,7 @@ public class InterfacciaUtenteController implements Initializable {
         myListView.getItems().remove(selezionato);
     }
 
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
-    
+   
     @FXML
     private void switchToFavorite() throws IOException {
         App.setRoot("MenuPreferiti");
@@ -94,6 +86,8 @@ public class InterfacciaUtenteController implements Initializable {
         if (searchButton != null && searchButton.getScene() != null) {
             searchButton.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         }
+        contactList= FXCollections.observableArrayList();
+        myListView.setItems(contactList);
 
     }
 
