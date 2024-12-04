@@ -5,6 +5,11 @@
     -fx-cursor: hand;                 /* Cambia il cursore al passaggio */
 }
 
+#addButton {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;    
+}
+
 #scrittaPreferiti{
     -fx-font-family: "Grantham Sangam MN";
     -fx-font-size: 14px;
