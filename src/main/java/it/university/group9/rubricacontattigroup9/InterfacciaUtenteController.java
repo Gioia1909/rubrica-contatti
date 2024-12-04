@@ -151,6 +151,7 @@ public class InterfacciaUtenteController implements Initializable {
     private void switchToAdd() throws IOException {
         App.setRoot("InterfacciaAggiungi");
     }
+    
 
     /**
      * @brief Inizializza i componenti e configura l'interfaccia utente.
