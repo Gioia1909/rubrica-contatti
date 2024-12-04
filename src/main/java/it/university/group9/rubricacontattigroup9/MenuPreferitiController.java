@@ -20,8 +20,8 @@ public class MenuPreferitiController implements Initializable {
     private Button secondaryButton;
 
     @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+    private void switchToInterfaccia() throws IOException {
+        App.setRoot("InterfacciaUtente");
     }
 
     public void initialize(URL location, ResourceBundle resources) {
