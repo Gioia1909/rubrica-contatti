@@ -3,6 +3,7 @@ package it.university.group9.rubricacontattigroup9;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
