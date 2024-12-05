@@ -10,11 +10,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 /**
@@ -165,7 +169,20 @@ public List<Contatto> getListaContatti() {
      */
       @FXML
     private void switchToAdd() throws IOException {
-        App.setRoot("InterfacciaAggiungi");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungi.fxml"));
+         Parent root = loader.load(); // Carica la scena
+          // Ottieni il controller della scena di aggiunta contatto
+    InterfacciaAggiungiController aggiungiController = loader.getController();
+     // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
+    aggiungiController.setInterfacciaUtenteController(this);
+     
+    // Crea una nuova scena e visualizzala
+    Scene scene = new Scene(root);
+    Stage stage = new Stage();
+    stage.setScene(scene);
+    stage.show();
+    
+    //App.setRoot("InterfacciaAggiungi");
     }
     
 
