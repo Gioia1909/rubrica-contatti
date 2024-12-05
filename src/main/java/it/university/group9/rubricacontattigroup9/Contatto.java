@@ -31,6 +31,7 @@ public class Contatto {
      * 
      * Crea un'istanza della classe Contatto con i parametri forniti.
      * 
+     * 
      * @param[in] nome Il nome del contatto.
      * @param[in] cognome Il cognome del contatto.
      * @param[in] numeri Lista di numeri di telefono associati al contatto.
@@ -47,7 +48,7 @@ public class Contatto {
     
     /**
      * @brief Metodo che restituisce il nome del contatto.
-     * 
+     *
      * @return Nome del contatto.
      */
     public String getNome(){

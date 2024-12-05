@@ -20,33 +20,81 @@ import javafx.scene.control.TextField;
 
 
 /**
- * FXML Controller class
- *
- * @author imacpro
+ * @file SelezionaContattiDaRubricaController.java
+ * @brief Controller per la selezione di contatti da una rubrica.
+ * 
+ * Questa classe gestisce l'interfaccia utente e la logica per selezionare contatti dalla rubrica e aggiungerli ai preferiti.
+ * Fornisce funzionalità di ricerca dinamica e gestione delle liste di contatti e preferiti.
+ * 
+ * @author Group09
+ * @date 05/12/2024
  */
 public class SelezionaContattiDaRubricaController implements Initializable {
-
+    /**
+     * @brief Campo di testo per la barra di ricerca.
+     * 
+     * Consente all'utente di digitare il testo per filtrare i contatti visibili nella lista.
+     */
     @FXML
     private TextField searchBar;
+  /**
+     * @brief Lista dei contatti visualizzata nella GUI.
+     * 
+     * Mostra i contatti filtrati o l'intera rubrica, a seconda dell'input dell'utente nella barra di ricerca.
+     */
     @FXML
     private ListView<Contatto> contactListView;
+    /**
+     * @brief Pulsante per aggiungere un contatto ai preferiti.
+     * 
+     * Permette di selezionare un contatto dalla lista e aggiungerlo ai preferiti.
+     */
     @FXML
     private Button addButton;
+     /**
+     * @brief Pulsante per chiudere la finestra attuale.
+     * 
+     * Torna al menu principale dei preferiti.
+     */
     @FXML
     private Button closeButton;
+   /**
+     * @brief Pulsante per eseguire la ricerca.
+     * 
+     * Questo pulsante non è utilizzato poiché la ricerca è implementata dinamicamente.
+     */
     @FXML
     private Button searchButton;
+    
+    
+    
+    /**
+     * @brief Lista dei contatti della rubrica
+     */
     
     //mantengo riferimento alla lista dei contatti della rubrica
     private ObservableList <Contatto> rubrica;
     
+    /**
+     * @brief Contatto selezionato
+     */
     //contatto selezionato 
     private Contatto selectedContact;
     
+    /**
+     * @brief Lista dei contatti preferiti
+     */
     //riferimento alla lista dei preferiti
     private ObservableList <Contatto> rubricaPreferiti;
     
 
+    /**
+     * @brief Metodo di inizializzazione del controller
+     * @param[in] url URL di inizializzazione
+     * @param[in] rb ResourceBundle di inizializzazione
+     */
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -58,7 +106,12 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         //così specifichiamo che la selezione del contatto nella lista è singolo 
         
     }
-    
+    /**
+     * @brief Configura le liste dei contatti e dei preferiti.
+     * 
+     * @param[in] rubrica Lista completa dei contatti.
+     * @param[in] rubricaPreferiti Lista dei contatti preferiti.
+     */
     public void setContacts(ObservableList<Contatto> rubrica, ObservableList <Contatto> rubricaPreferiti){
         this.rubrica=rubrica; //prendo la rubrica normale
         this.rubricaPreferiti =rubricaPreferiti;
@@ -96,6 +149,12 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     
     
 
+    /**
+     * @brief Aggiunge il contatto selezionato ai preferiti.
+     * 
+     * @param event Evento di tipo ActionEvent.
+     * @throws IOException Se si verifica un errore durante il cambio di scena
+     */
     @FXML
     private void handleAddContact(ActionEvent event) throws IOException {
         selectedContact = contactListView.getSelectionModel().getSelectedItem(); // prendo l'elemento selezionato 
@@ -113,6 +172,12 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         
     }
 
+    /**
+     * @brief Torna al menu dei preferiti.
+     * 
+     * @param event Evento di tipo ActionEvent.
+     * @throws IOException Se si verifica un errore durante il cambio di scena.
+     */
     @FXML
     private void handleClosePopup(ActionEvent event) throws IOException {
         App.setRoot("MenuPreferiti"); //torniamo al menu dei preferiti 
