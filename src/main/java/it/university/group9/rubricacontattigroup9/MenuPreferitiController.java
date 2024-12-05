@@ -14,30 +14,76 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
+
+/**
+ * @file MenuPreferitiController.java
+ * @brief Controller per la gestione del menu dei contatti preferiti.
+ * 
+ * @author Gruppo09
+ * @date 05/12/2024
+ */
 public class MenuPreferitiController implements Initializable {
+    /**
+     * @brief Lista dei contatti preferiti
+     */
     @FXML
     private ListView<Contatto> listViewPreferiti;
+    
+    /**
+     * @brief Bottone per la modifica
+     */
     @FXML
     private Button editButton;
+    
+    /**
+     * @brief Bottone per aggiungere un contatto ai preferiti
+     */
     @FXML
     private Button addPrefButton;
+    
+    /**
+     * @brief Bottone secondario
+     */
     @FXML
     private Button secondaryButton;
     
+    /**
+     * @brief Lista dei contatti preferiti
+     */
     private ObservableList<Contatto> preferitiList;
+    
+    /**
+     * @brief Lista di tutti i contatti
+     */
     private ObservableList<Contatto> contactList; // Riferimento alla lista utenti
     
-
+    /**
+     * @brief Cambia la scena all'interfaccia utente.
+     * 
+     * @param[in] event L'evento che ha generato l'azione di switch.
+     * @throws IOException Se il caricamento della scena fallisce.
+     */
     @FXML
     private void switchToInterfaccia() throws IOException {
         App.setRoot("InterfacciaUtente");
     }
     
-    // Metodo per ricevere la lista utenti
+    
+    /**
+     * @brief Imposta la lista dei contatti.
+     * 
+     * @param[in] contactList La lista di contatti da impostare.
+     */
     public void setContactList(ObservableList<Contatto> contactList) {
         this.contactList = contactList;
     }
-
+    
+    /**
+     * @brief Inizializza il controller e configura la lista dei preferiti.
+     * 
+     * @param[in] location URL di localizzazione del file FXML.
+     * @param[in] resources Risorse per la localizzazione.
+     */
     public void initialize(URL location, ResourceBundle resources) {
         preferitiList=FXCollections.observableArrayList();
         // Associa la lista degli utenti alla ListView
@@ -49,6 +95,8 @@ public class MenuPreferitiController implements Initializable {
             //ogni cella della ListView è un'istanza ListCell
             
             //update item viene chiamata quando una cella deve essere aggiornata o popolata, qui definiamo l'effettiva visualizzazione
+            
+            
             
             @Override
             protected void updateItem(Contatto contatto, boolean empty){
@@ -65,11 +113,21 @@ public class MenuPreferitiController implements Initializable {
     }
     
     
-
+/**
+     * @brief Azione per la modifica di un contatto preferito.
+     * 
+     * @param[in] event L'evento che ha generato l'azione.
+     */
     @FXML
     private void editAction(ActionEvent event) {
     }
 
+    /**
+     * @brief Aggiunge un contatto alla lista dei preferiti.
+     * 
+     * @param[in] event L'evento che ha generato l'azione di aggiunta.
+     * @throws IOException Se il caricamento del popup fallisce.
+     */
     @FXML
     private void addPrefButton(ActionEvent event) throws IOException {
         if(contactList!=null){
@@ -94,6 +152,12 @@ public class MenuPreferitiController implements Initializable {
        
     }
     
+    /**
+     * @brief Crea una label per visualizzare il nome e cognome del contatto.
+     * 
+     * @param[in] contatto Il contatto di cui creare la label.
+     * @return Label La label con il nome e cognome del contatto.
+     */
     private Label creaLabelContatto(Contatto contatto) {
         Label label = new Label();
         label.setText(contatto.getNome() + " " + contatto.getCognome()); //visualizzazione del nome e cognome
