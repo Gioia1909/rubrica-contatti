@@ -24,7 +24,7 @@ import javafx.scene.control.*;
  */
 public class MenuPreferitiController implements Initializable {
     /**
-     * @brief Lista dei contatti preferiti
+     * @brief Lista grafica dei contatti preferiti
      */
     @FXML
     private ListView<Contatto> listViewPreferiti;
@@ -79,7 +79,8 @@ public class MenuPreferitiController implements Initializable {
     }
     
     /**
-     * @brief Inizializza il controller e configura la lista dei preferiti.
+     * @brief Inizializza il controller e configura la lista dei preferiti nell'elemento ListView.
+     * Configura una Label per la visualizzazione delle celle della lista, chiamando la funzione creaLabelContatto.
      * 
      * @param[in] location URL di localizzazione del file FXML.
      * @param[in] resources Risorse per la localizzazione.
@@ -125,6 +126,12 @@ public class MenuPreferitiController implements Initializable {
     /**
      * @brief Aggiunge un contatto alla lista dei preferiti.
      * 
+     * @pre
+     * La lista di Contatti non deve essere vuota.
+     * @pre
+     * L'elemento da aggiungere deve essere presente nella rubrica principale.
+     * @post 
+     * L'elemento aggiunto deve essere visto nella rubrica preferiti.
      * @param[in] event L'evento che ha generato l'azione di aggiunta.
      * @throws IOException Se il caricamento del popup fallisce.
      */

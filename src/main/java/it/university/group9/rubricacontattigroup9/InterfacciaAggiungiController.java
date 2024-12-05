@@ -91,7 +91,7 @@ public class InterfacciaAggiungiController implements Initializable {
     
     
    /**
-     * @brief Imposta il riferimento al controller dell'interfaccia principale interfaccia .
+     * @brief Imposta il riferimento al controller dell'interfaccia principale .
      * 
      * @param[in] controller Riferimento al controller principale.
      */
