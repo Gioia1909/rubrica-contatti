@@ -6,10 +6,6 @@ package it.university.group9.rubricacontattigroup9.exceptions;
 
 /**
  *
- * @author deboravillano
- */
-/**
- *
  * @author Gruppo09
  */
 public class CognomeNonValidoException extends Exception {
