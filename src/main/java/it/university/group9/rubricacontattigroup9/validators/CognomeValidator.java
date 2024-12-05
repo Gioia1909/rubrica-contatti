@@ -30,7 +30,8 @@ public class CognomeValidator {
      * @throws CognomeNonValidoException Se il cognome è nullo o vuoto.
      */
     public static void validateName(String name) throws CognomeNonValidoException {
-        if (name == null || name.trim().isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {    //name.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
+                                                                                    //nome apparentemente vuoto (ma con spazi) sia considerato valido.
             throw new CognomeNonValidoException("Cognome non valido");
         }
     }
