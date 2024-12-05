@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -131,8 +132,7 @@ public class InterfacciaAggiungiController implements Initializable {
      */
     
     @FXML
-    void addContact(MouseEvent event) throws IOException {
-        
+    void addContact(ActionEvent event) throws IOException {    
           String nome = nameField.getText();
           String cognome = surnameField.getText();
           String note = noteField.getText();
@@ -150,6 +150,7 @@ public class InterfacciaAggiungiController implements Initializable {
     if (!email3Field.getText().isEmpty()) emails.add(email3Field.getText().trim());
 
          Contatto nuovoContatto = new Contatto(nome,cognome,numeri,emails,note);
+      
          interfacciaUtenteController.getListaContatti().add(nuovoContatto);
           App.setRoot("InterfacciaUtente");
     }
@@ -167,7 +168,7 @@ public class InterfacciaAggiungiController implements Initializable {
        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     
+        
      
     }    
     
