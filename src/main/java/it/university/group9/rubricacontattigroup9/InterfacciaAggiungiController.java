@@ -14,59 +14,109 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
- * FXML Controller class
- *
- * @author ari19
+ * @brief Controller per la gestione dell'interfaccia di aggiunta di un contatto.
+ * 
+ * In questa classe si gestiscono gli eventi e le interazioni per l'aggiunta 
+ * di un contatto, come l'inserimento del nome, del cognome, dell'email, dei numeri di telefono e delle eventuali note.
  */
 public class InterfacciaAggiungiController implements Initializable {
-
-    private InterfacciaUtenteController interfacciaUtenteController;  // Riferimento al controller di InterfacciaUtente
+/**
+     * @brief Riferimento al controller dell'interfaccia principale, InterfacciaUtente
+     */
+    private InterfacciaUtenteController interfacciaUtenteController;  
     
+    /**
+     * @brief Bottone per aggiungere un nuovo contatto.
+     */
     @FXML
     private Button addButton;
-
+/**
+     * @brief Bottone per tornare indietro.
+     */
     @FXML
     private Button cancelButton;
 
+    /**
+     * @brief Campo di testo per il nome del contatto.
+     */
     @FXML
     private TextField nameField;
-
+    /**
+     * @brief Campo di testo per il cognome del contatto.
+     */
     @FXML
     private TextField surnameField;
-
+    /**
+     * @brief Campo di testo per l'email del contatto.
+     */
     @FXML
     private TextField email1Field;
-
+    /**
+     * @brief Campo di testo per la seconda email del contatto.
+     */
     @FXML
     private TextField email2Field;
-
+    /**
+     * @brief Campo di testo per la terza email del contatto.
+     */
     @FXML
     private TextField email3Field;
-
+    /**
+     * @brief Campo di testo per il numero del contatto.
+     */
     @FXML
     private TextField number1Field;
-
+    /**
+     * @brief Campo di testo per il secondo numero del contatto.
+     */
     @FXML
     private TextField number2Field;
-
+    /**
+     * @brief Campo di testo per il terzo numero del contatto.
+     */
     @FXML
     private TextField number3Field;
-    
+    /**
+     * @brief Campo di testo per le eventuali note associate al contatto.
+     */
       @FXML
     private TextField noteField;
     
     
+   /**
+     * @brief Imposta il riferimento al controller dell'interfaccia principale interfaccia .
+     * 
+     * @param[in] controller Riferimento al controller principale.
+     */
+      
        public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
         this.interfacciaUtenteController = controller;
     }
       
+       
+    /**
+     * @brief Torna all'interfaccia principale.
+     * 
+     * Cambia la scena alla schermata principale quando viene premuto il pulsante di annullamento.
+     * 
+     * @param[in] event Evento del mouse che ha scatenato l'azione.
+     * @throws IOException Se non è possibile caricare la scena.
+     */
       @FXML
     void switchToInterfaccia(MouseEvent event) throws IOException {
          App.setRoot("InterfacciaUtente");
 
     }
  
-     
+    /**
+     * @brief Aggiunge un nuovo contatto alla lista e torna alla schermata principale.
+     * 
+     * Questo metodo crea un nuovo contatto utilizzando i dati forniti nei campi di testo
+     * 
+     * 
+     * @param[in] event Evento del mouse che ha scatenato l'azione.
+     * @throws IOException Se non è possibile caricare la scena.
+     */
     @FXML
     void addContact(MouseEvent event) throws IOException {
         /*
@@ -83,7 +133,14 @@ public class InterfacciaAggiungiController implements Initializable {
        
        
        
-       
+    /**
+     * @brief Inizializza il controller.
+     * 
+     * 
+     * 
+     * @param[in] url URL di inizializzazione.
+     * @param[in] rb Risorsa per la localizzazione.
+     */ 
        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
