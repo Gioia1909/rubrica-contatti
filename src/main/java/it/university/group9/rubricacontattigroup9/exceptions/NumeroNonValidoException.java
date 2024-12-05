@@ -5,7 +5,7 @@
  * Questa classe estende l'eccezione `Exception` per segnalare errori relativi a un numero di telefono non valido.
  *
  * @author Gruppo09
- * @date 2024-12-05
+ * @date 05/12/2024
  * @version 1.0
  */
 package it.university.group9.rubricacontattigroup9.exceptions;

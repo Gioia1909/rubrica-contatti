@@ -7,7 +7,7 @@
  * NumeroNonValidoException.
  *
  * @author Gruppo09
- * @date Dicembre 2024
+ * @date 05/12/2024
  * @version 1.0
  */
 package it.university.group9.rubricacontattigroup9.validators;
