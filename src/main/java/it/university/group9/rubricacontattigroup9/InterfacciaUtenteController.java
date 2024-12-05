@@ -4,6 +4,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -117,6 +118,21 @@ public class InterfacciaUtenteController implements Initializable {
      * @brief Lista osservabile dei contatti.
      */
   private ObservableList<Contatto> contactList;
+  
+  
+  /**
+ * @brief Restituisce la lista di tutti i contatti.
+ *
+ * Questo metodo recupera e restituisce la lista dei contatti memorizzati nel sistema. 
+ * La lista è rappresentata come una collezione di oggetti del tipo `Contatto`. 
+ * Se non sono presenti contatti, viene restituita una lista vuota.
+ *
+ * @return Una lista di oggetti `Contatto`, che rappresenta tutti i contatti disponibili.
+ */
+public List<Contatto> getListaContatti() {
+    return contactList;
+}
+
    
     //metodo provvisorio per vedere la listView
     
