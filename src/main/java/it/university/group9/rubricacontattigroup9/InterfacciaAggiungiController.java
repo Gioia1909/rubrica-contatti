@@ -14,10 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
+ * @file InterfacciaAggiungiController.java
  * @brief Controller per la gestione dell'interfaccia di aggiunta di un contatto.
  * 
  * In questa classe si gestiscono gli eventi e le interazioni per l'aggiunta 
  * di un contatto, come l'inserimento del nome, del cognome, delle email, dei numeri di telefono e delle eventuali note.
+ * 
+ * 
  * 
  * @author Gruppo09
  * 
