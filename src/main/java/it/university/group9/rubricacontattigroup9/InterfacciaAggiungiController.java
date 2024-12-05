@@ -6,9 +6,14 @@ package it.university.group9.rubricacontattigroup9;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -124,17 +129,28 @@ public class InterfacciaAggiungiController implements Initializable {
      * @param[in] event Evento del mouse che ha scatenato l'azione.
      * @throws IOException Se non è possibile caricare la scena.
      */
+    
     @FXML
     void addContact(MouseEvent event) throws IOException {
-        /*
+        
           String nome = nameField.getText();
           String cognome = surnameField.getText();
-          String email = email1Field.getText();
-          String numero = number1Field.getText();
           String note = noteField.getText();
-          Contatto nuovoContatto = new Contatto(nome,cognome,email,numero);
-         InterfacciaUtenteController.getListaContatti().add(nuovoContatto);
-         */
+          List<String> numeri = new LinkedList<>();
+          List<String> emails = new LinkedList<>();
+
+    // Aggiungi numeri se non vuoti
+    if (!number1Field.getText().isEmpty()) numeri.add(number1Field.getText().trim());
+    if (!number2Field.getText().isEmpty()) numeri.add(number2Field.getText().trim());
+    if (!number3Field.getText().isEmpty()) numeri.add(number3Field.getText().trim());
+
+    // Aggiungi email se non vuote
+    if (!email1Field.getText().isEmpty()) emails.add(email1Field.getText().trim());
+    if (!email2Field.getText().isEmpty()) emails.add(email2Field.getText().trim());
+    if (!email3Field.getText().isEmpty()) emails.add(email3Field.getText().trim());
+
+         Contatto nuovoContatto = new Contatto(nome,cognome,numeri,emails,note);
+         interfacciaUtenteController.getListaContatti().add(nuovoContatto);
           App.setRoot("InterfacciaUtente");
     }
        
@@ -151,7 +167,8 @@ public class InterfacciaAggiungiController implements Initializable {
        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+     
+     
     }    
     
 }
