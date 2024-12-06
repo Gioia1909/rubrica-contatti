@@ -26,7 +26,7 @@ public class SalvaCaricaPreferiti implements Serializable {
      *
      * @param rubrica La lista di contatti da salvare
      */
-    public static void salvaRubrica(ObservableList<Contatto> rubrica) { //ObservableList<Contatto> rubrica Lista dei contatti da 
+    public static void salvaRubricaPreferiti(ObservableList<Contatto> rubrica) { //ObservableList<Contatto> rubrica Lista dei contatti da 
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
         ObjectMapper mapper = new ObjectMapper(); //https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.8/com/fasterxml/jackson/databind/ObjectMapper.html
         
@@ -47,7 +47,7 @@ public class SalvaCaricaPreferiti implements Serializable {
      * @return Una ObservableList contenente i contatti caricati, o una lista vuota se il file non esiste.
      */
     
-    public static ObservableList<Contatto> caricaRubrica() throws ClassNotFoundException{
+    public static ObservableList<Contatto> caricaRubricaPreferiti() throws ClassNotFoundException{
         ObjectMapper mapper = new ObjectMapper();
         
         File filepath = new File(file); //crea un oggetto file che punta al percorso con rubricapreferiti.json
