@@ -43,8 +43,8 @@ AnchorPane {
     -fx-background-color: transparent;
 }
 
-Label {
-    -fx-border-color: pink;      /* Colore del bordo */
+.dati{
+       -fx-border-color: pink;      /* Colore del bordo */
     -fx-border-width: 2px;        /* Larghezza del bordo */
     -fx-border-radius: 5px;       /* Arrotonda gli angoli del bordo */
     -fx-padding: 5px;             /* Distanza tra il bordo e il testo */
@@ -53,4 +53,7 @@ Label {
     -fx-wrap-text: true;          /* Abilita l'andata a capo per il testo */
     -fx-max-width: 250px;         /* Limita la larghezza massima */
  -fx-margin: 60px; 
+
 }
+
+
