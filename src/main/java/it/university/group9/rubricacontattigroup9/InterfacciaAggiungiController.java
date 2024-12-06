@@ -5,6 +5,15 @@
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
+import it.university.group9.rubricacontattigroup9.exceptions.CognomeNonValidoException;
+import it.university.group9.rubricacontattigroup9.exceptions.EmailNonValidaException;
+import it.university.group9.rubricacontattigroup9.exceptions.NomeNonValidoException;
+import it.university.group9.rubricacontattigroup9.exceptions.NumeroNonValidoException;
+import it.university.group9.rubricacontattigroup9.validators.CognomeValidator;
+import it.university.group9.rubricacontattigroup9.validators.ContattoValidator;
+import it.university.group9.rubricacontattigroup9.validators.EmailValidator;
+import it.university.group9.rubricacontattigroup9.validators.NomeValidator;
+import it.university.group9.rubricacontattigroup9.validators.NumeroValidator;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -138,12 +147,24 @@ public class InterfacciaAggiungiController implements Initializable {
      */
     
     @FXML
-    void addContact(ActionEvent event) throws IOException {    
+    void addContact(ActionEvent event) throws IOException, NomeNonValidoException, CognomeNonValidoException, NumeroNonValidoException, EmailNonValidaException {    
           String nome = nameField.getText();
+          NomeValidator.validateName(nome);
           String cognome = surnameField.getText();
+          CognomeValidator.validateSurname(cognome);
           String note = noteField.getText();
           List<String> numeri = new LinkedList<>();
+          for(String numero : numeri){
+          NumeroValidator.validatePhoneNumber(numero);
+          ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), numero);
+          }
+          
+          ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome, nome);
+          
           List<String> emails = new LinkedList<>();
+          for(String email : emails){
+          EmailValidator.validateEmail(email);
+          }
           
     // Aggiungi numeri se non vuoti
     if (!number1Field.getText().isEmpty()) numeri.add(number1Field.getText().trim());

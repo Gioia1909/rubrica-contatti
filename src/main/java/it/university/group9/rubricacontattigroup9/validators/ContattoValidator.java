@@ -30,8 +30,8 @@ public class ContattoValidator {
      * @param numero Il numero di telefono da verificare.
      * @return true se il numero è già presente, false altrimenti.
      */
-    public static boolean isNumeroDuplicato(List<Contatto> contatti, String numero) {
-        for (Contatto contatto : contatti) {
+    public static boolean isNumeroDuplicato(List<Contatto> contatti, String numero){
+        for (Contatto contatto : contatti) { 
             for (String num : contatto.getNumeri()) {
                 if (num.equals(numero)) {
                     return true; // Numero già presente
