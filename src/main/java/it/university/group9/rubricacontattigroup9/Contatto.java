@@ -46,8 +46,8 @@ public class Contatto {
     public Contatto(String nome, String cognome, List<String> numeri, List<String> emails, String note) {
         this.nome = nome;
         this.cognome = cognome;
-        this.numeri = new LinkedList<>();
-        this.emails = new LinkedList<>();
+        this.numeri = numeri;
+        this.emails = emails;
         this.note = note;
     }
     

@@ -173,22 +173,22 @@ public List<Contatto> getListaContatti() {
      * 
      * @throws IOException Se non riesce a caricare la nuova schermata.
      */
-      @FXML
+    @FXML
     private void switchToAdd() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungi.fxml"));
         Parent root = loader.load(); // Carica la scena
-          // Ottieni il controller della scena di aggiunta contatto
-    InterfacciaAggiungiController aggiungiController = loader.getController();
-     // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
-    aggiungiController.setInterfacciaUtenteController(this);
-     
-    // Crea una nuova scena e visualizzala
-    Scene scene = new Scene(root);
-    Stage stage = new Stage();
-    stage.setScene(scene);
-    stage.show();
-    
-    //App.setRoot("InterfacciaAggiungi");
+        // Ottieni il controller della scena di aggiunta contatto
+        InterfacciaAggiungiController aggiungiController = loader.getController();
+        // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
+        aggiungiController.setInterfacciaUtenteController(this);
+
+        // Crea una nuova scena e visualizzala
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+
+        //App.setRoot("InterfacciaAggiungi");
     }
     
 

@@ -155,8 +155,8 @@ public class InterfacciaAggiungiController implements Initializable {
       
          interfacciaUtenteController.getListaContatti().add(nuovoContatto);
          //aggiornamento file 
-         SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
-          App.setRoot("InterfacciaUtente");
+        SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
+        //  App.setRoot("InterfacciaUtente");
     }
        
        
