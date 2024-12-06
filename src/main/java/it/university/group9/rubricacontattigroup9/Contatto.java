@@ -7,6 +7,7 @@ package it.university.group9.rubricacontattigroup9;
 import java.util.LinkedList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.ArrayList;
 /**
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a tre numeri di telefono, da una a tre email e delle note.
@@ -49,6 +50,12 @@ public class Contatto {
         this.numeri = numeri;
         this.emails = emails;
         this.note = note;
+    }
+    
+    // Costruttore predefinito
+    public Contatto() {
+        this.numeri = new LinkedList<>();
+        this.emails = new LinkedList<>();
     }
     
     /**
