@@ -29,9 +29,9 @@ public class CognomeValidator {
      * @param name Il cognome da validare.
      * @throws CognomeNonValidoException Se il cognome è nullo o vuoto.
      */
-    public static void validateName(String name) throws CognomeNonValidoException {
-        if (name == null || name.trim().isEmpty()) {    //name.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
-                                                                                    //nome apparentemente vuoto (ma con spazi) sia considerato valido.
+    public static void validateSurname(String surname) throws CognomeNonValidoException {
+        if (surname == null || surname.trim().isEmpty() || !Character.isAlphabetic(surname.charAt(0))){    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
+                                                                                    //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
             throw new CognomeNonValidoException("Cognome non valido");
         }
     }
