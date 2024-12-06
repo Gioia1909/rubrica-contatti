@@ -5,7 +5,7 @@
     -fx-cursor: hand;                 /* Cambia il cursore al passaggio */
 }
 
-#addButton {
+#viewAddButton {
      -fx-cursor: hand;    
      -fx-background-color: transparent; 
 }

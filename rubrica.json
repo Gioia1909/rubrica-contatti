@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 [{"nome":"pippo","cognome":"baudo","numeri":["1","2","3"],"emails":["1","2","3"],"note":"note"}]
 
+=======
+[{"nome":"a","cognome":"a","numeri":["a","a","aa"],"emails":["aaa"],"note":"aa"}]
+>>>>>>> d1470169497f8f258d9a7af689222948ef230da8

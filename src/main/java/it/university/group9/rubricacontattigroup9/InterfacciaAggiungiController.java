@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * @file InterfacciaAggiungiController.java
@@ -156,7 +157,10 @@ public class InterfacciaAggiungiController implements Initializable {
          interfacciaUtenteController.getListaContatti().add(nuovoContatto);
          //aggiornamento file 
         SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
-        //  App.setRoot("InterfacciaUtente");
+         Stage stage = (Stage) addButton.getScene().getWindow();
+          stage.close();  // Chiude la finestra
+      //  App.setRoot("InterfacciaUtente");
+       
     }
        
        
