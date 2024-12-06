@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 
 /**
@@ -138,6 +140,26 @@ public class MenuPreferitiController implements Initializable {
      * @param[in] event L'evento che ha generato l'azione di aggiunta.
      * @throws IOException Se il caricamento del popup fallisce.
      */
+    
+    @FXML
+    private void handleOpenPopup() {
+        try {
+            // Carica il file FXML per il popup
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SelezionaContattiDaRubrica.fxml"));
+            Parent root = loader.load();
+
+            // Crea una nuova finestra (Stage) per il popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Seleziona Contatto");
+            popupStage.setScene(new Scene(root, 336, 400)); // Imposta le dimensioni precise
+            popupStage.setResizable(false); // Blocca il ridimensionamento
+            popupStage.initModality(Modality.APPLICATION_MODAL); // Blocca interazioni con altre finestre
+            popupStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void addPrefButton(ActionEvent event) throws IOException {
         if(contactList!=null){
@@ -145,7 +167,7 @@ public class MenuPreferitiController implements Initializable {
             //si crea un oggetto FXMLLoader per caricare il file FXML, con getClass e Resource prendiamo il file 
             
             Parent root = loader.load(); //legge il contenuto del file FXML e ritorna un oggetto parent come scena
-           
+            
             //creo un oggetto SelezionaContattiDaRubrica per passargli qualcosa nel "costruttore" --> setContacts
             SelezionaContattiDaRubricaController popupController = loader.getController();
             //così accediamo ai metodi 
@@ -154,7 +176,18 @@ public class MenuPreferitiController implements Initializable {
             
             
             Scene scene = addPrefButton.getScene(); // Ottieni la scena corrente dal pulsante che ha generato l'azione
-            scene.setRoot(root); // Imposta il nuovo root, sostituisce la scena corrente con l'altra
+            // Crea una nuova finestra (Stage) per il popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Seleziona Contatto");
+            popupStage.setScene(new Scene(root, 336, 400)); // Imposta le dimensioni precise
+            popupStage.setResizable(false); // Blocca il ridimensionamento
+            popupStage.initModality(Modality.APPLICATION_MODAL); // Blocca interazioni con altre finestre
+            popupStage.show();
+            
+            
+            
+            
+            //scene.setRoot(root); // Imposta il nuovo root, sostituisce la scena corrente con l'altra
             
         }else{
             System.out.println("La lista dei contatti non è disponibile.");
