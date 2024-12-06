@@ -17,6 +17,7 @@ import it.university.group9.rubricacontattigroup9.validators.NumeroValidator;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -26,7 +27,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -154,27 +158,49 @@ public class InterfacciaAggiungiController implements Initializable {
           CognomeValidator.validateSurname(cognome);
           String note = noteField.getText();
           List<String> numeri = new LinkedList<>();
-          for(String numero : numeri){
-          NumeroValidator.validatePhoneNumber(numero);
-          ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), numero);
-          }
-          
-          ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome, nome);
-          
           List<String> emails = new LinkedList<>();
-          for(String email : emails){
-          EmailValidator.validateEmail(email);
-          }
+         
           
+        
+          
+        List<TextField> numeroFields = Arrays.asList(number1Field, number2Field, number3Field);
+        for(TextField numero : numeroFields){
+            NumeroValidator.validatePhoneNumber(numero.getText());
+         if(ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), numero.getText())){
+             Alert alertNumber= new Alert(AlertType.CONFIRMATION, "Il numero: " + numero + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
+         
+             alertNumber.showAndWait();
+             
+             if(alertNumber.getResult() == ButtonType.NO){
+             numeri.remove(numero.getText());
+         }}
+          }
     // Aggiungi numeri se non vuoti
     if (!number1Field.getText().isEmpty()) numeri.add(number1Field.getText().trim());
     if (!number2Field.getText().isEmpty()) numeri.add(number2Field.getText().trim());
     if (!number3Field.getText().isEmpty()) numeri.add(number3Field.getText().trim());
-
+    String contatto= nome + " " + cognome;
+    List<TextField> emailFields= Arrays.asList(email1Field, email2Field, email3Field);
+    for(TextField email : emailFields){
+        EmailValidator.validateEmail(email.getText());
+    }
+         
     // Aggiungi email se non vuote
     if (!email1Field.getText().isEmpty()) emails.add(email1Field.getText().trim());
     if (!email2Field.getText().isEmpty()) emails.add(email2Field.getText().trim());
     if (!email3Field.getText().isEmpty()) emails.add(email3Field.getText().trim());
+    for(TextField numero : numeroFields){
+        
+    
+      if(ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome, numero.getText())){
+              Alert alertContact = new Alert(AlertType.CONFIRMATION, "Il contatto: " + contatto + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
+                alertContact.showAndWait();
+
+                if (alertContact.getResult() == ButtonType.NO) {
+                       return; 
+                    }
+          }
+    }
 
          Contatto nuovoContatto = new Contatto(nome,cognome,numeri,emails,note);
       
