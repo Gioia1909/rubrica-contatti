@@ -1,5 +1,6 @@
 package it.university.group9.rubricacontattigroup9;
 
+import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -148,7 +149,12 @@ public List<Contatto> getListaContatti() {
     @FXML
     public void deleteContact(MouseEvent event) {
         int selezionato = myListView.getSelectionModel().getSelectedIndex();
+        if (selezionato >= 0) {
         myListView.getItems().remove(selezionato);
+
+        // Salva i contatti aggiornati nel file
+        SalvaCaricaRubrica.salvaRubrica(contactList);
+        }
     }
 
    
@@ -194,10 +200,11 @@ public List<Contatto> getListaContatti() {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        contactList=SalvaCaricaRubrica.caricaRubrica();
         if (searchButton != null && searchButton.getScene() != null) {
             searchButton.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         }
-        contactList= FXCollections.observableArrayList();
+        
         myListView.setItems(contactList);
 
     }
