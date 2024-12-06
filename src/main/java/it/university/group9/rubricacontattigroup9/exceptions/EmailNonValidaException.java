@@ -25,6 +25,6 @@ public class EmailNonValidaException extends Exception {
      * @param message Il messaggio di errore.
      */
     public EmailNonValidaException(String message) {
-        super(message);
+        super(message); 
     }
 }
