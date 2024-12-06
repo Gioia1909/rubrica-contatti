@@ -118,20 +118,23 @@ public class InterfacciaAggiungiController implements Initializable {
      * @param[in] event Evento del mouse che ha scatenato l'azione.
      * @throws IOException Se non è possibile caricare la scena.
      */
-      @FXML
-    void switchToInterfaccia(MouseEvent event) throws IOException {
-         App.setRoot("InterfacciaUtente");
-
+     @FXML
+    void switchToInterfaccia(ActionEvent event) throws IOException {
+          Stage stage = (Stage) cancelButton.getScene().getWindow();        //ottiene lo stage a partire da dove si trova cancelButton  
+          stage.close();  // Chiude la finestra
+        // Torna alla finestra principale (InterfacciaUtente)
+      
     }
  
     /**
-     * @brief Aggiunge un nuovo contatto alla lista e torna alla schermata principale.
+     * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di aggiunta contatti
      * 
-     * Questo metodo crea un nuovo contatto utilizzando i dati forniti nei campi di testo
-     * 
+     * Questo metodo raccoglie i dati inseriti nei campi di testo per creare un nuovo contatto,
+     * aggiungendolo alla lista di contatti esistente. Successivamente, aggiorna il file di 
+     * rubrica e chiude la finestra di aggiunta.
      * 
      * @param[in] event Evento del mouse che ha scatenato l'azione.
-     * @throws IOException Se non è possibile caricare la scena.
+     * @throws IOException Se non è possibile chiudere la finestra o se si verifica un errore durante il salvataggio della rubrica
      */
     
     @FXML
@@ -157,9 +160,7 @@ public class InterfacciaAggiungiController implements Initializable {
          interfacciaUtenteController.getListaContatti().add(nuovoContatto);
          //aggiornamento file 
         SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
-         Stage stage = (Stage) addButton.getScene().getWindow();
-          stage.close();  // Chiude la finestra
-      //  App.setRoot("InterfacciaUtente");
+           switchToInterfaccia(event);
        
     }
        
