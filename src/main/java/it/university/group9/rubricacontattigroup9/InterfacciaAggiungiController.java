@@ -4,12 +4,14 @@
  */
 package it.university.group9.rubricacontattigroup9;
 
+import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -152,6 +154,8 @@ public class InterfacciaAggiungiController implements Initializable {
          Contatto nuovoContatto = new Contatto(nome,cognome,numeri,emails,note);
       
          interfacciaUtenteController.getListaContatti().add(nuovoContatto);
+         //aggiornamento file 
+         SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
           App.setRoot("InterfacciaUtente");
     }
        

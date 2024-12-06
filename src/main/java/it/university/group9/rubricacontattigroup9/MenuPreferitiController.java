@@ -1,5 +1,6 @@
 package it.university.group9.rubricacontattigroup9;
 
+import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -64,8 +65,12 @@ public class MenuPreferitiController implements Initializable {
      * @throws IOException Se il caricamento della scena fallisce.
      */
     @FXML
-    private void switchToInterfaccia() throws IOException {
+    private void switchToInterfaccia() {
+        try {
         App.setRoot("InterfacciaUtente");
+        } catch (IOException e) {
+            System.err.println("Errore durante il caricamento dell'interfaccia utente: " + e.getMessage());
+        }
     }
     
     
@@ -86,7 +91,8 @@ public class MenuPreferitiController implements Initializable {
      * @param[in] resources Risorse per la localizzazione.
      */
     public void initialize(URL location, ResourceBundle resources) {
-        preferitiList=FXCollections.observableArrayList();
+        preferitiList=SalvaCaricaPreferiti.caricaRubricaPreferiti();
+        
         // Associa la lista degli utenti alla ListView
         listViewPreferiti.setItems(preferitiList); // la list view si aggiorna quando la lista dei preferiti si aggoorna
         
@@ -114,14 +120,11 @@ public class MenuPreferitiController implements Initializable {
     }
     
     
-/**
-     * @brief Azione per la modifica di un contatto preferito.
-     * 
-     * @param[in] event L'evento che ha generato l'azione.
-     */
-    @FXML
+/** Non sappiamo se la implementeremo
+     
+    /*@FXML
     private void editAction(ActionEvent event) {
-    }
+    }*/ 
 
     /**
      * @brief Aggiunge un contatto alla lista dei preferiti.

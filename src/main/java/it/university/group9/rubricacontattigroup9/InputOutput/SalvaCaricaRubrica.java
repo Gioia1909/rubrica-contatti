@@ -45,7 +45,7 @@ public class SalvaCaricaRubrica implements Serializable{
      * @return Una ObservableList contenente i contatti caricati, o una lista vuota se il file non esiste.
      */
     
-    public static ObservableList<Contatto> caricaRubrica() throws ClassNotFoundException{
+    public static ObservableList<Contatto> caricaRubrica(){
         ObjectMapper mapper = new ObjectMapper();
         
         File filepath = new File(file); //crea un oggetto file che punta al percorso con rubricapreferiti.json
