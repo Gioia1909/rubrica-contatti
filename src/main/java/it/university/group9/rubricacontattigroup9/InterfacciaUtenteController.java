@@ -200,7 +200,7 @@ public List<Contatto> getListaContatti() {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        contactList=SalvaCaricaRubrica.caricaRubrica();
+        contactList=SalvaCaricaRubrica.caricaRubrica(); 
         if (searchButton != null && searchButton.getScene() != null) {
             searchButton.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         }
