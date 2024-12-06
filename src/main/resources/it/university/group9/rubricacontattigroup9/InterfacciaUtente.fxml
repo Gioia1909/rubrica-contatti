@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="565.0" prefWidth="791.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaUtenteController">
+<VBox alignment="CENTER" prefHeight="565.0" prefWidth="921.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaUtenteController">
     <stylesheets>
     <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
 </stylesheets>
@@ -24,7 +23,6 @@
                <children>
                   <TextField fx:id="textBar" layoutX="15.0" layoutY="53.0" prefHeight="27.0" prefWidth="211.0" promptText="Cerca contatto..." />
                   <ListView fx:id="myListView" editable="true" layoutX="15.0" layoutY="100.0" prefHeight="322.0" prefWidth="306.0" />
-                  <ScrollBar layoutX="303.0" layoutY="98.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="18.0" />
                   <Button fx:id="searchButton" layoutX="242.0" layoutY="48.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0">
                      
                      <graphic>
@@ -48,16 +46,16 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="414.0">
                <children>
-                  <Label fx:id="nameField" layoutX="95.0" layoutY="185.0" text="Nome" />
-                  <Label fx:id="surnameField" layoutX="270.0" layoutY="185.0" text="Cognome" />
-                  <Label fx:id="number1Field" layoutX="95.0" layoutY="231.0" text="Numero 1" />
-                  <Label fx:id="number2Field" layoutX="95.0" layoutY="274.0" text="Numero 2" />
-                  <Label fx:id="number3Field" layoutX="95.0" layoutY="320.0" text="Numero 3" />
-                  <Label fx:id="email1Field" layoutX="270.0" layoutY="230.0" text="Mail 1" />
-                  <Label fx:id="email2Field" layoutX="270.0" layoutY="274.0" text="Mail 2" />
-                  <Label fx:id="email3Field" layoutX="270.0" layoutY="320.0" text="Mail 3" />
+                  <Label fx:id="nameField" layoutX="35.0" layoutY="185.0" />
+                  <Label fx:id="surnameField" layoutX="249.0" layoutY="185.0" />
+                  <Label fx:id="number1Field" layoutX="35.0" layoutY="231.0" />
+                  <Label fx:id="number2Field" layoutX="35.0" layoutY="274.0" />
+                  <Label fx:id="number3Field" layoutX="35.0" layoutY="320.0" />
+                  <Label fx:id="email1Field" layoutX="249.0" layoutY="231.0" />
+                  <Label fx:id="email2Field" layoutX="249.0" layoutY="274.0" />
+                  <Label fx:id="email3Field" layoutX="249.0" layoutY="320.0" />
                   <Button fx:id="deleteButton" layoutX="322.0" layoutY="428.0" mnemonicParsing="false" onMouseClicked="#deleteContact" text="Elimina" />
-                  <Label fx:id="noteField" layoutX="191.0" layoutY="372.0" text="Note" />
+                  <Label fx:id="noteField" layoutX="135.0" layoutY="370.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>
