@@ -140,7 +140,7 @@ public class InterfacciaAggiungiController implements Initializable {
           String note = noteField.getText();
           List<String> numeri = new LinkedList<>();
           List<String> emails = new LinkedList<>();
-
+          
     // Aggiungi numeri se non vuoti
     if (!number1Field.getText().isEmpty()) numeri.add(number1Field.getText().trim());
     if (!number2Field.getText().isEmpty()) numeri.add(number2Field.getText().trim());
