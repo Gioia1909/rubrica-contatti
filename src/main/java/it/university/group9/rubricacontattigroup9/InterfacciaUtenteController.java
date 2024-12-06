@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -118,6 +119,9 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @FXML
     private Label number3Field;
+    
+    @FXML
+    private Label noteField;
 
     /**
      * @brief Lista osservabile dei contatti.
@@ -138,26 +142,20 @@ public List<Contatto> getListaContatti() {
     return contactList;
 }
 
-   
-    //metodo provvisorio per vedere la listView
-    
     /**
-     * @brief Elimina il contatto selezionato dalla lista.
-     * 
-     * @param[in] event Evento del mouse che ha attivato l'azione.
+     * @brief Ordina la lista dei contatti in base al cognome e nome.
+     *
+     * Questo metodo ordina la lista `contactList` di contatti prima per
+     * cognome, e in caso di parità, per nome. L'ordinamento è fatto in ordine
+     * crescente, utilizzando il metodo `compareTo` definito nella classe
+     * `Contatto`.
      */
-    @FXML
-    public void deleteContact(MouseEvent event) {
-        int selezionato = myListView.getSelectionModel().getSelectedIndex();
-        if (selezionato >= 0) {
-        myListView.getItems().remove(selezionato);
-
-        // Salva i contatti aggiornati nel file
-        SalvaCaricaRubrica.salvaRubrica(contactList);
-        }
+    public void ordinaContatti() {
+        // Utilizza il metodo sort() per ordinare direttamente la lista
+        FXCollections.sort(contactList);  // Contatto deve implementare Comparable<Contatto>
     }
 
-   
+
     /**
      * @brief Passa alla schermata dei contatti preferiti.
      * 
@@ -171,41 +169,122 @@ public List<Contatto> getListaContatti() {
     /**
      * @brief Passa alla schermata di aggiunta di un nuovo contatto.
      * 
+     * Questo metodo carica la scena della finestra di aggiunta di un nuovo contatto e la visualizza in una nuova finestra.
+     * Inoltre, imposta il controller della nuova finestra per consentire l'intererazione con l'interfaccia principale
+     * 
+     * 
      * @throws IOException Se non riesce a caricare la nuova schermata.
      */
-      @FXML
+    @FXML
     private void switchToAdd() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungi.fxml"));
         Parent root = loader.load(); // Carica la scena
-          // Ottieni il controller della scena di aggiunta contatto
-    InterfacciaAggiungiController aggiungiController = loader.getController();
-     // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
-    aggiungiController.setInterfacciaUtenteController(this);
-     
-    // Crea una nuova scena e visualizzala
-    Scene scene = new Scene(root);
-    Stage stage = new Stage();
-    stage.setScene(scene);
-    stage.show();
-    
-    //App.setRoot("InterfacciaAggiungi");
+        // Ottieni il controller della scena di aggiunta contatto
+        InterfacciaAggiungiController aggiungiController = loader.getController();
+        // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
+        aggiungiController.setInterfacciaUtenteController(this);
+
+        // Crea una nuova scena e visualizzala
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
+    
+    
+    
+    /**
+     * @brief Elimina il contatto selezionato dalla lista.
+     * 
+     * Questo metodo rimuove il contatto selezionato dalla lista dei contatti visualizzata nell'interfaccia utente.
+     * Dopo aver rimosso il contatto, il metodo salva la lista aggiornata nel file per persistente i dati.
+
+     * 
+     * @param[in] event Evento del mouse che ha attivato l'azione.
+     */
+    @FXML
+    public void deleteContact(MouseEvent event) {
+        int selezionato = myListView.getSelectionModel().getSelectedIndex();
+        if (selezionato >= 0) {
+        myListView.getItems().remove(selezionato);
+
+        // Salva i contatti aggiornati nel file
+        SalvaCaricaRubrica.salvaRubrica(contactList);
+        }
+    }
+    
+    
+    
+    
+    
     
 
     /**
-     * @brief Inizializza i componenti e configura l'interfaccia utente.
+     * @brief Inizializza i componenti e imposta la lista di contatti
+     * 
+     * Questo metodo viene eseguito automaticamente quando l'interfaccia utente viene caricata. 
+     * Carica la lista dei contatti utilizzando il metodo `SalvaCaricaRubrica.caricaRubrica()`.
+     * Configura la `ListView` per visualizzare correttamente i contatti, mostrando solo il cognome e il nome.
+     * Aggiunge un listener alla `ListView` per reagire alla selezione di un contatto, aggiornando i campi di testo 
+     * con i dettagli del contatto selezionato
      * 
      * @param[in] location URL della risorsa utilizzata per risolvere i percorsi relativi.
      * @param[in] resources Risorse utilizzate per localizzare i componenti.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        contactList=SalvaCaricaRubrica.caricaRubrica(); 
+        contactList = SalvaCaricaRubrica.caricaRubrica();
+
+        /* non penso sia necessario
         if (searchButton != null && searchButton.getScene() != null) {
             searchButton.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        }
-        
+        }*/
+        // CellFactory per la ListView
+        myListView.setCellFactory(listView -> new ListCell<Contatto>() {
+            @Override
+            protected void updateItem(Contatto contatto, boolean empty) {       //metodo per personalizzare come viene aggiornato il contenuto di una cella in una ListView.
+                super.updateItem(contatto, empty);
+                if (empty || contatto == null) {
+                    setText(null);
+                } else {
+                    // Mostra solo il cognome e il nome
+                    setText(contatto.getCognome() + " " + contatto.getNome());
+                }
+            }
+        });
+
         myListView.setItems(contactList);
+
+        // listener per la selezione della ListView. Con getSelectionModel ottengo il modello di selezione della ListView, 
+        //  selecredItemProperty è la proprietà che rappresenta l'elemento selezionato. A questa aggiungo un listener.
+        // observable è la proprietà osservata (selectedItem), contattoPrecedente è il valore dell'elemento selezionato prima che la seleziona cambiasse
+        // contattoSelezionato  il nuvoo valore dell'elemento selezionato dopo che è cambiato. 
+        
+        myListView.getSelectionModel().selectedItemProperty().addListener((observable, contattoPrecedente, contattoSelezionato) -> {
+            if (contattoSelezionato != null) {
+                // Aggiorna le label con i dati del contatto selezionato
+
+                nameField.setText(contattoSelezionato.getNome());
+                surnameField.setText(contattoSelezionato.getCognome());
+                
+                // Gestione dei numeri di telefono
+                List<String> numeri = contattoSelezionato.getNumeri();
+                number1Field.setText(numeri.size() > 0 ? numeri.get(0) : "");
+                number2Field.setText(numeri.size() > 1 ? numeri.get(1) : "");   //se esiste un secondo numero scrivilo, altrimenti setta uno testo vuoto
+                number3Field.setText(numeri.size() > 2 ? numeri.get(2) : "");
+
+                // Gestione delle email
+                List<String> emails = contattoSelezionato.getEmails();
+                email1Field.setText(emails.size() > 0 ? emails.get(0) : "");
+                email2Field.setText(emails.size() > 1 ? emails.get(1) : "");
+                email3Field.setText(emails.size() > 2 ? emails.get(2) : "");
+                
+                noteField.setText(contattoSelezionato.getNote());
+
+              
+            }
+        });
+
 
     }
 

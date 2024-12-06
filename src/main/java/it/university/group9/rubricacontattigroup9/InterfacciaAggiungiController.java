@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * @file InterfacciaAggiungiController.java
@@ -112,25 +113,28 @@ public class InterfacciaAggiungiController implements Initializable {
     /**
      * @brief Torna all'interfaccia principale.
      * 
-     * Cambia la scena alla schermata principale quando viene premuto il pulsante di annullamento.
+     * Questo metodo chiude la finestra corrente e ritorna alla schermata principale dell'applicazione.
      * 
      * @param[in] event Evento del mouse che ha scatenato l'azione.
      * @throws IOException Se non è possibile caricare la scena.
      */
-      @FXML
-    void switchToInterfaccia(MouseEvent event) throws IOException {
-         App.setRoot("InterfacciaUtente");
-
+     @FXML
+    void switchToInterfaccia(ActionEvent event) throws IOException {
+          Stage stage = (Stage) cancelButton.getScene().getWindow();        //ottiene lo stage a partire da dove si trova cancelButton  
+          stage.close();  // Chiude la finestra
+        // Torna alla finestra principale (InterfacciaUtente)
+      
     }
  
     /**
-     * @brief Aggiunge un nuovo contatto alla lista e torna alla schermata principale.
+     * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di aggiunta contatti
      * 
-     * Questo metodo crea un nuovo contatto utilizzando i dati forniti nei campi di testo
-     * 
+     * Questo metodo raccoglie i dati inseriti nei campi di testo per creare un nuovo contatto,
+     * aggiungendolo alla lista di contatti esistente. Successivamente, aggiorna il file di 
+     * rubrica e chiude la finestra di aggiunta.
      * 
      * @param[in] event Evento del mouse che ha scatenato l'azione.
-     * @throws IOException Se non è possibile caricare la scena.
+     * @throws IOException Se non è possibile chiudere la finestra o se si verifica un errore durante il salvataggio della rubrica
      */
     
     @FXML
@@ -154,9 +158,11 @@ public class InterfacciaAggiungiController implements Initializable {
          Contatto nuovoContatto = new Contatto(nome,cognome,numeri,emails,note);
       
          interfacciaUtenteController.getListaContatti().add(nuovoContatto);
+         interfacciaUtenteController.ordinaContatti(); 
          //aggiornamento file 
-         SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
-          App.setRoot("InterfacciaUtente");
+        SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
+           switchToInterfaccia(event);
+       
     }
        
        

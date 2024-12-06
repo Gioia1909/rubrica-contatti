@@ -55,7 +55,7 @@ public class SalvaCaricaRubrica implements Serializable{
         }
         
         try{
-            List <Contatto> deserializedList = mapper.readValue(file, new TypeReference<List<Contatto>>(){}); 
+            List <Contatto> deserializedList = mapper.readValue(filepath, new TypeReference<List<Contatto>>(){}); 
             //TypeReference è un'interfaccia particolare di Jackson che permette di restituire il tipo dell'oggetto voluto 
             //{} perché la rendiamo anonima, dato che è un'istanza provvisoria 
             //se non fosse anonima dovremmo implementare i metodi astratti

@@ -7,6 +7,7 @@ package it.university.group9.rubricacontattigroup9;
 import java.util.LinkedList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.ArrayList;
 /**
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a tre numeri di telefono, da una a tre email e delle note.
@@ -18,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @date 03/12/2024
  * 
  */
-public class Contatto {
+public class Contatto implements Comparable<Contatto> {
     //JsonProperty serve a definire il campo che conterrà questi elementi sul file JSON
     @JsonProperty ("nome")
     private String nome;
@@ -46,9 +47,15 @@ public class Contatto {
     public Contatto(String nome, String cognome, List<String> numeri, List<String> emails, String note) {
         this.nome = nome;
         this.cognome = cognome;
+        this.numeri = numeri;
+        this.emails = emails;
+        this.note = note;
+    }
+    
+    // Costruttore predefinito
+    public Contatto() {
         this.numeri = new LinkedList<>();
         this.emails = new LinkedList<>();
-        this.note = note;
     }
     
     /**
@@ -127,4 +134,15 @@ public class Contatto {
     
     
 
+     @Override
+    public int compareTo(Contatto obj) {
+       
+        // Ordina prima per cognome, poi per nome
+        int risultato = this.cognome.compareToIgnoreCase(obj.cognome);
+        if (risultato == 0) {       // se hanno lo stesso cognome
+            return this.nome.compareToIgnoreCase(obj.nome); // Se i cognomi sono uguali, ordina per nome
+        }
+        return risultato;
+    }
+    
 }
