@@ -120,13 +120,18 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @FXML
     private Label number3Field;
-    
+
     @FXML
     private Label noteField;
-    
-        @FXML
+
+    @FXML
     private ScrollBar scrollBar;
 
+    @FXML
+    private Label defaultText;
+
+        
+        
     /**
      * @brief Lista osservabile dei contatti.
      */
@@ -285,7 +290,21 @@ public void setContactList(ObservableList<Contatto> contactList) {
         myListView.getSelectionModel().selectedItemProperty().addListener((observable, contattoPrecedente, contattoSelezionato) -> {
             if (contattoSelezionato != null) {
                 // Aggiorna le label con i dati del contatto selezionato
-
+                defaultText.setVisible(false);
+                deleteButton.setVisible(true);
+                nameField.setVisible(true);
+                surnameField.setVisible(true);
+                email1Field.setVisible(true);
+                email2Field.setVisible(true);
+                email3Field.setVisible(true);
+                number1Field.setVisible(true);
+                 number2Field.setVisible(true);
+                 number3Field.setVisible(true);
+                 noteField.setVisible(true);
+                
+                
+                
+                
                 nameField.setText(contattoSelezionato.getNome());
                 surnameField.setText(contattoSelezionato.getCognome());
                 
