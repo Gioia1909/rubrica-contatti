@@ -105,32 +105,26 @@ public class MenuPreferitiController implements Initializable {
      * @param[in] resources Risorse per la localizzazione.
      */
     public void initialize(URL location, ResourceBundle resources) {
-        preferitiList=SalvaCaricaPreferiti.caricaRubricaPreferiti();
-        
-        // Associa la lista degli utenti alla ListView
-        listViewPreferiti.setItems(preferitiList); // la list view si aggiorna quando la lista dei preferiti si aggoorna
-        
-        
-        //configurazioen CellFactory --> Visualizzazione di un singolo campo della Lista 
-        listViewPreferiti.setCellFactory(lv -> new ListCell<Contatto>(){ //riceve un pararametro lv chr crea un oggetto ListCell
-            //ogni cella della ListView è un'istanza ListCell
-            
-            //update item viene chiamata quando una cella deve essere aggiornata o popolata, qui definiamo l'effettiva visualizzazione
-            
-            
-            
-            @Override
-            protected void updateItem(Contatto contatto, boolean empty){
-                //contatto è l'elemento da visualizzare, empty dice che la cella è vuota
-                
-                if(empty || contatto == null){
-                    setText(null); // Pulisce il testo della cella se vuota
-                    setGraphic(null); // Pulisce il contenuto grafico della cella
-                }else{
-                    setGraphic(creaLabelContatto(contatto));
-                }
+        // Rimuovi duplicati utilizzando un HashSet
+    preferitiList = FXCollections.observableArrayList(new HashSet<>(SalvaCaricaPreferiti.caricaRubricaPreferiti()));
+
+    listViewPreferiti.setItems(preferitiList);
+
+    // Configura le celle della ListView
+    listViewPreferiti.setCellFactory(lv -> new ListCell<Contatto>() {
+        @Override
+        protected void updateItem(Contatto contatto, boolean empty) {
+            super.updateItem(contatto, empty);
+            if (empty || contatto == null) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                setGraphic(creaLabelContatto(contatto));
             }
-        });
+        }
+    });
+
+    System.out.println("Preferiti caricati senza duplicati: " + preferitiList);
     }
     
     

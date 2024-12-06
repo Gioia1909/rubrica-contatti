@@ -175,17 +175,20 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     private void handleAddContact(ActionEvent event) throws IOException {
         selectedContact = contactListView.getSelectionModel().getSelectedItem(); // prendo l'elemento selezionato 
         
-        if(selectedContact!=null){
-            if(!rubricaPreferiti.contains(selectedContact)){
-                rubricaPreferiti.add(selectedContact);
-                System.out.println("Aggiunto ai preferiti: " + selectedContact.getNome());
-                //salvo il file 
-                SalvaCaricaPreferiti.salvaRubricaPreferiti(rubricaPreferiti);
-            }else{
-                 System.out.println("Il contatto è già nei preferiti");
-            } 
+        if (selectedContact != null) {
+        if (!rubricaPreferiti.contains(selectedContact)) {
+            rubricaPreferiti.add(selectedContact);
+            System.out.println("Aggiunto ai preferiti: " + selectedContact.getNome());
+            
+            // Salva il file
+            SalvaCaricaPreferiti.salvaRubricaPreferiti(rubricaPreferiti);
+        } else {
+            System.out.println("Il contatto è già nei preferiti: " + selectedContact.getNome());
         }
-        handleClosePopup(event);
+    } else {
+        System.out.println("Nessun contatto selezionato.");
+    }
+    handleClosePopup(event);
         
     }
 

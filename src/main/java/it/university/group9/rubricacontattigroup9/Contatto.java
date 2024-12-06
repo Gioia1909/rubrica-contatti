@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
+import java.util.*;
 /**
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a tre numeri di telefono, da una a tre email e delle note.
@@ -158,5 +159,23 @@ public class Contatto implements Comparable<Contatto> {
         }
         return risultato;
     }
+    @Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Contatto contatto = (Contatto) o;
+    return Objects.equals(nome, contatto.nome) &&
+           Objects.equals(cognome, contatto.cognome) &&
+           Objects.equals(numeri, contatto.numeri) &&
+           Objects.equals(emails, contatto.emails) &&
+           Objects.equals(note, contatto.note);
+}
+
+@Override
+public int hashCode() {
+    return Objects.hash(nome, cognome, numeri, emails, note);
+}
+
+    
     
 }
