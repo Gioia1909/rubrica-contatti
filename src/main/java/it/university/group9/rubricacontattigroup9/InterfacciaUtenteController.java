@@ -142,7 +142,20 @@ public List<Contatto> getListaContatti() {
     return contactList;
 }
 
-   
+    /**
+     * @brief Ordina la lista dei contatti in base al cognome e nome.
+     *
+     * Questo metodo ordina la lista `contactList` di contatti prima per
+     * cognome, e in caso di parità, per nome. L'ordinamento è fatto in ordine
+     * crescente, utilizzando il metodo `compareTo` definito nella classe
+     * `Contatto`.
+     */
+    public void ordinaContatti() {
+        // Utilizza il metodo sort() per ordinare direttamente la lista
+        FXCollections.sort(contactList);  // Contatto deve implementare Comparable<Contatto>
+    }
+
+
     /**
      * @brief Passa alla schermata dei contatti preferiti.
      * 

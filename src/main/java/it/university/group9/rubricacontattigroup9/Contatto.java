@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @date 03/12/2024
  * 
  */
-public class Contatto {
+public class Contatto implements Comparable<Contatto> {
     //JsonProperty serve a definire il campo che conterrà questi elementi sul file JSON
     @JsonProperty ("nome")
     private String nome;
@@ -134,4 +134,15 @@ public class Contatto {
     
     
 
+     @Override
+    public int compareTo(Contatto obj) {
+       
+        // Ordina prima per cognome, poi per nome
+        int risultato = this.cognome.compareToIgnoreCase(obj.cognome);
+        if (risultato == 0) {       // se hanno lo stesso cognome
+            return this.nome.compareToIgnoreCase(obj.nome); // Se i cognomi sono uguali, ordina per nome
+        }
+        return risultato;
+    }
+    
 }
