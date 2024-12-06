@@ -10,6 +10,13 @@
      -fx-background-color: transparent; 
 }
 
+.scroll-bar {
+    -fx-background-color: lightgrey; /* Colore di sfondo */
+    -fx-border-color: black; /* Colore del bordo */
+    -fx-pref-width: 15px; /* Larghezza della scroll bar verticale */
+    -fx-pref-height: 15px; /* Altezza della scroll bar orizzontale */
+}
+
 #scrittaPreferiti{
     -fx-font-family: "Grantham Sangam MN";
     -fx-font-size: 14px;

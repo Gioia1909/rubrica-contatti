@@ -133,7 +133,21 @@ public class Contatto implements Comparable<Contatto> {
     }
     
     
-
+    
+    /*
+ * @brief Confronta due oggetti di tipo Contatto per determinarne l'ordine naturale.
+ * 
+ * Questo metodo ordina i contatti in base al cognome in ordine alfabetico. 
+ * Se i cognomi sono identici, l'ordinamento prosegue in base al nome, sempre 
+ * in ordine alfabetico. Il confronto è case-insensitive.
+ * 
+ * @param[in] obj Il contatto da confrontare con l'oggetto corrente.
+ * @return Un intero che rappresenta il risultato del confronto:
+ *         - Un valore negativo se l'oggetto corrente precede il contatto `obj`.
+ *         - Zero se i due contatti sono considerati equivalenti.
+ *         - Un valore positivo se l'oggetto corrente segue il contatto `obj`.
+ * 
+     */
      @Override
     public int compareTo(Contatto obj) {
        
