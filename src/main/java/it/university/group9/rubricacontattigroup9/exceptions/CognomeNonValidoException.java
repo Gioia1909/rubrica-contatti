@@ -22,7 +22,7 @@ public class CognomeNonValidoException extends Exception {
      * 
      * Questo costruttore crea una nuova istanza dell'eccezione con un messaggio personalizzato.
      * 
-     * @param message Il messaggio di errore.
+     * @param message Il messaggio di errore 
      */
     public CognomeNonValidoException(String message) {
         super(message);
