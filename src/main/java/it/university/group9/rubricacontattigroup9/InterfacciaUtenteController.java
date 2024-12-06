@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -139,25 +140,6 @@ public List<Contatto> getListaContatti() {
 }
 
    
-    //metodo provvisorio per vedere la listView
-    
-    /**
-     * @brief Elimina il contatto selezionato dalla lista.
-     * 
-     * @param[in] event Evento del mouse che ha attivato l'azione.
-     */
-    @FXML
-    public void deleteContact(MouseEvent event) {
-        int selezionato = myListView.getSelectionModel().getSelectedIndex();
-        if (selezionato >= 0) {
-        myListView.getItems().remove(selezionato);
-
-        // Salva i contatti aggiornati nel file
-        SalvaCaricaRubrica.salvaRubrica(contactList);
-        }
-    }
-
-   
     /**
      * @brief Passa alla schermata dei contatti preferiti.
      * 
@@ -170,6 +152,10 @@ public List<Contatto> getListaContatti() {
     
     /**
      * @brief Passa alla schermata di aggiunta di un nuovo contatto.
+     * 
+     * Questo metodo carica la scena della finestra di aggiunta di un nuovo contatto e la visualizza in una nuova finestra.
+     * Inoltre, imposta il controller della nuova finestra per consentire l'intererazione con l'interfaccia principale
+     * 
      * 
      * @throws IOException Se non riesce a caricare la nuova schermata.
      */
@@ -187,9 +173,34 @@ public List<Contatto> getListaContatti() {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-
-        //App.setRoot("InterfacciaAggiungi");
     }
+    
+    
+    
+    /**
+     * @brief Elimina il contatto selezionato dalla lista.
+     * 
+     * Questo metodo rimuove il contatto selezionato dalla lista dei contatti visualizzata nell'interfaccia utente.
+     * Dopo aver rimosso il contatto, il metodo salva la lista aggiornata nel file per persistente i dati.
+
+     * 
+     * @param[in] event Evento del mouse che ha attivato l'azione.
+     */
+    @FXML
+    public void deleteContact(MouseEvent event) {
+        int selezionato = myListView.getSelectionModel().getSelectedIndex();
+        if (selezionato >= 0) {
+        myListView.getItems().remove(selezionato);
+
+        // Salva i contatti aggiornati nel file
+        SalvaCaricaRubrica.salvaRubrica(contactList);
+        }
+    }
+    
+    
+    
+    
+    
     
 
     /**
@@ -200,11 +211,26 @@ public List<Contatto> getListaContatti() {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        contactList=SalvaCaricaRubrica.caricaRubrica(); 
+        contactList = SalvaCaricaRubrica.caricaRubrica();
+
+        /* non penso sia necessario
         if (searchButton != null && searchButton.getScene() != null) {
             searchButton.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        }
-        
+        }*/
+        // CellFactory per la ListView
+        myListView.setCellFactory(listView -> new ListCell<Contatto>() {
+            @Override   
+            protected void updateItem(Contatto contatto, boolean empty) {       //metodo per personalizzare come viene aggiornato il contenuto di una cella in una ListView.
+                super.updateItem(contatto, empty);
+                if (empty || contatto == null) {
+                    setText(null);
+                } else {
+                    // Mostra solo il cognome e il nome
+                    setText(contatto.getCognome() + " " + contatto.getNome());
+                }
+            }
+        });
+
         myListView.setItems(contactList);
 
     }

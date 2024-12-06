@@ -113,7 +113,7 @@ public class InterfacciaAggiungiController implements Initializable {
     /**
      * @brief Torna all'interfaccia principale.
      * 
-     * Cambia la scena alla schermata principale quando viene premuto il pulsante di annullamento.
+     * Questo metodo chiude la finestra corrente e ritorna alla schermata principale dell'applicazione.
      * 
      * @param[in] event Evento del mouse che ha scatenato l'azione.
      * @throws IOException Se non è possibile caricare la scena.
