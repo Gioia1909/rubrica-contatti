@@ -170,7 +170,7 @@ public List<Contatto> getListaContatti() {
       @FXML
     private void switchToAdd() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungi.fxml"));
-         Parent root = loader.load(); // Carica la scena
+        Parent root = loader.load(); // Carica la scena
           // Ottieni il controller della scena di aggiunta contatto
     InterfacciaAggiungiController aggiungiController = loader.getController();
      // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta

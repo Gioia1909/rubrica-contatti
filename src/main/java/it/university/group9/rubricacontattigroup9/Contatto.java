@@ -6,7 +6,7 @@ package it.university.group9.rubricacontattigroup9;
 
 import java.util.LinkedList;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a tre numeri di telefono, da una a tre email e delle note.
@@ -19,11 +19,16 @@ import java.util.List;
  * 
  */
 public class Contatto {
-
+    //JsonProperty serve a definire il campo che conterrà questi elementi sul file JSON
+    @JsonProperty ("nome")
     private String nome;
+    @JsonProperty ("cognome")
     private String cognome;
+    @JsonProperty ("numeri")
     private List<String> numeri;
+    @JsonProperty ("emails")
     private List<String> emails;
+    @JsonProperty ("note")
     private String note;
     
 /**

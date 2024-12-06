@@ -14,7 +14,7 @@ import javafx.collections.ObservableList;
  *
  * @author imacpro
  */
-public class SalvaCaricaFile implements Serializable{
+public class SalvaCaricaRubrica implements Serializable{
     //file che si creerà 
     private static final String file = "rubrica.csv"; //csv per implementarla come una tabella
     

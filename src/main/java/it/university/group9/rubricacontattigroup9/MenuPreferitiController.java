@@ -168,7 +168,6 @@ public class MenuPreferitiController implements Initializable {
     private Label creaLabelContatto(Contatto contatto) {
         Label label = new Label();
         label.setText(contatto.getNome() + " " + contatto.getCognome()); //visualizzazione del nome e cognome
-  
         label.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-color: #f0f0f0;");
         label.setWrapText(false); //non va a capo
         return label;
