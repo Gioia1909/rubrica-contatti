@@ -47,7 +47,7 @@ public class SalvaCaricaPreferiti implements Serializable {
      * @return Una ObservableList contenente i contatti caricati, o una lista vuota se il file non esiste.
      */
     
-    public static ObservableList<Contatto> caricaRubricaPreferiti() throws ClassNotFoundException{
+    public static ObservableList<Contatto> caricaRubricaPreferiti(){
         ObjectMapper mapper = new ObjectMapper();
         
         File filepath = new File(file); //crea un oggetto file che punta al percorso con rubricapreferiti.json
@@ -64,7 +64,6 @@ public class SalvaCaricaPreferiti implements Serializable {
             return FXCollections.observableArrayList(deserializedList); //conversione in un'Osservabile
         }catch(IOException e){
             System.err.println("Errore durante il caricamento dalla rubrica: " + e.getMessage());
-            e.printStackTrace();
             return FXCollections.observableArrayList();
         }    
     }
