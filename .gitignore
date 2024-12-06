@@ -7,6 +7,9 @@ target/
 # Ignora i file di log
 *.log
 
+# Ignora i file JSON
+*.json
+
 # Ignora i file di NetBeans (opzionale)
 nbproject/private/.DS_Store
 
