@@ -69,10 +69,22 @@ public class MenuPreferitiController implements Initializable {
     @FXML
     private void switchToInterfaccia() {
         try {
-        App.setRoot("InterfacciaUtente");
-        } catch (IOException e) {
-            System.err.println("Errore durante il caricamento dell'interfaccia utente: " + e.getMessage());
-        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaUtente.fxml"));
+        Parent root = loader.load();
+        
+        // Ottieni il controller
+        InterfacciaUtenteController controller = loader.getController();
+
+        // Passa la lista di contatti al nuovo controller
+        controller.setContactList(this.contactList);
+
+        // Cambia la scena
+        Stage stage = (Stage) listViewPreferiti.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    } catch (IOException e) {
+        System.err.println("Errore durante il caricamento dell'interfaccia utente: " + e.getMessage());
+        e.printStackTrace();
+    }
     }
     
     
@@ -163,6 +175,9 @@ public class MenuPreferitiController implements Initializable {
     @FXML
     private void addPrefButton(ActionEvent event) throws IOException {
         if(contactList!=null){
+            //debug
+             System.out.println("ContactList: " + contactList);
+             System.out.println("PreferitiList: " + preferitiList);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SelezionaContattiDaRubrica.fxml"));
             //si crea un oggetto FXMLLoader per caricare il file FXML, con getClass e Resource prendiamo il file 
             

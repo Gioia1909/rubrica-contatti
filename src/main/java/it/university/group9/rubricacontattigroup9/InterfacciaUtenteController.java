@@ -145,6 +145,12 @@ public class InterfacciaUtenteController implements Initializable {
 public List<Contatto> getListaContatti() {
     return contactList;
 }
+public void setContactList(ObservableList<Contatto> contactList) {
+    this.contactList = contactList;
+    // Aggiorna la ListView con i nuovi dati
+    myListView.setItems(contactList);
+}
+
 
     /**
      * @brief Ordina la lista dei contatti in base al cognome e nome.

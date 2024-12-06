@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 /**
@@ -115,6 +116,10 @@ public class SelezionaContattiDaRubricaController implements Initializable {
      * @param[in] rubricaPreferiti Lista dei contatti preferiti.
      */
     public void setContacts(ObservableList<Contatto> rubrica, ObservableList<Contatto> rubricaPreferiti) {
+        if (rubrica == null || rubricaPreferiti == null) {
+        System.err.println("Le liste rubrica o preferiti sono null!");
+        return;
+        }
         this.rubrica = rubrica; //prendo la rubrica normale
         this.rubricaPreferiti = rubricaPreferiti;
 
@@ -192,7 +197,8 @@ public class SelezionaContattiDaRubricaController implements Initializable {
      */
     @FXML
     private void handleClosePopup(ActionEvent event) throws IOException {
-        App.setRoot("MenuPreferiti"); //torniamo al menu dei preferiti 
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 
     /*@FXML Questo non serve se la ricerca è dinamica
