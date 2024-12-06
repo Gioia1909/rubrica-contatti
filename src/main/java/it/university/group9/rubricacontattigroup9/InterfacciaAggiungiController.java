@@ -127,10 +127,10 @@ public class InterfacciaAggiungiController implements Initializable {
     }
  
     /**
-     * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di aggiunta contatti
+     * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di aggiunta contatti aggiornando la rubrica
      * 
      * Questo metodo raccoglie i dati inseriti nei campi di testo per creare un nuovo contatto,
-     * aggiungendolo alla lista di contatti esistente. Successivamente, aggiorna il file di 
+     * aggiungendolo alla lista di contatti esistente e riordinando la rubrica. Successivamente, aggiorna il file di 
      * rubrica e chiude la finestra di aggiunta.
      * 
      * @param[in] event Evento del mouse che ha scatenato l'azione.
