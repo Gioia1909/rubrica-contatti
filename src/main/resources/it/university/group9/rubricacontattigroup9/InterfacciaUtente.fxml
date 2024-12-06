@@ -57,6 +57,7 @@
                   <Label fx:id="email2Field" layoutX="270.0" layoutY="274.0" text="Mail 2" />
                   <Label fx:id="email3Field" layoutX="270.0" layoutY="320.0" text="Mail 3" />
                   <Button fx:id="deleteButton" layoutX="322.0" layoutY="428.0" mnemonicParsing="false" onMouseClicked="#deleteContact" text="Elimina" />
+                  <Label fx:id="noteField" layoutX="191.0" layoutY="372.0" text="Note" />
                </children></AnchorPane>
         </items>
       </SplitPane>

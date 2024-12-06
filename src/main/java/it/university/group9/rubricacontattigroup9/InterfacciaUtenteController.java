@@ -119,6 +119,9 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @FXML
     private Label number3Field;
+    
+    @FXML
+    private Label noteField;
 
     /**
      * @brief Lista osservabile dei contatti.
@@ -204,7 +207,13 @@ public List<Contatto> getListaContatti() {
     
 
     /**
-     * @brief Inizializza i componenti e configura l'interfaccia utente.
+     * @brief Inizializza i componenti e imposta la lista di contatti
+     * 
+     * Questo metodo viene eseguito automaticamente quando l'interfaccia utente viene caricata. 
+     * Carica la lista dei contatti utilizzando il metodo `SalvaCaricaRubrica.caricaRubrica()`.
+     * Configura la `ListView` per visualizzare correttamente i contatti, mostrando solo il cognome e il nome.
+     * Aggiunge un listener alla `ListView` per reagire alla selezione di un contatto, aggiornando i campi di testo 
+     * con i dettagli del contatto selezionato
      * 
      * @param[in] location URL della risorsa utilizzata per risolvere i percorsi relativi.
      * @param[in] resources Risorse utilizzate per localizzare i componenti.
@@ -219,7 +228,7 @@ public List<Contatto> getListaContatti() {
         }*/
         // CellFactory per la ListView
         myListView.setCellFactory(listView -> new ListCell<Contatto>() {
-            @Override   
+            @Override
             protected void updateItem(Contatto contatto, boolean empty) {       //metodo per personalizzare come viene aggiornato il contenuto di una cella in una ListView.
                 super.updateItem(contatto, empty);
                 if (empty || contatto == null) {
@@ -232,6 +241,37 @@ public List<Contatto> getListaContatti() {
         });
 
         myListView.setItems(contactList);
+
+        // listener per la selezione della ListView. Con getSelectionModel ottengo il modello di selezione della ListView, 
+        //  selecredItemProperty è la proprietà che rappresenta l'elemento selezionato. A questa aggiungo un listener.
+        // observable è la proprietà osservata (selectedItem), contattoPrecedente è il valore dell'elemento selezionato prima che la seleziona cambiasse
+        // contattoSelezionato  il nuvoo valore dell'elemento selezionato dopo che è cambiato. 
+        
+        myListView.getSelectionModel().selectedItemProperty().addListener((observable, contattoPrecedente, contattoSelezionato) -> {
+            if (contattoSelezionato != null) {
+                // Aggiorna le label con i dati del contatto selezionato
+
+                nameField.setText(contattoSelezionato.getNome());
+                surnameField.setText(contattoSelezionato.getCognome());
+                
+                // Gestione dei numeri di telefono
+                List<String> numeri = contattoSelezionato.getNumeri();
+                number1Field.setText(numeri.size() > 0 ? numeri.get(0) : "");
+                number2Field.setText(numeri.size() > 1 ? numeri.get(1) : "");   //se esiste un secondo numero scrivilo, altrimenti setta uno testo vuoto
+                number3Field.setText(numeri.size() > 2 ? numeri.get(2) : "");
+
+                // Gestione delle email
+                List<String> emails = contattoSelezionato.getEmails();
+                email1Field.setText(emails.size() > 0 ? emails.get(0) : "");
+                email2Field.setText(emails.size() > 1 ? emails.get(1) : "");
+                email3Field.setText(emails.size() > 2 ? emails.get(2) : "");
+                
+                noteField.setText(contattoSelezionato.getNote());
+
+              
+            }
+        });
+
 
     }
 
