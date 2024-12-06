@@ -120,11 +120,11 @@ public class MenuPreferitiController implements Initializable {
     }
     
     
-/** Non sappiamo se la implementeremo
+//Non sappiamo se la implementeremo
      
-    /*@FXML
+    @FXML
     private void editAction(ActionEvent event) {
-    }*/ 
+    }
 
     /**
      * @brief Aggiunge un contatto alla lista dei preferiti.

@@ -27,8 +27,8 @@
                      </image></ImageView>
                </graphic>
             </Button>
-            <Button fx:id="addPrefButton" layoutX="165.0" layoutY="1.0" mnemonicParsing="false" onAction="#addPrefButton" prefHeight="27.0" prefWidth="31.0">
-               <AnchorPane.rightAnchor>10.0</AnchorPane.rightAnchor>
+            <Button fx:id="addPrefButton" layoutX="162.0" layoutY="1.0" mnemonicParsing="false" onAction="#addPrefButton" prefHeight="27.0" prefWidth="31.0">
+               <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
                 <graphic>
                   <ImageView fitHeight="59.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
