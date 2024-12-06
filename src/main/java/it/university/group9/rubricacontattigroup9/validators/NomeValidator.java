@@ -32,7 +32,7 @@ public class NomeValidator {
      * @throws NomeNonValidoException Se il nome non è valido.
      */
     public static void validateName(String name) throws NomeNonValidoException {
-        if (name == null || name.trim().isEmpty()) {    //name.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
+        if (name == null || name.trim().isEmpty()|| !Character.isAlphabetic(name.charAt(0))) {    //name.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
                                                                                     //nome apparentemente vuoto (ma con spazi) sia considerato valido.
             throw new NomeNonValidoException("Nome non valido");
         }
