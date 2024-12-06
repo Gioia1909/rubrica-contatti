@@ -166,8 +166,20 @@ public List<Contatto> getListaContatti() {
      * @throws IOException Se non riesce a caricare la nuova schermata.
      */
     @FXML
-    private void switchToFavorite() throws IOException {
-        App.setRoot("MenuPreferiti");
+    private void switchToFavorite() throws IOException { 
+        // Carica il file FXML della scena dei preferiti
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
+        Parent root = loader.load();
+
+        // Ottieni il controller associato alla scena caricata
+        MenuPreferitiController menuPreferitiController = loader.getController();
+
+        // Passa la lista di contatti al controller dei preferiti
+        menuPreferitiController.setContactList(contactList);
+
+        // Cambia la scena
+        Scene scene = favoriteButton.getScene(); // Ottieni la scena corrente
+        scene.setRoot(root); // Sostituisci il root della scena corrente con il nuovo root
     }
     
     /**
