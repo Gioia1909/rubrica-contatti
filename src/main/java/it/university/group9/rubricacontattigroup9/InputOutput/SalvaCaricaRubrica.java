@@ -56,11 +56,6 @@ public class SalvaCaricaRubrica implements Serializable{
                e.printStackTrace();
         }
     }
-    /**
-     * Carica la rubrica da un file JSON, se esiste.
-     *
-     * @return Una ObservableList contenente i contatti caricati, o una lista vuota se il file non esiste.
-     */
     
     
     /**

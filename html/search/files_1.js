@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['rubrica_2ejava_0',['Rubrica.java',['../_rubrica_8java.html',1,'']]],
-  ['rubricacontatti_2ejava_1',['RubricaContatti.java',['../_rubrica_contatti_8java.html',1,'']]],
-  ['rubricapreferiti_2ejava_2',['RubricaPreferiti.java',['../_rubrica_preferiti_8java.html',1,'']]]
+  ['emailnonvalidaexception_2ejava_0',['EmailNonValidaException.java',['../_email_non_valida_exception_8java.html',1,'']]],
+  ['emailvalidator_2ejava_1',['EmailValidator.java',['../_email_validator_8java.html',1,'']]]
 ];

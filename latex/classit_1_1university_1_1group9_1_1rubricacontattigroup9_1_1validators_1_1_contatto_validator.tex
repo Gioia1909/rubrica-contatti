@@ -1,0 +1,75 @@
+\doxysection{it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Contatto\+Validator Class Reference}
+\hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator}{}\label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator}\index{it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}}
+
+
+Validatore per i contatti.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static boolean \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a468130035f28f8022ebb6eed8d8d7fc8}{is\+Numero\+Duplicato}} (List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ contatti, String numero)
+\begin{DoxyCompactList}\small\item\em Verifica se un numero di telefono è duplicato. \end{DoxyCompactList}\item 
+static boolean \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a0a1df3abbd2f257f58457ffe30aca307}{is\+Contatto\+Duplicato}} (List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ contatti, String nome, String cognome, String numero)
+\begin{DoxyCompactList}\small\item\em Verifica se un contatto è duplicato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Validatore per i contatti. 
+
+Questa classe verifica se un contatto o un numero di telefono è duplicato. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a0a1df3abbd2f257f58457ffe30aca307}\index{it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}!isContattoDuplicato@{isContattoDuplicato}}
+\index{isContattoDuplicato@{isContattoDuplicato}!it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}}
+\doxysubsubsection{\texorpdfstring{isContattoDuplicato()}{isContattoDuplicato()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a0a1df3abbd2f257f58457ffe30aca307} 
+static boolean it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Contatto\+Validator.\+is\+Contatto\+Duplicato (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$}]{contatti}{, }\item[{String}]{nome}{, }\item[{String}]{cognome}{, }\item[{String}]{numero}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verifica se un contatto è duplicato. 
+
+Controlla se esiste un contatto con lo stesso nome, cognome e numero.
+
+
+\begin{DoxyParams}{Parameters}
+{\em contatti} & La lista di contatti da esaminare. \\
+\hline
+{\em nome} & Il nome del contatto. \\
+\hline
+{\em cognome} & Il cognome del contatto. \\
+\hline
+{\em numero} & Il numero di telefono del contatto. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il contatto esiste già, false altrimenti. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a468130035f28f8022ebb6eed8d8d7fc8}\index{it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}!isNumeroDuplicato@{isNumeroDuplicato}}
+\index{isNumeroDuplicato@{isNumeroDuplicato}!it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}}
+\doxysubsubsection{\texorpdfstring{isNumeroDuplicato()}{isNumeroDuplicato()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a468130035f28f8022ebb6eed8d8d7fc8} 
+static boolean it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Contatto\+Validator.\+is\+Numero\+Duplicato (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$}]{contatti}{, }\item[{String}]{numero}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verifica se un numero di telefono è duplicato. 
+
+Controlla se il numero di telefono è già presente tra i contatti.
+
+
+\begin{DoxyParams}{Parameters}
+{\em contatti} & La lista di contatti da esaminare. \\
+\hline
+{\em numero} & Il numero di telefono da verificare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il numero è già presente, false altrimenti. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/it/university/group9/rubricacontattigroup9/validators/\mbox{\hyperlink{_contatto_validator_8java}{Contatto\+Validator.\+java}}\end{DoxyCompactItemize}

@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['modificacontatto_0',['modificaContatto',['../interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica.html#af442ca4384a1bbdee42677bc93481500',1,'it.university.group9.rubricacontattigroup9.Rubrica.modificaContatto()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_contatti.html#a47dddae9675c082d37b97f7921a7a90f',1,'it.university.group9.rubricacontattigroup9.RubricaContatti.modificaContatto()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_preferiti.html#a4cffe09750cd6806513f594dd7b8ccdd',1,'it.university.group9.rubricacontattigroup9.RubricaPreferiti.modificaContatto()']]]
+  ['getcognome_0',['getCognome',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#acf04fc936fdf790705113920280424ed',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['getemails_1',['getEmails',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#a82fe965c69140b6f7f178b40f5fd4610',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['getlistacontatti_2',['getListaContatti',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller.html#a65444d3503c7356e0dd4c8861e9d74cd',1,'it::university::group9::rubricacontattigroup9::InterfacciaUtenteController']]],
+  ['getnome_3',['getNome',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#a589a2ab2905d8ea2583a01e5949b7b9f',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['getnote_4',['getNote',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#a9fa712d2dab4853038d838b6680dfc5c',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['getnumeri_5',['getNumeri',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#af9de3d21af025a65692573490b83153c',1,'it::university::group9::rubricacontattigroup9::Contatto']]]
 ];
