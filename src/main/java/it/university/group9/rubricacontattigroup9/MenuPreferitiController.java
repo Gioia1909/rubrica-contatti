@@ -141,8 +141,8 @@ public class MenuPreferitiController implements Initializable {
     * 
     * Questo metodo carica un file FXML per il popup, crea una nuova finestra (`Stage`) 
     *  
-    * La finestra popup è modale, il che significa che blocca l'interazione con altre finestre 
-    * finché non viene chiusa. Il ridimensionamento della finestra è disabilitato.
+    * La finestra popup blocca l'interazione con altre finestre finché non viene chiusa. 
+    * 
     *
     * @pre Il file FXML "SelezionaContattiDaRubrica.fxml" deve essere presente e valido.
     * @post Una nuova finestra popup viene aperta, e l'utente non può interagire con altre finestre fino alla chiusura del popup.
@@ -223,7 +223,7 @@ public class MenuPreferitiController implements Initializable {
      * @brief Crea una label per visualizzare il nome e cognome del contatto.
      * 
      * @param[in] contatto Il contatto di cui creare la label.
-     * @return Label La label con il nome e cognome del contatto.
+     * @return label Label con il nome e cognome del contatto.
      */
     private Label creaLabelContatto(Contatto contatto) {
         Label label = new Label();

@@ -15,14 +15,31 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
+ * @brief Classe per la gestione del salvataggio e caricamento della rubrica in formato JSON.
+ * 
+ * Questa classe fornisce i metodi per salvare una lista di contatti in un file JSON 
+ * e per caricarla da un file JSON esistente. 
  *
- * @author imacpro
+ * @author Gruppo09
+ * @date 07/12/2024
  */
 public class SalvaCaricaRubrica implements Serializable{
     //file che si creerà 
     private static final String file = "rubrica.json"; 
     
-    
+     /**
+     * @brief Salva la rubrica su un file JSON.
+     * 
+     * Questo metodo converte la ObservableListi n una lista di tipo List.
+     * e la serializza in un file JSON utilizzando la libreria Jackson.
+     * Se il salvataggio ha successo, verrà stampato un messaggio di conferma, altrimenti verrà gestito l'errore.
+     * 
+     * @param[in] rubrica La lista di contatti da salvare nel file JSON.
+     * 
+     * @pre rubrica non deve essere null.
+     * @post Il file JSON rubrica.json viene creato o sovrascritto con i dati contenuti in rubrica
+     * @throws IOException Se si verifica un errore durante il salvataggio del file.
+     */
     
     public static void salvaRubrica(ObservableList<Contatto> rubrica) { //ObservableList<Contatto> rubrica Lista dei contatti da 
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
@@ -45,6 +62,20 @@ public class SalvaCaricaRubrica implements Serializable{
      * @return Una ObservableList contenente i contatti caricati, o una lista vuota se il file non esiste.
      */
     
+    
+    /**
+     * @brief Carica la rubrica da un file JSON se esiste.
+     * 
+     * Questo metodo carica i dati da un file JSON e li converte in una ObservableList
+     * Se il file non esiste, viene restituita una lista vuota e viene stampato un messaggio di errore.
+     * 
+     * @return Una ObservableList che contenente i contatti caricati oppure una lista vuota 
+     * se il file non esiste o si verifica un errore durante il caricamento.
+     * 
+     * @pre Il file rubrica.json deve essere presente nel percorso specificato per il corretto funzionamento.
+     * @post Se il file esiste, i contatti vengono caricati nella rubrica, altrimenti viene restituita una rubrica vuota.
+     * @throws IOException Se si verifica un errore durante il caricamento del file.
+     */
     public static ObservableList<Contatto> caricaRubrica(){
         ObjectMapper mapper = new ObjectMapper();
         
