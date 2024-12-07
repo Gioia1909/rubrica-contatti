@@ -54,57 +54,82 @@ public class InterfacciaAggiungiController implements Initializable {
      */
     private InterfacciaUtenteController interfacciaUtenteController;  
     
+    
     /**
      * @brief Bottone per aggiungere un nuovo contatto.
      */
     @FXML
     private Button addButton;
-/**
+    
+    
+    /**
      * @brief Bottone per tornare indietro.
      */
     @FXML
     private Button cancelButton;
 
+    
+    
     /**
      * @brief Campo di testo per il nome del contatto.
      */
     @FXML
     private TextField nameField;
+    
+    
     /**
      * @brief Campo di testo per il cognome del contatto.
      */
     @FXML
     private TextField surnameField;
+    
+    
+    
     /**
-     * @brief Campo di testo per l'email del contatto.
+     * @brief Campo di testo per la prima email del contatto.
      */
     @FXML
     private TextField email1Field;
+    
+    
     /**
      * @brief Campo di testo per la seconda email del contatto.
      */
     @FXML
     private TextField email2Field;
+   
+    
     /**
      * @brief Campo di testo per la terza email del contatto.
      */
     @FXML
     private TextField email3Field;
+    
+    
+    
     /**
-     * @brief Campo di testo per il numero del contatto.
+     * @brief Campo di testo per il primo numero del contatto.
      */
     @FXML
     private TextField number1Field;
+    
+    
     /**
      * @brief Campo di testo per il secondo numero del contatto.
      */
     @FXML
     private TextField number2Field;
+    
+    
+    
     /**
      * @brief Campo di testo per il terzo numero del contatto.
      */
     @FXML
     private TextField number3Field;
+    
+    
+    
     /**
      * @brief Campo di testo per le eventuali note associate al contatto.
      */
@@ -142,13 +167,19 @@ public class InterfacciaAggiungiController implements Initializable {
     /**
      * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di aggiunta contatti aggiornando la rubrica
      * 
-     * Questo metodo raccoglie i dati inseriti nei campi di testo per creare un nuovo contatto,
-     * aggiungendolo alla lista di contatti esistente e riordinando la rubrica. Successivamente, aggiorna il file di 
-     * rubrica e chiude la finestra di aggiunta.
+     * Questo metodo permette di aggiungere un nuovo contatto con nome, cognome, numeri di telefono,
+     * email e note alla rubrica. Valida i dati inseriti, verifica la presenza di duplicati e aggiorna
+     * la rubrica sia nella lista in memoria che nel file di salvataggio.
+     * 
+     * @throws IOException Se si verifica un errore durante il salvataggio della rubrica su file.
+     * @throws NomeNonValidoException Se il nome fornito non è valido.
+     * @throws CognomeNonValidoException Se il cognome fornito non è valido.
+     * @throws NumeroNonValidoException Se uno dei numeri di telefono forniti non è valido.
+     * @throws EmailNonValidaException Se una delle email fornite non è valida.
      * 
      * @param[in] event Evento del mouse che ha scatenato l'azione.
-     * @throws IOException Se non è possibile chiudere la finestra o se si verifica un errore durante il salvataggio della rubrica
      */
+  
     
     @FXML
     void addContact(ActionEvent event) throws IOException, NomeNonValidoException, CognomeNonValidoException, NumeroNonValidoException, EmailNonValidaException {    

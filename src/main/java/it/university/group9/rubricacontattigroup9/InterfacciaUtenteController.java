@@ -120,13 +120,25 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @FXML
     private Label number3Field;
-
+    
+    /**
+    * @brief Label per il campo di testo delle note.
+    * 
+    */
     @FXML
     private Label noteField;
 
+    /**
+    * @brief Label per la barra di scorrimento.
+    * 
+    */
     @FXML
     private ScrollBar scrollBar;
 
+    /**
+    * @brief Label per il testo di default.
+    * 
+    */
     @FXML
     private Label defaultText;
 
@@ -150,6 +162,15 @@ public class InterfacciaUtenteController implements Initializable {
 public List<Contatto> getListaContatti() {
     return contactList;
 }
+
+ /**
+ * @brief Questo metodo permette di impostare la lista dei contatti e aggiornare la ListView con nuovi dati
+ *
+ * 
+ * @param[in] contactList Lista osservabile dei contatti.
+ */
+
+
 public void setContactList(ObservableList<Contatto> contactList) {
     this.contactList = contactList;
     // Aggiorna la ListView con i nuovi dati
@@ -192,6 +213,8 @@ public void setContactList(ObservableList<Contatto> contactList) {
         Scene scene = favoriteButton.getScene(); // Ottieni la scena corrente
         scene.setRoot(root); // Sostituisci il root della scena corrente con il nuovo root
     }
+    
+    
     
     /**
      * @brief Passa alla schermata di aggiunta di un nuovo contatto.

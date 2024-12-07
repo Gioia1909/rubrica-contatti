@@ -149,6 +149,8 @@ public class Contatto implements Comparable<Contatto> {
  *         - Un valore positivo se l'oggetto corrente segue il contatto `obj`.
  * 
      */
+    
+    
      @Override
     public int compareTo(Contatto obj) {
        
@@ -159,6 +161,19 @@ public class Contatto implements Comparable<Contatto> {
         }
         return risultato;
     }
+    
+    /**
+ * @brief Confronta l'oggetto corrente con un altro oggetto per verificarne l'uguaglianza.
+ * 
+ * Questo metodo verifica se l'oggetto passato come parametro è uguale all'oggetto corrente.
+ * Quindi due oggetti di tipo Contatto sono considerati uguali se hanno lo stesso riferimento, oppure se appartengno alla stessa classe e i loro attributi sono uguali.
+ *
+ * 
+ * @param[in] o Oggetto da confrontare con l'oggetto corrente.
+ * @return true se gli oggetti sono uguali, altrimenti false.
+ * 
+ * 
+ */
     @Override
 public boolean equals(Object o) {
     if (this == o) return true;
@@ -171,6 +186,13 @@ public boolean equals(Object o) {
            Objects.equals(note, contatto.note);
 }
 
+/**
+ * @brief Calcola il codice hash per l'oggetto corrente.
+ * 
+ * Questo metodo sovrascrive il metodo `hashCode` per generare un codice hash univoco basato su valori nome, cognome, numeri, emails e note.
+ *
+ * @return Un valore intero che rappresenta il codice hash dell'oggetto corrente.
+ */
 @Override
 public int hashCode() {
     return Objects.hash(nome, cognome, numeri, emails, note);

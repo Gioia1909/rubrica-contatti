@@ -26,6 +26,7 @@ import javafx.stage.Stage;
  * @date 05/12/2024
  */
 public class MenuPreferitiController implements Initializable {
+    
     /**
      * @brief Lista grafica dei contatti preferiti
      */
@@ -134,18 +135,20 @@ public class MenuPreferitiController implements Initializable {
     private void editAction(ActionEvent event) {
     }
 
-    /**
-     * @brief Aggiunge un contatto alla lista dei preferiti.
-     * 
-     * @pre
-     * La lista di Contatti non deve essere vuota.
-     * @pre
-     * L'elemento da aggiungere deve essere presente nella rubrica principale.
-     * @post 
-     * L'elemento aggiunto deve essere visto nella rubrica preferiti.
-     * @param[in] event L'evento che ha generato l'azione di aggiunta.
-     * @throws IOException Se il caricamento del popup fallisce.
-     */
+    
+   /**
+    * @brief Gestisce l'apertura di una finestra popup per la selezione di un contatto.
+    * 
+    * Questo metodo carica un file FXML per il popup, crea una nuova finestra (`Stage`) 
+    *  
+    * La finestra popup è modale, il che significa che blocca l'interazione con altre finestre 
+    * finché non viene chiusa. Il ridimensionamento della finestra è disabilitato.
+    *
+    * @pre Il file FXML "SelezionaContattiDaRubrica.fxml" deve essere presente e valido.
+    * @post Una nuova finestra popup viene aperta, e l'utente non può interagire con altre finestre fino alla chiusura del popup.
+    * 
+    * @throws IOException Se il file FXML non può essere caricato o se si verifica un errore durante la creazione della finestra.
+    */
     
     @FXML
     private void handleOpenPopup() {
@@ -166,6 +169,18 @@ public class MenuPreferitiController implements Initializable {
         }
     }
 
+     /**
+     * @brief Aggiunge un contatto alla lista dei preferiti.
+     * 
+     * @pre
+     * La lista di Contatti non deve essere vuota.
+     * @pre
+     * L'elemento da aggiungere deve essere presente nella rubrica principale.
+     * @post 
+     * L'elemento aggiunto deve essere visto nella rubrica preferiti.
+     * @param[in] event L'evento che ha generato l'azione di aggiunta.
+     * @throws IOException Se il caricamento del popup fallisce.
+     */
     @FXML
     private void addPrefButton(ActionEvent event) throws IOException {
         if(contactList!=null){

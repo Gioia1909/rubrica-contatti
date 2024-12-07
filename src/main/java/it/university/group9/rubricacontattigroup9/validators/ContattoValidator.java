@@ -66,5 +66,6 @@ public class ContattoValidator {
         }
         return false; // Nessun duplicato trovato
     }
+    
 }
 
