@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['salvarubrica_0',['salvaRubrica',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_rubrica.html#a3d7504eb926d53ccd3d99b4d042530a4',1,'it::university::group9::rubricacontattigroup9::InputOutput::SalvaCaricaRubrica']]],
-  ['salvarubricapreferiti_1',['salvaRubricaPreferiti',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti.html#a212866b23b61f34d3edf54c836e4646c',1,'it::university::group9::rubricacontattigroup9::InputOutput::SalvaCaricaPreferiti']]],
-  ['setcontactlist_2',['setContactList',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller.html#aa0961a10afa15d3e1fbc9e745fde7732',1,'it.university.group9.rubricacontattigroup9.InterfacciaUtenteController.setContactList()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller.html#a61346d3827ec4e185f32fe57c2e099d7',1,'it.university.group9.rubricacontattigroup9.MenuPreferitiController.setContactList()']]],
-  ['setcontacts_3',['setContacts',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller.html#abaa2c30007a12fb7d57b5b856ac14875',1,'it::university::group9::rubricacontattigroup9::SelezionaContattiDaRubricaController']]],
-  ['setinterfacciautentecontroller_4',['setInterfacciaUtenteController',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller.html#a5dfe5ef3f281d72eb63815a09e5e3174',1,'it::university::group9::rubricacontattigroup9::InterfacciaAggiungiController']]]
+  ['main_0',['main',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_app.html#aab79b9e20de4b305362005d12d412f19',1,'it::university::group9::rubricacontattigroup9::App']]]
 ];

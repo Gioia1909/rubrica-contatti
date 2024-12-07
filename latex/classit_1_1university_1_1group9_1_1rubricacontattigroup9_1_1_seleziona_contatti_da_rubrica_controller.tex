@@ -11,11 +11,77 @@ Inheritance diagram for it.\+university.\+group9.\+rubricacontattigroup9.\+Selez
 \item 
 void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a32a5757be39b66234c7d5e0f7cd5ed7a}{initialize}} (URL url, Resource\+Bundle rb)
 \begin{DoxyCompactList}\small\item\em Metodo di inizializzazione del controller. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_abaa2c30007a12fb7d57b5b856ac14875}{set\+Contacts}} (Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ rubrica, Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ rubrica\+Preferiti)
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_abaa2c30007a12fb7d57b5b856ac14875}{set\+Contacts}} (Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a2ab3a96c3fb0b1941cf432844f04ef0c}{rubrica}}, Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a0fe7205d96d9ca1f1b344c5b34b3d940}{rubrica\+Preferiti}})
 \begin{DoxyCompactList}\small\item\em Configura le liste dei contatti e dei preferiti. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a308b9e1e3b884140e40ba61dba740e07}{handle\+Add\+Contact}} (Action\+Event event)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Aggiunge il contatto selezionato ai preferiti. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a49e53ec34ea06b6a7c55bea2b27182ed}{handle\+Close\+Popup}} (Action\+Event event)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Torna al menu dei preferiti. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a3b70317c10929eaeea29b4230a1385ec}{search\+Bar}}
+\begin{DoxyCompactList}\small\item\em Campo di testo per la barra di ricerca. \end{DoxyCompactList}\item 
+List\+View$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_ac2ce92007a919e982762320af413adde}{contact\+List\+View}}
+\begin{DoxyCompactList}\small\item\em Lista dei contatti visualizzata nella GUI. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a46b38de9e7309a05a5c9d6a5203b1d49}{add\+Button}}
+\begin{DoxyCompactList}\small\item\em Pulsante per aggiungere un contatto ai preferiti. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a80d809dbcc31cd11c1d5aece74405bbe}{close\+Button}}
+\begin{DoxyCompactList}\small\item\em Pulsante per chiudere la finestra attuale. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a7033cf1e1750563643c34f5675131c08}{search\+Button}}
+\begin{DoxyCompactList}\small\item\em Pulsante per eseguire la ricerca. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a2ab3a96c3fb0b1941cf432844f04ef0c}{rubrica}}
+\begin{DoxyCompactList}\small\item\em Lista dei contatti della rubrica. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a234bc985d1fc5fa3369adcb21befba79}{selected\+Contact}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto} selezionato. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a0fe7205d96d9ca1f1b344c5b34b3d940}{rubrica\+Preferiti}}
+\begin{DoxyCompactList}\small\item\em Lista dei contatti preferiti. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a308b9e1e3b884140e40ba61dba740e07}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!handleAddContact@{handleAddContact}}
+\index{handleAddContact@{handleAddContact}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{handleAddContact()}{handleAddContact()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a308b9e1e3b884140e40ba61dba740e07} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+handle\+Add\+Contact (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aggiunge il contatto selezionato ai preferiti. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Evento di tipo Action\+Event. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se si verifica un errore durante il cambio di scena \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a49e53ec34ea06b6a7c55bea2b27182ed}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!handleClosePopup@{handleClosePopup}}
+\index{handleClosePopup@{handleClosePopup}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{handleClosePopup()}{handleClosePopup()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a49e53ec34ea06b6a7c55bea2b27182ed} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+handle\+Close\+Popup (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Torna al menu dei preferiti. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Evento di tipo Action\+Event. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se si verifica un errore durante il cambio di scena. \\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a32a5757be39b66234c7d5e0f7cd5ed7a}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!initialize@{initialize}}
 \index{initialize@{initialize}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
 \doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
@@ -50,6 +116,89 @@ Configura le liste dei contatti e dei preferiti.
 \mbox{\texttt{ in}}  & {\em rubrica\+Preferiti} & Lista dei contatti preferiti. \\
 \hline
 \end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a46b38de9e7309a05a5c9d6a5203b1d49}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!addButton@{addButton}}
+\index{addButton@{addButton}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{addButton}{addButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a46b38de9e7309a05a5c9d6a5203b1d49} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+add\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante per aggiungere un contatto ai preferiti. 
+
+Permette di selezionare un contatto dalla lista e aggiungerlo ai preferiti. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a80d809dbcc31cd11c1d5aece74405bbe}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!closeButton@{closeButton}}
+\index{closeButton@{closeButton}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{closeButton}{closeButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a80d809dbcc31cd11c1d5aece74405bbe} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+close\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante per chiudere la finestra attuale. 
+
+Torna al menu principale dei preferiti. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_ac2ce92007a919e982762320af413adde}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!contactListView@{contactListView}}
+\index{contactListView@{contactListView}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{contactListView}{contactListView}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_ac2ce92007a919e982762320af413adde} 
+List\+View$<$\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}$>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+contact\+List\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista dei contatti visualizzata nella GUI. 
+
+Mostra i contatti filtrati o l\textquotesingle{}intera rubrica, a seconda dell\textquotesingle{}input dell\textquotesingle{}utente nella barra di ricerca. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a2ab3a96c3fb0b1941cf432844f04ef0c}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!rubrica@{rubrica}}
+\index{rubrica@{rubrica}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{rubrica}{rubrica}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a2ab3a96c3fb0b1941cf432844f04ef0c} 
+Observable\+List$<$\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}$>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+rubrica\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista dei contatti della rubrica. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a0fe7205d96d9ca1f1b344c5b34b3d940}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!rubricaPreferiti@{rubricaPreferiti}}
+\index{rubricaPreferiti@{rubricaPreferiti}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{rubricaPreferiti}{rubricaPreferiti}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a0fe7205d96d9ca1f1b344c5b34b3d940} 
+Observable\+List$<$\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}$>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+rubrica\+Preferiti\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista dei contatti preferiti. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a3b70317c10929eaeea29b4230a1385ec}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!searchBar@{searchBar}}
+\index{searchBar@{searchBar}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{searchBar}{searchBar}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a3b70317c10929eaeea29b4230a1385ec} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+search\+Bar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Campo di testo per la barra di ricerca. 
+
+Consente all\textquotesingle{}utente di digitare il testo per filtrare i contatti visibili nella lista. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a7033cf1e1750563643c34f5675131c08}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!searchButton@{searchButton}}
+\index{searchButton@{searchButton}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{searchButton}{searchButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a7033cf1e1750563643c34f5675131c08} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+search\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulsante per eseguire la ricerca. 
+
+Questo pulsante non è utilizzato poiché la ricerca è implementata dinamicamente. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a234bc985d1fc5fa3369adcb21befba79}\index{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}!selectedContact@{selectedContact}}
+\index{selectedContact@{selectedContact}!it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController@{it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController}}
+\doxysubsubsection{\texorpdfstring{selectedContact}{selectedContact}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_seleziona_contatti_da_rubrica_controller_a234bc985d1fc5fa3369adcb21befba79} 
+\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} it.\+university.\+group9.\+rubricacontattigroup9.\+Seleziona\+Contatti\+Da\+Rubrica\+Controller.\+selected\+Contact\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto} selezionato. 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

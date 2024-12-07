@@ -11,7 +11,7 @@ Inheritance diagram for it.\+university.\+group9.\+rubricacontattigroup9.\+Inter
 \item 
 List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a65444d3503c7356e0dd4c8861e9d74cd}{get\+Lista\+Contatti}} ()
 \begin{DoxyCompactList}\small\item\em Restituisce la lista di tutti i contatti. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aa0961a10afa15d3e1fbc9e745fde7732}{set\+Contact\+List}} (Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ contact\+List)
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aa0961a10afa15d3e1fbc9e745fde7732}{set\+Contact\+List}} (Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ab02bbdaffe76ea92ce5449fc13a9ffdd}{contact\+List}})
 \begin{DoxyCompactList}\small\item\em Questo metodo permette di impostare la lista dei contatti e aggiornare la List\+View con nuovi dati. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a9526b070a16447d123511c70fb0b5d59}{ordina\+Contatti}} ()
 \begin{DoxyCompactList}\small\item\em Ordina la lista dei contatti in base al cognome e nome. \end{DoxyCompactList}\item 
@@ -19,6 +19,54 @@ void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1
 \begin{DoxyCompactList}\small\item\em Elimina il contatto selezionato dalla lista. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ac8cd18d4bdcc8b6155dc38ddb7b331e2}{initialize}} (URL location, Resource\+Bundle resources)
 \begin{DoxyCompactList}\small\item\em Inizializza i componenti e imposta la lista di contatti. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ace89e6e46c43850af5362fed002398b5}{switch\+To\+Favorite}} ()  throws IOException 
+\begin{DoxyCompactList}\small\item\em Passa alla schermata dei contatti preferiti. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a10bac614783c95db91662729a2f774b3}{switch\+To\+Add}} ()  throws IOException 
+\begin{DoxyCompactList}\small\item\em Passa alla schermata di aggiunta di un nuovo contatto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a418c965c4fcec64df3fce3a9ca4cbc21}{view\+Add\+Button}}
+\begin{DoxyCompactList}\small\item\em Bottone per accedere all\textquotesingle{}interfaccia di aggiunta contatti. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a6a8c93e995c123184ca5bfd0b8db886d}{delete\+Button}}
+\begin{DoxyCompactList}\small\item\em Bottone per eliminare un contatto selezionato. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a0eeee05207cd2a2be2ae19b03aad26ea}{search\+Button}}
+\begin{DoxyCompactList}\small\item\em Bottone per cercare un contatto. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a9f7b0d3bfff5a728cd91a029b0637de9}{favorite\+Button}}
+\begin{DoxyCompactList}\small\item\em Bottone per visualizzare i contatti preferiti. \end{DoxyCompactList}\item 
+List\+View$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aefecba68223be546d682aa8a17c8627e}{my\+List\+View}}
+\begin{DoxyCompactList}\small\item\em Lista per visualizzare i contatti. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aa97e385d86935f5860a0b624a45d5635}{primary\+Button}}
+\begin{DoxyCompactList}\small\item\em Bottone principale per operazioni varie. \end{DoxyCompactList}\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a4da239683cc677311a24f4b5583120e6}{text\+Bar}}
+\begin{DoxyCompactList}\small\item\em Barra di testo per input di ricerca. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a7d9a55fa48eaed3279ce6736680c6a14}{name\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per visualizzare il nome del contatto selezionato. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a08eaff2351bb5ee092dbb8dddebf2453}{surname\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per visualizzare il cognome del contatto selezionato. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a3930e2344133fec1acf96969d7ba0cd2}{email1\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per visualizzare il primo indirizzo email del contatto selezionato. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ad0c39f2eec0c30fd96ba7751340e2c57}{email2\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per visualizzare il secondo indirizzo email del contatto selezionato. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aba20f346ff52d3988c52905924d912c0}{email3\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per visualizzare il terzo indirizzo email del contatto selezionato. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a5697bb637d2d45c3dcda38b1ccd34f12}{number1\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per visualizzare il primo numero di telefono del contatto selezionato. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a045dd6035c29fc82cd329fa51701793c}{number2\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per visualizzare il secondo numero di telefono del contatto selezionato. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_af72c34711461cefb55ab8fb50506b41b}{number3\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per visualizzare il terzo numero di telefono del contatto selezionato. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a88c8f785a8d4fe110401f8fb79fc4ec9}{note\+Field}}
+\begin{DoxyCompactList}\small\item\em Label per il campo di testo delle note. \end{DoxyCompactList}\item 
+Scroll\+Bar \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ae7534e868a1ec22471dac59ea6081cf1}{scroll\+Bar}}
+\begin{DoxyCompactList}\small\item\em Label per la barra di scorrimento. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_af0af367f7d06e047988cde2b05e8159d}{default\+Text}}
+\begin{DoxyCompactList}\small\item\em Label per il testo di default. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ab02bbdaffe76ea92ce5449fc13a9ffdd}{contact\+List}}
+\begin{DoxyCompactList}\small\item\em Lista osservabile dei contatti. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -98,6 +146,231 @@ Questo metodo permette di impostare la lista dei contatti e aggiornare la List\+
 \mbox{\texttt{ in}}  & {\em contact\+List} & Lista osservabile dei contatti. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a10bac614783c95db91662729a2f774b3}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!switchToAdd@{switchToAdd}}
+\index{switchToAdd@{switchToAdd}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{switchToAdd()}{switchToAdd()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a10bac614783c95db91662729a2f774b3} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+switch\+To\+Add (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Passa alla schermata di aggiunta di un nuovo contatto. 
+
+Questo metodo carica la scena della finestra di aggiunta di un nuovo contatto e la visualizza in una nuova finestra. Inoltre, imposta il controller della nuova finestra per consentire l\textquotesingle{}intererazione con l\textquotesingle{}interfaccia principale
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se non riesce a caricare la nuova schermata. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ace89e6e46c43850af5362fed002398b5}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!switchToFavorite@{switchToFavorite}}
+\index{switchToFavorite@{switchToFavorite}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{switchToFavorite()}{switchToFavorite()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ace89e6e46c43850af5362fed002398b5} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+switch\+To\+Favorite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Passa alla schermata dei contatti preferiti. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se non riesce a caricare la nuova schermata. \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ab02bbdaffe76ea92ce5449fc13a9ffdd}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!contactList@{contactList}}
+\index{contactList@{contactList}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{contactList}{contactList}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ab02bbdaffe76ea92ce5449fc13a9ffdd} 
+Observable\+List$<$\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}$>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+contact\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista osservabile dei contatti. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_af0af367f7d06e047988cde2b05e8159d}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!defaultText@{defaultText}}
+\index{defaultText@{defaultText}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{defaultText}{defaultText}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_af0af367f7d06e047988cde2b05e8159d} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+default\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per il testo di default. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a6a8c93e995c123184ca5bfd0b8db886d}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!deleteButton@{deleteButton}}
+\index{deleteButton@{deleteButton}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{deleteButton}{deleteButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a6a8c93e995c123184ca5bfd0b8db886d} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+delete\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone per eliminare un contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a3930e2344133fec1acf96969d7ba0cd2}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!email1Field@{email1Field}}
+\index{email1Field@{email1Field}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{email1Field}{email1Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a3930e2344133fec1acf96969d7ba0cd2} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+email1\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per visualizzare il primo indirizzo email del contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ad0c39f2eec0c30fd96ba7751340e2c57}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!email2Field@{email2Field}}
+\index{email2Field@{email2Field}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{email2Field}{email2Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ad0c39f2eec0c30fd96ba7751340e2c57} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+email2\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per visualizzare il secondo indirizzo email del contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aba20f346ff52d3988c52905924d912c0}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!email3Field@{email3Field}}
+\index{email3Field@{email3Field}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{email3Field}{email3Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aba20f346ff52d3988c52905924d912c0} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+email3\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per visualizzare il terzo indirizzo email del contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a9f7b0d3bfff5a728cd91a029b0637de9}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!favoriteButton@{favoriteButton}}
+\index{favoriteButton@{favoriteButton}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{favoriteButton}{favoriteButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a9f7b0d3bfff5a728cd91a029b0637de9} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+favorite\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone per visualizzare i contatti preferiti. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aefecba68223be546d682aa8a17c8627e}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!myListView@{myListView}}
+\index{myListView@{myListView}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{myListView}{myListView}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aefecba68223be546d682aa8a17c8627e} 
+List\+View$<$\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}$>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+my\+List\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista per visualizzare i contatti. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a7d9a55fa48eaed3279ce6736680c6a14}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!nameField@{nameField}}
+\index{nameField@{nameField}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{nameField}{nameField}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a7d9a55fa48eaed3279ce6736680c6a14} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+name\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per visualizzare il nome del contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a88c8f785a8d4fe110401f8fb79fc4ec9}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!noteField@{noteField}}
+\index{noteField@{noteField}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{noteField}{noteField}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a88c8f785a8d4fe110401f8fb79fc4ec9} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+note\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per il campo di testo delle note. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a5697bb637d2d45c3dcda38b1ccd34f12}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!number1Field@{number1Field}}
+\index{number1Field@{number1Field}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{number1Field}{number1Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a5697bb637d2d45c3dcda38b1ccd34f12} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+number1\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per visualizzare il primo numero di telefono del contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a045dd6035c29fc82cd329fa51701793c}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!number2Field@{number2Field}}
+\index{number2Field@{number2Field}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{number2Field}{number2Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a045dd6035c29fc82cd329fa51701793c} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+number2\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per visualizzare il secondo numero di telefono del contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_af72c34711461cefb55ab8fb50506b41b}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!number3Field@{number3Field}}
+\index{number3Field@{number3Field}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{number3Field}{number3Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_af72c34711461cefb55ab8fb50506b41b} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+number3\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per visualizzare il terzo numero di telefono del contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aa97e385d86935f5860a0b624a45d5635}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!primaryButton@{primaryButton}}
+\index{primaryButton@{primaryButton}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{primaryButton}{primaryButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aa97e385d86935f5860a0b624a45d5635} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+primary\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone principale per operazioni varie. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ae7534e868a1ec22471dac59ea6081cf1}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!scrollBar@{scrollBar}}
+\index{scrollBar@{scrollBar}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{scrollBar}{scrollBar}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ae7534e868a1ec22471dac59ea6081cf1} 
+Scroll\+Bar it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+scroll\+Bar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per la barra di scorrimento. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a0eeee05207cd2a2be2ae19b03aad26ea}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!searchButton@{searchButton}}
+\index{searchButton@{searchButton}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{searchButton}{searchButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a0eeee05207cd2a2be2ae19b03aad26ea} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+search\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone per cercare un contatto. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a08eaff2351bb5ee092dbb8dddebf2453}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!surnameField@{surnameField}}
+\index{surnameField@{surnameField}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{surnameField}{surnameField}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a08eaff2351bb5ee092dbb8dddebf2453} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+surname\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label per visualizzare il cognome del contatto selezionato. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a4da239683cc677311a24f4b5583120e6}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!textBar@{textBar}}
+\index{textBar@{textBar}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{textBar}{textBar}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a4da239683cc677311a24f4b5583120e6} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+text\+Bar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Barra di testo per input di ricerca. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a418c965c4fcec64df3fce3a9ca4cbc21}\index{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}!viewAddButton@{viewAddButton}}
+\index{viewAddButton@{viewAddButton}!it.university.group9.rubricacontattigroup9.InterfacciaUtenteController@{it.university.group9.rubricacontattigroup9.InterfacciaUtenteController}}
+\doxysubsubsection{\texorpdfstring{viewAddButton}{viewAddButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a418c965c4fcec64df3fce3a9ca4cbc21} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller.\+view\+Add\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone per accedere all\textquotesingle{}interfaccia di aggiunta contatti. 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

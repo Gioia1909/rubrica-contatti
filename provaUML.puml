@@ -1,0 +1,180 @@
+@startuml
+annotation com.fasterxml.jackson.annotation.JsonProperty
+annotation java.lang.Override
+annotation javafx.fxml.FXML
+class com.fasterxml.jackson.core.type.TypeReference
+class com.fasterxml.jackson.databind.ObjectMapper
+class it.university.group9.rubricacontattigroup9.App
+class it.university.group9.rubricacontattigroup9.Contatto
+class it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti
+class it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica
+class it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController
+class it.university.group9.rubricacontattigroup9.InterfacciaUtenteController
+class it.university.group9.rubricacontattigroup9.MenuPreferitiController
+class it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController
+class it.university.group9.rubricacontattigroup9.exceptions.CognomeNonValidoException
+class it.university.group9.rubricacontattigroup9.exceptions.ContattoGiaAggiuntoException
+class it.university.group9.rubricacontattigroup9.exceptions.EmailNonValidaException
+class it.university.group9.rubricacontattigroup9.exceptions.NomeNonValidoException
+class it.university.group9.rubricacontattigroup9.exceptions.NumeroNonValidoException
+class it.university.group9.rubricacontattigroup9.validators.CognomeValidator
+class it.university.group9.rubricacontattigroup9.validators.ContattoValidator
+class it.university.group9.rubricacontattigroup9.validators.EmailValidator
+class it.university.group9.rubricacontattigroup9.validators.NomeValidator
+class it.university.group9.rubricacontattigroup9.validators.NumeroValidator
+class java.io.IOException
+class java.lang.Exception
+class java.net.URL
+class java.util.ArrayList
+class java.util.Arrays
+class java.util.LinkedList
+class java.util.List
+class java.util.ResourceBundle
+class javafx.application.Application
+class javafx.collections.FXCollections
+class javafx.collections.ObservableList
+class javafx.collections.transformation.FilteredList
+class javafx.event.ActionEvent
+class javafx.fxml.FXMLLoader
+class javafx.scene.Parent
+class javafx.scene.Scene
+class javafx.scene.control.Alert
+class javafx.scene.control.Alert.AlertType
+class javafx.scene.control.Button
+class javafx.scene.control.ButtonType
+class javafx.scene.control.Label
+class javafx.scene.control.ListCell
+class javafx.scene.control.ListView
+class javafx.scene.control.ScrollBar
+class javafx.scene.control.SelectionMode
+class javafx.scene.control.TextField
+class javafx.scene.input.MouseEvent
+class javafx.stage.Modality
+class javafx.stage.Stage
+interface it.university.group9.rubricacontattigroup9.InputOutput.Serializable
+interface java.lang.Comparable
+interface javafx.fxml.Initializable
+it.university.group9.rubricacontattigroup9.App ..> java.lang.Override
+it.university.group9.rubricacontattigroup9.App ..> java.io.IOException
+it.university.group9.rubricacontattigroup9.App --|> javafx.application.Application
+it.university.group9.rubricacontattigroup9.App ..> javafx.fxml.FXMLLoader
+it.university.group9.rubricacontattigroup9.App ..> javafx.scene.Parent
+it.university.group9.rubricacontattigroup9.App ..> javafx.scene.Scene
+it.university.group9.rubricacontattigroup9.App ..> javafx.stage.Stage
+it.university.group9.rubricacontattigroup9.Contatto ..> com.fasterxml.jackson.annotation.JsonProperty
+it.university.group9.rubricacontattigroup9.Contatto ..> java.lang.Override
+it.university.group9.rubricacontattigroup9.Contatto ..> java.util.ArrayList
+it.university.group9.rubricacontattigroup9.Contatto ..> java.util.LinkedList
+it.university.group9.rubricacontattigroup9.Contatto ..> java.util.List
+it.university.group9.rubricacontattigroup9.Contatto --|> java.lang.Comparable
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti ..> com.fasterxml.jackson.core.type.TypeReference
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti ..> com.fasterxml.jackson.databind.ObjectMapper
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti ..> it.university.group9.rubricacontattigroup9.Contatto
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti ..> javafx.collections.FXCollections
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti ..> javafx.collections.ObservableList
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti --|> it.university.group9.rubricacontattigroup9.InputOutput.Serializable
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica ..> com.fasterxml.jackson.core.type.TypeReference
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica ..> com.fasterxml.jackson.databind.ObjectMapper
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica ..> it.university.group9.rubricacontattigroup9.Contatto
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica ..> java.util.ArrayList
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica ..> java.util.List
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica ..> javafx.collections.FXCollections
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica ..> javafx.collections.ObservableList
+it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica --|> it.university.group9.rubricacontattigroup9.InputOutput.Serializable
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> java.lang.Override
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.fxml.FXML
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.exceptions.CognomeNonValidoException
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.exceptions.EmailNonValidaException
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.exceptions.NomeNonValidoException
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.exceptions.NumeroNonValidoException
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.validators.CognomeValidator
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.validators.ContattoValidator
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.validators.EmailValidator
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.validators.NomeValidator
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> it.university.group9.rubricacontattigroup9.validators.NumeroValidator
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> java.io.IOException
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> java.net.URL
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> java.util.ArrayList
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> java.util.Arrays
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> java.util.LinkedList
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> java.util.List
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> java.util.ResourceBundle
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.collections.ObservableList
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.event.ActionEvent
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.fxml.FXMLLoader
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.scene.Parent
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.scene.control.Alert
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.scene.control.Alert.AlertType
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.scene.control.Button
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.scene.control.ButtonType
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.scene.control.TextField
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.scene.input.MouseEvent
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController ..> javafx.stage.Stage
+it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController --|> javafx.fxml.Initializable
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> java.lang.Override
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.fxml.FXML
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> java.io.IOException
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> java.net.URL
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> java.util.Arrays
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> java.util.List
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> java.util.ResourceBundle
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.collections.FXCollections
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.collections.ObservableList
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.event.ActionEvent
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.fxml.FXMLLoader
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.Parent
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.Scene
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.control.Button
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.control.Label
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.control.ListCell
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.control.ListView
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.control.ScrollBar
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.control.TextField
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.scene.input.MouseEvent
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController ..> javafx.stage.Stage
+it.university.group9.rubricacontattigroup9.InterfacciaUtenteController --|> javafx.fxml.Initializable
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> java.lang.Override
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.fxml.FXML
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> it.university.group9.rubricacontattigroup9.exceptions.ContattoGiaAggiuntoException
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> java.io.IOException
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> java.net.URL
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> java.util.ResourceBundle
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.collections.FXCollections
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.collections.ObservableList
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.event.ActionEvent
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.fxml.FXMLLoader
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.scene.Parent
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.scene.Scene
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.stage.Modality
+it.university.group9.rubricacontattigroup9.MenuPreferitiController ..> javafx.stage.Stage
+it.university.group9.rubricacontattigroup9.MenuPreferitiController --|> javafx.fxml.Initializable
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> java.lang.Override
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> javafx.fxml.FXML
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> java.io.IOException
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> java.net.URL
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> java.util.ResourceBundle
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> javafx.collections.transformation.FilteredList
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> javafx.event.ActionEvent
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> javafx.scene.control.Button
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> javafx.scene.control.ListView
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> javafx.scene.control.SelectionMode
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> javafx.scene.control.TextField
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController ..> javafx.stage.Stage
+it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController --|> javafx.fxml.Initializable
+it.university.group9.rubricacontattigroup9.exceptions.CognomeNonValidoException --|> java.lang.Exception
+it.university.group9.rubricacontattigroup9.exceptions.ContattoGiaAggiuntoException --|> java.lang.Exception
+it.university.group9.rubricacontattigroup9.exceptions.EmailNonValidaException --|> java.lang.Exception
+it.university.group9.rubricacontattigroup9.exceptions.NomeNonValidoException --|> java.lang.Exception
+it.university.group9.rubricacontattigroup9.exceptions.NumeroNonValidoException --|> java.lang.Exception
+it.university.group9.rubricacontattigroup9.validators.CognomeValidator ..> it.university.group9.rubricacontattigroup9.exceptions.CognomeNonValidoException
+it.university.group9.rubricacontattigroup9.validators.ContattoValidator ..> it.university.group9.rubricacontattigroup9.Contatto
+it.university.group9.rubricacontattigroup9.validators.ContattoValidator ..> java.util.List
+it.university.group9.rubricacontattigroup9.validators.EmailValidator ..> it.university.group9.rubricacontattigroup9.exceptions.EmailNonValidaException
+it.university.group9.rubricacontattigroup9.validators.NomeValidator ..> it.university.group9.rubricacontattigroup9.exceptions.NomeNonValidoException
+it.university.group9.rubricacontattigroup9.validators.NumeroValidator ..> it.university.group9.rubricacontattigroup9.exceptions.NumeroNonValidoException
+@enduml

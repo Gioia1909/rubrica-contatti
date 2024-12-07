@@ -1,5 +1,10 @@
 \doxysection{it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller Class Reference}
 \hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller}{}\label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+
+
+Controller per la gestione dell\textquotesingle{}interfaccia grafica di aggiunta contatti.  
+
+
 Inheritance diagram for it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,12 +15,89 @@ Inheritance diagram for it.\+university.\+group9.\+rubricacontattigroup9.\+Inter
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a5dfe5ef3f281d72eb63815a09e5e3174}{set\+Interfaccia\+Utente\+Controller}} (\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller}{Interfaccia\+Utente\+Controller}} controller)
-\begin{DoxyCompactList}\small\item\em Imposta il riferimento al controller dell\textquotesingle{}interfaccia principale . \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Imposta il riferimento al controller dell\textquotesingle{}interfaccia principale. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_afd3a59b59461ba5f56620a622d4ef569}{initialize}} (URL url, Resource\+Bundle rb)
 \begin{DoxyCompactList}\small\item\em Inizializza il controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a77d2bc32a99e72ae99dce7c77443608b}{switch\+To\+Interfaccia}} (Action\+Event event)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Torna all\textquotesingle{}interfaccia principale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a8890f947dfceed77f389f53e99cbf25f}{add\+Contact}} (Action\+Event event)  throws IOException, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_nome_non_valido_exception}{Nome\+Non\+Valido\+Exception}}, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_cognome_non_valido_exception}{Cognome\+Non\+Valido\+Exception}}, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_numero_non_valido_exception}{Numero\+Non\+Valido\+Exception}}, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_email_non_valida_exception}{Email\+Non\+Valida\+Exception}} 
+\begin{DoxyCompactList}\small\item\em Aggiunge un nuovo contatto alla lista e chiude la finestra di aggiunta contatti aggiornando la rubrica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller}{Interfaccia\+Utente\+Controller}} \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a5ee644b0440290c1dbf2e5682a7c1719}{interfaccia\+Utente\+Controller}}
+\begin{DoxyCompactList}\small\item\em Riferimento al controller dell\textquotesingle{}interfaccia principale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Componenti FXML}\par
+\begin{DoxyCompactItemize}
+\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a104ffbd8cf07031de5ba528dcb977a06}{add\+Button}}
+\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a5c633bdd5231abe4473acacd82f56fbe}{cancel\+Button}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a997df8f99757814d2dd1a28f7645b898}{name\+Field}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a863506fd0822d9b352ef7401e1db9f00}{surname\+Field}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a76db19950dc4c09ec1e8682577810893}{email1\+Field}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_ab15f07b838db5b6beea7b89aa7ac928e}{email2\+Field}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a7457ac2ae3fbf83eb560fb8ebfeb3a8f}{email3\+Field}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a28e89d0d01cb45633f311a43bdfa1e83}{number1\+Field}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a38f6331af9bb600ac97ffecc6e30ba5f}{number2\+Field}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a2cdece9941e212bbfa98993dbbda7faf}{number3\+Field}}
+\item 
+Text\+Field \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_ac29e6b32371272da9136276ff98f851a}{note\+Field}}
+\end{DoxyCompactItemize}
+\end{Indent}
 
+
+\doxysubsection{Detailed Description}
+Controller per la gestione dell\textquotesingle{}interfaccia grafica di aggiunta contatti. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a8890f947dfceed77f389f53e99cbf25f}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!addContact@{addContact}}
+\index{addContact@{addContact}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{addContact()}{addContact()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a8890f947dfceed77f389f53e99cbf25f} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+add\+Contact (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption}) throws IOException, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_nome_non_valido_exception}{Nome\+Non\+Valido\+Exception}}, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_cognome_non_valido_exception}{Cognome\+Non\+Valido\+Exception}}, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_numero_non_valido_exception}{Numero\+Non\+Valido\+Exception}}, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_email_non_valida_exception}{Email\+Non\+Valida\+Exception}}\hspace{0.3cm}{\ttfamily [package]}}
+
+
+
+Aggiunge un nuovo contatto alla lista e chiude la finestra di aggiunta contatti aggiornando la rubrica. 
+
+Questo metodo permette di aggiungere un nuovo contatto con nome, cognome, numeri di telefono, email e note alla rubrica. Valida i dati inseriti, verifica la presenza di duplicati e aggiorna la rubrica sia nella lista in memoria che nel file di salvataggio.
+
+\begin{DoxyPrecond}{Precondition}
+I parametri da inserire nel contatto non devono essere vuoti 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene aggiunto un contatto in rubrica
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & Evento del mouse che ha scatenato l\textquotesingle{}azione.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se si verifica un errore durante il salvataggio della rubrica su file. \\
+\hline
+{\em Nome\+Non\+Valido\+Exception} & Se il nome fornito non è valido. \\
+\hline
+{\em Cognome\+Non\+Valido\+Exception} & Se il cognome fornito non è valido. \\
+\hline
+{\em Numero\+Non\+Valido\+Exception} & Se uno dei numeri di telefono forniti non è valido. \\
+\hline
+{\em Email\+Non\+Valida\+Exception} & Se una delle email fornite non è valida. \\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_afd3a59b59461ba5f56620a622d4ef569}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!initialize@{initialize}}
 \index{initialize@{initialize}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
 \doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
@@ -25,6 +107,8 @@ void it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+C
 
 
 Inizializza il controller. 
+
+Metodo eseguito automaticamente per configurare il controller all\textquotesingle{}avvio.
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -41,14 +125,115 @@ void it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+C
 
 
 
-Imposta il riferimento al controller dell\textquotesingle{}interfaccia principale . 
+Imposta il riferimento al controller dell\textquotesingle{}interfaccia principale. 
 
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em controller} & Riferimento al controller principale. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a77d2bc32a99e72ae99dce7c77443608b}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!switchToInterfaccia@{switchToInterfaccia}}
+\index{switchToInterfaccia@{switchToInterfaccia}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{switchToInterfaccia()}{switchToInterfaccia()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a77d2bc32a99e72ae99dce7c77443608b} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+switch\+To\+Interfaccia (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [package]}}
 
+
+
+Torna all\textquotesingle{}interfaccia principale. 
+
+Questo metodo chiude la finestra corrente e ritorna alla schermata principale dell\textquotesingle{}applicazione.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & Evento del mouse che ha scatenato l\textquotesingle{}azione. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se non è possibile caricare la scena. \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a104ffbd8cf07031de5ba528dcb977a06}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!addButton@{addButton}}
+\index{addButton@{addButton}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{addButton}{addButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a104ffbd8cf07031de5ba528dcb977a06} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+add\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+Bottone per aggiungere un nuovo contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a5c633bdd5231abe4473acacd82f56fbe}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!cancelButton@{cancelButton}}
+\index{cancelButton@{cancelButton}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{cancelButton}{cancelButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a5c633bdd5231abe4473acacd82f56fbe} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+cancel\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+Bottone per tornare all\textquotesingle{}interfaccia principale. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a76db19950dc4c09ec1e8682577810893}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!email1Field@{email1Field}}
+\index{email1Field@{email1Field}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{email1Field}{email1Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a76db19950dc4c09ec1e8682577810893} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+email1\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per la prima email del contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_ab15f07b838db5b6beea7b89aa7ac928e}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!email2Field@{email2Field}}
+\index{email2Field@{email2Field}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{email2Field}{email2Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_ab15f07b838db5b6beea7b89aa7ac928e} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+email2\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per la seconda email del contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a7457ac2ae3fbf83eb560fb8ebfeb3a8f}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!email3Field@{email3Field}}
+\index{email3Field@{email3Field}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{email3Field}{email3Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a7457ac2ae3fbf83eb560fb8ebfeb3a8f} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+email3\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per la terza email del contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a5ee644b0440290c1dbf2e5682a7c1719}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!interfacciaUtenteController@{interfacciaUtenteController}}
+\index{interfacciaUtenteController@{interfacciaUtenteController}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{interfacciaUtenteController}{interfacciaUtenteController}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a5ee644b0440290c1dbf2e5682a7c1719} 
+\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller}{Interfaccia\+Utente\+Controller}} it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+interfaccia\+Utente\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Riferimento al controller dell\textquotesingle{}interfaccia principale. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a997df8f99757814d2dd1a28f7645b898}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!nameField@{nameField}}
+\index{nameField@{nameField}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{nameField}{nameField}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a997df8f99757814d2dd1a28f7645b898} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+name\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per il nome del contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_ac29e6b32371272da9136276ff98f851a}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!noteField@{noteField}}
+\index{noteField@{noteField}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{noteField}{noteField}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_ac29e6b32371272da9136276ff98f851a} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+note\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per le note del contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a28e89d0d01cb45633f311a43bdfa1e83}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!number1Field@{number1Field}}
+\index{number1Field@{number1Field}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{number1Field}{number1Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a28e89d0d01cb45633f311a43bdfa1e83} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+number1\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per il primo numero di telefono del contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a38f6331af9bb600ac97ffecc6e30ba5f}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!number2Field@{number2Field}}
+\index{number2Field@{number2Field}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{number2Field}{number2Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a38f6331af9bb600ac97ffecc6e30ba5f} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+number2\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per il secondo numero di telefono del contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a2cdece9941e212bbfa98993dbbda7faf}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!number3Field@{number3Field}}
+\index{number3Field@{number3Field}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{number3Field}{number3Field}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a2cdece9941e212bbfa98993dbbda7faf} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+number3\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per il terzo numero di telefono del contatto. \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a863506fd0822d9b352ef7401e1db9f00}\index{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}!surnameField@{surnameField}}
+\index{surnameField@{surnameField}!it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController@{it.university.group9.rubricacontattigroup9.InterfacciaAggiungiController}}
+\doxysubsubsection{\texorpdfstring{surnameField}{surnameField}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_controller_a863506fd0822d9b352ef7401e1db9f00} 
+Text\+Field it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Aggiungi\+Controller.\+surname\+Field\hspace{0.3cm}{\ttfamily [private]}}
+
+Campo di testo per il cognome del contatto. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

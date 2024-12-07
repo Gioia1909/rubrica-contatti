@@ -83,13 +83,15 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>it</b></li><li class="navelem"><b>university</b></li><li class="navelem"><b>group9</b></li><li class="navelem"><b>rubricacontattigroup9</b></li><li class="navelem"><a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller.html">MenuPreferitiController</a></li>  </ul>
+<li class="navelem"><b>it</b></li><li class="navelem"><b>university</b></li><li class="navelem"><b>group9</b></li><li class="navelem"><a class="el" href="namespaceit_1_1university_1_1group9_1_1rubricacontattigroup9.html">rubricacontattigroup9</a></li><li class="navelem"><a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller.html">MenuPreferitiController</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">it.university.group9.rubricacontattigroup9.MenuPreferitiController Class Reference</div></div>
 </div><!--header-->
@@ -103,14 +105,192 @@ Inheritance diagram for it.university.group9.rubricacontattigroup9.MenuPreferiti
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a61346d3827ec4e185f32fe57c2e099d7" id="r_a61346d3827ec4e185f32fe57c2e099d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61346d3827ec4e185f32fe57c2e099d7">setContactList</a> (ObservableList&lt; <a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a> &gt; contactList)</td></tr>
+<tr class="memitem:a61346d3827ec4e185f32fe57c2e099d7" id="r_a61346d3827ec4e185f32fe57c2e099d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61346d3827ec4e185f32fe57c2e099d7">setContactList</a> (ObservableList&lt; <a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a> &gt; <a class="el" href="#a8d662deb667fa0ca3cea21819d133422">contactList</a>)</td></tr>
 <tr class="memdesc:a61346d3827ec4e185f32fe57c2e099d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposta la lista dei contatti.  <br /></td></tr>
 <tr class="separator:a61346d3827ec4e185f32fe57c2e099d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74d552105201f12ba52e61c2ca43f398" id="r_a74d552105201f12ba52e61c2ca43f398"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74d552105201f12ba52e61c2ca43f398">initialize</a> (URL location, ResourceBundle resources)</td></tr>
 <tr class="memdesc:a74d552105201f12ba52e61c2ca43f398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza il controller e configura la lista dei preferiti nell'elemento ListView. Configura una Label per la visualizzazione delle celle della lista, chiamando la funzione creaLabelContatto.  <br /></td></tr>
 <tr class="separator:a74d552105201f12ba52e61c2ca43f398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aa5ad710214b909e790853a722bcce519" id="r_aa5ad710214b909e790853a722bcce519"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5ad710214b909e790853a722bcce519">switchToInterfaccia</a> ()</td></tr>
+<tr class="memdesc:aa5ad710214b909e790853a722bcce519"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia la scena all'interfaccia utente.  <br /></td></tr>
+<tr class="separator:aa5ad710214b909e790853a722bcce519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2fe28170f05e1103816072855f56642" id="r_ab2fe28170f05e1103816072855f56642"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2fe28170f05e1103816072855f56642">editAction</a> (ActionEvent event)</td></tr>
+<tr class="separator:ab2fe28170f05e1103816072855f56642"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc429fa506abd88cb519299fae0cea72" id="r_adc429fa506abd88cb519299fae0cea72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc429fa506abd88cb519299fae0cea72">handleOpenPopup</a> ()</td></tr>
+<tr class="memdesc:adc429fa506abd88cb519299fae0cea72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestisce l'apertura di una finestra popup per la selezione di un contatto.  <br /></td></tr>
+<tr class="separator:adc429fa506abd88cb519299fae0cea72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63c7b055515bc19d681da7207a9830f2" id="r_a63c7b055515bc19d681da7207a9830f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63c7b055515bc19d681da7207a9830f2">addPrefButton</a> (ActionEvent event)  throws IOException, <a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_contatto_gia_aggiunto_exception.html">ContattoGiaAggiuntoException</a> </td></tr>
+<tr class="memdesc:a63c7b055515bc19d681da7207a9830f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiunge un contatto alla lista dei preferiti.  <br /></td></tr>
+<tr class="separator:a63c7b055515bc19d681da7207a9830f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c51195e0b3338ef2b1afc0aba6e7366" id="r_a0c51195e0b3338ef2b1afc0aba6e7366"><td class="memItemLeft" align="right" valign="top">Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c51195e0b3338ef2b1afc0aba6e7366">creaLabelContatto</a> (<a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a> contatto)</td></tr>
+<tr class="memdesc:a0c51195e0b3338ef2b1afc0aba6e7366"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea una label per visualizzare il nome e cognome del contatto.  <br /></td></tr>
+<tr class="separator:a0c51195e0b3338ef2b1afc0aba6e7366"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a0120de720cb7db761e209c8cd0c8fa9a" id="r_a0120de720cb7db761e209c8cd0c8fa9a"><td class="memItemLeft" align="right" valign="top">ListView&lt; <a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0120de720cb7db761e209c8cd0c8fa9a">listViewPreferiti</a></td></tr>
+<tr class="memdesc:a0120de720cb7db761e209c8cd0c8fa9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista grafica dei contatti preferiti.  <br /></td></tr>
+<tr class="separator:a0120de720cb7db761e209c8cd0c8fa9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e279970583a8ff5006d2aba4ca7c5a" id="r_ab5e279970583a8ff5006d2aba4ca7c5a"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5e279970583a8ff5006d2aba4ca7c5a">editButton</a></td></tr>
+<tr class="memdesc:ab5e279970583a8ff5006d2aba4ca7c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bottone per la modifica.  <br /></td></tr>
+<tr class="separator:ab5e279970583a8ff5006d2aba4ca7c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09d3de21b9390eb26ac1543b4ea738ea" id="r_a09d3de21b9390eb26ac1543b4ea738ea"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09d3de21b9390eb26ac1543b4ea738ea">addPrefButton</a></td></tr>
+<tr class="memdesc:a09d3de21b9390eb26ac1543b4ea738ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bottone per aggiungere un contatto ai preferiti.  <br /></td></tr>
+<tr class="separator:a09d3de21b9390eb26ac1543b4ea738ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdfe586566d3eaaf6b68b299b39c57b8" id="r_afdfe586566d3eaaf6b68b299b39c57b8"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdfe586566d3eaaf6b68b299b39c57b8">secondaryButton</a></td></tr>
+<tr class="memdesc:afdfe586566d3eaaf6b68b299b39c57b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bottone secondario.  <br /></td></tr>
+<tr class="separator:afdfe586566d3eaaf6b68b299b39c57b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97a8bd605319d540e38a4a1d2c1fbb3d" id="r_a97a8bd605319d540e38a4a1d2c1fbb3d"><td class="memItemLeft" align="right" valign="top">ObservableList&lt; <a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97a8bd605319d540e38a4a1d2c1fbb3d">preferitiList</a></td></tr>
+<tr class="memdesc:a97a8bd605319d540e38a4a1d2c1fbb3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista dei contatti preferiti.  <br /></td></tr>
+<tr class="separator:a97a8bd605319d540e38a4a1d2c1fbb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d662deb667fa0ca3cea21819d133422" id="r_a8d662deb667fa0ca3cea21819d133422"><td class="memItemLeft" align="right" valign="top">ObservableList&lt; <a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d662deb667fa0ca3cea21819d133422">contactList</a></td></tr>
+<tr class="memdesc:a8d662deb667fa0ca3cea21819d133422"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista di tutti i contatti.  <br /></td></tr>
+<tr class="separator:a8d662deb667fa0ca3cea21819d133422"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a63c7b055515bc19d681da7207a9830f2" name="a63c7b055515bc19d681da7207a9830f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63c7b055515bc19d681da7207a9830f2">&#9670;&#160;</a></span>addPrefButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void it.university.group9.rubricacontattigroup9.MenuPreferitiController.addPrefButton </td>
+          <td>(</td>
+          <td class="paramtype">ActionEvent</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
+          <td> throws IOException, <a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_contatto_gia_aggiunto_exception.html">ContattoGiaAggiuntoException</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aggiunge un contatto alla lista dei preferiti. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>La lista di Contatti non deve essere vuota. </dd>
+<dd>
+L'elemento da aggiungere deve essere presente nella rubrica principale. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>L'elemento aggiunto deve essere visto nella rubrica preferiti. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td>L'evento che ha generato l'azione di aggiunta. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>Se il caricamento del popup fallisce. </td></tr>
+    <tr><td class="paramname">ContattoGiaAggiuntoException</td><td>Se il contatto è già presente nei preferiti </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0c51195e0b3338ef2b1afc0aba6e7366" name="a0c51195e0b3338ef2b1afc0aba6e7366"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c51195e0b3338ef2b1afc0aba6e7366">&#9670;&#160;</a></span>creaLabelContatto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Label it.university.group9.rubricacontattigroup9.MenuPreferitiController.creaLabelContatto </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a></td>          <td class="paramname"><span class="paramname"><em>contatto</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Crea una label per visualizzare il nome e cognome del contatto. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">contatto</td><td>Il contatto di cui creare la label. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>label Label con il nome e cognome del contatto. </dd></dl>
+
+</div>
+</div>
+<a id="ab2fe28170f05e1103816072855f56642" name="ab2fe28170f05e1103816072855f56642"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2fe28170f05e1103816072855f56642">&#9670;&#160;</a></span>editAction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void it.university.group9.rubricacontattigroup9.MenuPreferitiController.editAction </td>
+          <td>(</td>
+          <td class="paramtype">ActionEvent</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc429fa506abd88cb519299fae0cea72" name="adc429fa506abd88cb519299fae0cea72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc429fa506abd88cb519299fae0cea72">&#9670;&#160;</a></span>handleOpenPopup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void it.university.group9.rubricacontattigroup9.MenuPreferitiController.handleOpenPopup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gestisce l'apertura di una finestra popup per la selezione di un contatto. </p>
+<p>Questo metodo carica un file FXML per il popup, crea una nuova finestra (<code>Stage</code>)</p>
+<p>La finestra popup blocca l'interazione con altre finestre finché non viene chiusa.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>Il file FXML "SelezionaContattiDaRubrica.fxml" deve essere presente e valido. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Una nuova finestra popup viene aperta, e l'utente non può interagire con altre finestre fino alla chiusura del popup.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>Se il file FXML non può essere caricato o se si verifica un errore durante la creazione della finestra. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a74d552105201f12ba52e61c2ca43f398" name="a74d552105201f12ba52e61c2ca43f398"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a74d552105201f12ba52e61c2ca43f398">&#9670;&#160;</a></span>initialize()</h2>
 
@@ -163,6 +343,190 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aa5ad710214b909e790853a722bcce519" name="aa5ad710214b909e790853a722bcce519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ad710214b909e790853a722bcce519">&#9670;&#160;</a></span>switchToInterfaccia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void it.university.group9.rubricacontattigroup9.MenuPreferitiController.switchToInterfaccia </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cambia la scena all'interfaccia utente. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td>L'evento che ha generato l'azione di switch. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>Se il caricamento della scena fallisce. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a09d3de21b9390eb26ac1543b4ea738ea" name="a09d3de21b9390eb26ac1543b4ea738ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09d3de21b9390eb26ac1543b4ea738ea">&#9670;&#160;</a></span>addPrefButton</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button it.university.group9.rubricacontattigroup9.MenuPreferitiController.addPrefButton</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bottone per aggiungere un contatto ai preferiti. </p>
+
+</div>
+</div>
+<a id="a8d662deb667fa0ca3cea21819d133422" name="a8d662deb667fa0ca3cea21819d133422"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d662deb667fa0ca3cea21819d133422">&#9670;&#160;</a></span>contactList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ObservableList&lt;<a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a>&gt; it.university.group9.rubricacontattigroup9.MenuPreferitiController.contactList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lista di tutti i contatti. </p>
+
+</div>
+</div>
+<a id="ab5e279970583a8ff5006d2aba4ca7c5a" name="ab5e279970583a8ff5006d2aba4ca7c5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5e279970583a8ff5006d2aba4ca7c5a">&#9670;&#160;</a></span>editButton</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button it.university.group9.rubricacontattigroup9.MenuPreferitiController.editButton</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bottone per la modifica. </p>
+
+</div>
+</div>
+<a id="a0120de720cb7db761e209c8cd0c8fa9a" name="a0120de720cb7db761e209c8cd0c8fa9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0120de720cb7db761e209c8cd0c8fa9a">&#9670;&#160;</a></span>listViewPreferiti</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ListView&lt;<a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a>&gt; it.university.group9.rubricacontattigroup9.MenuPreferitiController.listViewPreferiti</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lista grafica dei contatti preferiti. </p>
+
+</div>
+</div>
+<a id="a97a8bd605319d540e38a4a1d2c1fbb3d" name="a97a8bd605319d540e38a4a1d2c1fbb3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97a8bd605319d540e38a4a1d2c1fbb3d">&#9670;&#160;</a></span>preferitiList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ObservableList&lt;<a class="el" href="classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html">Contatto</a>&gt; it.university.group9.rubricacontattigroup9.MenuPreferitiController.preferitiList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lista dei contatti preferiti. </p>
+
+</div>
+</div>
+<a id="afdfe586566d3eaaf6b68b299b39c57b8" name="afdfe586566d3eaaf6b68b299b39c57b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdfe586566d3eaaf6b68b299b39c57b8">&#9670;&#160;</a></span>secondaryButton</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Button it.university.group9.rubricacontattigroup9.MenuPreferitiController.secondaryButton</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bottone secondario. </p>
 
 </div>
 </div>

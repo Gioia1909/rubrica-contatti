@@ -9,13 +9,120 @@ Inheritance diagram for it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a61346d3827ec4e185f32fe57c2e099d7}{set\+Contact\+List}} (Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ contact\+List)
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a61346d3827ec4e185f32fe57c2e099d7}{set\+Contact\+List}} (Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a8d662deb667fa0ca3cea21819d133422}{contact\+List}})
 \begin{DoxyCompactList}\small\item\em Imposta la lista dei contatti. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a74d552105201f12ba52e61c2ca43f398}{initialize}} (URL location, Resource\+Bundle resources)
 \begin{DoxyCompactList}\small\item\em Inizializza il controller e configura la lista dei preferiti nell\textquotesingle{}elemento List\+View. Configura una Label per la visualizzazione delle celle della lista, chiamando la funzione crea\+Label\+Contatto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_aa5ad710214b909e790853a722bcce519}{switch\+To\+Interfaccia}} ()
+\begin{DoxyCompactList}\small\item\em Cambia la scena all\textquotesingle{}interfaccia utente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_ab2fe28170f05e1103816072855f56642}{edit\+Action}} (Action\+Event event)
+\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_adc429fa506abd88cb519299fae0cea72}{handle\+Open\+Popup}} ()
+\begin{DoxyCompactList}\small\item\em Gestisce l\textquotesingle{}apertura di una finestra popup per la selezione di un contatto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a63c7b055515bc19d681da7207a9830f2}{add\+Pref\+Button}} (Action\+Event event)  throws IOException, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_contatto_gia_aggiunto_exception}{Contatto\+Gia\+Aggiunto\+Exception}} 
+\begin{DoxyCompactList}\small\item\em Aggiunge un contatto alla lista dei preferiti. \end{DoxyCompactList}\item 
+Label \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a0c51195e0b3338ef2b1afc0aba6e7366}{crea\+Label\+Contatto}} (\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} contatto)
+\begin{DoxyCompactList}\small\item\em Crea una label per visualizzare il nome e cognome del contatto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List\+View$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a0120de720cb7db761e209c8cd0c8fa9a}{list\+View\+Preferiti}}
+\begin{DoxyCompactList}\small\item\em Lista grafica dei contatti preferiti. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_ab5e279970583a8ff5006d2aba4ca7c5a}{edit\+Button}}
+\begin{DoxyCompactList}\small\item\em Bottone per la modifica. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a09d3de21b9390eb26ac1543b4ea738ea}{add\+Pref\+Button}}
+\begin{DoxyCompactList}\small\item\em Bottone per aggiungere un contatto ai preferiti. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_afdfe586566d3eaaf6b68b299b39c57b8}{secondary\+Button}}
+\begin{DoxyCompactList}\small\item\em Bottone secondario. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a97a8bd605319d540e38a4a1d2c1fbb3d}{preferiti\+List}}
+\begin{DoxyCompactList}\small\item\em Lista dei contatti preferiti. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a8d662deb667fa0ca3cea21819d133422}{contact\+List}}
+\begin{DoxyCompactList}\small\item\em Lista di tutti i contatti. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a63c7b055515bc19d681da7207a9830f2}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!addPrefButton@{addPrefButton}}
+\index{addPrefButton@{addPrefButton}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{addPrefButton()}{addPrefButton()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a63c7b055515bc19d681da7207a9830f2} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+add\+Pref\+Button (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption}) throws IOException, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_contatto_gia_aggiunto_exception}{Contatto\+Gia\+Aggiunto\+Exception}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aggiunge un contatto alla lista dei preferiti. 
+
+\begin{DoxyPrecond}{Precondition}
+La lista di Contatti non deve essere vuota. 
+
+L\textquotesingle{}elemento da aggiungere deve essere presente nella rubrica principale. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+L\textquotesingle{}elemento aggiunto deve essere visto nella rubrica preferiti. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & L\textquotesingle{}evento che ha generato l\textquotesingle{}azione di aggiunta. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se il caricamento del popup fallisce. \\
+\hline
+{\em Contatto\+Gia\+Aggiunto\+Exception} & Se il contatto è già presente nei preferiti \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a0c51195e0b3338ef2b1afc0aba6e7366}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!creaLabelContatto@{creaLabelContatto}}
+\index{creaLabelContatto@{creaLabelContatto}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{creaLabelContatto()}{creaLabelContatto()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a0c51195e0b3338ef2b1afc0aba6e7366} 
+Label it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+crea\+Label\+Contatto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}}]{contatto}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una label per visualizzare il nome e cognome del contatto. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em contatto} & Il contatto di cui creare la label. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+label Label con il nome e cognome del contatto. 
+\end{DoxyReturn}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_ab2fe28170f05e1103816072855f56642}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!editAction@{editAction}}
+\index{editAction@{editAction}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{editAction()}{editAction()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_ab2fe28170f05e1103816072855f56642} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+edit\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_adc429fa506abd88cb519299fae0cea72}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!handleOpenPopup@{handleOpenPopup}}
+\index{handleOpenPopup@{handleOpenPopup}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{handleOpenPopup()}{handleOpenPopup()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_adc429fa506abd88cb519299fae0cea72} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+handle\+Open\+Popup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gestisce l\textquotesingle{}apertura di una finestra popup per la selezione di un contatto. 
+
+Questo metodo carica un file FXML per il popup, crea una nuova finestra ({\ttfamily Stage})
+
+La finestra popup blocca l\textquotesingle{}interazione con altre finestre finché non viene chiusa.
+
+\begin{DoxyPrecond}{Precondition}
+Il file FXML "{}\+Seleziona\+Contatti\+Da\+Rubrica.\+fxml"{} deve essere presente e valido. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Una nuova finestra popup viene aperta, e l\textquotesingle{}utente non può interagire con altre finestre fino alla chiusura del popup.
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se il file FXML non può essere caricato o se si verifica un errore durante la creazione della finestra. \\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a74d552105201f12ba52e61c2ca43f398}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!initialize@{initialize}}
 \index{initialize@{initialize}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
 \doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
@@ -48,6 +155,89 @@ Imposta la lista dei contatti.
 \mbox{\texttt{ in}}  & {\em contact\+List} & La lista di contatti da impostare. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_aa5ad710214b909e790853a722bcce519}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!switchToInterfaccia@{switchToInterfaccia}}
+\index{switchToInterfaccia@{switchToInterfaccia}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{switchToInterfaccia()}{switchToInterfaccia()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_aa5ad710214b909e790853a722bcce519} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+switch\+To\+Interfaccia (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cambia la scena all\textquotesingle{}interfaccia utente. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & L\textquotesingle{}evento che ha generato l\textquotesingle{}azione di switch. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se il caricamento della scena fallisce. \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a09d3de21b9390eb26ac1543b4ea738ea}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!addPrefButton@{addPrefButton}}
+\index{addPrefButton@{addPrefButton}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{addPrefButton}{addPrefButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a09d3de21b9390eb26ac1543b4ea738ea} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+add\+Pref\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone per aggiungere un contatto ai preferiti. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a8d662deb667fa0ca3cea21819d133422}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!contactList@{contactList}}
+\index{contactList@{contactList}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{contactList}{contactList}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a8d662deb667fa0ca3cea21819d133422} 
+Observable\+List$<$\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}$>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+contact\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista di tutti i contatti. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_ab5e279970583a8ff5006d2aba4ca7c5a}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!editButton@{editButton}}
+\index{editButton@{editButton}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{editButton}{editButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_ab5e279970583a8ff5006d2aba4ca7c5a} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+edit\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone per la modifica. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a0120de720cb7db761e209c8cd0c8fa9a}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!listViewPreferiti@{listViewPreferiti}}
+\index{listViewPreferiti@{listViewPreferiti}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{listViewPreferiti}{listViewPreferiti}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a0120de720cb7db761e209c8cd0c8fa9a} 
+List\+View$<$\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}$>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+list\+View\+Preferiti\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista grafica dei contatti preferiti. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a97a8bd605319d540e38a4a1d2c1fbb3d}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!preferitiList@{preferitiList}}
+\index{preferitiList@{preferitiList}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{preferitiList}{preferitiList}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a97a8bd605319d540e38a4a1d2c1fbb3d} 
+Observable\+List$<$\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}$>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+preferiti\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista dei contatti preferiti. 
+
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_afdfe586566d3eaaf6b68b299b39c57b8}\index{it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}!secondaryButton@{secondaryButton}}
+\index{secondaryButton@{secondaryButton}!it.university.group9.rubricacontattigroup9.MenuPreferitiController@{it.university.group9.rubricacontattigroup9.MenuPreferitiController}}
+\doxysubsubsection{\texorpdfstring{secondaryButton}{secondaryButton}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_afdfe586566d3eaaf6b68b299b39c57b8} 
+Button it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller.\+secondary\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bottone secondario. 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
