@@ -138,15 +138,34 @@ public class InterfacciaAggiungiController implements Initializable {
           List<TextField> numeroFields = Arrays.asList(number1Field, number2Field, number3Field);
         
           for(TextField numero : numeroFields){
-                NumeroValidator.validatePhoneNumber(numero.getText());
-            if(ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), numero.getText())){
+              if(!numero.getText().trim().isEmpty()){
+                NumeroValidator.validatePhoneNumber(numero.getText().trim());
+            if(ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), numero.getText().trim())){
                   Alert alertNumber= new Alert(AlertType.CONFIRMATION, "Il numero: " + numero.getText() + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
 
                   alertNumber.showAndWait();
 
                   if(alertNumber.getResult() == ButtonType.NO){
-                      numeri.remove(numero.getText());
+                    
+                     continue;
                    }
+                 for(TextField numero2 : numeroFields){
+                     
+              if(ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome, numero2.getText())){
+                  String contatto= nome + " " + cognome;
+                      Alert alertContact = new Alert(AlertType.CONFIRMATION, "Il contatto: " + contatto + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
+                        alertContact.showAndWait();
+
+                        if (alertContact.getResult() == ButtonType.NO) {
+                               continue; 
+                            }
+                        
+                  }
+              
+              
+            }
+              }
+              numeri.add(numero.getText().trim());
               }
           }
             // Aggiungi numeri se non vuoti
@@ -156,6 +175,7 @@ public class InterfacciaAggiungiController implements Initializable {
             String contatto= nome + " " + cognome;
             List<TextField> emailFields= Arrays.asList(email1Field, email2Field, email3Field);
             for(TextField email : emailFields){
+                if(!email.getText().trim().isEmpty())
                 EmailValidator.validateEmail(email.getText());
             }
          
@@ -163,17 +183,7 @@ public class InterfacciaAggiungiController implements Initializable {
             if (!email1Field.getText().isEmpty()) emails.add(email1Field.getText().trim());
             if (!email2Field.getText().isEmpty()) emails.add(email2Field.getText().trim());
             if (!email3Field.getText().isEmpty()) emails.add(email3Field.getText().trim());
-            for(TextField numero : numeroFields){
-
-              if(ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome, numero.getText())){
-                      Alert alertContact = new Alert(AlertType.CONFIRMATION, "Il contatto: " + contatto + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
-                        alertContact.showAndWait();
-
-                        if (alertContact.getResult() == ButtonType.NO) {
-                               return; 
-                            }
-                  }
-            }
+           
 
          Contatto nuovoContatto = new Contatto(nome,cognome,numeri,emails,note);
       
