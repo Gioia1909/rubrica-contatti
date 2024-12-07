@@ -10,7 +10,5 @@
 
 Il documento SRS del progetto può essere scaricato o visualizzato [qui](Requirements_Engineering/SRS_Gruppo09.pdf).
 
-## Schizzo della Grafica
-Ecco una rappresentazione della grafica che intendiamo realizzare per il progetto:
-
-![Schizzo della grafica](Design/schizzo.jpeg)
+## Documentazione di Progettazione 
+La Documentazione di Progettazione del progetto può essere scaricata o visualizzata [qui](Design/DocumentazioneProgettazione.pdf).
