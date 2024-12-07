@@ -198,7 +198,7 @@ public class InterfacciaAggiungiController implements Initializable {
         for(TextField numero : numeroFields){
             NumeroValidator.validatePhoneNumber(numero.getText());
          if(ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), numero.getText())){
-             Alert alertNumber= new Alert(AlertType.CONFIRMATION, "Il numero: " + numero + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
+             Alert alertNumber= new Alert(AlertType.CONFIRMATION, "Il numero: " + numero.getText() + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
          
              alertNumber.showAndWait();
              

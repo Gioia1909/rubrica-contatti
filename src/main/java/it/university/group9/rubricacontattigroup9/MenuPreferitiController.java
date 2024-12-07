@@ -1,6 +1,7 @@
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
+import it.university.group9.rubricacontattigroup9.exceptions.ContattoGiaAggiuntoException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -180,9 +181,10 @@ public class MenuPreferitiController implements Initializable {
      * L'elemento aggiunto deve essere visto nella rubrica preferiti.
      * @param[in] event L'evento che ha generato l'azione di aggiunta.
      * @throws IOException Se il caricamento del popup fallisce.
+     * @throws ContattoGiaAggiuntoException Se il contatto è già presente nei preferiti
      */
     @FXML
-    private void addPrefButton(ActionEvent event) throws IOException {
+    private void addPrefButton(ActionEvent event) throws IOException, ContattoGiaAggiuntoException {
         if(contactList!=null){
             //debug
              System.out.println("ContactList: " + contactList);
