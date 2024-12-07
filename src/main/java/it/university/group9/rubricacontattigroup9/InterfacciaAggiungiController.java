@@ -171,6 +171,8 @@ public class InterfacciaAggiungiController implements Initializable {
      * email e note alla rubrica. Valida i dati inseriti, verifica la presenza di duplicati e aggiorna
      * la rubrica sia nella lista in memoria che nel file di salvataggio.
      * 
+     * @pre I parametri da inserire nel contatto non devono essere vuoti 
+     * @post Viene aggiunto un contatto in rubrica
      * @throws IOException Se si verifica un errore durante il salvataggio della rubrica su file.
      * @throws NomeNonValidoException Se il nome fornito non è valido.
      * @throws CognomeNonValidoException Se il cognome fornito non è valido.
