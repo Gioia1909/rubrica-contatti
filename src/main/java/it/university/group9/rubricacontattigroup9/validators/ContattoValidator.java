@@ -53,14 +53,19 @@ public class ContattoValidator {
      * @return true se il contatto esiste già, false altrimenti.
      */
     public static boolean isContattoDuplicato(List<Contatto> contatti, String nome, String cognome) {
+        String nomePulito = nome.trim().toLowerCase();
+        String cognomePulito = cognome.trim().toLowerCase();
+        
         for (Contatto contatto : contatti) {
-            // Controllo se esiste un contatto con lo stesso nome e cognome
-            if (contatto.getNome().equals(nome) && contatto.getCognome().equals(cognome)) {
-                return true; // Il contatto esiste già
+            String nomeC = contatto.getNome().trim().toLowerCase();
+            String cognomeC = contatto.getCognome().trim().toLowerCase();
+            if (nomeC.equals(nomePulito) && cognomeC.equals(cognomePulito)) {
+                return true; // Contatto già esistente
             }
         }
-        return false; // Nessun duplicato trovato
+        return false; // Contatto non trovato
     }
+
     
     public static boolean isEmailDuplicata(List<Contatto> contatti, String email){
         for (Contatto contatto : contatti) { 

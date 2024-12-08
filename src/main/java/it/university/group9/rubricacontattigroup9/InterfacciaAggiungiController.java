@@ -123,7 +123,7 @@ public class InterfacciaAggiungiController implements Initializable {
             }
         }
         numeri.add(primoNumero);
-        
+
         //gestione numeri di telefono facoltativi
         for (TextField numero : numeroFields) {
             String n = numero.getText().trim(); //prende numero levando gli spazi
@@ -137,26 +137,27 @@ public class InterfacciaAggiungiController implements Initializable {
                 numeri.add(n);
             }
         }
-        
+
         //Gestione Email facoltative       
-        List <TextField> emailFields = Arrays.asList(email1Field, email2Field, email3Field);
-        for (TextField email : emailFields){
+        List<TextField> emailFields = Arrays.asList(email1Field, email2Field, email3Field);
+        for (TextField email : emailFields) {
             String e = email.getText().trim();
-            if(!e.isEmpty()){
+            if (!e.isEmpty()) {
                 EmailValidator.validateEmail(e);
-                if(ContattoValidator.isEmailDuplicata(interfacciaUtenteController.getListaContatti(), e)){
-                    if(!showConfirmationDialog("Email Duplicata", "L'email " + e + " già esiste. Vuoi comunque aggiungerla?")){
+                if (ContattoValidator.isEmailDuplicata(interfacciaUtenteController.getListaContatti(), e)) {
+                    if (!showConfirmationDialog("Email Duplicata", "L'email " + e + " già esiste. Vuoi comunque aggiungerla?")) {
                         return;
                     }
                 }
                 emails.add(e);
             }
-            
+
         }
-        
+
         //verifica contatto duplicato
         if (ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome)) {
-            if (!showConfirmationDialog("Contatto Duplicato", "Un contatto: " + nome + " " + cognome +" già esiste. Vuoi comunque aggiungerlo?")){
+            if (!showConfirmationDialog("Contatto Duplicato", "Un contatto: " + nome + " " + cognome + " già esiste. Vuoi comunque aggiungerlo?")) {
+                switchToInterfaccia(event);
                 return;
             }
         }
@@ -170,8 +171,10 @@ public class InterfacciaAggiungiController implements Initializable {
         switchToInterfaccia(event);
 
     }
-     /**
-     * Mostra una finestra di conferma e restituisce true se l'utente sceglie "YES".
+
+    /**
+     * Mostra una finestra di conferma e restituisce true se l'utente sceglie
+     * "YES".
      */
     private boolean showConfirmationDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, messaggio, ButtonType.YES, ButtonType.NO);
@@ -179,26 +182,26 @@ public class InterfacciaAggiungiController implements Initializable {
         alert.showAndWait();
         return alert.getResult() == ButtonType.YES;
     }
-    
+
     private void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titolo);
         alert.setContentText(messaggio);
         alert.showAndWait();
     }
+
     /**
      * @brief Inizializza il controller.
-     * 
-     * Metodo eseguito automaticamente per configurare il controller all'avvio. 
-     * 
+     *
+     * Metodo eseguito automaticamente per configurare il controller all'avvio.
+     *
      * @param[in] url URL di inizializzazione.
      * @param[in] rb Risorsa per la localizzazione.
-     */ 
-       
+     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-     
-    }    
-    
+
+    }
+
 }
