@@ -52,19 +52,25 @@ public class ContattoValidator {
      * @param numero Il numero di telefono del contatto.
      * @return true se il contatto esiste già, false altrimenti.
      */
-    public static boolean isContattoDuplicato(List<Contatto> contatti, String nome, String cognome, String numero) {
+    public static boolean isContattoDuplicato(List<Contatto> contatti, String nome, String cognome) {
         for (Contatto contatto : contatti) {
             // Controllo se esiste un contatto con lo stesso nome e cognome
             if (contatto.getNome().equals(nome) && contatto.getCognome().equals(cognome)) {
-                // Verifica il numero, se è lo stesso
-                for (String num : contatto.getNumeri()) {
-                    if (num.equals(numero)) {
-                        return true; // Il contatto esiste già
-                    }
-                }
+                return true; // Il contatto esiste già
             }
         }
         return false; // Nessun duplicato trovato
+    }
+    
+    public static boolean isEmailDuplicata(List<Contatto> contatti, String email){
+        for (Contatto contatto : contatti) { 
+            for (String em : contatto.getEmails()) {
+                if (em.equals(email)) {
+                    return true; // Email già presente
+                }
+            }
+        }
+        return false; // Email non trovata
     }
     
 }

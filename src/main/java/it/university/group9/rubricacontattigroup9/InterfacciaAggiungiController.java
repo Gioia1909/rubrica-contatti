@@ -12,34 +12,18 @@
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
-import it.university.group9.rubricacontattigroup9.exceptions.CognomeNonValidoException;
-import it.university.group9.rubricacontattigroup9.exceptions.EmailNonValidaException;
-import it.university.group9.rubricacontattigroup9.exceptions.NomeNonValidoException;
-import it.university.group9.rubricacontattigroup9.exceptions.NumeroNonValidoException;
-import it.university.group9.rubricacontattigroup9.validators.CognomeValidator;
-import it.university.group9.rubricacontattigroup9.validators.ContattoValidator;
-import it.university.group9.rubricacontattigroup9.validators.EmailValidator;
-import it.university.group9.rubricacontattigroup9.validators.NomeValidator;
-import it.university.group9.rubricacontattigroup9.validators.NumeroValidator;
+import it.university.group9.rubricacontattigroup9.exceptions.*;
+import it.university.group9.rubricacontattigroup9.validators.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.*;
+import javafx.scene.input.*;
 import javafx.stage.Stage;
 
 /**
@@ -54,27 +38,17 @@ public class InterfacciaAggiungiController implements Initializable {
     
     /** @name Componenti FXML */
     ///@{
-    @FXML private Button addButton;       /**< Bottone per aggiungere un nuovo contatto. */
-    
+    @FXML private Button addButton;       /**< Bottone per aggiungere un nuovo contatto. */    
     @FXML private Button cancelButton;    /**< Bottone per tornare all'interfaccia principale. */
-
-    @FXML private TextField nameField;    /**< Campo di testo per il nome del contatto. */
-    
-    @FXML  private TextField surnameField; /**< Campo di testo per il cognome del contatto. */
-    
-    @FXML private TextField email1Field;  /**< Campo di testo per la prima email del contatto. */
-    
-    @FXML private TextField email2Field;  /**< Campo di testo per la seconda email del contatto. */
-   
+    @FXML private TextField nameField;    /**< Campo di testo per il nome del contatto. */   
+    @FXML  private TextField surnameField; /**< Campo di testo per il cognome del contatto. */    
+    @FXML private TextField email1Field;  /**< Campo di testo per la prima email del contatto. */    
+    @FXML private TextField email2Field;  /**< Campo di testo per la seconda email del contatto. */   
     @FXML private TextField email3Field;  /**< Campo di testo per la terza email del contatto. */
-
-    @FXML private TextField number1Field;   /**< Campo di testo per il primo numero di telefono del contatto. */
-    
-    @FXML private TextField number2Field;   /**< Campo di testo per il secondo numero di telefono del contatto. */
-    
+    @FXML private TextField number1Field;   /**< Campo di testo per il primo numero di telefono del contatto. */    
+    @FXML private TextField number2Field;   /**< Campo di testo per il secondo numero di telefono del contatto. */    
     @FXML private TextField number3Field;   /**< Campo di testo per il terzo numero di telefono del contatto. */
-
-      @FXML private TextField noteField;        /**< Campo di testo per le note del contatto. */
+    @FXML private TextField noteField;        /**< Campo di testo per le note del contatto. */
     ///@}
     
     /**
@@ -122,79 +96,96 @@ public class InterfacciaAggiungiController implements Initializable {
      * 
      */
     @FXML
-    void addContact(ActionEvent event) throws IOException, NomeNonValidoException, CognomeNonValidoException, NumeroNonValidoException, EmailNonValidaException {    
-          String nome = nameField.getText();
-          NomeValidator.validateName(nome);
+    void addContact(ActionEvent event) throws IOException, NomeNonValidoException, CognomeNonValidoException, NumeroNonValidoException, EmailNonValidaException {
+        String nome = nameField.getText();
+        NomeValidator.validateName(nome);
 
-          String cognome = surnameField.getText();
-          CognomeValidator.validateSurname(cognome);
+        String cognome = surnameField.getText();
+        CognomeValidator.validateSurname(cognome);
 
-          String note = noteField.getText();
+        String note = noteField.getText();
 
-          List<String> numeri = new LinkedList<>();
+        List<String> numeri = new LinkedList<>();
+        List<String> emails = new LinkedList<>();
+        List<TextField> numeroFields = Arrays.asList(number2Field, number3Field); //numeri facoltativi
 
-          List<String> emails = new LinkedList<>();
+        // Gestione primo numero  di telefono obbligatorio
+        String primoNumero = number1Field.getText().trim();
+        if (primoNumero.isEmpty()) {
+            showErrorDialog("Numero obbligatorio", "Il primo numero di telefono è obbligatorio.");
+            return;
+        }
 
-          List<TextField> numeroFields = Arrays.asList(number1Field, number2Field, number3Field);
+        NumeroValidator.validatePhoneNumber(primoNumero);
+        if (ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), primoNumero)) {
+            if (!showConfirmationDialog("Numero duplicato", "Il numero " + primoNumero + " già esiste. Vuoi comunque aggiungerlo?")) {
+                return;
+            }
+        }
+        numeri.add(primoNumero);
         
-          for(TextField numero : numeroFields){
-              if(!numero.getText().trim().isEmpty()){
-                NumeroValidator.validatePhoneNumber(numero.getText().trim());
-            if(ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), numero.getText().trim())){
-                  Alert alertNumber= new Alert(AlertType.CONFIRMATION, "Il numero: " + numero.getText() + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
-
-                  alertNumber.showAndWait();
-
-                  if(alertNumber.getResult() == ButtonType.NO){
-                    
-                     continue;
-                   }
-                 for(TextField numero2 : numeroFields){
-                     
-              if(ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome, numero2.getText())){
-                  String contatto= nome + " " + cognome;
-                      Alert alertContact = new Alert(AlertType.CONFIRMATION, "Il contatto: " + contatto + " già esiste, vuoi comunque aggiungerlo?", ButtonType.YES, ButtonType.NO);
-                        alertContact.showAndWait();
-
-                        if (alertContact.getResult() == ButtonType.NO) {
-                               continue; 
-                            }
-                        
-                  }
-              
-              
+        //gestione numeri di telefono facoltativi
+        for (TextField numero : numeroFields) {
+            String n = numero.getText().trim(); //prende numero levando gli spazi
+            if (!n.isEmpty()) {
+                NumeroValidator.validatePhoneNumber(n);
+                if (ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), n)) {
+                    if (!showConfirmationDialog("Numero Duplicato", "Il numero " + numero + " già esiste. Vuoi comunque aggiungerlo?")) {
+                        return;
+                    }
+                }
+                numeri.add(n);
             }
-              }
-              numeri.add(numero.getText().trim());
-              }
-          }
-            // Aggiungi numeri se non vuoti
-            if (!number1Field.getText().isEmpty()) numeri.add(number1Field.getText().trim());
-            if (!number2Field.getText().isEmpty()) numeri.add(number2Field.getText().trim());
-            if (!number3Field.getText().isEmpty()) numeri.add(number3Field.getText().trim());
-            String contatto= nome + " " + cognome;
-            List<TextField> emailFields= Arrays.asList(email1Field, email2Field, email3Field);
-            for(TextField email : emailFields){
-                if(!email.getText().trim().isEmpty())
-                EmailValidator.validateEmail(email.getText());
+        }
+        
+        //Gestione Email facoltative       
+        List <TextField> emailFields = Arrays.asList(email1Field, email2Field, email3Field);
+        for (TextField email : emailFields){
+            String e = email.getText().trim();
+            if(!e.isEmpty()){
+                EmailValidator.validateEmail(e);
+                if(ContattoValidator.isEmailDuplicata(interfacciaUtenteController.getListaContatti(), e)){
+                    if(!showConfirmationDialog("Email Duplicata", "L'email " + e + " già esiste. Vuoi comunque aggiungerla?")){
+                        return;
+                    }
+                }
+                emails.add(e);
             }
-         
-            // Aggiungi email se non vuote
-            if (!email1Field.getText().isEmpty()) emails.add(email1Field.getText().trim());
-            if (!email2Field.getText().isEmpty()) emails.add(email2Field.getText().trim());
-            if (!email3Field.getText().isEmpty()) emails.add(email3Field.getText().trim());
-           
+            
+        }
+        
+        //verifica contatto duplicato
+        if (ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome)) {
+            if (!showConfirmationDialog("Contatto Duplicato", "Un contatto: " + nome + " " + cognome +" già esiste. Vuoi comunque aggiungerlo?")){
+                return;
+            }
+        }
 
-         Contatto nuovoContatto = new Contatto(nome,cognome,numeri,emails,note);
-      
-         interfacciaUtenteController.getListaContatti().add(nuovoContatto);
-         interfacciaUtenteController.ordinaContatti(); 
-         //aggiornamento file 
+        Contatto nuovoContatto = new Contatto(nome, cognome, numeri, emails, note);
+
+        interfacciaUtenteController.getListaContatti().add(nuovoContatto);
+        interfacciaUtenteController.ordinaContatti();
+        //aggiornamento file 
         SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
-           switchToInterfaccia(event);
-       
+        switchToInterfaccia(event);
+
     }
-       
+     /**
+     * Mostra una finestra di conferma e restituisce true se l'utente sceglie "YES".
+     */
+    private boolean showConfirmationDialog(String titolo, String messaggio) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, messaggio, ButtonType.YES, ButtonType.NO);
+        alert.setTitle(titolo);
+        alert.showAndWait();
+        return alert.getResult() == ButtonType.YES;
+    }
+    
+    private void showErrorDialog(String titolo, String messaggio) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titolo);
+        alert.setContentText(messaggio);
+        alert.showAndWait();
+    }
     /**
      * @brief Inizializza il controller.
      * 
