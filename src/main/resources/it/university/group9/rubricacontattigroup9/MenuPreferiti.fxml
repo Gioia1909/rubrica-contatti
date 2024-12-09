@@ -18,12 +18,12 @@
                 <!-- Pannello sinistro -->
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="353.0">
                     <children>
-                        <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferiti" wrappingWidth="152.21630859375" AnchorPane.bottomAnchor="450.0078125" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="125.794921875" AnchorPane.topAnchor="22.9921875">
+                        <Text layoutX="16.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferiti" wrappingWidth="152.21630859375" AnchorPane.bottomAnchor="451.73828125" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="181.78369140625" AnchorPane.topAnchor="21.9921875">
                             <font>
                                 <Font name="Georgia Bold" size="24.0" />
                             </font>
                         </Text>
-                        <Button fx:id="addPrefButton" layoutX="312.0" layoutY="55.0" mnemonicParsing="false" onAction="#addPrefButton" prefHeight="36.0" prefWidth="48.0" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="55.0">
+                        <Button fx:id="addPrefButton" layoutX="302.0" layoutY="59.0" mnemonicParsing="false" onAction="#addPrefButton" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="52.0">
                             <graphic>
                                 <ImageView fitHeight="24.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -33,8 +33,8 @@
                             </graphic>
                         </Button>
                         <ListView fx:id="listViewPreferiti" layoutX="15.0" layoutY="93.0" prefHeight="326.0" prefWidth="305.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="100.0" />
-                        <Button fx:id="secondaryButton" layoutX="70.0" layoutY="429.0" onAction="#switchToInterfaccia" prefHeight="39.0" prefWidth="181.0" text="Torna alla Rubrica" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="437.0" />
-                  <Button fx:id="searchButton" layoutX="263.0" layoutY="55.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="36.0" prefWidth="26.0" AnchorPane.leftAnchor="263.0" AnchorPane.topAnchor="55.0">
+                        <Button fx:id="secondaryButton" layoutX="80.0" layoutY="440.0" maxHeight="27.0" onAction="#switchToInterfaccia" prefHeight="27.0" prefWidth="144.0" text="Torna alla Rubrica" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="440.0" />
+                  <Button fx:id="searchButton" layoutX="251.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchAction" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="57.0">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -43,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextField fx:id="searchBar" layoutX="14.0" layoutY="50.0" prefHeight="39.0" prefWidth="249.0" promptText="Cerca contatto..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0" />
+                  <TextField fx:id="searchBar" layoutX="15.0" layoutY="57.0" prefWidth="219.0" promptText="Cerca contatto..." />
                     </children>
                 </AnchorPane>
                 <!-- Pannello destro -->

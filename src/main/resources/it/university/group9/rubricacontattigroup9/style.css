@@ -57,3 +57,6 @@ AnchorPane {
 }
 
 
+#delButton{
+    -fx-background-color: transparent;
+}
