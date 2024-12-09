@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -156,12 +157,28 @@ public class SelezionaContattiDaRubricaController implements Initializable {
 
         //colleghiamo questa lista di contatti filtrata a quella che visualizziamo in questa finestra
         contactListView.setItems(contattiFiltrati);
-
+        
+        configureContactListView();
         /*Effetto dinamico:
         Ogni volta che il filtro cambia (ad esempio, quando si digita nella barra di ricerca), 
         la FilteredList si aggiorna automaticamente.
         Poiché la ListView è collegata alla FilteredList, anche la ListView si aggiorna automaticamente.
          */
+    }
+    
+    private void configureContactListView() {
+        contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
+            @Override
+            protected void updateItem(Contatto contatto, boolean empty) {
+                super.updateItem(contatto, empty);
+                if (empty || contatto == null) {
+                    setText(null);
+                } else {
+                    // Mostra solo il cognome e il nome
+                    setText(contatto.getCognome() + " " + contatto.getNome());
+                }
+            }
+        });
     }
     
 
