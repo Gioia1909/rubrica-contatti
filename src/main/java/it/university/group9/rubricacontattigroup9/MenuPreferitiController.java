@@ -145,6 +145,12 @@ public class MenuPreferitiController implements Initializable {
         configurePreferitiListView();
 
         System.out.println("Preferiti caricati senza duplicati: " + preferitiList);
+        listViewPreferiti.getSelectionModel().selectedItemProperty().addListener((observable, contattoPrecedente, contattoSelezionato) -> {
+            if (contattoSelezionato != null) {
+                // Aggiorna le label con i dati del contatto selezionato
+                updateContactDetails(contattoSelezionato);
+            }
+        });
     }
 
     private void configurePreferitiListView() {
@@ -306,6 +312,85 @@ public class MenuPreferitiController implements Initializable {
         }
     
     }
+    
+    
+    private void updateContactDetails(Contatto contattoSelezionato) {
+            defaultText.setVisible(false);
+            delButton.setVisible(true);
+
+    // Gestione nome e cognome
+    if (contattoSelezionato.getNome().isEmpty() && nameField.getText().isEmpty()) {
+        nameField.setVisible(false);
+    } else {
+        nameField.setVisible(true);
+        nameField.setText(contattoSelezionato.getNome());
+    }
+
+    if (contattoSelezionato.getCognome().isEmpty() && surnameField.getText().isEmpty()) {
+        surnameField.setVisible(false);
+    } else {
+        surnameField.setVisible(true);
+        surnameField.setText(contattoSelezionato.getCognome());
+    }
+
+    // Gestione dei numeri di telefono
+    List<String> numeri = contattoSelezionato.getNumeri();
+    
+    if (numeri.size() > 0) {
+        number1Field.setVisible(true);
+        number1Field.setText(numeri.get(0));
+    } else if (number1Field.getText().isEmpty()) {
+        number1Field.setVisible(false);
+    }
+
+    if (numeri.size() > 1) {
+        number2Field.setVisible(true);
+        number2Field.setText(numeri.get(1));
+    } else{
+        number2Field.setVisible(false);
+    }
+
+    if (numeri.size() > 2) {
+        number3Field.setVisible(true);
+        number3Field.setText(numeri.get(2));
+    } else{
+        number3Field.setVisible(false);
+    }
+
+    // Gestione delle email
+    List<String> emails = contattoSelezionato.getEmails();
+
+    if (emails.size() > 0) {
+        email1Field.setVisible(true);
+        email1Field.setText(emails.get(0));
+    } else{
+        email1Field.setVisible(false);
+    }
+
+    if (emails.size() > 1) {
+        email2Field.setVisible(true);
+        email2Field.setText(emails.get(1));
+    } else{
+        email2Field.setVisible(false);
+    }
+
+    if (emails.size() > 2) {
+        email3Field.setVisible(true);
+        email3Field.setText(emails.get(2));
+    } else{
+        email3Field.setVisible(false);
+    }
+
+    // Gestione delle note
+    if (contattoSelezionato.getNote() == null || contattoSelezionato.getNote().isEmpty()) {
+        if (noteField.getText().isEmpty()) {
+            noteField.setVisible(false);
+        }
+    } else {
+        noteField.setVisible(true);
+        noteField.setText(contattoSelezionato.getNote());
+    }
+}
     
     
 

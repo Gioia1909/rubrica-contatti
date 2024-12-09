@@ -44,7 +44,7 @@ AnchorPane {
 }
 
 .dati{
-       -fx-border-color: pink;      /* Colore del bordo */
+    -fx-border-color: pink;      /* Colore del bordo */
     -fx-border-width: 2px;        /* Larghezza del bordo */
     -fx-border-radius: 5px;       /* Arrotonda gli angoli del bordo */
     -fx-padding: 5px;             /* Distanza tra il bordo e il testo */
