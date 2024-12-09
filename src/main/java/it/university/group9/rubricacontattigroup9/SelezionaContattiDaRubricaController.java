@@ -1,8 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+/**
+ * @file SelezionaContattiDaRubricaController.java
+ * @brief Controller per la selezione di contatti da una rubrica.
+ * 
+ * Questa classe gestisce l'interfaccia utente e la logica per selezionare contatti dalla rubrica e aggiungerli ai preferiti.
+ * Fornisce funzionalità di ricerca dinamica e gestione delle liste di contatti e preferiti.
+ * 
+ * @author Group09
+ * @date 05/12/2024
  */
+
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
@@ -16,22 +23,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-/**
- * @file SelezionaContattiDaRubricaController.java
- * @brief Controller per la selezione di contatti da una rubrica.
- * 
- * Questa classe gestisce l'interfaccia utente e la logica per selezionare contatti dalla rubrica e aggiungerli ai preferiti.
- * Fornisce funzionalità di ricerca dinamica e gestione delle liste di contatti e preferiti.
- * 
- * @author Group09
- * @date 05/12/2024
- */
 public class SelezionaContattiDaRubricaController implements Initializable {
     /**
      * @brief Campo di testo per la barra di ricerca.
@@ -156,12 +154,28 @@ public class SelezionaContattiDaRubricaController implements Initializable {
 
         //colleghiamo questa lista di contatti filtrata a quella che visualizziamo in questa finestra
         contactListView.setItems(contattiFiltrati);
-
+        
+        configureContactListView();
         /*Effetto dinamico:
         Ogni volta che il filtro cambia (ad esempio, quando si digita nella barra di ricerca), 
         la FilteredList si aggiorna automaticamente.
         Poiché la ListView è collegata alla FilteredList, anche la ListView si aggiorna automaticamente.
          */
+    }
+    
+    private void configureContactListView() {
+        contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
+            @Override
+            protected void updateItem(Contatto contatto, boolean empty) {
+                super.updateItem(contatto, empty);
+                if (empty || contatto == null) {
+                    setText(null);
+                } else {
+                    // Mostra solo il cognome e il nome
+                    setText(contatto.getCognome() + " " + contatto.getNome());
+                }
+            }
+        });
     }
     
 

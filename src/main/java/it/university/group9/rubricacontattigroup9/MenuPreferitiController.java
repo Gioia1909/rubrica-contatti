@@ -1,3 +1,11 @@
+/**
+ * @file MenuPreferitiController.java
+ * @brief Controller per la gestione del menu dei contatti preferiti.
+ * 
+ * @author Gruppo09
+ * @date 05/12/2024
+ */
+
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
@@ -19,13 +27,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-/**
- * @file MenuPreferitiController.java
- * @brief Controller per la gestione del menu dei contatti preferiti.
- * 
- * @author Gruppo09
- * @date 05/12/2024
- */
 public class MenuPreferitiController implements Initializable {
     
     /**
@@ -93,6 +94,10 @@ public class MenuPreferitiController implements Initializable {
     /**
      * @brief Imposta la lista dei contatti.
      * 
+     * 
+     * @pre La lista di contatti fornita deve essere valida e non nulla.
+     * @post La lista dei contatti viene impostata correttamente nel controller.
+     * 
      * @param[in] contactList La lista di contatti da impostare.
      */
     public void setContactList(ObservableList<Contatto> contactList) {
@@ -108,27 +113,28 @@ public class MenuPreferitiController implements Initializable {
      */
     public void initialize(URL location, ResourceBundle resources) {
         // Rimuovi duplicati utilizzando un HashSet
-    preferitiList = FXCollections.observableArrayList(new HashSet<>(SalvaCaricaPreferiti.caricaRubricaPreferiti()));
+        preferitiList = FXCollections.observableArrayList(new HashSet<>(SalvaCaricaPreferiti.caricaRubricaPreferiti()));
+        listViewPreferiti.setItems(preferitiList);
+        configurePreferitiListView();
 
-    listViewPreferiti.setItems(preferitiList);
-
-    // Configura le celle della ListView
-    listViewPreferiti.setCellFactory(lv -> new ListCell<Contatto>() {
-        @Override
-        protected void updateItem(Contatto contatto, boolean empty) {
-            super.updateItem(contatto, empty);
-            if (empty || contatto == null) {
-                setText(null);
-                setGraphic(null);
-            } else {
-                setGraphic(creaLabelContatto(contatto));
-            }
-        }
-    });
-
-    System.out.println("Preferiti caricati senza duplicati: " + preferitiList);
+        System.out.println("Preferiti caricati senza duplicati: " + preferitiList);
     }
-    
+
+    private void configurePreferitiListView() {
+        listViewPreferiti.setCellFactory(listView -> new ListCell<Contatto>() {
+            @Override
+            protected void updateItem(Contatto contatto, boolean empty) {
+                super.updateItem(contatto, empty);
+                if (empty || contatto == null) {
+                    setText(null);
+                } else {
+                    // Mostra solo il cognome e il nome
+                    setText(contatto.getCognome() + " " + contatto.getNome());
+                }
+            }
+        });
+    }
+
     
 //Non sappiamo se la implementeremo
      
@@ -208,11 +214,7 @@ public class MenuPreferitiController implements Initializable {
             popupStage.setScene(new Scene(root, 336, 400)); // Imposta le dimensioni precise
             popupStage.setResizable(false); // Blocca il ridimensionamento
             popupStage.initModality(Modality.APPLICATION_MODAL); // Blocca interazioni con altre finestre
-            popupStage.show();
-            
-            
-            
-            
+            popupStage.show(); 
             //scene.setRoot(root); // Imposta il nuovo root, sostituisce la scena corrente con l'altra
             
         }else{
@@ -221,17 +223,5 @@ public class MenuPreferitiController implements Initializable {
        
     }
     
-    /**
-     * @brief Crea una label per visualizzare il nome e cognome del contatto.
-     * 
-     * @param[in] contatto Il contatto di cui creare la label.
-     * @return label Label con il nome e cognome del contatto.
-     */
-    private Label creaLabelContatto(Contatto contatto) {
-        Label label = new Label();
-        label.setText(contatto.getNome() + " " + contatto.getCognome()); //visualizzazione del nome e cognome
-        label.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-color: #f0f0f0;");
-        label.setWrapText(false); //non va a capo
-        return label;
-    }  
+    
 }
