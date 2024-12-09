@@ -8,6 +8,7 @@
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
+import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
 import it.university.group9.rubricacontattigroup9.exceptions.ContattoGiaAggiuntoException;
 import java.io.IOException;
 import java.net.URL;
@@ -85,7 +86,7 @@ public class MenuPreferitiController implements Initializable {
     @FXML
     private Label defaultText;
     @FXML
-    private Button addPrefButton1;
+    private Button delButton;
 
     /**
      * @brief Cambia la scena all'interfaccia utente.
@@ -292,6 +293,18 @@ public class MenuPreferitiController implements Initializable {
     
     private void ordinaContatti(){
         FXCollections.sort(preferitiList);
+    }
+
+    @FXML
+    private void deleteAction(ActionEvent event) {
+        int selezionato = listViewPreferiti.getSelectionModel().getSelectedIndex();
+        if (selezionato >= 0) {
+            listViewPreferiti.getItems().remove(selezionato);
+
+            // Salva i contatti aggiornati nel file
+            SalvaCaricaPreferiti.salvaRubricaPreferiti(preferitiList);
+        }
+    
     }
     
     
