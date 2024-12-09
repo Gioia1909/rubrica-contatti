@@ -13,50 +13,41 @@
         <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
     </stylesheets>
     <children>
-        <SplitPane dividerPositions="0.3" prefHeight="503.0" prefWidth="751.0">
+        <SplitPane dividerPositions="0.40386803185437997" prefHeight="503.0" prefWidth="751.0">
             <items>
                 <!-- Pannello sinistro -->
-                <AnchorPane prefHeight="478.0" prefWidth="353.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="353.0">
                     <children>
-                        <Text layoutX="16.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferiti" wrappingWidth="152.21630859375">
+                        <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferiti" wrappingWidth="152.21630859375" AnchorPane.bottomAnchor="450.0078125" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="125.794921875" AnchorPane.topAnchor="22.9921875">
                             <font>
                                 <Font name="Georgia Bold" size="24.0" />
                             </font>
                         </Text>
-                        <Button fx:id="editButton" layoutX="15.0" layoutY="50.0" mnemonicParsing="false" onAction="#editAction" prefHeight="27.0" prefWidth="30.0">
+                        <Button fx:id="addPrefButton" layoutX="312.0" layoutY="55.0" mnemonicParsing="false" onAction="#addPrefButton" prefHeight="36.0" prefWidth="48.0" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="55.0">
                             <graphic>
-                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@edit.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button fx:id="addPrefButton" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#addPrefButton" prefHeight="27.0" prefWidth="30.0">
-                            <graphic>
-                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="24.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@add.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <ListView fx:id="listViewPreferiti" layoutX="15.0" layoutY="100.0" prefHeight="300.0" prefWidth="320.0" />
-                        <Button fx:id="secondaryButton" layoutX="15.0" layoutY="420.0" onAction="#switchToInterfaccia" prefHeight="27.0" prefWidth="120.0" text="Principale" />
-                  <Button fx:id="searchButton" layoutX="185.0" layoutY="64.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="27.0" prefWidth="30.0">
+                        <ListView fx:id="listViewPreferiti" layoutX="15.0" layoutY="93.0" prefHeight="326.0" prefWidth="305.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="100.0" />
+                        <Button fx:id="secondaryButton" layoutX="108.0" layoutY="429.0" onAction="#switchToInterfaccia" prefHeight="27.0" prefWidth="120.0" text="Principale" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="437.0" />
+                  <Button fx:id="searchButton" layoutX="263.0" layoutY="55.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="36.0" prefWidth="26.0" AnchorPane.leftAnchor="263.0" AnchorPane.topAnchor="55.0">
                      <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@lente.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextField fx:id="searchBar" layoutX="16.0" layoutY="71.0" />
+                  <TextField fx:id="searchBar" layoutX="14.0" layoutY="50.0" prefHeight="39.0" prefWidth="249.0" promptText="Cerca contatto..." AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0" />
                     </children>
                 </AnchorPane>
                 <!-- Pannello destro -->
-                <AnchorPane prefHeight="478.0" prefWidth="414.0">
+                <AnchorPane prefHeight="501.0" prefWidth="524.0">
                     <children>
                         <Label fx:id="nameField" layoutX="35.0" layoutY="185.0" styleClass="dati" visible="false" />
                         <Label fx:id="surnameField" layoutX="249.0" layoutY="185.0" styleClass="dati" visible="false" />
@@ -72,6 +63,15 @@
                                 <Font name="Neue Haas Grotesk Text Pro Italic" size="16.0" />
                             </font>
                         </Label>
+                        <Button fx:id="editButton" layoutX="468.0" layoutY="49.0" mnemonicParsing="false" onAction="#editAction" prefHeight="27.0" prefWidth="30.0" AnchorPane.topAnchor="49.0">
+                     <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@edit.png" />
+                                    </image>
+                                </ImageView>
+                     </graphic>
+                        </Button>
                     </children>
                 </AnchorPane>
             </items>
