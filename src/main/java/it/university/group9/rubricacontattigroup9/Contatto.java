@@ -9,6 +9,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.*;
+
+
 /**
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a tre numeri di telefono, da una a tre email e delle note.
@@ -53,7 +55,12 @@ public class Contatto implements Comparable<Contatto> {
         this.note = note;
     }
     
-    // Costruttore predefinito
+     /**
+     * @brief Costruttore predefinito della classe Contatto.
+     * 
+     * Inizializza il contatto con liste vuote per numeri e email.
+     */
+    
     public Contatto() {
         this.numeri = new LinkedList<>();
         this.emails = new LinkedList<>();
@@ -109,9 +116,9 @@ public class Contatto implements Comparable<Contatto> {
     
     
     /**
-     * @brief Restituisce i dati del contatto tramite
+     * @brief Restituisce una rappresentazione testuale dei dati del contatto 
      * 
-     * @return Dati del contatto: nome, cognome, numeri di telefono, email e note.
+     * @return Una stringa contenente i dati del contatto: nome, cognome, numeri di telefono, email e note.
      */
     @Override
     public String toString(){
@@ -135,7 +142,7 @@ public class Contatto implements Comparable<Contatto> {
     
     
     
-    /*
+    /**
  * @brief Confronta due oggetti di tipo Contatto per determinarne l'ordine naturale.
  * 
  * Questo metodo ordina i contatti in base al cognome in ordine alfabetico. 
@@ -148,13 +155,11 @@ public class Contatto implements Comparable<Contatto> {
  *         - Zero se i due contatti sono considerati equivalenti.
  *         - Un valore positivo se l'oggetto corrente segue il contatto `obj`.
  * 
-     */
-    
-    
+ *   @pre L'oggetto `obj` non deve essere null.
+ *   
+    */
      @Override
     public int compareTo(Contatto obj) {
-       
-        // Ordina prima per cognome, poi per nome
         int risultato = this.cognome.compareToIgnoreCase(obj.cognome);
         if (risultato == 0) {       // se hanno lo stesso cognome
             return this.nome.compareToIgnoreCase(obj.nome); // Se i cognomi sono uguali, ordina per nome
@@ -175,6 +180,15 @@ public class Contatto implements Comparable<Contatto> {
  * 
  */
     @Override
+    
+      /**
+     * @brief Metodo che determina l'uguaglianza tra due oggetti Contatto.
+     * 
+     * Due contatti sono considerati uguali se nome, cognome, numeri, email e note coincidono.
+     * 
+     * @param o L'oggetto da confrontare.
+     * @return True se gli oggetti sono uguali, false se sono diversi.
+     */
 public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -186,13 +200,12 @@ public boolean equals(Object o) {
            Objects.equals(note, contatto.note);
 }
 
-/**
- * @brief Calcola il codice hash per l'oggetto corrente.
- * 
- * Questo metodo sovrascrive il metodo `hashCode` per generare un codice hash univoco basato su valori nome, cognome, numeri, emails e note.
- *
- * @return Un valore intero che rappresenta il codice hash dell'oggetto corrente.
- */
+
+   /**
+     * @brief Calcola l'hash code dell'oggetto Contatto.
+     * 
+     * @return L'hash code basato su nome, cognome, numeri, email e note.
+     */
 @Override
 public int hashCode() {
     return Objects.hash(nome, cognome, numeri, emails, note);
