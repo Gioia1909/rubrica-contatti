@@ -133,10 +133,12 @@ public class MenuPreferitiController implements Initializable {
      * @param[in] location URL di localizzazione del file FXML.
      * @param[in] resources Risorse per la localizzazione.
      */
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Rimuovi duplicati utilizzando un HashSet
-        preferitiList = FXCollections.observableArrayList(new HashSet<>(SalvaCaricaPreferiti.caricaRubricaPreferiti()));
+        preferitiList = FXCollections.observableArrayList(SalvaCaricaPreferiti.caricaRubricaPreferiti());
         listViewPreferiti.setItems(preferitiList);
+        ordinaContatti();
         configurePreferitiListView();
 
         System.out.println("Preferiti caricati senza duplicati: " + preferitiList);
@@ -168,7 +170,7 @@ public class MenuPreferitiController implements Initializable {
      * contatto.
      *
      * Questo metodo carica un file FXML per il popup, crea una nuova finestra
-     * (`Stage`)
+     * (Stage)
      *
      * La finestra popup blocca l'interazione con altre finestre finché non
      * viene chiusa.
@@ -218,6 +220,7 @@ public class MenuPreferitiController implements Initializable {
             //debug
             System.out.println("ContactList: " + contactList);
             System.out.println("PreferitiList: " + preferitiList);
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SelezionaContattiDaRubrica.fxml"));
             //si crea un oggetto FXMLLoader per caricare il file FXML, con getClass e Resource prendiamo il file 
 
@@ -238,7 +241,7 @@ public class MenuPreferitiController implements Initializable {
             popupStage.initModality(Modality.APPLICATION_MODAL); // Blocca interazioni con altre finestre
             popupStage.show();
             //scene.setRoot(root); // Imposta il nuovo root, sostituisce la scena corrente con l'altra
-
+            ordinaContatti();
         } else {
             System.out.println("La lista dei contatti non è disponibile.");
         }
@@ -247,7 +250,46 @@ public class MenuPreferitiController implements Initializable {
 
     @FXML
     private void searchAction(ActionEvent event) {
+        String searchQuery = searchBar.getText().toLowerCase().trim();
+
+        if (searchQuery.isEmpty()) {
+            listViewPreferiti.setItems(preferitiList);       
+            return;
+        }
+        //Filtra la lista basandosi sul nome, cognome o numeri di telefono
+        ObservableList<Contatto> filteredList = FXCollections.observableArrayList();    //lista che contiene i contatti con i criteri di ricerca inseriti
+        for (Contatto contatto : preferitiList) {
+            String nomePulito = contatto.getNome().trim().toLowerCase();
+            String cognomePulito = contatto.getCognome().trim().toLowerCase();
+            
+            if(nomePulito.contains(searchQuery) || cognomePulito.contains(searchQuery)){
+                filteredList.add(contatto);
+            }
+                
+                for (String numero : contatto.getNumeri()){
+                    if(numero.contains(searchQuery)){
+                        filteredList.add(contatto);
+                    }
+                }
+        }
+        //Aggiorna la ListView con la lista filtrata 
+        listViewPreferiti.setItems(filteredList);
+
+        if (filteredList.isEmpty()) {
+            showErrorDialog("Errore", "Nessun contatto trovato");
+        }
         
+    }
+    
+    private void showErrorDialog(String titolo, String messaggio) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titolo);
+        alert.setContentText(messaggio);
+        alert.showAndWait();
+    }
+    
+    private void ordinaContatti(){
+        FXCollections.sort(preferitiList);
     }
     
     
