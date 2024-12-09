@@ -72,6 +72,15 @@
                                 </ImageView>
                      </graphic>
                         </Button>
+                  <Button fx:id="delButton" layoutX="49.0" layoutY="94.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="36.0" prefWidth="48.0">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@can.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                     </children>
                 </AnchorPane>
             </items>

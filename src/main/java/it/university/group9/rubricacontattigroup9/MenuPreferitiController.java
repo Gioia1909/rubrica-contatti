@@ -84,6 +84,8 @@ public class MenuPreferitiController implements Initializable {
     private Label noteField;
     @FXML
     private Label defaultText;
+    @FXML
+    private Button addPrefButton1;
 
     /**
      * @brief Cambia la scena all'interfaccia utente.
