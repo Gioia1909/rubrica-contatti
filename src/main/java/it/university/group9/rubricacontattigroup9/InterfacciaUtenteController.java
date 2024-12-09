@@ -118,9 +118,9 @@ public class InterfacciaUtenteController implements Initializable {
      *
      * Questo metodo viene eseguito automaticamente quando l'interfaccia utente
      * viene caricata. Carica la lista dei contatti utilizzando il metodo
-     * `SalvaCaricaRubrica.caricaRubrica()`. Configura la `ListView` per
+     * SalvaCaricaRubrica.caricaRubrica(). Configura la ListView per
      * visualizzare correttamente i contatti, mostrando solo il cognome e il
-     * nome. Aggiunge un listener alla `ListView` per reagire alla selezione di
+     * nome. Aggiunge un listener alla ListView per reagire alla selezione di
      * un contatto, aggiornando i campi di testo con i dettagli del contatto
      * selezionato
      *
@@ -250,10 +250,10 @@ public class InterfacciaUtenteController implements Initializable {
      *
      * Questo metodo recupera e restituisce la lista dei contatti memorizzati
      * nel sistema. La lista è rappresentata come una collezione di oggetti del
-     * tipo `Contatto`. Se non sono presenti contatti, viene restituita una
+     * tipo Contatto. Se non sono presenti contatti, viene restituita una
      * lista vuota.
      *
-     * @return Una lista di oggetti `Contatto`, che rappresenta tutti i contatti
+     * @return Una lista di oggetti Contatto, che rappresenta tutti i contatti
      * disponibili.
      */
     public List<Contatto> getListaContatti() {
@@ -279,10 +279,10 @@ public class InterfacciaUtenteController implements Initializable {
     /**
      * @brief Ordina la lista dei contatti in base al cognome e nome.
      *
-     * Questo metodo ordina la lista `contactList` di contatti prima per
+     * Questo metodo ordina la lista contactList di contatti prima per
      * cognome, e in caso di parità, per nome. L'ordinamento è fatto in ordine
-     * crescente, utilizzando il metodo `compareTo` definito nella classe
-     * `Contatto`.
+     * crescente, utilizzando il metodo compareTo definito nella classe
+     * Contatto.
      *
      * @post La lista dei contatti è ordinata correttamente.
      */
@@ -333,6 +333,7 @@ public class InterfacciaUtenteController implements Initializable {
         InterfacciaAggiungiController aggiungiController = loader.getController();
         // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
         aggiungiController.setInterfacciaUtenteController(this);
+        aggiungiController.initializeForAdd(contactList);
 
         // Crea una nuova scena e visualizzala
         Scene scene = new Scene(root);
@@ -370,7 +371,7 @@ public class InterfacciaUtenteController implements Initializable {
      * barra di ricerca.
      *
      * Questo metodo filtra la lista dei contatti in base al testo inserito
-     * nella barra di ricerca `textBar`. La ricerca viene effettuata
+     * nella barra di ricerca textBar. La ricerca viene effettuata
      * considerando il nome, il cognome e il numero di telefono del contatto.
      *
      * @pre La lista di contatti contactList è già popolata.
@@ -425,7 +426,7 @@ public class InterfacciaUtenteController implements Initializable {
         
         if (contattoSelezionato != null) {  //Verifica se un contatto è stato selezionato. Se null, significa che l'utente non ha selezionato nulla, quindi non deve procedere.
             // Carica la scena di modifica contatto
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaModificaContatto.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungi.fxml"));
             //FXMLLoader: Classe per caricare i file FXML.
             //getClass().getResource(...): Trova il file InterfacciaModificaContatto.fxml nel percorso delle risorse.
             Parent root = loader.load();    
@@ -434,12 +435,12 @@ public class InterfacciaUtenteController implements Initializable {
             //Parent root: Il nodo radice della nuova scena. Tutti i componenti grafici dell'interfaccia vengono aggiunti come figli di questo nodo.
 
             // Ottieni il controller della scena di modifica
-            InterfacciaModificaContattoController modificaController = loader.getController();  
+            InterfacciaAggiungiController modificaController = loader.getController();  
             //modificaController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
             //getController(): Ottiene il controller associato al file FXML appena caricato
 
             // Passa il contatto selezionato al controller della scena di modifica
-            modificaController.initialize(contattoSelezionato, contactList);
+            modificaController.initializeForEdit(contattoSelezionato, contactList);
 
             // Mostra la scena
             Scene scene = new Scene(root);
