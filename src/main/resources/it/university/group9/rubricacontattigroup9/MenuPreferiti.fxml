@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="565.0" prefWidth="921.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.MenuPreferitiController">
+<VBox alignment="CENTER" prefHeight="565.0" prefWidth="921.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.MenuPreferitiController">
     <stylesheets>
         <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
     </stylesheets>
@@ -42,7 +42,7 @@
                             </graphic>
                         </Button>
                         <ListView fx:id="listViewPreferiti" layoutX="15.0" layoutY="100.0" prefHeight="300.0" prefWidth="320.0" />
-                        <Button fx:id="secondaryButton" layoutX="15.0" layoutY="420.0" onAction="#switchToInterfaccia" text="Principale" prefHeight="27.0" prefWidth="120.0" />
+                        <Button fx:id="secondaryButton" layoutX="15.0" layoutY="420.0" onAction="#switchToInterfaccia" prefHeight="27.0" prefWidth="120.0" text="Principale" />
                     </children>
                 </AnchorPane>
                 <!-- Pannello destro -->

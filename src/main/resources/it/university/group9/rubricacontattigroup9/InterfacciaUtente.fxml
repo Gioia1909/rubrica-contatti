@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -13,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="565.0" prefWidth="921.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaUtenteController">
+<VBox alignment="CENTER" prefHeight="565.0" prefWidth="921.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaUtenteController">
     <stylesheets>
     <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
 </stylesheets>
@@ -45,6 +52,19 @@
                                                       </ImageView>
                      </graphic>
                   </Button>
+                  <Text layoutX="13.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="167.205078125">
+                     <font>
+                        <Font name="Georgia" size="24.0" />
+                     </font>
+                     <effect>
+                        <ColorInput paint="#ee0707" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="199.205078125">
+                     <font>
+                        <Font name="Georgia Bold" size="24.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="414.0">
