@@ -419,24 +419,33 @@ public class InterfacciaUtenteController implements Initializable {
     @FXML
     private void switchToModifyContact() throws IOException {
         // Ottieni il contatto selezionato
-        Contatto contattoSelezionato = myListView.getSelectionModel().getSelectedItem();
+        Contatto contattoSelezionato = myListView.getSelectionModel().getSelectedItem();    
+        //getSelectionModel(): Ottiene il modello di selezione associato alla lista, che gestisce la selezione degli elementi: dà accesso a tutte le informazioni sulla selezione.
+        //getSelectedItem(): Ritorna l'elemento attualmente selezionato dall'utente nella ListView.     
         
-        if (contattoSelezionato != null) {
+        if (contattoSelezionato != null) {  //Verifica se un contatto è stato selezionato. Se null, significa che l'utente non ha selezionato nulla, quindi non deve procedere.
             // Carica la scena di modifica contatto
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaModificaContatto.fxml"));
-            Parent root = loader.load();
+            //FXMLLoader: Classe per caricare i file FXML.
+            //getClass().getResource(...): Trova il file InterfacciaModificaContatto.fxml nel percorso delle risorse.
+            Parent root = loader.load();    
+            //loader: Istanza del loader che si occuperà di caricare l'interfaccia specificata.
+            //load(): Metodo che carica il file FXML e crea una gerarchia di nodi per l'interfaccia.
+            //Parent root: Il nodo radice della nuova scena. Tutti i componenti grafici dell'interfaccia vengono aggiunti come figli di questo nodo.
 
             // Ottieni il controller della scena di modifica
-            InterfacciaModificaContattoController modificaController = loader.getController();
+            InterfacciaModificaContattoController modificaController = loader.getController();  
+            //modificaController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
+            //getController(): Ottiene il controller associato al file FXML appena caricato
 
             // Passa il contatto selezionato al controller della scena di modifica
             modificaController.initialize(contattoSelezionato, contactList);
 
             // Mostra la scena
             Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
+            Stage stage = new Stage();      //new Stage(): Crea una finestra separata dall'attuale.
+            stage.setScene(scene);          //Imposta la scena appena creata nella finestra (Stage).
+            stage.show();                           //Mostra la nuova finestra all'utente.
         }
     }
 
