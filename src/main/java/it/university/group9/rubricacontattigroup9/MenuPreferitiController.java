@@ -1,3 +1,11 @@
+/**
+ * @file MenuPreferitiController.java
+ * @brief Controller per la gestione del menu dei contatti preferiti.
+ * 
+ * @author Gruppo09
+ * @date 05/12/2024
+ */
+
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
@@ -19,13 +27,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-/**
- * @file MenuPreferitiController.java
- * @brief Controller per la gestione del menu dei contatti preferiti.
- * 
- * @author Gruppo09
- * @date 05/12/2024
- */
 public class MenuPreferitiController implements Initializable {
     
     /**
@@ -92,6 +93,10 @@ public class MenuPreferitiController implements Initializable {
     
     /**
      * @brief Imposta la lista dei contatti.
+     * 
+     * 
+     * @pre La lista di contatti fornita deve essere valida e non nulla.
+     * @post La lista dei contatti viene impostata correttamente nel controller.
      * 
      * @param[in] contactList La lista di contatti da impostare.
      */

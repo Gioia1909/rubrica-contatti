@@ -1,8 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+/**
+ * @file SelezionaContattiDaRubricaController.java
+ * @brief Controller per la selezione di contatti da una rubrica.
+ * 
+ * Questa classe gestisce l'interfaccia utente e la logica per selezionare contatti dalla rubrica e aggiungerli ai preferiti.
+ * Fornisce funzionalità di ricerca dinamica e gestione delle liste di contatti e preferiti.
+ * 
+ * @author Group09
+ * @date 05/12/2024
  */
+
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
@@ -23,16 +30,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-/**
- * @file SelezionaContattiDaRubricaController.java
- * @brief Controller per la selezione di contatti da una rubrica.
- * 
- * Questa classe gestisce l'interfaccia utente e la logica per selezionare contatti dalla rubrica e aggiungerli ai preferiti.
- * Fornisce funzionalità di ricerca dinamica e gestione delle liste di contatti e preferiti.
- * 
- * @author Group09
- * @date 05/12/2024
- */
 public class SelezionaContattiDaRubricaController implements Initializable {
     /**
      * @brief Campo di testo per la barra di ricerca.

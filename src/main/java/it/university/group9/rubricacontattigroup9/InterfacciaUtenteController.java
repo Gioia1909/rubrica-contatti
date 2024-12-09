@@ -1,3 +1,10 @@
+/**
+ * @file InterfacciaUtenteController.java
+ * @brief Controller per gestire l'interfaccia utente dell'applicazione.
+ * @date 05/12/2024
+ * @author Gruppo09
+ */
+
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
@@ -12,12 +19,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-/**
- * @file InterfacciaUtenteController.java
- * @brief Controller per gestire l'interfaccia utente dell'applicazione.
- * @date 05/12/2024
- * @author Gruppo09
- */
+
 public class InterfacciaUtenteController implements Initializable {
     /** @name Componenti FXML */
     ///@{
@@ -67,6 +69,8 @@ public class InterfacciaUtenteController implements Initializable {
         myListView.setItems(contactList);
         configureListView();
     }
+    
+    
 
     private void configureListView() {
         myListView.setCellFactory(listView -> new ListCell<Contatto>() {
@@ -150,6 +154,8 @@ public class InterfacciaUtenteController implements Initializable {
      *
      *
      * @param[in] contactList Lista osservabile dei contatti.
+     * @post La lista di contatti è stata aggiornata nel controller e la ListView è stata aggiornata con i nuovi contatti.
+     * 
      */
     public void setContactList(ObservableList<Contatto> contactList) {
         this.contactList = contactList;
@@ -164,6 +170,8 @@ public class InterfacciaUtenteController implements Initializable {
      * cognome, e in caso di parità, per nome. L'ordinamento è fatto in ordine
      * crescente, utilizzando il metodo `compareTo` definito nella classe
      * `Contatto`.
+     * 
+     *@post La lista dei contatti è ordinata correttamente.
      */
     public void ordinaContatti() {
         // Utilizza il metodo sort() per ordinare direttamente la lista
@@ -174,6 +182,7 @@ public class InterfacciaUtenteController implements Initializable {
      * @brief Passa alla schermata dei contatti preferiti.
      *
      * @throws IOException Se non riesce a caricare la nuova schermata.
+     * @see MenuPreferitiController
      */
     @FXML
     private void switchToFavorite() throws IOException {
@@ -226,6 +235,8 @@ public class InterfacciaUtenteController implements Initializable {
      * visualizzata nell'interfaccia utente. Dopo aver rimosso il contatto, il
      * metodo salva la lista aggiornata nel file per persistente i dati.
      *
+     * @pre Il contatto selezionato deve esistere nella lista.
+     * @post Il contatto selezionato è stato rimosso dalla lista dei contatti e la lista aggiornata è stata salvata nel file.
      *
      * @param[in] event Evento del mouse che ha attivato l'azione.
      */
@@ -240,14 +251,8 @@ public class InterfacciaUtenteController implements Initializable {
         }
     }
     
-    /**
-     * @brief metodo per mostrare i banner di errore
-     * 
-     * @param[in] Il titolo dell'errore
-     * @param[in] Messaggio di errore
-     * 
-     * @return Mostra l'alert
-     * 
+    /*
+     * mostra i banner di errore
      */
     
     private void showErrorDialog(String titolo, String messaggio){

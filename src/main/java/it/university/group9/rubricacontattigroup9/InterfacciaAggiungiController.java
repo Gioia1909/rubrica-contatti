@@ -27,13 +27,6 @@ import javafx.scene.input.*;
 import javafx.stage.Stage;
 
 
-/**
- * @class InterfacciaAggiungiController
- * @brief Controller per la gestione dell'interfaccia grafica di aggiunta contatti.
- * 
- *  @invariant Gli oggetti creati tramite questa classe devono mantenere una coerenza interna
- *            tra i campi di input forniti e le liste della rubrica aggiornate.
- */
 public class InterfacciaAggiungiController implements Initializable {
 /**
      * @brief Riferimento al controller dell'interfaccia principale.
