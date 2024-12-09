@@ -22,6 +22,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -192,12 +193,14 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         if (selectedContact != null) {
         if (!rubricaPreferiti.contains(selectedContact)) {
             rubricaPreferiti.add(selectedContact);
+            
             System.out.println("Aggiunto ai preferiti: " + selectedContact.getNome());
+            FXCollections.sort(rubricaPreferiti); // Ordina la lista preferiti
             
             // Salva il file
             SalvaCaricaPreferiti.salvaRubricaPreferiti(rubricaPreferiti);
         } else {
-            System.out.println("Il contatto è già nei preferiti: " + selectedContact.getNome());
+            showErrorDialog("Contatto Presente", selectedContact + " è già nei Preferiti.");
         }
     } else {
         System.out.println("Nessun contatto selezionato.");
@@ -216,6 +219,13 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     private void handleClosePopup(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+    
+    private void showErrorDialog(String titolo, String messaggio) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titolo);
+        alert.setContentText(messaggio);
+        alert.showAndWait();
     }
 
     /*@FXML Questo non serve se la ricerca è dinamica

@@ -29,12 +29,15 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="353.0">
                <children>
-                  <TextField fx:id="textBar" layoutX="15.0" layoutY="53.0" prefHeight="27.0" prefWidth="211.0" promptText="Cerca contatto..." />
                   <ListView fx:id="myListView" editable="true" layoutX="15.0" layoutY="100.0" prefHeight="322.0" prefWidth="306.0" />
+<<<<<<< HEAD
                   <Button fx:id="searchButton" layoutX="242.0" layoutY="48.0" mnemonicParsing="false" onAction="#searchContact" prefHeight="27.0" prefWidth="30.0">
+=======
+                  <Button fx:id="searchButton" layoutX="242.0" layoutY="48.0" mnemonicParsing="false" onAction="#searchContact" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="57.0">
+>>>>>>> 7c0cba538d18fa648814f306192b020beba10cb4
                      
                                              <graphic>
-                        <ImageView fx:id="searchButtonImage" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="searchButtonImage" fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@lente.png" />
                            </image>
@@ -42,9 +45,15 @@
                      </graphic>
                   </Button>
                   <Button fx:id="favoriteButton" layoutX="97.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#switchToFavorite" prefHeight="26.0" prefWidth="118.0" text="Menu Preferiti" />
+<<<<<<< HEAD
                   <Button fx:id="viewAddButton" layoutX="289.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#switchToAdd" prefHeight="27.0" prefWidth="30.0">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+=======
+                  <Button fx:id="viewAddButton" layoutX="272.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#switchToAdd" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="52.0">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> 7c0cba538d18fa648814f306192b020beba10cb4
                            <image>
                               <Image url="@add.png" />
                            </image>
@@ -60,11 +69,12 @@
                         <ColorInput paint="#ee0707" />
                      </effect>
                   </Text>
-                  <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="199.205078125">
+                  <Text layoutX="15.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="199.205078125" AnchorPane.topAnchor="23.5">
                      <font>
                         <Font name="Georgia Bold" size="24.0" />
                      </font>
                   </Text>
+                  <TextField fx:id="searchBar" layoutX="14.0" layoutY="57.0" prefWidth="219.0" promptText="Cerca contatto..." />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="414.0">
