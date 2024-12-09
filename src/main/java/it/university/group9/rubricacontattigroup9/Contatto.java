@@ -201,11 +201,13 @@ public boolean equals(Object o) {
 }
 
 
-   /**
-     * @brief Calcola l'hash code dell'oggetto Contatto.
-     * 
-     * @return L'hash code basato su nome, cognome, numeri, email e note.
-     */
+ /**
+ * @brief Calcola il codice hash per l'oggetto corrente.
+ * 
+ * Questo metodo sovrascrive il metodo `hashCode` per generare un codice hash univoco basato su valori nome, cognome, numeri, emails e note.
+ *
+ * @return Un valore intero che rappresenta il codice hash dell'oggetto corrente.
+ */
 @Override
 public int hashCode() {
     return Objects.hash(nome, cognome, numeri, emails, note);
