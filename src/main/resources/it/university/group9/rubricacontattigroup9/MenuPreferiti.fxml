@@ -18,7 +18,7 @@
                 <!-- Pannello sinistro -->
                 <AnchorPane prefHeight="478.0" prefWidth="353.0">
                     <children>
-                        <Text layoutX="15.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferiti" wrappingWidth="152.21630859375">
+                        <Text layoutX="16.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferiti" wrappingWidth="152.21630859375">
                             <font>
                                 <Font name="Georgia Bold" size="24.0" />
                             </font>
@@ -43,6 +43,16 @@
                         </Button>
                         <ListView fx:id="listViewPreferiti" layoutX="15.0" layoutY="100.0" prefHeight="300.0" prefWidth="320.0" />
                         <Button fx:id="secondaryButton" layoutX="15.0" layoutY="420.0" onAction="#switchToInterfaccia" prefHeight="27.0" prefWidth="120.0" text="Principale" />
+                  <Button fx:id="searchButton" layoutX="185.0" layoutY="64.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="27.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@lente.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="searchBar" layoutX="16.0" layoutY="71.0" />
                     </children>
                 </AnchorPane>
                 <!-- Pannello destro -->
