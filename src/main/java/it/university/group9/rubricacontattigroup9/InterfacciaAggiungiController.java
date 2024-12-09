@@ -26,9 +26,13 @@ import javafx.scene.control.Alert.*;
 import javafx.scene.input.*;
 import javafx.stage.Stage;
 
+
 /**
  * @class InterfacciaAggiungiController
  * @brief Controller per la gestione dell'interfaccia grafica di aggiunta contatti.
+ * 
+ *  @invariant Gli oggetti creati tramite questa classe devono mantenere una coerenza interna
+ *            tra i campi di input forniti e le liste della rubrica aggiornate.
  */
 public class InterfacciaAggiungiController implements Initializable {
 /**
@@ -54,6 +58,7 @@ public class InterfacciaAggiungiController implements Initializable {
     /**
      * @brief Imposta il riferimento al controller dell'interfaccia principale.
      * @param[in] controller Riferimento al controller principale.
+     * @post Viene aggiornato il riferimento al controller principale.
      */
        public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
         this.interfacciaUtenteController = controller;
@@ -67,6 +72,9 @@ public class InterfacciaAggiungiController implements Initializable {
      * 
      * @param[in] event Evento del mouse che ha scatenato l'azione.
      * @throws IOException Se non è possibile caricare la scena.
+     * @post La finestra corrente viene chiusa e l'applicazione torna alla schermata principale.
+     * @see InterfacciaUtenteController
+     * 
      */
      @FXML
     void switchToInterfaccia(ActionEvent event) throws IOException {
@@ -84,7 +92,7 @@ public class InterfacciaAggiungiController implements Initializable {
      * la rubrica sia nella lista in memoria che nel file di salvataggio.
      * 
      * @pre I parametri da inserire nel contatto non devono essere vuoti 
-     * @post Viene aggiunto un contatto in rubrica
+     * @post Viene aggiunto un contatto nella lista
      *
      * @param[in] event Evento del mouse che ha scatenato l'azione.
      *
@@ -93,6 +101,8 @@ public class InterfacciaAggiungiController implements Initializable {
      * @throws CognomeNonValidoException Se il cognome fornito non è valido.
      * @throws NumeroNonValidoException Se uno dei numeri di telefono forniti non è valido.
      * @throws EmailNonValidaException Se una delle email fornite non è valida.
+     * 
+     *  @see NomeValidator, CognomeValidator, NumeroValidator, EmailValidator, SalvaCaricaRubrica
      * 
      */
     @FXML
