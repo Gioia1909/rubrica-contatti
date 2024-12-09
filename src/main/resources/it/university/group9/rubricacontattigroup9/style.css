@@ -8,10 +8,10 @@ AnchorPane {
 
 
 #searchButton {
-    -fx-background-color: transparent; /* Rimuove il colore di sfondo */
-    -fx-border-color: transparent;    /* Rimuove il bordo */
-    -fx-padding: 0;                   /* Rimuove i margini interni */
+ /*   -fx-border-color: transparent;     Rimuove il bordo */
+  /*  -fx-padding: 0;                    Rimuove i margini interni */
     -fx-cursor: hand;                 /* Cambia il cursore al passaggio */
+    -fx-background-color: transparent; /* Rimuove il colore di sfondo */
 }
 
 #viewAddButton {
@@ -41,6 +41,16 @@ AnchorPane {
 #addPrefButton{
     -fx-cursor: hand;
     -fx-background-color: transparent;
+}
+
+#deleteButton{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}
+
+#modifyButton{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;    
 }
 
 .dati{

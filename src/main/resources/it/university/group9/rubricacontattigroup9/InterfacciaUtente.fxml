@@ -31,7 +31,7 @@
                <children>
                   <TextField fx:id="textBar" layoutX="15.0" layoutY="53.0" prefHeight="27.0" prefWidth="211.0" promptText="Cerca contatto..." />
                   <ListView fx:id="myListView" editable="true" layoutX="15.0" layoutY="100.0" prefHeight="322.0" prefWidth="306.0" />
-                  <Button fx:id="searchButton" layoutX="242.0" layoutY="48.0" onAction="#searchContact" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0">
+                  <Button fx:id="searchButton" layoutX="242.0" layoutY="48.0" mnemonicParsing="false" onAction="#searchContact" prefHeight="27.0" prefWidth="30.0">
                      
                                              <graphic>
                         <ImageView fx:id="searchButtonImage" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -42,14 +42,14 @@
                      </graphic>
                   </Button>
                   <Button fx:id="favoriteButton" layoutX="97.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#switchToFavorite" prefHeight="26.0" prefWidth="118.0" text="Menu Preferiti" />
-                  <Button fx:id="viewAddButton" layoutX="281.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#switchToAdd" prefHeight="29.0" prefWidth="30.0">
+                  <Button fx:id="viewAddButton" layoutX="289.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#switchToAdd" prefHeight="27.0" prefWidth="30.0">
                      <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@add.png" />
                            </image>
                           
-                                                      </ImageView>
+                                                            </ImageView>
                      </graphic>
                   </Button>
                   <Text layoutX="13.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="167.205078125">
@@ -77,7 +77,22 @@
                   <Label fx:id="email1Field" layoutX="249.0" layoutY="231.0" styleClass="dati" visible="false" />
                   <Label fx:id="email2Field" layoutX="249.0" layoutY="274.0" styleClass="dati" visible="false" />
                   <Label fx:id="email3Field" layoutX="249.0" layoutY="320.0" styleClass="dati" visible="false" />
-                  <Button fx:id="deleteButton" layoutX="383.0" layoutY="427.0" mnemonicParsing="false" onMouseClicked="#deleteContact" text="Elimina" visible="false" />
+                  <Button fx:id="deleteButton" layoutX="383.0" layoutY="427.0" mnemonicParsing="false" onMouseClicked="#deleteContact" visible="false">
+                     <graphic>
+                        <ImageView id="deleteImageView" fx:id="deleteImageView" fitHeight="35.0" fitWidth="58.0" onMouseClicked="#deleteContact" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="modifyButton" layoutX="163.0" layoutY="427.0" mnemonicParsing="false" onMouseClicked="#switchToModifyContact" visible="false">
+                     <graphic>
+                        <ImageView id="modifyImageView" fx:id="modifyImageView" fitHeight="27.0" fitWidth="66.0" onMouseClicked="#switchToModifyContact" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Label fx:id="noteField" layoutX="135.0" layoutY="370.0" styleClass="dati" visible="false" />
                   <Label fx:id="defaultText" layoutX="186.0" layoutY="228.0" text="Seleziona un contatto">
                      <font>
