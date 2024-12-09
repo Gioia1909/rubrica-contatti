@@ -23,7 +23,7 @@
       <TextField fx:id="email2Field" layoutX="373.0" layoutY="219.0" promptText="Inserisci email 2..." />
       <TextField fx:id="number3Field" layoutX="77.0" layoutY="282.0" promptText="Inserisci numero 3..." />
       <TextField fx:id="email3Field" layoutX="373.0" layoutY="282.0" promptText="Inserisci email 3..." />
-      <Label layoutX="251.0" layoutY="62.0" text="Aggiungi Contatto" />
+      <Label layoutX="251.0" layoutY="62.0" text="Informazioni Contatto" />
       <TextField fx:id="noteField" layoutX="225.0" layoutY="333.0" promptText="Inserisci note..." />
       <Button fx:id="cancelButton" layoutX="51.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToInterfaccia" text="Annulla" />
       <Button fx:id="addButton" layoutX="501.0" layoutY="30.0" mnemonicParsing="false" onAction="#addContact" text="Aggiungi" />
