@@ -1,11 +1,10 @@
 /**
  * @file MenuPreferitiController.java
  * @brief Controller per la gestione del menu dei contatti preferiti.
- * 
+ *
  * @author Gruppo09
  * @date 05/12/2024
  */
-
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
@@ -26,88 +25,111 @@ import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
 public class MenuPreferitiController implements Initializable {
-    
+
     /**
      * @brief Lista grafica dei contatti preferiti
      */
     @FXML
     private ListView<Contatto> listViewPreferiti;
-    
+
     /**
      * @brief Bottone per la modifica
      */
     @FXML
     private Button editButton;
-    
+
     /**
      * @brief Bottone per aggiungere un contatto ai preferiti
      */
     @FXML
     private Button addPrefButton;
-    
+
     /**
      * @brief Bottone secondario
      */
     @FXML
     private Button secondaryButton;
-    
+
     /**
      * @brief Lista dei contatti preferiti
      */
     private ObservableList<Contatto> preferitiList;
-    
+
     /**
      * @brief Lista di tutti i contatti
      */
     private ObservableList<Contatto> contactList; // Riferimento alla lista utenti
-    
+    @FXML
+    private Button searchButton;
+    @FXML
+    private TextField searchBar;
+    @FXML
+    private Label nameField;
+    @FXML
+    private Label surnameField;
+    @FXML
+    private Label number1Field;
+    @FXML
+    private Label number2Field;
+    @FXML
+    private Label number3Field;
+    @FXML
+    private Label email1Field;
+    @FXML
+    private Label email2Field;
+    @FXML
+    private Label email3Field;
+    @FXML
+    private Label noteField;
+    @FXML
+    private Label defaultText;
+
     /**
      * @brief Cambia la scena all'interfaccia utente.
-     * 
+     *
      * @param[in] event L'evento che ha generato l'azione di switch.
      * @throws IOException Se il caricamento della scena fallisce.
      */
     @FXML
     private void switchToInterfaccia() {
         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaUtente.fxml"));
-        Parent root = loader.load();
-        
-        // Ottieni il controller
-        InterfacciaUtenteController controller = loader.getController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaUtente.fxml"));
+            Parent root = loader.load();
 
-        // Passa la lista di contatti al nuovo controller
-        controller.setContactList(this.contactList);
+            // Ottieni il controller
+            InterfacciaUtenteController controller = loader.getController();
 
-        // Cambia la scena
-        Stage stage = (Stage) listViewPreferiti.getScene().getWindow();
-        stage.setScene(new Scene(root));
-    } catch (IOException e) {
-        System.err.println("Errore durante il caricamento dell'interfaccia utente: " + e.getMessage());
-        e.printStackTrace();
+            // Passa la lista di contatti al nuovo controller
+            controller.setContactList(this.contactList);
+
+            // Cambia la scena
+            Stage stage = (Stage) listViewPreferiti.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            System.err.println("Errore durante il caricamento dell'interfaccia utente: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
-    }
-    
-    
+
     /**
      * @brief Imposta la lista dei contatti.
-     * 
-     * 
+     *
+     *
      * @pre La lista di contatti fornita deve essere valida e non nulla.
      * @post La lista dei contatti viene impostata correttamente nel controller.
-     * 
+     *
      * @param[in] contactList La lista di contatti da impostare.
      */
     public void setContactList(ObservableList<Contatto> contactList) {
         this.contactList = contactList;
     }
-    
+
     /**
-     * @brief Inizializza il controller e configura la lista dei preferiti nell'elemento ListView.
-     * Configura una Label per la visualizzazione delle celle della lista, chiamando la funzione creaLabelContatto.
-     * 
+     * @brief Inizializza il controller e configura la lista dei preferiti
+     * nell'elemento ListView. Configura una Label per la visualizzazione delle
+     * celle della lista, chiamando la funzione creaLabelContatto.
+     *
      * @param[in] location URL di localizzazione del file FXML.
      * @param[in] resources Risorse per la localizzazione.
      */
@@ -135,29 +157,31 @@ public class MenuPreferitiController implements Initializable {
         });
     }
 
-    
 //Non sappiamo se la implementeremo
-     
     @FXML
     private void editAction(ActionEvent event) {
+    
     }
 
-    
-   /**
-    * @brief Gestisce l'apertura di una finestra popup per la selezione di un contatto.
-    * 
-    * Questo metodo carica un file FXML per il popup, crea una nuova finestra (`Stage`) 
-    *  
-    * La finestra popup blocca l'interazione con altre finestre finché non viene chiusa. 
-    * 
-    *
-    * @pre Il file FXML "SelezionaContattiDaRubrica.fxml" deve essere presente e valido.
-    * @post Una nuova finestra popup viene aperta, e l'utente non può interagire con altre finestre fino alla chiusura del popup.
-    * 
-    * @throws IOException Se il file FXML non può essere caricato o se si verifica un errore durante la creazione della finestra.
-    */
-    
-    @FXML
+    /**
+     * @brief Gestisce l'apertura di una finestra popup per la selezione di un
+     * contatto.
+     *
+     * Questo metodo carica un file FXML per il popup, crea una nuova finestra
+     * (`Stage`)
+     *
+     * La finestra popup blocca l'interazione con altre finestre finché non
+     * viene chiusa.
+     *
+     *
+     * @pre Il file FXML "SelezionaContattiDaRubrica.fxml" deve essere presente
+     * e valido.
+     * @post Una nuova finestra popup viene aperta, e l'utente non può
+     * interagire con altre finestre fino alla chiusura del popup.
+     *
+     * @throws IOException Se il file FXML non può essere caricato o se si
+     * verifica un errore durante la creazione della finestra.
+     */
     private void handleOpenPopup() {
         try {
             // Carica il file FXML per il popup
@@ -176,37 +200,35 @@ public class MenuPreferitiController implements Initializable {
         }
     }
 
-     /**
+    /**
      * @brief Aggiunge un contatto alla lista dei preferiti.
-     * 
-     * @pre
-     * La lista di Contatti non deve essere vuota.
-     * @pre
-     * L'elemento da aggiungere deve essere presente nella rubrica principale.
-     * @post 
-     * L'elemento aggiunto deve essere visto nella rubrica preferiti.
+     *
+     * @pre La lista di Contatti non deve essere vuota.
+     * @pre L'elemento da aggiungere deve essere presente nella rubrica
+     * principale.
+     * @post L'elemento aggiunto deve essere visto nella rubrica preferiti.
      * @param[in] event L'evento che ha generato l'azione di aggiunta.
      * @throws IOException Se il caricamento del popup fallisce.
-     * @throws ContattoGiaAggiuntoException Se il contatto è già presente nei preferiti
+     * @throws ContattoGiaAggiuntoException Se il contatto è già presente nei
+     * preferiti
      */
     @FXML
     private void addPrefButton(ActionEvent event) throws IOException, ContattoGiaAggiuntoException {
-        if(contactList!=null){
+        if (contactList != null) {
             //debug
-             System.out.println("ContactList: " + contactList);
-             System.out.println("PreferitiList: " + preferitiList);
+            System.out.println("ContactList: " + contactList);
+            System.out.println("PreferitiList: " + preferitiList);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SelezionaContattiDaRubrica.fxml"));
             //si crea un oggetto FXMLLoader per caricare il file FXML, con getClass e Resource prendiamo il file 
-            
+
             Parent root = loader.load(); //legge il contenuto del file FXML e ritorna un oggetto parent come scena
-            
+
             //creo un oggetto SelezionaContattiDaRubrica per passargli qualcosa nel "costruttore" --> setContacts
             SelezionaContattiDaRubricaController popupController = loader.getController();
             //così accediamo ai metodi 
-            
+
             popupController.setContacts(contactList, preferitiList); //passiamo la lista della rubrica e quella dei preferiti da aggiornare
-            
-            
+
             Scene scene = addPrefButton.getScene(); // Ottieni la scena corrente dal pulsante che ha generato l'azione
             // Crea una nuova finestra (Stage) per il popup
             Stage popupStage = new Stage();
@@ -214,14 +236,20 @@ public class MenuPreferitiController implements Initializable {
             popupStage.setScene(new Scene(root, 336, 400)); // Imposta le dimensioni precise
             popupStage.setResizable(false); // Blocca il ridimensionamento
             popupStage.initModality(Modality.APPLICATION_MODAL); // Blocca interazioni con altre finestre
-            popupStage.show(); 
+            popupStage.show();
             //scene.setRoot(root); // Imposta il nuovo root, sostituisce la scena corrente con l'altra
-            
-        }else{
+
+        } else {
             System.out.println("La lista dei contatti non è disponibile.");
         }
-       
+
+    }
+
+    @FXML
+    private void searchAction(ActionEvent event) {
+        
     }
     
     
+
 }
