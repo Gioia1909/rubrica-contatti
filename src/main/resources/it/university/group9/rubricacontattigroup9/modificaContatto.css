@@ -1,0 +1,50 @@
+/* Stile di sfondo per il root */
+.root {
+    -fx-background-color: white; /* Colore di sfondo */
+}
+
+/* Stile per l'AnchorPane */
+AnchorPane {
+    -fx-background-color: white; /* Colore di sfondo */
+}
+
+/* Stile per i pulsanti, come 'searchButton', 'viewAddButton', ecc. */
+#saveButton, #cancelButton {
+    -fx-cursor: hand; /* Cambia il cursore al passaggio */
+    -fx-background-color: transparent; /* Rimuove il colore di sfondo */
+}
+
+/* Per la scrollbar, se presente */
+.scroll-bar {
+    -fx-background-color: lightgrey; /* Colore di sfondo */
+    -fx-border-color: black; /* Colore del bordo */
+    -fx-pref-width: 15px; /* Larghezza della scrollbar verticale */
+    -fx-pref-height: 15px; /* Altezza della scrollbar orizzontale */
+}
+
+/* Stile per i pulsanti personalizzati */
+#editButton, #addPrefButton, #deleteButton, #modifyButton {
+    -fx-cursor: hand;
+    -fx-background-color: transparent; /* Rimuove il colore di sfondo */
+}
+
+/* Stile per le etichette di testo (i dati del contatto) */
+.dati {
+    -fx-border-color: pink; /* Colore del bordo */
+    -fx-border-width: 2px; /* Larghezza del bordo */
+    -fx-border-radius: 5px; /* Arrotonda gli angoli del bordo */
+    -fx-padding: 5px; /* Distanza tra il bordo e il testo */
+    -fx-pref-width: 200px; /* Larghezza prefissata */
+    -fx-pref-height: 40px; /* Altezza prefissata */
+    -fx-wrap-text: true; /* Abilita l'andata a capo per il testo */
+    -fx-max-width: 250px; /* Limita la larghezza massima */
+    -fx-margin: 60px; /* Distanza tra gli altri elementi */
+}
+
+/* Stile per i testi personalizzati */
+#scrittaPreferiti {
+    -fx-font-family: "Grantham Sangam MN";
+    -fx-font-size: 14px;
+    -fx-text-fill: black; /* Colore personalizzato */
+    -fx-font-weight: bold; /* Grassetto */
+}
