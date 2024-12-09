@@ -31,7 +31,7 @@ public class EmailValidator {
      * @throws EmailNonValidaException Se l'email non è valida.
      */
     public static void validateEmail(String email) throws EmailNonValidaException {
-        if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z]+\\.[A-Za-z]{2,}$")) {
+        if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
 
             throw new EmailNonValidaException("Email non valida");
         }
