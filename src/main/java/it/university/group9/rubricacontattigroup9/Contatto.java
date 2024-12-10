@@ -165,14 +165,10 @@ public class Contatto implements Comparable<Contatto> {
         return risultato;
     }
 
-    
-
     /**
-     * @brief Metodo che determina l'uguaglianza tra due oggetti Contatto.
-     *
-     * Due contatti sono considerati uguali se nome, cognome, numeri, email e
-     * note coincidono.
-     *
+     * @brief Metodo che determina l'uguaglianza tra due oggetti Contatto. Due
+     * contatti sono considerati uguali se nome, cognome, numeri, email e note
+     * coincidono.
      * @param o L'oggetto da confrontare.
      * @return True se gli oggetti sono uguali, false se sono diversi.
      */
