@@ -12,7 +12,6 @@
 package it.university.group9.rubricacontattigroup9.validators;
 
 import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
-import it.university.group9.rubricacontattigroup9.exceptions.EmailNonValidaException;
 import javafx.scene.control.Alert;
 
 /**

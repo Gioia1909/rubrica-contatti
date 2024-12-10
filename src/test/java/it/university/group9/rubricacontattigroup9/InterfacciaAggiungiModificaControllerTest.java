@@ -54,6 +54,8 @@ public class InterfacciaAggiungiModificaControllerTest {
     
     @AfterEach
     public void tearDown() {
+        controller = null;
+        contactList.clear();
     }
     /**
      * Test Inizializzazione con Lista Vuota
@@ -83,7 +85,7 @@ public class InterfacciaAggiungiModificaControllerTest {
      * Test aggiunta con valori di Input validi
      */
     @Test
-    public void testAdd_ValidInput() throws Exception {
+    public void testAddValidInput() throws Exception {
         
         controller.setNameField(new TextField("Rossella"));
         controller.setSurnameField(new TextField("Rosario"));
@@ -127,9 +129,8 @@ public class InterfacciaAggiungiModificaControllerTest {
         /**
         * Test aggiunta con Numero di telefono sbagliato 
         */
-        
         @Test
-        public void testAdd_WrongNumber() throws Exception {
+        public void testAddInvalidNumber() throws Exception {
         
         controller.setNameField(new TextField("Mario"));
         controller.setSurnameField(new TextField("Rossi"));
@@ -164,7 +165,7 @@ public class InterfacciaAggiungiModificaControllerTest {
         } 
         
         @Test
-    public void testAddContact_WithDuplicate() throws Exception {
+    public void testAddContactDuplicate() throws Exception {
         
         // Prepara un contatto esistente
         Contatto contatto = new Contatto("Giovanni", "Verdi", Arrays.asList("111222333"), Arrays.asList("giovanni.verdi@example.com"), "Duplicato");
@@ -188,7 +189,7 @@ public class InterfacciaAggiungiModificaControllerTest {
      * Questo test dovrebbe popolare i campi perché input valido 
      */
     @Test
-    public void testInitializeForEdit_ValidInput() {
+    public void testInitializeForEditValidInput() {
         // Preparazione contatto esistente
         Contatto contatto = new Contatto("Luigi", "Bianchi", Arrays.asList("987654321"), Arrays.asList("luigi.bianchi@example.com"), "Nota importante");
         contactList.add(contatto);
@@ -238,6 +239,8 @@ public class InterfacciaAggiungiModificaControllerTest {
      assertEquals("Rossi", contactList.get(1).getCognome());
         
     }
+    
+
 
     
     
