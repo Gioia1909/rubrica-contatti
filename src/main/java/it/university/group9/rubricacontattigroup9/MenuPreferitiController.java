@@ -107,14 +107,16 @@ public class MenuPreferitiController implements Initializable {
             controller.setContactList(this.contactList);
 
             // Cambia la scena
-            Stage stage = (Stage) listViewPreferiti.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            Scene scene = listViewPreferiti.getScene();
+            scene.setRoot(root);
         } catch (IOException e) {
             System.err.println("Errore durante il caricamento dell'interfaccia utente: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
+    
+    
     /**
      * @brief Imposta la lista dei contatti.
      *

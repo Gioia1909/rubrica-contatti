@@ -1,8 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file SalvaCaricaPreferiti.java
+ * @brief Classe per la gestione del salvataggio e caricamento della rubrica preferiti.
+ * 
+ * Questa classe fornisce i metodi per salvare una lista di contatti (rubrica) in un file JSON 
+ * e per caricarla da un file JSON esistente.
+ * 
+ * @author Gruppo09
+ * @date 07/12/2024
  */
+
+
+
 package it.university.group9.rubricacontattigroup9.InputOutput;
 
 import it.university.group9.rubricacontattigroup9.Contatto;
@@ -13,15 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.*;
 import javafx.collections.FXCollections;
 
-/**
- * @brief Classe per la gestione del salvataggio e caricamento della rubrica preferiti.
- * 
- * Questa classe fornisce i metodi per salvare una lista di contatti (rubrica) in un file JSON 
- * e per caricarla da un file JSON esistente.
- * 
- * @author Gruppo09
- * @date 07/12/2024
- */
+
 
 public class SalvaCaricaPreferiti implements Serializable {
     //file che si creerà 

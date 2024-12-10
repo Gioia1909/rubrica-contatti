@@ -10,8 +10,11 @@ Validatore per i contatti.
 \item 
 static boolean \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a468130035f28f8022ebb6eed8d8d7fc8}{is\+Numero\+Duplicato}} (List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ contatti, String numero)
 \begin{DoxyCompactList}\small\item\em Verifica se un numero di telefono è duplicato. \end{DoxyCompactList}\item 
-static boolean \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a0a1df3abbd2f257f58457ffe30aca307}{is\+Contatto\+Duplicato}} (List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ contatti, String nome, String cognome, String numero)
-\begin{DoxyCompactList}\small\item\em Verifica se un contatto è duplicato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static boolean \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a08d5afea40b37054d499fde6bc792848}{is\+Contatto\+Duplicato}} (List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ contatti, String nome, String cognome)
+\begin{DoxyCompactList}\small\item\em Verifica se un contatto è duplicato. \end{DoxyCompactList}\item 
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a20979003aeb36d7c7cf342dac78f41e0}\label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a20979003aeb36d7c7cf342dac78f41e0} 
+static boolean {\bfseries is\+Email\+Duplicata} (List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ contatti, String email)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -20,11 +23,11 @@ Validatore per i contatti.
 Questa classe verifica se un contatto o un numero di telefono è duplicato. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a0a1df3abbd2f257f58457ffe30aca307}\index{it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}!isContattoDuplicato@{isContattoDuplicato}}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a08d5afea40b37054d499fde6bc792848}\index{it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}!isContattoDuplicato@{isContattoDuplicato}}
 \index{isContattoDuplicato@{isContattoDuplicato}!it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}}
 \doxysubsubsection{\texorpdfstring{isContattoDuplicato()}{isContattoDuplicato()}}
-{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a0a1df3abbd2f257f58457ffe30aca307} 
-static boolean it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Contatto\+Validator.\+is\+Contatto\+Duplicato (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$}]{contatti}{, }\item[{String}]{nome}{, }\item[{String}]{cognome}{, }\item[{String}]{numero}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a08d5afea40b37054d499fde6bc792848} 
+static boolean it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Contatto\+Validator.\+is\+Contatto\+Duplicato (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$}]{contatti}{, }\item[{String}]{nome}{, }\item[{String}]{cognome}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 
 
@@ -50,7 +53,7 @@ true se il contatto esiste già, false altrimenti.
 \index{isNumeroDuplicato@{isNumeroDuplicato}!it.university.group9.rubricacontattigroup9.validators.ContattoValidator@{it.university.group9.rubricacontattigroup9.validators.ContattoValidator}}
 \doxysubsubsection{\texorpdfstring{isNumeroDuplicato()}{isNumeroDuplicato()}}
 {\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_a468130035f28f8022ebb6eed8d8d7fc8} 
-static boolean it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Contatto\+Validator.\+is\+Numero\+Duplicato (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$}]{contatti}{, }\item[{String}]{numero}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+static boolean it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Contatto\+Validator.\+is\+Numero\+Duplicato (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$}]{contatti}{, }\item[{String}]{numero}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 
 

@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['favoritebutton_0',['favoriteButton',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller.html#a9f7b0d3bfff5a728cd91a029b0637de9',1,'it::university::group9::rubricacontattigroup9::InterfacciaUtenteController']]],
-  ['file_1',['file',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti.html#a02fb6a4f74d1ab6de4dd2ba7a5ccf8f0',1,'it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti.file'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_rubrica.html#af5a7a2dac85f627a64fe2dd7b4de2306',1,'it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica.file']]]
+  ['getcognome_0',['getCognome',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#acf04fc936fdf790705113920280424ed',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['getemails_1',['getEmails',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#a82fe965c69140b6f7f178b40f5fd4610',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['getlistacontatti_2',['getListaContatti',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller.html#a65444d3503c7356e0dd4c8861e9d74cd',1,'it::university::group9::rubricacontattigroup9::InterfacciaUtenteController']]],
+  ['getnome_3',['getNome',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#a589a2ab2905d8ea2583a01e5949b7b9f',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['getnote_4',['getNote',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#a9fa712d2dab4853038d838b6680dfc5c',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['getnumeri_5',['getNumeri',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#af9de3d21af025a65692573490b83153c',1,'it::university::group9::rubricacontattigroup9::Contatto']]],
+  ['gruppo_2009_6',['Rubrica Contatti - Progetto di Ingegneria del Software - Gruppo 09',['../md__r_e_a_d_m_e.html',1,'']]]
 ];

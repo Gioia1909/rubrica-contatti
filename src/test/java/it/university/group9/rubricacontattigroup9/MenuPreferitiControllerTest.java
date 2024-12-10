@@ -9,6 +9,7 @@ import it.university.group9.rubricacontattigroup9.Contatto;
 import it.university.group9.rubricacontattigroup9.MenuPreferitiController;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -23,19 +24,29 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MenuPreferitiControllerTest {
     
-    public MenuPreferitiControllerTest() {
-    }
+    private MenuPreferitiController instance;
+    private ObservableList <Contatto> contactList;
+    private ObservableList <Contatto> preferitiList;
+    
+    
     
     @BeforeAll
     public static void setUpClass() {
+        System.out.println("Inizio del testing per il MenuPreferiti.");
     }
     
     @AfterAll
     public static void tearDownClass() {
+        System.out.println("Test Menu Preferiti Completato");
     }
     
     @BeforeEach
     public void setUp() {
+        instance = new MenuPreferitiController();
+        contactList = FXCollections.observableArrayList();
+        preferitiList = FXCollections.observableArrayList();
+    
+        
     }
     
     @AfterEach
