@@ -28,7 +28,7 @@ import javafx.scene.control.Alert.*;
 import javafx.scene.input.*;
 import javafx.stage.Stage;
 
-public class InterfacciaAggiungiController implements Initializable {
+public class InterfacciaAggiungiModificaController implements Initializable {
 
     /**
      * @brief Riferimento al controller dell'interfaccia principale.

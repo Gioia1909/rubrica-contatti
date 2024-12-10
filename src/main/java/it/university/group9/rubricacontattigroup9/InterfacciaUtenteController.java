@@ -330,7 +330,7 @@ public class InterfacciaUtenteController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungi.fxml"));
         Parent root = loader.load(); // Carica la scena
         // Ottieni il controller della scena di aggiunta contatto
-        InterfacciaAggiungiController aggiungiController = loader.getController();
+        InterfacciaAggiungiModificaController aggiungiController = loader.getController();
         // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
         aggiungiController.setInterfacciaUtenteController(this);
         aggiungiController.initializeForAdd(contactList);
@@ -435,7 +435,7 @@ public class InterfacciaUtenteController implements Initializable {
             //Parent root: Il nodo radice della nuova scena. Tutti i componenti grafici dell'interfaccia vengono aggiunti come figli di questo nodo.
 
             // Ottieni il controller della scena di modifica
-            InterfacciaAggiungiController modificaController = loader.getController();  
+            InterfacciaAggiungiModificaController modificaController = loader.getController();  
             //modificaController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
             //getController(): Ottiene il controller associato al file FXML appena caricato
 
