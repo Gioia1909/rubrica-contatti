@@ -245,15 +245,32 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     }
 
     /**
-     * Mostra una finestra di conferma e restituisce true se l'utente sceglie
-     * "YES".
-     */
+ * @brief Mostra una finestra di dialogo di conferma con due opzioni: Sì e No.
+ * 
+ * @param titolo Il titolo della finestra di dialogo.
+ * @param messaggio Il messaggio da visualizzare nella finestra di dialogo.
+ * 
+ * @pre Il titolo e il messaggio non devono essere nulli o vuoti.
+ * @post Viene mostrata una finestra di dialogo e viene restituito il risultato della selezione dell'utente.
+ * 
+ * @return true se l'utente seleziona "Sì", false se seleziona "No".
+ */
     private boolean showConfirmationDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, messaggio, ButtonType.YES, ButtonType.NO);
         alert.setTitle(titolo);
         alert.showAndWait();
         return alert.getResult() == ButtonType.YES;
     }
+    
+/**
+ * @brief Mostra una finestra di dialogo di errore con un messaggio specificato.
+ * 
+ * @param titolo Il titolo della finestra di dialogo.
+ * @param messaggio Il messaggio da visualizzare nella finestra di dialogo.
+ * 
+ * @pre Il titolo e il messaggio non devono essere nulli o vuoti.
+ * @post Viene mostrata una finestra di dialogo con il messaggio di errore.
+ */
 
     private void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -275,6 +292,17 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     }
 
     //parte di modifica
+/**
+ * @brief Inizializza la finestra per la modifica di un contatto esistente.
+ * 
+ * @param contatto Il contatto da modificare.
+ * @param rubrica La rubrica che contiene il contatto esistente.
+ * 
+ * @pre Il parametro contatto deve essere un oggetto valido e non null.
+ * @pre La rubrica deve essere un oggetto ObservableList<Contatto> non null.
+ * @post Il form sarà popolato con i dati del contatto esistente.
+ * @post Il pulsante "Modifica" sarà visibile, mentre il pulsante "Aggiungi" sarà nascosto.
+ */
 
     public void initializeForEdit(Contatto contatto, ObservableList<Contatto> rubrica) {
         this.rubrica = rubrica;
@@ -284,6 +312,21 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         editButton.setVisible(true); // Mostra il bottone di modifica
     }
 
+    /**
+ * @brief Modifica i dati di un contatto esistente nella rubrica.
+ * 
+ * @param event L'evento ActionEvent generato dal click sul pulsante "Modifica".
+ * 
+ * @pre Tutti i campi del form devono essere validati correttamente prima della modifica.
+ * @pre La variabile contattoEsistente deve essere un oggetto valido presente nella rubrica.
+ * @post La rubrica sarà aggiornata con i nuovi dati del contatto.
+ * @post I dati aggiornati saranno salvati utilizzando il metodo SalvaCaricaRubrica.salvaRubrica.
+ * 
+ * @throws NomeNonValidoException Se il nome inserito non è valido.
+ * @throws CognomeNonValidoException Se il cognome inserito non è valido.
+ * @throws NumeroNonValidoException Se uno o più numeri di telefono non sono validi.
+ * @throws EmailNonValidaException Se uno o più indirizzi email non sono validi.
+ */
     @FXML
     private void editContact(ActionEvent event) {
         try {
@@ -340,11 +383,17 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         }
     }
 
-    /**
-     * Popola i campi del modulo con i dati del contatto esistente.
-     *
-     * @param contatto Il contatto da modificare.
-     */
+/**
+ * @brief Popola i campi del form con i dati di un contatto esistente.
+ * 
+ * @param contatto Il contatto i cui dati devono essere inseriti nei campi del form.
+ * 
+ * @pre Il parametro contatto deve essere un oggetto valido e non null.
+ * @post I campi del form saranno riempiti con i dati del contatto:
+ *       - Nome e cognome nei rispettivi campi.
+ *       - Numeri di telefono e email nei campi appropriati, fino a un massimo di tre per ciascun tipo.
+ *       - Note nel campo delle note.
+ */
     private void populateFields(Contatto contatto) {
         nameField.setText(contatto.getNome());
         surnameField.setText(contatto.getCognome());
@@ -361,13 +410,23 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         if (emails.size() > 2) email3Field.setText(emails.get(2));
     }
 
-    /**
-     * Metodo per annullare la modifica senza salvare.
-     */
+/**
+ * @brief Annulla l'operazione in corso e chiude la finestra corrente.
+ * 
+ * @pre La finestra deve essere aperta.
+ * @post La finestra corrente viene chiusa.
+ */
     private void cancelOperation() {
         closeWindow();
     }
 
+    
+/**
+ * @brief Chiude la finestra corrente dell'interfaccia utente.
+ * 
+ * @pre Il campo nameField deve essere associato a una scena e a una finestra.
+ * @post La finestra corrente viene chiusa, interrompendo l'interazione dell'utente.
+ */
     private void closeWindow() {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
