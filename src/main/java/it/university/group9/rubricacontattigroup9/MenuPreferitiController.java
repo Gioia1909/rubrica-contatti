@@ -34,6 +34,150 @@ public class MenuPreferitiController implements Initializable {
     @FXML
     private ListView<Contatto> listViewPreferiti;
 
+    public ListView<Contatto> getListViewPreferiti() {
+        return listViewPreferiti;
+    }
+
+    public void setListViewPreferiti(ListView<Contatto> listViewPreferiti) {
+        this.listViewPreferiti = listViewPreferiti;
+    }
+
+    public Button getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(Button editButton) {
+        this.editButton = editButton;
+    }
+
+    public Button getAddPrefButton() {
+        return addPrefButton;
+    }
+
+    public void setAddPrefButton(Button addPrefButton) {
+        this.addPrefButton = addPrefButton;
+    }
+
+    public Button getSecondaryButton() {
+        return secondaryButton;
+    }
+
+    public void setSecondaryButton(Button secondaryButton) {
+        this.secondaryButton = secondaryButton;
+    }
+
+    public ObservableList<Contatto> getPreferitiList() {
+        return preferitiList;
+    }
+
+    public void setPreferitiList(ObservableList<Contatto> preferitiList) {
+        this.preferitiList = preferitiList;
+    }
+
+    public Button getSearchButton() {
+        return searchButton;
+    }
+
+    public void setSearchButton(Button searchButton) {
+        this.searchButton = searchButton;
+    }
+
+    public TextField getSearchBar() {
+        return searchBar;
+    }
+
+    public void setSearchBar(TextField searchBar) {
+        this.searchBar = searchBar;
+    }
+
+    public Label getNameField() {
+        return nameField;
+    }
+
+    public void setNameField(Label nameField) {
+        this.nameField = nameField;
+    }
+
+    public Label getSurnameField() {
+        return surnameField;
+    }
+
+    public void setSurnameField(Label surnameField) {
+        this.surnameField = surnameField;
+    }
+
+    public Label getNumber1Field() {
+        return number1Field;
+    }
+
+    public void setNumber1Field(Label number1Field) {
+        this.number1Field = number1Field;
+    }
+
+    public Label getNumber2Field() {
+        return number2Field;
+    }
+
+    public void setNumber2Field(Label number2Field) {
+        this.number2Field = number2Field;
+    }
+
+    public Label getNumber3Field() {
+        return number3Field;
+    }
+
+    public void setNumber3Field(Label number3Field) {
+        this.number3Field = number3Field;
+    }
+
+    public Label getEmail1Field() {
+        return email1Field;
+    }
+
+    public void setEmail1Field(Label email1Field) {
+        this.email1Field = email1Field;
+    }
+
+    public Label getEmail2Field() {
+        return email2Field;
+    }
+
+    public void setEmail2Field(Label email2Field) {
+        this.email2Field = email2Field;
+    }
+
+    public Label getEmail3Field() {
+        return email3Field;
+    }
+
+    public void setEmail3Field(Label email3Field) {
+        this.email3Field = email3Field;
+    }
+
+    public Label getNoteField() {
+        return noteField;
+    }
+
+    public void setNoteField(Label noteField) {
+        this.noteField = noteField;
+    }
+
+    public Label getDefaultText() {
+        return defaultText;
+    }
+
+    public void setDefaultText(Label defaultText) {
+        this.defaultText = defaultText;
+    }
+
+    public Button getDelButton() {
+        return delButton;
+    }
+
+    public void setDelButton(Button delButton) {
+        this.delButton = delButton;
+    }
+
     /**
      * @brief Bottone per la modifica
      */
@@ -61,6 +205,10 @@ public class MenuPreferitiController implements Initializable {
      * @brief Lista di tutti i contatti
      */
     private ObservableList<Contatto> contactList; // Riferimento alla lista utenti
+
+    public ObservableList<Contatto> getContactList() {
+        return contactList;
+    }
     @FXML
     private Button searchButton;
     @FXML
@@ -290,7 +438,7 @@ public class MenuPreferitiController implements Initializable {
  * @post La `ListView` dei preferiti viene aggiornata con i contatti che corrispondono alla ricerca.
  */
     @FXML
-    private void searchAction(ActionEvent event) {
+    protected void searchAction(ActionEvent event) {
         String searchQuery = searchBar.getText().toLowerCase().trim();
 
         if (searchQuery.isEmpty()) {
@@ -357,7 +505,7 @@ public class MenuPreferitiController implements Initializable {
  * @post Il contatto selezionato viene rimosso dalla `ListView` e i contatti aggiornati vengono salvati nel file.
  */
     @FXML
-    private void deleteAction(ActionEvent event) {
+    protected void deleteAction(ActionEvent event) {
         int selezionato = listViewPreferiti.getSelectionModel().getSelectedIndex();
         if (selezionato >= 0) {
             listViewPreferiti.getItems().remove(selezionato);
