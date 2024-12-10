@@ -262,7 +262,7 @@ public class InterfacciaUtenteController implements Initializable {
      * @return Una lista di oggetti Contatto, che rappresenta tutti i contatti
      * disponibili.
      */
-    public List<Contatto> getListaContatti() {
+    public ObservableList<Contatto> getListaContatti() {
         return contactList;
     }
 
