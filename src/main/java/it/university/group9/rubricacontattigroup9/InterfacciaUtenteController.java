@@ -43,12 +43,6 @@ public class InterfacciaUtenteController implements Initializable {
     
     @FXML
     private Button modifyButton;
-    /**
-     * < Bottone per modificare un contatto.
-     */
-    
-    @FXML
-    private ImageView searchButtonImage;
     
     @FXML
     private ImageView modifyImageView;
@@ -64,14 +58,8 @@ public class InterfacciaUtenteController implements Initializable {
     @FXML
     private ListView<Contatto> myListView;
     /**
-     * <Lista per visualizzare i contatti.
-     */
-    @FXML
-    private Button primaryButton;
-    /**
      * <Bottone principale per operazioni varie.
      */
-    @FXML
     private TextField textBar;
     /**
      * <Barra di testo per input di ricerca.
@@ -99,9 +87,6 @@ public class InterfacciaUtenteController implements Initializable {
     private Label number3Field;
     @FXML
     private Label noteField;
-    ///@}
-    @FXML
-    private ScrollBar scrollBar;
     @FXML
     private Label defaultText;
     /**
@@ -109,6 +94,8 @@ public class InterfacciaUtenteController implements Initializable {
      */
     ///@}
     private ObservableList<Contatto> contactList;
+    @FXML
+    private TextField searchBar;
 
     /**
      * <Lista Osservabile dei Contatti
@@ -401,7 +388,11 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @FXML
     public void searchContact(ActionEvent event) {
-        String searchQuery = textBar.getText().toLowerCase().trim();
+        if (contactList == null) {
+        showErrorDialog("Errore", "La lista dei contatti non è disponibile.");
+        return;
+        }
+        String searchQuery = searchBar.getText().toLowerCase().trim();
         //searchQuery è una stringa che contiene il testo digitato; 
         //textBar.getText(), recupera il testo che ha digitato l'utente; 
         // toLowerCase() rende tutto minuscolo per avere un ricerca case insensitive; 
