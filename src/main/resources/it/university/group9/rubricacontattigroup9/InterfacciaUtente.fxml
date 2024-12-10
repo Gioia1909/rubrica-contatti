@@ -73,7 +73,7 @@
                         <Label fx:id="email1Field" layoutX="280.0" layoutY="200.0" styleClass="dati" visible="false" />
                         <Label fx:id="email2Field" layoutX="280.0" layoutY="250.0" styleClass="dati" visible="false" />
                         <Label fx:id="email3Field" layoutX="280.0" layoutY="300.0" styleClass="dati" visible="false" />
-                        <Button fx:id="deleteButton" layoutX="383.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#deleteContact" visible="false">
+                        <Button fx:id="deleteButton" layoutX="383.0" layoutY="437.0" mnemonicParsing="false" onAction="#deleteContact" visible="false">
                             <graphic>
                                 <ImageView id="deleteImageView" fx:id="deleteImageView" fitHeight="35.0" fitWidth="58.0" onMouseClicked="#deleteContact" pickOnBounds="true" preserveRatio="true" visible="false">
                                     <image>

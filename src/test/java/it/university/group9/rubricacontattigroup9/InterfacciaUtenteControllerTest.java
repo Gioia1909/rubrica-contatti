@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -234,9 +235,30 @@ public class InterfacciaUtenteControllerTest {
         );
         
         instance.setContactList(listaContatti);
-     
-      //  instance.deleteContact(new MouseEvent());
+         assertEquals(3, instance.getListaContatti().size());
+        instance.deleteContact(new ActionEvent());
+        
+        //verifico la lista dopo l'eliminazione 
+          ObservableList<Contatto> result = instance.getListaContatti();
+          assertEquals(2, result.size());
+          
+           // Controlla le proprietà del primo contatto
+        Contatto primoContatto = result.get(0);
+        assertEquals("Emanuela", primoContatto.getNome());
+        assertEquals("Rossi", primoContatto.getCognome());
+        assertEquals("9876543219", primoContatto.getNumeri().get(0));
+        assertEquals("e.rossi@gmail.com", primoContatto.getEmails().get(0));
+        assertEquals("Nota di test", primoContatto.getNote());
 
+        // Controlla le proprietà del secondo contatto
+        Contatto secondoContatto = result.get(1);
+        assertEquals("Luigi", secondoContatto.getNome());
+        assertEquals("Rossi", secondoContatto.getCognome());
+        assertEquals("9876543210", secondoContatto.getNumeri().get(0));
+        assertEquals("luigi.bianchi@gmail.com", secondoContatto.getEmails().get(0));
+        assertEquals("Nota di test", secondoContatto.getNote());  
+     
+   
     }
 
     /**
@@ -246,10 +268,30 @@ public class InterfacciaUtenteControllerTest {
     public void testSearchContact() {
         System.out.println("searchContact");
         ActionEvent event = null;
-        InterfacciaUtenteController instance = new InterfacciaUtenteController();
-        instance.searchContact(event);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+           ObservableList<Contatto> listaContatti = FXCollections.observableArrayList(
+            new Contatto("Emanuela", "Rossi", Arrays.asList("9876543219"), Arrays.asList("e.rossi@gmail.com"), "Nota di test"),
+            new Contatto("Rossella", "Farese", Arrays.asList("1234567891"), Arrays.asList("r.farese@gmail.com"), "Nota di test"),
+            new Contatto("Luigi", "Rossi", Arrays.asList("9876543210"), Arrays.asList("luigi.bianchi@gmail.com"), "Nota di test")
+    );
+           
+            instance.setContactList(listaContatti);
+            instance.getListView().setItems(listaContatti);
+            instance.searchContact(new ActionEvent());
+            
+            TextField searchBar = new TextField();
+            instance.setSearchBar(searchBar);
+            searchBar.setText("Emanuela");
+            instance.searchContact(new ActionEvent());
+            
+            //Verifica che la lista filtrata contenga solo il contatto corrispondente 
+            
+           ObservableList<Contatto> listaFiltrata = instance.getListView.getItems();
+           assertEquals(1,filteredList.size(),"La lista filtrata dovrebbe contenere un solo elemento");
+           assertTrue(filteredList.contains(contatto2));
+    
+      
+
     }
 
 }

@@ -57,6 +57,15 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @FXML
     private ListView<Contatto> myListView;
+    
+    public ListView<Contatto> getListView() {
+        return myListView;
+    }
+    
+     public void setListView(ListView<Contatto> myListView) {
+        this.myListView=myListView;
+    }
+    
     /**
      * <Bottone principale per operazioni varie.
      */
@@ -96,6 +105,14 @@ public class InterfacciaUtenteController implements Initializable {
     private ObservableList<Contatto> contactList;
     @FXML
     private TextField searchBar;
+    
+    public TextField getSearchBar(){
+        return searchBar;
+    }
+    
+    public void setSearchBar(TextField searchBar){
+        this.searchBar=searchBar;
+    }
 
     /**
      * <Lista Osservabile dei Contatti
@@ -362,7 +379,7 @@ public class InterfacciaUtenteController implements Initializable {
      * @param[in] event Evento del mouse che ha attivato l'azione.
      */
     @FXML
-    public void deleteContact(MouseEvent event) {
+    public void deleteContact(ActionEvent event) {
         int selezionato = myListView.getSelectionModel().getSelectedIndex();
         if (selezionato >= 0) {
             myListView.getItems().remove(selezionato);
@@ -487,4 +504,6 @@ public class InterfacciaUtenteController implements Initializable {
         alert.setContentText(messaggio);
         alert.showAndWait();
     }
+    
 }
+
