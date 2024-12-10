@@ -181,8 +181,9 @@ public class SelezionaContattiDaRubricaController implements Initializable {
      */
     public void setContacts(ObservableList<Contatto> rubrica, ObservableList<Contatto> rubricaPreferiti) {
         if (rubrica == null || rubricaPreferiti == null) {
-        System.err.println("Le liste rubrica o preferiti sono null!");
-        return;
+            throw new NullPointerException("Le liste rubrica o preferiti sono null!");
+        //System.err.println("Le liste rubrica o preferiti sono null!");
+       // return;
         }
         this.rubrica = rubrica; //prendo la rubrica normale
         this.rubricaPreferiti = rubricaPreferiti;

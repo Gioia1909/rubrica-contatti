@@ -64,7 +64,7 @@ private ObservableList<Contatto> rubricaPreferiti;
         controller.setContacts(rubrica, rubricaPreferiti);
     }
     
-    
+    /*
     @AfterEach
     public void tearDown() {
     controller = null;
@@ -74,7 +74,7 @@ private ObservableList<Contatto> rubricaPreferiti;
     closeButton = null;
     rubrica = null;
     rubricaPreferiti = null;
-    }
+    }*/
 
     /**
      * Test of initialize method, of class SelezionaContattiDaRubricaController.
@@ -84,14 +84,17 @@ private ObservableList<Contatto> rubricaPreferiti;
      * Test of setContacts method, of class SelezionaContattiDaRubricaController.
      */
     @Test
-    public void testSetContacts() {
-        System.out.println("setContacts");
-        ObservableList<Contatto> rubrica = null;
-        ObservableList<Contatto> rubricaPreferiti = null;
-        SelezionaContattiDaRubricaController instance = new SelezionaContattiDaRubricaController();
-        instance.setContacts(rubrica, rubricaPreferiti);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSetContactsWithNullParameter() {
+        assertThrows(NullPointerException.class,() -> controller.setContacts(null, rubricaPreferiti), "Dovrebbe lanciare un eccezione di tipo NullPointerException" );
+        assertThrows(NullPointerException.class,() -> controller.setContacts(rubrica, null), "Dovrebbe lanciare un eccezione di tipo NullPointerException" );
+        assertThrows(NullPointerException.class,() -> controller.setContacts(null, null), "Dovrebbe lanciare un eccezione di tipo NullPointerException" );
+
     }
+    
+    public void testSetContactsWithoutNullParameter(){
+    rubricaPreferiti.add(rubrica.get(0));
+    assertDoesNotThrow(() -> controller.setContacts(rubrica, rubricaPreferiti), "Non dovrebbe lanciare un eccezione di tipo NullPointerException" );
+    }
+    
     
 }
