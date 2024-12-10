@@ -13,7 +13,7 @@
  */
 package it.university.group9.rubricacontattigroup9.validators;
 
-import it.university.group9.rubricacontattigroup9.exceptions.NumeroNonValidoException;
+import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
 import javafx.scene.control.Alert;
 
 /**
@@ -36,13 +36,13 @@ public class NumeroValidator {
      * @param phoneNumber Il numero di telefono da validare.
      * @throws NumeroNonValidoException Se il numero di telefono non è valido.
      */
-    public static void validatePhoneNumber(String phoneNumber) throws NumeroNonValidoException {
+    public static void validatePhoneNumber(String phoneNumber) throws CampoNonValidoException {
         if (phoneNumber == null || !phoneNumber.matches("^[+]?[0-9]{10,15}$")) {
             /* Possono iniziare con un "+" (opzionale).
             Contengono solo cifre da 0 a 9.
             Hanno una lunghezza compresa tra 10 e 15 caratteri.*/
             errorMessage("Numero Non Valido", "Il numero che vuoi inserire non è valido.");
-            throw new NumeroNonValidoException("Numero di telefono non valido");
+            throw new CampoNonValidoException("Numero di telefono non valido");
         }
     }
 

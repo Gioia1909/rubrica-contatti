@@ -470,7 +470,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             // Chiudi la finestra
             closeWindow();
 
-        } catch (NomeNonValidoException | CognomeNonValidoException | NumeroNonValidoException | EmailNonValidaException ex) {
+        } catch (CampoNonValidoException ex) {
             showErrorDialog("Errore di Validazione", ex.getMessage());
         }
     }

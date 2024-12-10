@@ -18,9 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author imacpro
+ * @author Gruppo09
  */
 public class SalvaCaricaRubricaTest {
+
+    private ObservableList<Contatto> rubrica; // Variabile di classe
 
     public SalvaCaricaRubricaTest() {
     }
@@ -35,35 +37,33 @@ public class SalvaCaricaRubricaTest {
 
     @BeforeEach
     public void setUp() {
+        // Inizializzazione della rubrica da usare nei test
+        rubrica = FXCollections.observableArrayList(
+            new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi")
+        );
     }
 
     @AfterEach
     public void tearDown() {
     }
 
-    /**
-     * Test of salvaRubrica method, of class SalvaCaricaRubrica.
-     */
     @Test
     public void testSalvaRubrica() {
         System.out.println("salvaRubrica");
-        ObservableList<Contatto> rubrica = FXCollections.observableArrayList(new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi"));
+        // Salva la rubrica
         SalvaCaricaRubrica.salvaRubrica(rubrica);
         // Verifica che non vengano lanciate eccezioni durante il salvataggio
         assertDoesNotThrow(() -> SalvaCaricaRubrica.salvaRubrica(rubrica));
     }
 
-    /**
-     * Test of caricaRubrica method, of class SalvaCaricaRubrica.
-     */
     @Test
     public void testCaricaRubrica() {
         System.out.println("caricaRubrica");
-        ObservableList<Contatto> rubrica = FXCollections.observableArrayList(new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi"));
+        // Carica la rubrica e confronta i risultati
         ObservableList<Contatto> result = SalvaCaricaRubrica.caricaRubrica();
         assertNotNull(result);
         assertEquals(rubrica.size(), result.size());
-        // Compare the content of the loaded rubrica with expectedRubrica
+        // Confronta il contenuto della rubrica caricata con quella salvata
         for (int i = 0; i < rubrica.size(); i++) {
             Contatto expectedContact = rubrica.get(i);
             Contatto actualContact = result.get(i);
@@ -74,5 +74,4 @@ public class SalvaCaricaRubricaTest {
             assertEquals(expectedContact.getNote(), actualContact.getNote());
         }
     }
-
 }

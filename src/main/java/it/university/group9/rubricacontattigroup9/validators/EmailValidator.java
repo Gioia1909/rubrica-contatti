@@ -11,6 +11,7 @@
  */
 package it.university.group9.rubricacontattigroup9.validators;
 
+import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
 import it.university.group9.rubricacontattigroup9.exceptions.EmailNonValidaException;
 import javafx.scene.control.Alert;
 
@@ -31,13 +32,13 @@ public class EmailValidator {
      * @param email L'email da validare.
      * @throws EmailNonValidaException Se l'email non è valida.
      */
-    public static void validateEmail(String email) throws EmailNonValidaException {
+    public static void validateEmail(String email) throws CampoNonValidoException {
         if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
             Alert alert = new Alert (Alert.AlertType.ERROR);
             alert.setTitle("Email Non Valida.");
             alert.setContentText("L'Email Inserita non è Valida");
             alert.showAndWait();
-            throw new EmailNonValidaException("Email non valida");
+            throw new CampoNonValidoException("Email non valida");
         }
     }
 }
