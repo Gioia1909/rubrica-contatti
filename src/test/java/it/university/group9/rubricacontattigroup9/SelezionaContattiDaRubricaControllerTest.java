@@ -38,7 +38,7 @@ private ObservableList<Contatto> rubricaPreferiti;
     
     @BeforeEach
     public void setUp() {
-              System.out.println("Setup per ogni test.");
+        System.out.println("Setup per ogni test.");
 
         // Inizializzazione del controller e dei suoi componenti
         controller = new SelezionaContattiDaRubricaController();
