@@ -135,6 +135,16 @@ public class InterfacciaUtenteController implements Initializable {
         configureListView();
     }
     
+   
+/**
+ * @brief Configura la ListView per visualizzare e gestire i contatti.
+ * 
+ * 
+ * @pre La ListView `myListView` e la lista `contactList` devono essere inizializzate.
+ * @post La ListView viene configurata con un aspetto personalizzato e un comportamento reattivo 
+ *alla selezione degli elementi.
+ */
+
     private void configureListView() {
         myListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
@@ -164,6 +174,15 @@ public class InterfacciaUtenteController implements Initializable {
         });
     }
     
+    
+/**
+ * @brief Aggiorna i dettagli visualizzati per il contatto selezionato.
+ * 
+ * @param contattoSelezionato Contatto il cui dettaglio verrà visualizzato nei campi.
+ * 
+ * @pre Il contatto selezionato deve essere valido e contenere i dati aggiornati.
+ * @post I campi della UI vengono aggiornati per riflettere i dati del contatto selezionato.
+ */
     private void updateContactDetails(Contatto contattoSelezionato) {
         defaultText.setVisible(false);
         deleteButton.setVisible(true);
@@ -417,6 +436,16 @@ public class InterfacciaUtenteController implements Initializable {
         }
     }
     
+    
+/**
+ * @brief Gestisce il passaggio alla schermata di modifica di un contatto selezionato.
+ *
+ * 
+ * @throws IOException Se si verifica un errore durante il caricamento della scena FXML.
+ * 
+ * @pre Il contatto selezionato deve essere presente nella ListView.
+ * @post La finestra di modifica viene visualizzata con il contatto selezionato caricato nel relativo controller.
+ */
     @FXML
     private void switchToModifyContact() throws IOException {
         // Ottieni il contatto selezionato
@@ -451,9 +480,16 @@ public class InterfacciaUtenteController implements Initializable {
     }
 
 
-    /*
-     * mostra i banner di errore
-     */
+/**
+ * @brief Mostra un banner di errore con un titolo e un messaggio personalizzati.
+ *
+ * 
+ * @param titolo Il titolo della finestra di dialogo.
+ * @param messaggio Il messaggio di errore da visualizzare nella finestra.
+ * 
+ * @pre Il titolo e il messaggio devono essere stringhe non nulle.
+ * @post La finestra di dialogo di errore viene visualizzata con il titolo e il messaggio forniti.
+ */
     private void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titolo);
