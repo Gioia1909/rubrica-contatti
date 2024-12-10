@@ -6,6 +6,8 @@
 package it.university.group9.rubricacontattigroup9.InputOutput;
 
 import it.university.group9.rubricacontattigroup9.Contatto;
+import java.util.Arrays;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -19,22 +21,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author imacpro
  */
 public class SalvaCaricaRubricaTest {
-    
+
     public SalvaCaricaRubricaTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -45,10 +47,10 @@ public class SalvaCaricaRubricaTest {
     @Test
     public void testSalvaRubrica() {
         System.out.println("salvaRubrica");
-        ObservableList<Contatto> rubrica = null;
+        ObservableList<Contatto> rubrica = FXCollections.observableArrayList(new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi"));
         SalvaCaricaRubrica.salvaRubrica(rubrica);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Verifica che non vengano lanciate eccezioni durante il salvataggio
+        assertDoesNotThrow(() -> SalvaCaricaRubrica.salvaRubrica(rubrica));
     }
 
     /**
@@ -57,11 +59,20 @@ public class SalvaCaricaRubricaTest {
     @Test
     public void testCaricaRubrica() {
         System.out.println("caricaRubrica");
-        ObservableList<Contatto> expResult = null;
+        ObservableList<Contatto> rubrica = FXCollections.observableArrayList(new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi"));
         ObservableList<Contatto> result = SalvaCaricaRubrica.caricaRubrica();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
+        assertEquals(rubrica.size(), result.size());
+        // Compare the content of the loaded rubrica with expectedRubrica
+        for (int i = 0; i < rubrica.size(); i++) {
+            Contatto expectedContact = rubrica.get(i);
+            Contatto actualContact = result.get(i);
+            assertEquals(expectedContact.getNome(), actualContact.getNome());
+            assertEquals(expectedContact.getCognome(), actualContact.getCognome());
+            assertEquals(expectedContact.getNumeri(), actualContact.getNumeri());
+            assertEquals(expectedContact.getEmails(), actualContact.getEmails());
+            assertEquals(expectedContact.getNote(), actualContact.getNote());
+        }
     }
-    
+
 }
