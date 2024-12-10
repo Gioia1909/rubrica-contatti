@@ -54,14 +54,11 @@ private ObservableList<Contatto> rubricaPreferiti;
         );
         rubricaPreferiti = FXCollections.observableArrayList();
 
-        // Simula l'iniezione dei campi FXML
         controller.setSearchBar(searchBar);
         controller.setContactListView(contactListView);
         controller.setAddButton(addButton);
         controller.setCloseButton(closeButton);
 
-        // Configuro le liste nel controller
-        controller.setContacts(rubrica, rubricaPreferiti);
     }
     
    
