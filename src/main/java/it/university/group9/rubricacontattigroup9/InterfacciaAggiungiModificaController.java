@@ -278,7 +278,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             return;
         }
 
-        NumeroValidator.validatePhoneNumber(primoNumero);
+        ContattoValidator.validatePhoneNumber(primoNumero);
         if (ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), primoNumero)) {
             if (!showConfirmationDialog("Numero duplicato", "Il numero " + primoNumero + " già esiste. Vuoi comunque aggiungerlo?")) {
                 return;
@@ -290,7 +290,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         for (TextField numero : numeroFields) {
             String n = numero.getText().trim(); //prende numero levando gli spazi
             if (!n.isEmpty()) {
-                NumeroValidator.validatePhoneNumber(n);
+                ContattoValidator.validatePhoneNumber(n);
                 if (ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), n)) {
                     if (!showConfirmationDialog("Numero Duplicato", "Il numero " + numero + " già esiste. Vuoi comunque aggiungerlo?")) {
                         return;
@@ -435,7 +435,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
             for (String numero : numeri) {
                 if (!numero.isEmpty()) {
-                    NumeroValidator.validatePhoneNumber(numero);
+                    ContattoValidator.validatePhoneNumber(numero);
                 }
             }
 
