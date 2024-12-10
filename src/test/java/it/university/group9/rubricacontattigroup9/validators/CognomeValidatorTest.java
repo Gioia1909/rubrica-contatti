@@ -44,7 +44,7 @@ public class CognomeValidatorTest {
     public void testValidateSurname() throws Exception {
         System.out.println("validateSurname");
         String surname = "";
-        CognomeValidator.validateSurname(surname);
+        ContattoValidator.validateSurname(surname);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

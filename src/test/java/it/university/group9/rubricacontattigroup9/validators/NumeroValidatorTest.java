@@ -44,7 +44,7 @@ public class NumeroValidatorTest {
     public void testValidatePhoneNumber() throws Exception {
         System.out.println("validatePhoneNumber");
         String phoneNumber = "";
-        NumeroValidator.validatePhoneNumber(phoneNumber);
+        ContattoValidator.validatePhoneNumber(phoneNumber);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

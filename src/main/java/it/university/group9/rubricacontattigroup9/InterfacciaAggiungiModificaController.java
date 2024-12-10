@@ -260,10 +260,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     @FXML
     void addContact(ActionEvent event) throws IOException, CampoNonValidoException {
         String nome = nameField.getText();
-        NomeValidator.validateName(nome);
+        ContattoValidator.validateName(nome);
 
         String cognome = surnameField.getText();
-        CognomeValidator.validateSurname(cognome);
+        ContattoValidator.validateSurname(cognome);
 
         String note = noteField.getText();
 
@@ -305,7 +305,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         for (TextField email : emailFields) {
             String e = email.getText().trim();
             if (!e.isEmpty()) {
-                EmailValidator.validateEmail(e);
+                ContattoValidator.validateEmail(e);
                 if (ContattoValidator.isEmailDuplicata(interfacciaUtenteController.getListaContatti(), e)) {
                     if (!showConfirmationDialog("Email Duplicata", "L'email " + e + " già esiste. Vuoi comunque aggiungerla?")) {
                         return;
@@ -422,10 +422,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         try {
             // Recupera e valida i dati dai campi
             String nome = nameField.getText().trim();
-            NomeValidator.validateName(nome);
+            ContattoValidator.validateName(nome);
 
             String cognome = surnameField.getText().trim();
-            CognomeValidator.validateSurname(cognome);
+            ContattoValidator.validateSurname(cognome);
 
             List<String> numeri = Arrays.asList(
                     number1Field.getText().trim(),
@@ -447,7 +447,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
             for (String email : emails) {
                 if (!email.isEmpty()) {
-                    EmailValidator.validateEmail(email);
+                    ContattoValidator.validateEmail(email);
                 }
             }
 

@@ -44,7 +44,7 @@ public class NomeValidatorTest {
     public void testValidateName() throws Exception {
         System.out.println("validateName");
         String name = "";
-        NomeValidator.validateName(name);
+        ContattoValidator.validateName(name);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
