@@ -13,3 +13,4 @@ target/
 # Ignora i file di NetBeans (opzionale)
 nbproject/private/.DS_Store
 
+/nbproject/
