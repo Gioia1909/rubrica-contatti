@@ -8,8 +8,6 @@
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
-import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
-import it.university.group9.rubricacontattigroup9.exceptions.ContattoGiaAggiuntoException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -399,7 +397,7 @@ public class MenuPreferitiController implements Initializable {
      * preferiti
      */
     @FXML
-    private void addPrefButton(ActionEvent event) throws IOException, ContattoGiaAggiuntoException {
+    private void addPrefButton(ActionEvent event) throws IOException {
         if (contactList != null) {
             //debug
             System.out.println("ContactList: " + contactList);
