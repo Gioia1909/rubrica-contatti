@@ -163,7 +163,14 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         Poiché la ListView è collegata alla FilteredList, anche la ListView si aggiorna automaticamente.
          */
     }
+
     
+/**
+ * @brief Configura la visualizzazione della lista dei contatti nella `ListView`. Ogni cella mostra il cognome e il nome del contatto. 
+ *          Se la cella è vuota o il contatto è nullo, il testo della cella viene impostato su `null`.
+ * 
+ * @post Ogni elemento della `ListView` mostrerà il cognome seguito dal nome del contatto.
+ */
     private void configureContactListView() {
         contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
@@ -221,6 +228,14 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         stage.close();
     }
     
+/**
+ * @brief Mostra una finestra di dialogo di errore.
+ * 
+ * @param titolo Il titolo della finestra di dialogo.
+ * @param messaggio Il messaggio di errore da visualizzare.
+ * 
+ * @post La finestra di dialogo di errore verrà mostrata con il titolo e il messaggio specificati.
+ */
     private void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titolo);
