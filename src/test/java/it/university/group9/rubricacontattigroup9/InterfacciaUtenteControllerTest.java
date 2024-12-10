@@ -277,7 +277,7 @@ public class InterfacciaUtenteControllerTest {
            
             instance.setContactList(listaContatti);
             instance.getListView().setItems(listaContatti);
-            instance.searchContact(new ActionEvent());
+            Contatto contattoSelezionato=listaContatti.get(0);
             
             TextField searchBar = new TextField();
             instance.setSearchBar(searchBar);
@@ -285,12 +285,11 @@ public class InterfacciaUtenteControllerTest {
             instance.searchContact(new ActionEvent());
             
             //Verifica che la lista filtrata contenga solo il contatto corrispondente 
-            
-           ObservableList<Contatto> listaFiltrata = instance.getListView.getItems();
-           assertEquals(1,filteredList.size(),"La lista filtrata dovrebbe contenere un solo elemento");
-           assertTrue(filteredList.contains(contatto2));
+   
+           ObservableList<Contatto> listaFiltrata = instance.getListView().getItems();
+           assertEquals(1,listaFiltrata.size(),"La lista filtrata dovrebbe contenere un solo elemento");
+           assertTrue(listaFiltrata.contains(contattoSelezionato));
     
-      
 
     }
 
