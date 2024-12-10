@@ -170,8 +170,18 @@ public class MenuPreferitiController implements Initializable {
 
 //Non sappiamo se la implementeremo
     @FXML
-    private void editAction(ActionEvent event) {
-    
+    private void editAction(ActionEvent event) throws IOException {
+        Contatto selectedContact = listViewPreferiti.getSelectionModel().getSelectedItem();
+        if(selectedContact!=null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
+            Parent root = loader.load();
+            InterfacciaAggiungiModificaController modificaController = loader.getController();
+            modificaController.initializeForEdit(selectedContact, preferitiList);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     /**

@@ -327,7 +327,7 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @FXML
     private void switchToAdd() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungi.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
         Parent root = loader.load(); // Carica la scena
         // Ottieni il controller della scena di aggiunta contatto
         InterfacciaAggiungiModificaController aggiungiController = loader.getController();
@@ -426,7 +426,7 @@ public class InterfacciaUtenteController implements Initializable {
         
         if (contattoSelezionato != null) {  //Verifica se un contatto è stato selezionato. Se null, significa che l'utente non ha selezionato nulla, quindi non deve procedere.
             // Carica la scena di modifica contatto
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungi.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
             //FXMLLoader: Classe per caricare i file FXML.
             //getClass().getResource(...): Trova il file InterfacciaModificaContatto.fxml nel percorso delle risorse.
             Parent root = loader.load();    
