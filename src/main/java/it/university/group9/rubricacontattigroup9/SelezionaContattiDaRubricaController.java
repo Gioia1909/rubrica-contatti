@@ -32,11 +32,76 @@ import javafx.stage.Stage;
 
 
 public class SelezionaContattiDaRubricaController implements Initializable {
+
+    public TextField getSearchBar() {
+        return searchBar;
+    }
+
+    public void setSearchBar(TextField searchBar) {
+        this.searchBar = searchBar;
+    }
+
+    public ListView<Contatto> getContactListView() {
+        return contactListView;
+    }
+
+    public void setContactListView(ListView<Contatto> contactListView) {
+        this.contactListView = contactListView;
+    }
+
+    public Button getAddButton() {
+        return addButton;
+    }
+
+    public void setAddButton(Button addButton) {
+        this.addButton = addButton;
+    }
+
+    public Button getCloseButton() {
+        return closeButton;
+    }
+
+    public void setCloseButton(Button closeButton) {
+        this.closeButton = closeButton;
+    }
+
+    public Button getSearchButton() {
+        return searchButton;
+    }
+
+    public void setSearchButton(Button searchButton) {
+        this.searchButton = searchButton;
+    }
+
+    public ObservableList<Contatto> getRubrica() {
+        return rubrica;
+    }
+
+    public void setRubrica(ObservableList<Contatto> rubrica) {
+        this.rubrica = rubrica;
+    }
+
+    public Contatto getSelectedContact() {
+        return selectedContact;
+    }
+
+    public void setSelectedContact(Contatto selectedContact) {
+        this.selectedContact = selectedContact;
+    }
+
+    public ObservableList<Contatto> getRubricaPreferiti() {
+        return rubricaPreferiti;
+    }
+
     /**
      * @brief Campo di testo per la barra di ricerca.
      * 
      * Consente all'utente di digitare il testo per filtrare i contatti visibili nella lista.
      */
+    public void setRubricaPreferiti(ObservableList<Contatto> rubricaPreferiti) {
+        this.rubricaPreferiti = rubricaPreferiti;
+    }
+
     @FXML
     private TextField searchBar;
   /**
@@ -89,7 +154,7 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     //riferimento alla lista dei preferiti
     private ObservableList <Contatto> rubricaPreferiti;
     
-
+    
     /**
      * @brief Metodo di inizializzazione del controller
      * @param[in] url URL di inizializzazione
