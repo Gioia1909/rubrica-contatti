@@ -6,6 +6,8 @@
 package it.university.group9.rubricacontattigroup9.InputOutput;
 
 import it.university.group9.rubricacontattigroup9.Contatto;
+import java.util.Arrays;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -16,52 +18,60 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author imacpro
+ * @author Gruppo09
  */
 public class SalvaCaricaRubricaTest {
-    
+
+    private ObservableList<Contatto> rubrica; // Variabile di classe
+
     public SalvaCaricaRubricaTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
+        // Inizializzazione della rubrica da usare nei test
+        rubrica = FXCollections.observableArrayList(
+            new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi")
+        );
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
 
-    /**
-     * Test of salvaRubrica method, of class SalvaCaricaRubrica.
-     */
     @Test
     public void testSalvaRubrica() {
         System.out.println("salvaRubrica");
-        ObservableList<Contatto> rubrica = null;
+        // Salva la rubrica
         SalvaCaricaRubrica.salvaRubrica(rubrica);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Verifica che non vengano lanciate eccezioni durante il salvataggio
+        assertDoesNotThrow(() -> SalvaCaricaRubrica.salvaRubrica(rubrica));
     }
 
-    /**
-     * Test of caricaRubrica method, of class SalvaCaricaRubrica.
-     */
     @Test
     public void testCaricaRubrica() {
         System.out.println("caricaRubrica");
-        ObservableList<Contatto> expResult = null;
+        // Carica la rubrica e confronta i risultati
         ObservableList<Contatto> result = SalvaCaricaRubrica.caricaRubrica();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
+        assertEquals(rubrica.size(), result.size());
+        // Confronta il contenuto della rubrica caricata con quella salvata
+        for (int i = 0; i < rubrica.size(); i++) {
+            Contatto expectedContact = rubrica.get(i);
+            Contatto actualContact = result.get(i);
+            assertEquals(expectedContact.getNome(), actualContact.getNome());
+            assertEquals(expectedContact.getCognome(), actualContact.getCognome());
+            assertEquals(expectedContact.getNumeri(), actualContact.getNumeri());
+            assertEquals(expectedContact.getEmails(), actualContact.getEmails());
+            assertEquals(expectedContact.getNote(), actualContact.getNote());
+        }
     }
-    
 }

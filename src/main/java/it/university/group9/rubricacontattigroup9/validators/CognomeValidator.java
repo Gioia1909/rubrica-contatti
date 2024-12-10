@@ -11,7 +11,7 @@
  */
 package it.university.group9.rubricacontattigroup9.validators;
 
-import it.university.group9.rubricacontattigroup9.exceptions.CognomeNonValidoException;
+import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
 
 /**
  * @brief Validatore per i cognomi.
@@ -29,10 +29,10 @@ public class CognomeValidator {
      * @param name Il cognome da validare.
      * @throws CognomeNonValidoException Se il cognome è nullo o vuoto.
      */
-    public static void validateSurname(String surname) throws CognomeNonValidoException {
+    public static void validateSurname(String surname) throws CampoNonValidoException {
         if (surname == null || surname.trim().isEmpty() || !Character.isAlphabetic(surname.charAt(0))){    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
                                                                                     //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
-            throw new CognomeNonValidoException("Cognome non valido");
+            throw new CampoNonValidoException("Cognome non valido");
         }
     }
 }

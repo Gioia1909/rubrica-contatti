@@ -8,8 +8,13 @@ package it.university.group9.rubricacontattigroup9;
 import it.university.group9.rubricacontattigroup9.Contatto;
 import it.university.group9.rubricacontattigroup9.SelezionaContattiDaRubricaController;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,40 +27,59 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author imacpro
  */
 public class SelezionaContattiDaRubricaControllerTest {
-    
-    public SelezionaContattiDaRubricaControllerTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
+private SelezionaContattiDaRubricaController controller; 
+private TextField searchBar; 
+private ListView<Contatto> contactListView;
+private Button addButton; 
+private Button closeButton; 
+private ObservableList<Contatto> rubrica;   
+private ObservableList<Contatto> rubricaPreferiti;   
+
     
     @BeforeEach
     public void setUp() {
+              System.out.println("Setup per ogni test.");
+
+        // Inizializzazione del controller e dei suoi componenti
+        controller = new SelezionaContattiDaRubricaController();
+        searchBar = new TextField();
+        contactListView = new ListView<>();
+        addButton = new Button();
+        closeButton = new Button();
+
+        // Inizializzazione delle liste
+        rubrica = FXCollections.observableArrayList(
+            new Contatto("Mario", "Rossi", Arrays.asList("123456789"), Arrays.asList("mario@example.com"), " "),
+            new Contatto("Luigi", "Bianchi", Arrays.asList("987654321"), Arrays.asList("luigi@example.com"), " ")
+        );
+        rubricaPreferiti = FXCollections.observableArrayList();
+
+        // Simula l'iniezione dei campi FXML
+        controller.setSearchBar(searchBar);
+        controller.setContactListView(contactListView);
+        controller.setAddButton(addButton);
+        controller.setCloseButton(closeButton);
+
+        // Configuro le liste nel controller
+        controller.setContacts(rubrica, rubricaPreferiti);
     }
+    
     
     @AfterEach
     public void tearDown() {
+    controller = null;
+    searchBar = null;
+    contactListView = null;
+    addButton = null;
+    closeButton = null;
+    rubrica = null;
+    rubricaPreferiti = null;
     }
 
     /**
      * Test of initialize method, of class SelezionaContattiDaRubricaController.
      */
-    @Test
-    public void testInitialize() {
-        System.out.println("initialize");
-        URL url = null;
-        ResourceBundle rb = null;
-        SelezionaContattiDaRubricaController instance = new SelezionaContattiDaRubricaController();
-        instance.initialize(url, rb);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    
     /**
      * Test of setContacts method, of class SelezionaContattiDaRubricaController.
      */

@@ -12,7 +12,7 @@
  */
 package it.university.group9.rubricacontattigroup9.validators;
 
-import it.university.group9.rubricacontattigroup9.exceptions.NomeNonValidoException;
+import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
 
 /**
  * @class NomeValidator
@@ -31,10 +31,10 @@ public class NomeValidator {
      * @param name Il nome da validare.
      * @throws NomeNonValidoException Se il nome non è valido.
      */
-    public static void validateName(String name) throws NomeNonValidoException {
+    public static void validateName(String name) throws CampoNonValidoException {
         if (name == null || name.trim().isEmpty()|| !Character.isAlphabetic(name.charAt(0))) {    //name.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
                                                                                     //nome apparentemente vuoto (ma con spazi) sia considerato valido.
-            throw new NomeNonValidoException("Nome non valido");
+            throw new CampoNonValidoException("Nome non valido");
         }
     }
 }

@@ -249,9 +249,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      *
      * @throws IOException Se si verifica un errore durante il salvataggio della
      * rubrica su file.
-     * @throws NomeNonValidoException Se il nome fornito non è valido.
-     * @throws CognomeNonValidoException Se il cognome fornito non è valido.
-     * @throws NumeroNonValidoException Se uno dei numeri di telefono forniti
+     * @throws CampoNonValidoException se i campi forniti non sono valido.
      * non è valido.
      * @throws EmailNonValidaException Se una delle email fornite non è valida.
      *
@@ -260,7 +258,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      *
      */
     @FXML
-    void addContact(ActionEvent event) throws IOException, NomeNonValidoException, CognomeNonValidoException, NumeroNonValidoException, EmailNonValidaException {
+    void addContact(ActionEvent event) throws IOException, CampoNonValidoException {
         String nome = nameField.getText();
         NomeValidator.validateName(nome);
 
@@ -470,7 +468,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             // Chiudi la finestra
             closeWindow();
 
-        } catch (NomeNonValidoException | CognomeNonValidoException | NumeroNonValidoException | EmailNonValidaException ex) {
+        } catch (CampoNonValidoException ex) {
             showErrorDialog("Errore di Validazione", ex.getMessage());
         }
     }

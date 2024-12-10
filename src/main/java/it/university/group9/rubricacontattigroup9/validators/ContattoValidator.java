@@ -66,7 +66,7 @@ public class ContattoValidator {
         return false; // Contatto non trovato
     }
 
-    
+     
     public static boolean isEmailDuplicata(List<Contatto> contatti, String email){
         for (Contatto contatto : contatti) { 
             for (String em : contatto.getEmails()) {
