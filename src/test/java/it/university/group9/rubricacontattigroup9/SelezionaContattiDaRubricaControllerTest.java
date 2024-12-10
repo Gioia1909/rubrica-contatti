@@ -64,7 +64,7 @@ private ObservableList<Contatto> rubricaPreferiti;
         controller.setContacts(rubrica, rubricaPreferiti);
     }
     
-    /*
+   
     @AfterEach
     public void tearDown() {
     controller = null;
@@ -74,7 +74,7 @@ private ObservableList<Contatto> rubricaPreferiti;
     closeButton = null;
     rubrica = null;
     rubricaPreferiti = null;
-    }*/
+    }
 
     /**
      * Test of initialize method, of class SelezionaContattiDaRubricaController.
@@ -90,11 +90,44 @@ private ObservableList<Contatto> rubricaPreferiti;
         assertThrows(NullPointerException.class,() -> controller.setContacts(null, null), "Dovrebbe lanciare un eccezione di tipo NullPointerException" );
 
     }
-    
+    @Test
     public void testSetContactsWithoutNullParameter(){
     rubricaPreferiti.add(rubrica.get(0));
     assertDoesNotThrow(() -> controller.setContacts(rubrica, rubricaPreferiti), "Non dovrebbe lanciare un eccezione di tipo NullPointerException" );
     }
+    
+    @Test
+    public void testSetContactsValidParameters(){
+    // Aggiunta di un contatto ai preferiti
+    rubricaPreferiti.add(rubrica.get(0));
+
+  
+    controller.setContacts(rubrica, rubricaPreferiti);
+
+    // Verifico che la rubrica non sia vuota
+    assertFalse(controller.getRubrica().isEmpty(), "La rubrica non dovrebbe essere vuota");
+
+    // Verifica che il contatto sia stato aggiunto nella ListView
+    assertTrue(contactListView.getItems().contains(rubrica.get(0)), "Il contatto dovrebbe essere presente nella ListView");
+
+    
+    }
+
+    @Test
+    public void testFilterContactsWithSearchText() {
+    rubrica.add(new Contatto("Mario", "Rossi", Arrays.asList("123456789"), Arrays.asList("mario@example.com"), " "));
+    rubrica.add(new Contatto("Luigi", "Bianchi", Arrays.asList("987654321"), Arrays.asList("luigi@example.com"), " "));
+
+    controller.setContacts(rubrica, rubricaPreferiti);
+
+    searchBar.setText("Mario");
+
+    // Verifico che solo il contatto che corrisponde al filtro sia visibile nella ListView
+    assertEquals(1, contactListView.getItems().size(), "La lista dovrebbe contenere solo un contatto");
+    assertTrue(contactListView.getItems().contains(rubrica.get(0)), "Il contatto 'Mario Rossi' dovrebbe essere visibile");
+    assertFalse(contactListView.getItems().contains(rubrica.get(1)), "Il contatto 'Luigi Bianchi' non dovrebbe essere visibile");
+}
+
     
     
 }
