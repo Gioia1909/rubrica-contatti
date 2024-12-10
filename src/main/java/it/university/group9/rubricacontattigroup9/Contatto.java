@@ -165,22 +165,7 @@ public class Contatto implements Comparable<Contatto> {
         return risultato;
     }
 
-    /**
-     * @brief Confronta l'oggetto corrente con un altro oggetto per verificarne
-     * l'uguaglianza.
-     *
-     * Questo metodo verifica se l'oggetto passato come parametro è uguale
-     * all'oggetto corrente. Quindi due oggetti di tipo Contatto sono
-     * considerati uguali se hanno lo stesso riferimento, oppure se appartengno
-     * alla stessa classe e i loro attributi sono uguali.
-     *
-     *
-     * @param[in] o Oggetto da confrontare con l'oggetto corrente.
-     * @return true se gli oggetti sono uguali, altrimenti false.
-     *
-     *
-     */
-    @Override
+    
 
     /**
      * @brief Metodo che determina l'uguaglianza tra due oggetti Contatto.
@@ -191,6 +176,7 @@ public class Contatto implements Comparable<Contatto> {
      * @param o L'oggetto da confrontare.
      * @return True se gli oggetti sono uguali, false se sono diversi.
      */
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
