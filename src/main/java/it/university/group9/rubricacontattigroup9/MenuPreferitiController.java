@@ -153,6 +153,12 @@ public class MenuPreferitiController implements Initializable {
         });
     }
 
+/**
+ * @brief Configura la visualizzazione della lista dei contatti preferiti nella ListView.
+ * 
+ * @pre La `ListView` deve essere inizializzata correttamente e pronta per la configurazione.
+ * @post La `ListView` dei contatti preferiti è configurata per visualizzare i contatti con il formato "Cognome Nome".
+ */
     private void configurePreferitiListView() {
         listViewPreferiti.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
@@ -169,6 +175,15 @@ public class MenuPreferitiController implements Initializable {
     }
 
 //Non sappiamo se la implementeremo
+   
+/**
+ * @brief Gestisce l'azione di modifica di un contatto selezionato dalla lista dei preferiti.
+ * 
+ * @param event L'evento che ha attivato l'azione di modifica.
+ * 
+ * @pre Il contatto selezionato nella `ListView` deve essere non nullo.
+ * @post Viene aperta una nuova finestra di modifica con i dettagli del contatto selezionato, pronti per essere modificati.
+ */
     @FXML
     private void editAction(ActionEvent event) throws IOException {
         Contatto selectedContact = listViewPreferiti.getSelectionModel().getSelectedItem();
@@ -266,7 +281,14 @@ public class MenuPreferitiController implements Initializable {
         }
 
     }
-
+/**
+ * @brief Gestisce l'azione di ricerca dei contatti nella lista preferiti.
+ * 
+ * @param event L'evento che ha attivato l'azione di ricerca.
+ * 
+ * @pre La barra di ricerca contiene il testo da cercare.
+ * @post La `ListView` dei preferiti viene aggiornata con i contatti che corrispondono alla ricerca.
+ */
     @FXML
     private void searchAction(ActionEvent event) {
         String searchQuery = searchBar.getText().toLowerCase().trim();
@@ -300,6 +322,15 @@ public class MenuPreferitiController implements Initializable {
         
     }
     
+/**
+ * @brief Mostra una finestra di dialogo di errore con un messaggio personalizzato,una finestra di dialogo di tipo errore con 
+ * un titolo e un messaggio.
+ * 
+ * @param titolo Il titolo della finestra di dialogo.
+ * @param messaggio Il contenuto del messaggio da visualizzare nella finestra di dialogo.
+ * 
+ * @post Viene mostrata una finestra di dialogo con il titolo e il messaggio forniti.
+ */
     private void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titolo);
@@ -307,10 +338,24 @@ public class MenuPreferitiController implements Initializable {
         alert.showAndWait();
     }
     
+/**
+ * @brief Ordina i contatti nella lista dei preferiti in base all'ordine naturale dei contatti, 
+ *
+ * 
+ * @post La lista dei preferiti viene ordinata.
+ */
     private void ordinaContatti(){
         FXCollections.sort(preferitiList);
     }
 
+/**
+ * @brief Gestisce l'azione di eliminazione di un contatto dalla lista preferiti.
+ * 
+ * @param event L'evento che ha attivato l'azione di eliminazione.
+ * 
+ * @pre Deve essere selezionato un contatto dalla `ListView`.
+ * @post Il contatto selezionato viene rimosso dalla `ListView` e i contatti aggiornati vengono salvati nel file.
+ */
     @FXML
     private void deleteAction(ActionEvent event) {
         int selezionato = listViewPreferiti.getSelectionModel().getSelectedIndex();
@@ -324,6 +369,15 @@ public class MenuPreferitiController implements Initializable {
     }
     
     
+/**
+ * @brief Aggiorna i dettagli di un contatto selezionato in base ai dati del contatto selezionato. 
+ * Se un campo è vuoto, il relativo campo di input sarà nascosto.
+ * 
+ * @param contattoSelezionato Il contatto di cui aggiornare i dettagli.
+ * 
+ * @pre Il contatto selezionato deve essere non nullo.
+ * @post I campi di input vengono aggiornati con i dettagli del contatto selezionato.
+ */
     private void updateContactDetails(Contatto contattoSelezionato) {
             defaultText.setVisible(false);
             delButton.setVisible(true);
