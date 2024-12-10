@@ -5,7 +5,10 @@
  */
 package it.university.group9.rubricacontattigroup9.InputOutput;
 
+import static com.fasterxml.jackson.databind.cfg.CoercionInputShape.Array;
 import it.university.group9.rubricacontattigroup9.Contatto;
+import java.util.Arrays;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -45,10 +48,9 @@ public class SalvaCaricaPreferitiTest {
     @Test
     public void testSalvaRubricaPreferiti() {
         System.out.println("salvaRubricaPreferiti");
-        ObservableList<Contatto> rubrica = null;
+        ObservableList<Contatto> rubrica = FXCollections.observableArrayList(new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi"));
         SalvaCaricaPreferiti.salvaRubricaPreferiti(rubrica);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertDoesNotThrow(() -> SalvaCaricaPreferiti.salvaRubricaPreferiti(rubrica));       
     }
 
     /**
@@ -57,11 +59,16 @@ public class SalvaCaricaPreferitiTest {
     @Test
     public void testCaricaRubricaPreferiti() {
         System.out.println("caricaRubricaPreferiti");
-        ObservableList<Contatto> expResult = null;
+        ObservableList<Contatto> expResult = FXCollections.observableArrayList(new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi"));
         ObservableList<Contatto> result = SalvaCaricaPreferiti.caricaRubricaPreferiti();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Verifica che la lista caricata contenga gli stessi dati di quella di esempio
+        assertNotNull(result); // La lista non deve essere null
+        assertEquals(expResult.size(), result.size()); // La dimensione delle liste deve essere uguale
+        assertEquals(expResult.get(0).getNome(), result.get(0).getNome()); // Controllo del nome
+        assertEquals(expResult.get(0).getCognome(), result.get(0).getCognome()); // Controllo del cognome
+        assertEquals(expResult.get(0).getNumeri(), result.get(0).getNumeri()); // Controllo del telefono
+        assertEquals(expResult.get(0).getEmails(), result.get(0).getEmails()); // Controllo dell'email
+        assertEquals(expResult.get(0).getNote(), result.get(0).getNote()); // Controllo delle note
     }
     
 }
