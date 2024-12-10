@@ -30,6 +30,98 @@ import javafx.stage.Stage;
 
 public class InterfacciaAggiungiModificaController implements Initializable {
 
+    public TextField getNameField() {
+        return nameField;
+    }
+
+    public TextField getSurnameField() {
+        return surnameField;
+    }
+
+    public TextField getEmail1Field() {
+        return email1Field;
+    }
+
+    public TextField getEmail2Field() {
+        return email2Field;
+    }
+
+    public TextField getEmail3Field() {
+        return email3Field;
+    }
+
+    public TextField getNumber1Field() {
+        return number1Field;
+    }
+
+    public TextField getNumber2Field() {
+        return number2Field;
+    }
+
+    public TextField getNumber3Field() {
+        return number3Field;
+    }
+
+    public TextField getNoteField() {
+        return noteField;
+    }
+
+    public Button getEditButton() {
+        return editButton;
+    }
+
+    public boolean isIsEditing() {
+        return isEditing;
+    }
+
+    public Contatto getContattoEsistente() {
+        return contattoEsistente;
+    }
+
+    public ObservableList<Contatto> getRubrica() {
+        return rubrica;
+    }
+
+    public InterfacciaUtenteController getInterfacciaUtenteController() {
+        return interfacciaUtenteController;
+    }
+    
+    public void setNameField(TextField nameField) {
+        this.nameField = nameField;
+    }
+    
+    public void setSurnameField(TextField surnameField) {
+        this.surnameField = surnameField;
+    }
+
+    public void setEmail1Field(TextField email1Field) {
+        this.email1Field = email1Field;
+    }
+
+    public void setEmail2Field(TextField email2Field) {
+        this.email2Field = email2Field;
+    }
+
+    public void setEmail3Field(TextField email3Field) {
+        this.email3Field = email3Field;
+    }
+
+    public void setNumber1Field(TextField number1Field) {
+        this.number1Field = number1Field;
+    }
+
+    public void setNumber2Field(TextField number2Field) {
+        this.number2Field = number2Field;
+    }
+
+    public void setNumber3Field(TextField number3Field) {
+        this.number3Field = number3Field;
+    }
+    
+    public void setNoteField(TextField noteField) {
+        this.noteField = noteField;
+    }
+
     /**
      * @brief Riferimento al controller dell'interfaccia principale.
      */
