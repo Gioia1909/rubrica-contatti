@@ -30,12 +30,11 @@ import javafx.stage.Stage;
 
 /**
  * @class SelezionaContattiDaRubricaController
- * @brief Controller per la selezione di contatti dalla rubrica.
- *
- * Questa classe implementa la logica per:
- * - Visualizzare e filtrare i contatti della rubrica.
- * - Aggiungere i contatti selezionati ai preferiti.
- * - Gestire l'interazione con l'interfaccia utente.
+ * @brief Controller per la gestione della selezione e aggiunta dei contatti.
+ * 
+ * Questa classe fornisce il controller per l'interfaccia grafica che consente
+ * di visualizzare la lista di contatti, ricercarli, selezionarli e aggiungerli
+ * alla rubrica dei preferiti.
  */
 public class SelezionaContattiDaRubricaController implements Initializable {
 
@@ -78,76 +77,152 @@ public class SelezionaContattiDaRubricaController implements Initializable {
      */
     private Contatto selectedContact;
 
+    /**
+     * @brief Restituisce la barra di ricerca.
+     * @return La barra di ricerca dei contatti.
+     */
     public TextField getSearchBar() {
         return searchBar;
     }
 
+    /**
+     * @brief Imposta la barra di ricerca.
+     * 
+     * @param searchBar La barra di ricerca da impostare.
+     */
     public void setSearchBar(TextField searchBar) {
         this.searchBar = searchBar;
     }
 
+    /**
+     * @brief Restituisce la lista dei contatti.
+     * @return La lista dei contatti.
+     */
     public ListView<Contatto> getContactListView() {
         return contactListView;
     }
 
+    /**
+     * @brief Imposta la lista dei contatti.
+     * 
+     * @param contactListView La lista dei contatti da impostare.
+     */
     public void setContactListView(ListView<Contatto> contactListView) {
         this.contactListView = contactListView;
     }
 
+    /**
+     * @brief Restituisce il bottone per aggiungere un contatto ai preferiti.
+     * @return Il bottone di aggiunta.
+     */
     public Button getAddButton() {
         return addButton;
     }
 
+    /**
+     * @brief Imposta il bottone per aggiungere un contatto ai preferiti.
+     * 
+     * @param addButton Il bottone di aggiunta da impostare.
+     */
     public void setAddButton(Button addButton) {
         this.addButton = addButton;
     }
 
+    /**
+     * @brief Restituisce il bottone per chiudere la finestra.
+     * @return Il bottone di chiusura.
+     */
     public Button getCloseButton() {
         return closeButton;
     }
 
+    /**
+     * @brief Imposta il bottone per chiudere la finestra.
+     * 
+     * @param closeButton Il bottone di chiusura da impostare.
+     */
     public void setCloseButton(Button closeButton) {
         this.closeButton = closeButton;
     }
 
+    /**
+     * @brief Restituisce il bottone per avviare la ricerca.
+     * @return Il bottone di ricerca.
+     */
     public Button getSearchButton() {
         return searchButton;
     }
 
+    /**
+     * @brief Imposta il bottone per avviare la ricerca.
+     * 
+     * @param searchButton Il bottone di ricerca da impostare.
+     */
     public void setSearchButton(Button searchButton) {
         this.searchButton = searchButton;
     }
 
+    /**
+     * @brief Restituisce la rubrica completa dei contatti.
+     * @return La lista dei contatti della rubrica.
+     */
     public ObservableList<Contatto> getRubrica() {
         return addressBook;
     }
 
+    /**
+     * @brief Imposta la rubrica completa dei contatti.
+     * 
+     * @param addressBook La rubrica dei contatti da impostare.
+     */
     public void setRubrica(ObservableList<Contatto> addressBook) {
         this.addressBook = addressBook;
     }
 
+    /**
+     * @brief Restituisce il contatto selezionato.
+     * @return Il contatto selezionato.
+     */
     public Contatto getSelectedContact() {
         return selectedContact;
     }
 
+    /**
+     * @brief Imposta il contatto selezionato.
+     * 
+     * @param selectedContact Il contatto da selezionare.
+     */
     public void setSelectedContact(Contatto selectedContact) {
         this.selectedContact = selectedContact;
     }
 
+    /**
+     * @brief Restituisce la lista dei contatti preferiti.
+     * @return La lista dei contatti preferiti.
+     */
     public ObservableList<Contatto> getfAddressBook() {
         return fAddressBook;
     }
 
-
+    /**
+     * @brief Imposta la lista dei contatti preferiti.
+     * 
+     * @param fAddressBook La lista dei contatti preferiti da impostare.
+     */
     public void setfAddressBook(ObservableList<Contatto> fAddressBook) {
         this.fAddressBook = fAddressBook;
     }
 
     /**
-     * @brief Inizializza il controller.
-     *
-     * @param url URL per risorse FXML.
-     * @param rb Bundle per la localizzazione.
+     * @brief Inizializza la vista del controller.
+     * 
+     * Questo metodo imposta la modalità di selezione singola per la lista dei contatti.
+     * 
+     * @param url URL di localizzazione.
+     * @param rb Risorse per la localizzazione.
+     * 
+     * @pre La lista dei contatti è già stata caricata e deve essere disponibile nel contesto.
+     * @post La modalità di selezione della lista dei contatti è impostata su "singola" (solo un contatto selezionabile alla volta).
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -156,11 +231,15 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         //così specifichiamo che la selezione del contatto nella lista è singolo 
     }
 
-    /**
+       /**
      * @brief Configura le liste dei contatti e dei preferiti.
      *
-     * @param[in] rubrica Lista completa dei contatti.
-     * @param[in] rubricaPreferiti Lista dei contatti preferiti.
+     * @param[in] addressBook Lista completa dei contatti.
+     * @param[in] fAddressBook Lista dei contatti preferiti.
+     * @throws NullPointerException Se una delle liste è null.
+     *
+     * @pre Le liste addressBook e fAddressBook non devono essere null.
+     * @post La ListView dei contatti viene popolata con i dati della rubrica filtrati dinamicamente.
      */
     public void setContacts(ObservableList<Contatto> addressBook, ObservableList<Contatto> fAddressBook) {
         if (addressBook == null || fAddressBook == null) {
@@ -210,7 +289,12 @@ public class SelezionaContattiDaRubricaController implements Initializable {
          */
     }
 
-
+    /**
+     * @brief Configura la visualizzazione dei contatti nella lista.
+     * 
+     * Questo metodo definisce come visualizzare ogni contatto nella ListView, mostrando il cognome e il nome.
+     * @post I contatti vengono visualizzati con il cognome e nome nella lista.
+     */
     private void configureContactListView() {
         contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
@@ -226,6 +310,14 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         });
     }
 
+    /**
+     * @brief Aggiunge il contatto selezionato ai preferiti.
+     * 
+     * @param event L'evento di aggiunta.
+     * 
+     * @post Se il contatto non è già nei preferiti, viene aggiunto e la lista dei preferiti viene salvata.
+     * @post Se il contatto è già nei preferiti, viene mostrato un messaggio di errore.
+     */
     @FXML
     private void handleAddContact(ActionEvent event) throws IOException {
         selectedContact = contactListView.getSelectionModel().getSelectedItem(); // prendo l'elemento selezionato 
@@ -249,12 +341,27 @@ public class SelezionaContattiDaRubricaController implements Initializable {
 
     }
 
+    /**
+     * @brief Chiude la finestra di selezione contatti.
+     * 
+     * @param event L'evento di chiusura.
+     * 
+     * @post La finestra viene chiusa senza modifiche.
+     */
     @FXML
     private void handleClosePopup(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * @brief Mostra un messaggio di errore.
+     * 
+     * @param title Il titolo dell'errore.
+     * @param message Il messaggio dell'errore.
+     * 
+     * @post Viene visualizzato un messaggio di errore con il titolo e il messaggio forniti.
+     */
     private void showErrorDialog(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
