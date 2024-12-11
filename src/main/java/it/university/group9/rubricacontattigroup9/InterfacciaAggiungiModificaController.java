@@ -183,6 +183,14 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
         this.interfacciaUtenteController = controller;
     }
+    /**
+     * @brief Imposta il riferimento al controller dell'interfaccia principale.
+     * @param[in] controller Riferimento al controller principale.
+     * @post Viene aggiornato il riferimento al controller principale.
+     */
+    
+    //parte di add
+    
     
     public void initializeForAdd(ObservableList<Contatto> rubrica) {
         this.rubrica = rubrica;
@@ -209,12 +217,47 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
         editButton.setOnAction(event -> editContact(new ActionEvent()));
     }
-    
+    /**
+     * @brief Torna all'interfaccia principale.
+     *
+     * Questo metodo chiude la finestra corrente e ritorna alla schermata
+     * principale dell'applicazione.
+     *
+     * @param[in] event Evento del mouse che ha scatenato l'azione.
+     * @throws IOException Se non è possibile caricare la scena.
+     * @post La finestra corrente viene chiusa e l'applicazione torna alla
+     * schermata principale.
+     * @see InterfacciaUtenteController
+     *
+     */
     @FXML
     void switchToInterfaccia(ActionEvent event) throws IOException {
         closeWindow();
     }
-
+/**
+     * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di
+     * aggiunta contatti aggiornando la rubrica
+     *
+     * Questo metodo permette di aggiungere un nuovo contatto con nome, cognome,
+     * numeri di telefono, email e note alla rubrica. Valida i dati inseriti,
+     * verifica la presenza di duplicati e aggiorna la rubrica sia nella lista
+     * in memoria che nel file di salvataggio.
+     *
+     * @pre I parametri da inserire nel contatto non devono essere vuoti
+     * @post Viene aggiunto un contatto nella lista
+     *
+     * @param[in] event Evento del mouse che ha scatenato l'azione.
+     *
+     * @throws IOException Se si verifica un errore durante il salvataggio della
+     * rubrica su file.
+     * @throws CampoNonValidoException se i campi forniti non sono valido.
+     * non è valido.
+     * @throws EmailNonValidaException Se una delle email fornite non è valida.
+     *
+     * @see NomeValidator, CognomeValidator, NumeroValidator, EmailValidator,
+     * SalvaCaricaRubrica
+     *
+     */
     @FXML
     void addContact(ActionEvent event) {
         try {
@@ -286,6 +329,34 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     }
 
 
+    private List<String> collectValidNumbers() throws CampoNonValidoException {
+        List<String> numeri = new ArrayList<>();
+        List<TextField> numberFields = Arrays.asList(number1Field, number2Field, number3Field);
+
+        for (TextField field : numberFields) {
+            String numero = field.getText().trim();
+            if (!numero.isEmpty()) {
+                ContattoValidator.validatePhoneNumber(numero);
+                numeri.add(numero);
+            }
+        }
+        return numeri;
+    }
+
+     private boolean requestConfirmation(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
+        alert.setTitle(title);
+        alert.showAndWait();
+        return alert.getResult() == ButtonType.YES;
+    }
+
+
+     private void handleValidationError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore di Validazione");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 
     
@@ -299,145 +370,14 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     private Contatto contattoEsistente; //contatto da modificare se presente
     private ObservableList<Contatto> rubrica; //Lista dei contatti 
 
-    /**
-     * @brief Imposta il riferimento al controller dell'interfaccia principale.
-     * @param[in] controller Riferimento al controller principale.
-     * @post Viene aggiornato il riferimento al controller principale.
-     */
+   
     
-    //parte di add
     
-    public void initializeForAdd(ObservableList<Contatto> rubrica) {
-        this.rubrica = rubrica;
-        addButton.setVisible(true);
-        editButton.setVisible(false); // Nascondi il bottone di modifica
-    }
     
-    public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
-        this.interfacciaUtenteController = controller;
-    }
+    
 
-    /**
-     * @brief Torna all'interfaccia principale.
-     *
-     * Questo metodo chiude la finestra corrente e ritorna alla schermata
-     * principale dell'applicazione.
-     *
-     * @param[in] event Evento del mouse che ha scatenato l'azione.
-     * @throws IOException Se non è possibile caricare la scena.
-     * @post La finestra corrente viene chiusa e l'applicazione torna alla
-     * schermata principale.
-     * @see InterfacciaUtenteController
-     *
-     */
-    @FXML
-    void switchToInterfaccia(ActionEvent event) throws IOException {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();        //ottiene lo stage a partire da dove si trova cancelButton  
-        stage.close();  // Chiude la finestra
-        // Torna alla finestra principale (InterfacciaUtente)
-
-    }
-
-    /**
-     * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di
-     * aggiunta contatti aggiornando la rubrica
-     *
-     * Questo metodo permette di aggiungere un nuovo contatto con nome, cognome,
-     * numeri di telefono, email e note alla rubrica. Valida i dati inseriti,
-     * verifica la presenza di duplicati e aggiorna la rubrica sia nella lista
-     * in memoria che nel file di salvataggio.
-     *
-     * @pre I parametri da inserire nel contatto non devono essere vuoti
-     * @post Viene aggiunto un contatto nella lista
-     *
-     * @param[in] event Evento del mouse che ha scatenato l'azione.
-     *
-     * @throws IOException Se si verifica un errore durante il salvataggio della
-     * rubrica su file.
-     * @throws CampoNonValidoException se i campi forniti non sono valido.
-     * non è valido.
-     * @throws EmailNonValidaException Se una delle email fornite non è valida.
-     *
-     * @see NomeValidator, CognomeValidator, NumeroValidator, EmailValidator,
-     * SalvaCaricaRubrica
-     *
-     */
-    @FXML
-    void addContact(ActionEvent event) throws IOException, CampoNonValidoException {
-        String nome = nameField.getText();
-        ContattoValidator.validateName(nome);
-
-        String cognome = surnameField.getText();
-        ContattoValidator.validateSurname(cognome);
-
-        String note = noteField.getText();
-
-        List<String> numeri = new LinkedList<>();
-        List<String> emails = new LinkedList<>();
-        List<TextField> numeroFields = Arrays.asList(number2Field, number3Field); //numeri facoltativi
-
-        // Gestione primo numero  di telefono obbligatorio
-        String primoNumero = number1Field.getText().trim();
-        if (primoNumero.isEmpty()) {
-            showErrorDialog("Numero obbligatorio", "Il primo numero di telefono è obbligatorio.");
-            return;
-        }
-
-        ContattoValidator.validatePhoneNumber(primoNumero);
-        if (ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), primoNumero)) {
-            if (!showConfirmationDialog("Numero duplicato", "Il numero " + primoNumero + " già esiste. Vuoi comunque aggiungerlo?")) {
-                return;
-            }
-        }
-        numeri.add(primoNumero);
-
-        //gestione numeri di telefono facoltativi
-        for (TextField numero : numeroFields) {
-            String n = numero.getText().trim(); //prende numero levando gli spazi
-            if (!n.isEmpty()) {
-                ContattoValidator.validatePhoneNumber(n);
-                if (ContattoValidator.isNumeroDuplicato(interfacciaUtenteController.getListaContatti(), n)) {
-                    if (!showConfirmationDialog("Numero Duplicato", "Il numero " + numero + " già esiste. Vuoi comunque aggiungerlo?")) {
-                        return;
-                    }
-                }
-                numeri.add(n);
-            }
-        }
-
-        //Gestione Email facoltative       
-        List<TextField> emailFields = Arrays.asList(email1Field, email2Field, email3Field);
-        for (TextField email : emailFields) {
-            String e = email.getText().trim();
-            if (!e.isEmpty()) {
-                ContattoValidator.validateEmail(e);
-                if (ContattoValidator.isEmailDuplicata(interfacciaUtenteController.getListaContatti(), e)) {
-                    if (!showConfirmationDialog("Email Duplicata", "L'email " + e + " già esiste. Vuoi comunque aggiungerla?")) {
-                        return;
-                    }
-                }
-                emails.add(e);
-            }
-
-        }
-
-        //verifica contatto duplicato
-        if (ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome)) {
-            if (!showConfirmationDialog("Contatto Duplicato", "Un contatto: " + nome + " " + cognome + " già esiste. Vuoi comunque aggiungerlo?")) {
-                switchToInterfaccia(event);
-                return;
-            }
-        }
-
-        Contatto nuovoContatto = new Contatto(nome, cognome, numeri, emails, note);
-
-        interfacciaUtenteController.getListaContatti().add(nuovoContatto);
-        interfacciaUtenteController.ordinaContatti();
-        //aggiornamento file 
-        SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
-        switchToInterfaccia(event);
-
-    }
+    
+    
 
     /**
  * @brief Mostra una finestra di dialogo di conferma con due opzioni: Sì e No.
