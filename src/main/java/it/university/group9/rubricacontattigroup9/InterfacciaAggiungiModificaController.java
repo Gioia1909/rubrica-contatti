@@ -199,6 +199,68 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         editButton.setVisible(true);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        addButton.setOnAction(event -> {
+
+            addContact(event);
+
+        });
+
+        editButton.setOnAction(event -> editContact(new ActionEvent()));
+    }
+    
+    @FXML
+    void switchToInterfaccia(ActionEvent event) throws IOException {
+        closeWindow();
+    }
+
+    @FXML
+    void addContact(ActionEvent event) {
+        try {
+            String nome = nameField.getText().trim();
+            String cognome = surnameField.getText().trim();
+
+            if (nome.isEmpty() || cognome.isEmpty()) {
+                handleValidationError("Nome e cognome sono obbligatori.");
+                return;
+            }
+
+            ContattoValidator.validateName(nome);
+            ContattoValidator.validateSurname(cognome);
+
+            List<String> numeri = collectValidNumbers();
+            if (numeri.isEmpty()) {
+                handleValidationError("Deve essere inserito almeno un numero di telefono valido.");
+                return;
+            }
+
+            List<String> emails = collectValidEmails();
+            String note = noteField.getText().trim();
+
+            if (ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome)) {
+                if (!requestConfirmation("Contatto Duplicato", "Un contatto con lo stesso nome e cognome esiste già. Vuoi comunque aggiungerlo?")) {
+                    return;
+                }
+            }
+
+            Contatto nuovoContatto = new Contatto(nome, cognome, numeri, emails, note);
+            interfacciaUtenteController.getListaContatti().add(nuovoContatto);
+            interfacciaUtenteController.ordinaContatti();
+            SalvaCaricaRubrica.salvaRubrica(interfacciaUtenteController.getListaContatti());
+
+            closeWindow();
+
+        } catch (CampoNonValidoException e) {
+            handleValidationError(e.getMessage());
+        }
+    }
+    
+    
+
+
+
+    
     /**
      * @brief Riferimento al controller dell'interfaccia principale.
      */
