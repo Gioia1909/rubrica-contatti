@@ -401,11 +401,15 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             SalvaCaricaRubrica.saveAddressBook(contactList);
 
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
-            super.resetContactDetails();
+           super.resetContactDetails();
 
-            myListView.setItems(contactList);
+           myListView.setItems(contactList);
+           myListView.getSelectionModel().clearSelection();
         }
     }
+    
+  
+    
 
     /**
      * @brief Cerca un contatto nella lista in base al testo inserito nella

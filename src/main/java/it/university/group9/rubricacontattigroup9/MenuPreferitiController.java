@@ -1,7 +1,7 @@
 /**
  * @file MenuPreferitiController.java
  * @brief Controller per la gestione del menu dei contatti preferiti.
- *
+ * @see Contatto
  * @author Gruppo09
  * @date 05/12/2024
  */
@@ -39,8 +39,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     private ObservableList<Contatto> favoriteList;
     
        /**
-     * @brief Lista di tutti i contatti
-     */
+        * @brief Lista di tutti i contatti
+        */
     private ObservableList<Contatto> contactList; // Riferimento alla lista utenti
 
     public ListView<Contatto> getListViewFavorites() {
@@ -223,6 +223,9 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      *
      * @param[in] location URL di localizzazione del file FXML.
      * @param[in] resources Risorse per la localizzazione.
+     *
+     * @pre La classe deve essere caricata con una vista FXML valida. Gli elementi `listViewFavorites` devono essere correttamente inizializzati.
+     * @post  La lista `favoriteList` contiene contatti univoci caricati da `SalvaCaricaPreferiti`. La vista `listViewFavorites` è popolata con i contatti preferiti ordinati. I dettagli del contatto selezionato sono aggiornati automaticamente al cambiamento della selezione.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -244,10 +247,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * @brief Configura la ListView per mostrare solo nome e cognome dei
      * contatti
      *
-     * @pre La `ListView` deve essere inizializzata correttamente e pronta per
-     * la configurazione.
-     * @post La `ListView` dei contatti preferiti è configurata per visualizzare
-     * i contatti con il formato "Cognome Nome".
+     * @pre L'elemento `listViewFavorites` deve essere inizializzato e non nullo.
+     * @post La cell factory di `listViewFavorites` è configurata per visualizzare solo cognome e nome dei contatti. Gli elementi vuoti o nulli nella lista vengono rappresentati come celle vuote.
      */
     private void configurePreferitiListView() {
         listViewFavorites.setCellFactory(listView -> new ListCell<Contatto>() {
@@ -268,9 +269,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
       /**
      * @brief Aggiunge un contatto alla lista dei preferiti.
      *
-     * @pre La lista di Contatti non deve essere vuota.
-     * @pre L'elemento da aggiungere deve essere presente nella rubrica
-     * principale.
+     * @pre  `contactList` deve essere inizializzato e non nullo.
+     * @pre Il file FXML "SelezionaContattiDaRubrica.fxml" deve essere presente e accessibile nella directory delle risorse.
      * @post L'elemento aggiunto deve essere visto nella rubrica preferiti.
      * @param[in] event L'evento che ha generato l'azione di aggiunta.
      * @throws IOException Se il caricamento del popup fallisce.
@@ -321,6 +321,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
             listViewFavorites.getItems().remove(selected);
             // Salva i contatti aggiornati nel file
             SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
+             listViewFavorites.getSelectionModel().clearSelection();
         }
     }
     
