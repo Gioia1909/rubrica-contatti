@@ -183,6 +183,21 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
         this.interfacciaUtenteController = controller;
     }
+    
+    public void initializeForAdd(ObservableList<Contatto> rubrica) {
+        this.rubrica = rubrica;
+        addButton.setVisible(true);
+        editButton.setVisible(false);
+    }
+
+
+    public void initializeForEdit(Contatto contatto, ObservableList<Contatto> rubrica) {
+        this.rubrica = rubrica;
+        this.contattoEsistente = contatto;
+        populateFields(contatto);
+        addButton.setVisible(false);
+        editButton.setVisible(true);
+    }
 
     /**
      * @brief Riferimento al controller dell'interfaccia principale.
