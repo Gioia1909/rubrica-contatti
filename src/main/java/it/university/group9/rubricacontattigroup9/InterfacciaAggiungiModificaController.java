@@ -352,7 +352,23 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             handleValidationError(e.getMessage());
         }
     }
-
+/**
+ * @brief Raccoglie e valida i numeri di telefono inseriti nei campi di input.
+ *
+ * Questo metodo legge i valori inseriti nei campi dedicati ai numeri di telefono, 
+ * valida ciascun numero utilizzando il metodo `ContattoValidator.validatePhoneNumber`,
+ * e restituisce una lista contenente i numeri validi. Se un numero non è valido,
+ * viene lanciata un'eccezione.
+ *
+ * @return Una lista di numeri di telefono validi.
+ *
+ * @throws CampoNonValidoException Se uno dei numeri forniti non rispetta i criteri di validazione.
+ *
+ * @pre I campi `number1Field`, `number2Field` e `number3Field` devono essere inizializzati.
+ * @post Viene restituita una lista contenente solo numeri di telefono validi (nessun duplicato).
+ *
+ * @see ContattoValidator
+ */
 
     private List<String> collectValidNumbers() throws CampoNonValidoException {
         List<String> numbers = new ArrayList<>();
@@ -368,6 +384,24 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         return numbers;
     }
 
+ 
+ /**
+ * @brief Raccoglie e valida gli indirizzi email inseriti nei campi di input.
+ *
+ * Questo metodo legge i valori inseriti nei campi dedicati agli indirizzi email, 
+ * valida ciascun indirizzo utilizzando il metodo `ContattoValidator.validateEmail`,
+ * e restituisce una lista contenente gli indirizzi email validi. Se un'email non è valida,
+ * viene lanciata un'eccezione.
+ *
+ * @return Una lista di indirizzi email validi.
+ *
+ * @throws CampoNonValidoException Se uno degli indirizzi email forniti non rispetta i criteri di validazione.
+ *
+ * @pre I campi `email1Field`, `email2Field` e `email3Field` devono essere inizializzati.
+ * @post Viene restituita una lista contenente solo indirizzi email validi (nessun duplicato).
+ *
+ * @see ContattoValidator
+ */
     private List<String> collectValidEmails() throws CampoNonValidoException {
         List<String> emails = new ArrayList<>();
         List<TextField> emailFields = Arrays.asList(email1Field, email2Field, email3Field);
@@ -382,6 +416,22 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         return emails;
     }
 
+/**
+ * @brief Mostra una finestra di dialogo di conferma per chiedere all'utente di confermare o meno un'azione.
+ *
+ * Questo metodo visualizza una finestra di dialogo di tipo conferma, contenente il messaggio
+ * fornito, e due pulsanti: "Sì" e "No". Restituisce `true` se l'utente ha selezionato "Sì",
+ * altrimenti restituisce `false` se l'utente ha selezionato "No".
+ *
+ * @param[in] title Il titolo della finestra di dialogo.
+ * @param[in] message Il messaggio da visualizzare nella finestra di dialogo.
+ *
+ * @return `true` se l'utente ha confermato l'azione selezionando "Sì", altrimenti `false`.
+ *
+ * @pre Il metodo mostra una finestra di dialogo all'utente, quindi deve essere invocato in un contesto
+ * che consenta la visualizzazione dell'interfaccia utente (ad esempio in un thread di applicazione JavaFX).
+ * @post L'utente avrà visto una finestra di dialogo di conferma e avrà scelto se continuare con l'azione.
+ */
     private boolean requestConfirmation(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
         alert.setTitle(title);
@@ -393,19 +443,25 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
      
      
-      /**
-     * @brief Popola i campi del form con i dati di un contatto esistente.
-     *
-     * @param contatto Il contatto i cui dati devono essere inseriti nei campi
-     * del form.
-     *
-     * @pre Il parametro contatto deve essere un oggetto valido e non null.
-     * @post I campi del form saranno riempiti con i dati del contatto: - Nome e
-     * cognome nei rispettivi campi. - Numeri di telefono e email nei campi
-     * appropriati, fino a un massimo di tre per ciascun tipo. - Note nel campo
-     * delle note.
-     
-     */
+/**
+ * @brief Popola i campi del form con i dati di un contatto esistente.
+ *
+ * Questo metodo prende un oggetto `Contatto` e compila i campi del form con le informazioni del contatto.
+ * I campi come nome, cognome, numeri di telefono, email e note vengono riempiti a partire dai dati
+ * presenti nell'oggetto `Contatto`. Ogni tipo di dato viene inserito nel rispettivo campo del form, 
+ * con un massimo di tre numeri di telefono e tre email.
+ *
+ * @param[in] contact Il contatto i cui dati devono essere inseriti nei campi del form. Deve essere un oggetto valido e non null.
+ *
+ * @pre Il parametro `contact` deve essere un oggetto valido e non null.
+ * @post I campi del form saranno riempiti con i dati del contatto:
+ * @post Nome e cognome nei rispettivi campi.
+ * @post Numeri di telefono nei campi appropriati, fino a un massimo di tre numeri.
+ * @post Email nei campi appropriati, fino a un massimo di tre email.
+ * @post Note nel campo delle note.
+ *
+ * @see Contatto
+ */
      private void populateFields(Contatto contact) {
         nameField.setText(contact.getName());
         surnameField.setText(contact.getSurname());
