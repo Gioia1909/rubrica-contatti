@@ -278,7 +278,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * preferiti
      */
     @FXML
-    private void addFavButton(ActionEvent event) throws IOException {
+    private void addFavAction(ActionEvent event) throws IOException {
         if (contactList != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SelezionaContattiDaRubrica.fxml"));
             //si crea un oggetto FXMLLoader per caricare il file FXML, con getClass e Resource prendiamo il file 
