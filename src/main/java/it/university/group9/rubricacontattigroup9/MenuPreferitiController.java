@@ -25,7 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MenuPreferitiController extends VisualizzazioneContatti  implements Initializable  {
+public class MenuPreferitiController extends VisualizzazioneContatti  implements Initializable, AddressBookManager  {
 
     /**
      * @brief Lista grafica dei contatti preferiti
@@ -278,7 +278,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * preferiti
      */
     @FXML
-    private void addAction(ActionEvent event) throws IOException {
+    @Override
+    public void addAction(ActionEvent event) throws IOException {
         if (contactList != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SelezionaContattiDaRubrica.fxml"));
             //si crea un oggetto FXMLLoader per caricare il file FXML, con getClass e Resource prendiamo il file 
@@ -313,7 +314,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * aggiornati vengono salvati nel file.
      */
     @FXML
-    protected void deleteAction(ActionEvent event) {
+    @Override
+    public void deleteAction(ActionEvent event) {
         int selected = listViewFavorites.getSelectionModel().getSelectedIndex();
         if (selected >= 0) {
             listViewFavorites.getItems().remove(selected);
@@ -334,7 +336,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * contatto selezionato, pronti per essere modificati.
      */
     @FXML
-    private void editAction(ActionEvent event) throws IOException {
+    @Override
+    public void editAction(ActionEvent event) throws IOException {
         Contatto selectedContact = listViewFavorites.getSelectionModel().getSelectedItem();
         if (selectedContact != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
@@ -358,8 +361,9 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * @post La ListView dei preferiti viene aggiornata con i contatti che corrispondono alla ricerca
      */
     
-       @FXML
-    protected void searchAction(ActionEvent event) {
+    @FXML
+    @Override
+    public void searchAction(ActionEvent event) {
         String searchQuery = searchBar.getText().toLowerCase().trim();
 
         if (searchQuery.isEmpty()) {

@@ -20,7 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable  {
+public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
 
     /**
      * @name Componenti FXML
@@ -342,7 +342,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     }
     
     @FXML
-    protected void addAction() throws IOException {
+    @Override
+    public void addAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
         Parent root = loader.load();
 
@@ -370,6 +371,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      */
 
     @FXML
+    @Override
     public void deleteAction(ActionEvent event) {
         int selected = myListView.getSelectionModel().getSelectedIndex();
         if (selected >= 0) {
@@ -393,6 +395,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * @param[in] event Evento associato al bottone di ricerca.
      */
     @FXML
+    @Override
     public void searchAction(ActionEvent event) {
         String searchQuery = searchBar.getText().toLowerCase().trim();
         if (searchQuery.isEmpty()) {
@@ -424,7 +427,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * selezionato caricato nel relativo controller.
      */
     @FXML
-    private void editAction() throws IOException {
+    @Override
+    public void editAction(ActionEvent event) throws IOException {
         // Ottieni il contatto selezionato
         Contatto selectedContact = myListView.getSelectionModel().getSelectedItem();
         //getSelectionModel(): Ottiene il modello di selezione associato alla lista, che gestisce la selezione degli elementi: dà accesso a tutte le informazioni sulla selezione.
