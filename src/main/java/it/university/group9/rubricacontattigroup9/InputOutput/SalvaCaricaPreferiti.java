@@ -6,7 +6,7 @@
  * e per caricarla da un file JSON esistente.
  * 
  * @author Gruppo09
- * @date 011/12/2024
+ * @date 11/12/2024
  * @see Contatto
  */
 package it.university.group9.rubricacontattigroup9.InputOutput;
@@ -20,21 +20,33 @@ import java.util.*;
 import javafx.collections.FXCollections;
 
 public class SalvaCaricaPreferiti implements Serializable {
-    //file che si creerà 
-    private static final String file = "rubricapreferiti.json"; //nome del file
     
-   /**
-     * @brief Salva la rubrica su file JSON.
-     *
-     * Questo metodo converte la  ObservableList in una lista e la serializza in un file JSON utilizzando la libreria Jackson.
-     * Se il salvataggio ha successo, verrà stampato un messaggio di conferma, altrimenti verrà gestito l'errore.
-     * 
-     * @param[in] rubrica La lista di contatti da salvare nel file JSON.
-     * 
-     * @pre rubrica non deve essere null
-     * @post Il file JSON viene creato o sovrascritto con i dati contenuti in rubrica
-     * @throws IOException Se si verifica un errore durante il salvataggio del file.
-     */
+    private static final String file = "rubricapreferiti.json"; //nome del file che si creerà
+    
+/**
+ * @brief Salva la rubrica su file JSON.
+ *
+ * Questo metodo salva la rubrica fornita come parametro in un file JSON utilizzando la libreria Jackson.
+ * La lista di contatti viene convertita in un formato serializzabile e scritta nel file specificato.
+ * 
+ * @param[in] addressBook La lista osservabile di contatti da salvare nel file JSON.
+ * 
+ * @pre addressBook non deve essere null.
+ * @post Il file JSON viene creato o sovrascritto con i dati contenuti in addressBook.
+ * @throws IOException Se si verifica un errore durante il processo di salvataggio.
+ * 
+ * @details
+ * Il metodo utilizza `ObjectMapper` della libreria Jackson per convertire gli oggetti 
+ * della lista in un file JSON. Poiché `ObservableList` non è direttamente serializzabile, 
+ * viene convertita in una normale lista (`ArrayList`) prima della serializzazione.
+ * 
+ * In caso di errore durante la scrittura del file, viene stampato un messaggio di errore
+ * e viene tracciata l'eccezione con uno stack trace.
+ * 
+ * @see ObjectMapper
+ * @see ObservableList
+ * @see IOException
+ */
     public static void salvaRubricaPreferiti(ObservableList<Contatto> addressBook) { //ObservableList<Contatto> rubrica Lista dei contatti da 
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
         ObjectMapper mapper = new ObjectMapper(); //https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.8/com/fasterxml/jackson/databind/ObjectMapper.html
