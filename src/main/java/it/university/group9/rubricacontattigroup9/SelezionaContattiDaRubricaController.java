@@ -107,24 +107,12 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         return fAddressBook;
     }
 
-    /**
-     * @brief Campo di testo per la barra di ricerca.
-     *
-     * Consente all'utente di digitare il testo per filtrare i contatti visibili
-     * nella lista.
-     */
+
     public void setfAddressBook(ObservableList<Contatto> fAddressBook) {
         this.fAddressBook = fAddressBook;
     }
 
-    /**
-     * @brief Metodo di inizializzazione del controller
-     * @param[in] url URL di inizializzazione
-     * @param[in] rb ResourceBundle di inizializzazione
-     */
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         contactListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -186,15 +174,7 @@ public class SelezionaContattiDaRubricaController implements Initializable {
          */
     }
 
-    /**
-     * @brief Configura la visualizzazione della lista dei contatti nella
-     * `ListView`. Ogni cella mostra il cognome e il nome del contatto. Se la
-     * cella è vuota o il contatto è nullo, il testo della cella viene impostato
-     * su `null`.
-     *
-     * @post Ogni elemento della `ListView` mostrerà il cognome seguito dal nome
-     * del contatto.
-     */
+
     private void configureContactListView() {
         contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
@@ -210,12 +190,6 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         });
     }
 
-    /**
-     * @brief Aggiunge il contatto selezionato ai preferiti.
-     *
-     * @param event Evento di tipo ActionEvent.
-     * @throws IOException Se si verifica un errore durante il cambio di scena
-     */
     @FXML
     private void handleAddContact(ActionEvent event) throws IOException {
         selectedContact = contactListView.getSelectionModel().getSelectedItem(); // prendo l'elemento selezionato 
@@ -239,35 +213,17 @@ public class SelezionaContattiDaRubricaController implements Initializable {
 
     }
 
-    /**
-     * @brief Torna al menu dei preferiti.
-     *
-     * @param event Evento di tipo ActionEvent.
-     * @throws IOException Se si verifica un errore durante il cambio di scena.
-     */
     @FXML
     private void handleClosePopup(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
-    /**
-     * @brief Mostra una finestra di dialogo di errore.
-     *
-     * @param titolo Il titolo della finestra di dialogo.
-     * @param messaggio Il messaggio di errore da visualizzare.
-     *
-     * @post La finestra di dialogo di errore verrà mostrata con il titolo e il
-     * messaggio specificati.
-     */
-    private void showErrorDialog(String titolo, String messaggio) {
+    private void showErrorDialog(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titolo);
-        alert.setContentText(messaggio);
+        alert.setTitle(title);
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
-    /*@FXML Questo non serve se la ricerca è dinamica
-    private void handleSearch(ActionEvent event) {
-    }*/
 }
