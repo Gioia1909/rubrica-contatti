@@ -18,108 +18,170 @@ import it.university.group9.rubricacontattigroup9.validators.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.*;
-import javafx.scene.input.*;
 import javafx.stage.Stage;
 
 public class InterfacciaAggiungiModificaController implements Initializable {
+    
+    @FXML
+    private Button addButton, cancelButton, editButton;
+    @FXML
+    private TextField nameField, surnameField, email1Field, email2Field, email3Field;
+    @FXML
+    private TextField number1Field, number2Field, number3Field, noteField;
 
-    public TextField getNameField() {
-        return nameField;
+    public Button getAddButton(){
+        return addButton; 
+    }
+    
+    public void setAddButton(Button addButton){
+        this.addButton=addButton; 
+    }
+    
+    public Button getCancelButton() {
+        return cancelButton;
     }
 
-    public TextField getSurnameField() {
-        return surnameField;
+    public void setCancelButton(Button cancelButton) {
+        this.cancelButton = cancelButton;
     }
 
-    public TextField getEmail1Field() {
-        return email1Field;
-    }
-
-    public TextField getEmail2Field() {
-        return email2Field;
-    }
-
-    public TextField getEmail3Field() {
-        return email3Field;
-    }
-
-    public TextField getNumber1Field() {
-        return number1Field;
-    }
-
-    public TextField getNumber2Field() {
-        return number2Field;
-    }
-
-    public TextField getNumber3Field() {
-        return number3Field;
-    }
-
-    public TextField getNoteField() {
-        return noteField;
-    }
-
-    public Button getEditButton() {
+       public Button getEditButton() {
         return editButton;
     }
 
-    public boolean isIsEditing() {
-        return isEditing;
+    public void setEditButton(Button editButton) {
+        this.editButton = editButton;
     }
 
-    public Contatto getContattoEsistente() {
-        return contattoEsistente;
+    
+    public TextField getNameField() {
+        return nameField;
     }
-
-    public ObservableList<Contatto> getRubrica() {
-        return rubrica;
-    }
-
-    public InterfacciaUtenteController getInterfacciaUtenteController() {
-        return interfacciaUtenteController;
-    }
+     
     
     public void setNameField(TextField nameField) {
         this.nameField = nameField;
     }
+
+
     
-    public void setSurnameField(TextField surnameField) {
+    
+    
+    public TextField getSurnameField() {
+        return surnameField;
+    }
+
+     public void setSurnameField(TextField surnameField) {
         this.surnameField = surnameField;
     }
 
-    public void setEmail1Field(TextField email1Field) {
+     
+    
+     
+     public TextField getEmail1Field() {
+        return email1Field;
+    }
+    
+     public void setEmail1Field(TextField email1Field) {
         this.email1Field = email1Field;
     }
 
-    public void setEmail2Field(TextField email2Field) {
+
+   
+     
+     public TextField getEmail2Field() {
+        return email2Field;
+    }
+
+     public void setEmail2Field(TextField email2Field) {
         this.email2Field = email2Field;
     }
 
+   
+     
+     public TextField getEmail3Field() {
+        return email3Field;
+    }
+    
     public void setEmail3Field(TextField email3Field) {
         this.email3Field = email3Field;
     }
 
+    
+    public TextField getNumber1Field() {
+        return number1Field;
+    }
+    
     public void setNumber1Field(TextField number1Field) {
         this.number1Field = number1Field;
+    }
+
+    
+
+    public TextField getNumber2Field() {
+        return number2Field;
     }
 
     public void setNumber2Field(TextField number2Field) {
         this.number2Field = number2Field;
     }
 
+    
+    public TextField getNumber3Field() {
+        return number3Field;
+    }
+
     public void setNumber3Field(TextField number3Field) {
         this.number3Field = number3Field;
+    }
+
+    public TextField getNoteField() {
+        return noteField;
     }
     
     public void setNoteField(TextField noteField) {
         this.noteField = noteField;
+    }
+
+    public boolean isIsEditing() {
+        return isEditing;
+    }
+    
+    public void setIsEditing(boolean isEditing) {
+        this.isEditing = isEditing;
+    }
+
+
+    public Contatto getContattoEsistente() {
+        return contattoEsistente;
+    }
+    
+    public void setContattoEsistente(Contatto contattoEsistente) {
+        this.contattoEsistente = contattoEsistente;
+    }
+
+
+    public ObservableList<Contatto> getRubrica() {
+        return rubrica;
+    }
+    
+    public void setRubrica(ObservableList<Contatto> rubrica) {
+        this.rubrica = rubrica;
+    }
+
+
+    public InterfacciaUtenteController getInterfacciaUtenteController() {
+        return interfacciaUtenteController;
+    }
+    
+    public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
+        this.interfacciaUtenteController = controller;
     }
 
     /**
@@ -127,69 +189,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      */
     private InterfacciaUtenteController interfacciaUtenteController;
 
-    /**
-     * @name Componenti FXML
-     */
-    ///@{
-    @FXML
-    private Button addButton;
-    /**
-     * < Bottone per aggiungere un nuovo contatto.
-     */
-    @FXML
-    private Button cancelButton;
-    /**
-     * < Bottone per tornare all'interfaccia principale.
-     */
-    @FXML
-    private TextField nameField;
-    /**
-     * < Campo di testo per il nome del contatto.
-     */
-    @FXML
-    private TextField surnameField;
-    /**
-     * < Campo di testo per il cognome del contatto.
-     */
-    @FXML
-    private TextField email1Field;
-    /**
-     * < Campo di testo per la prima email del contatto.
-     */
-    @FXML
-    private TextField email2Field;
-    /**
-     * < Campo di testo per la seconda email del contatto.
-     */
-    @FXML
-    private TextField email3Field;
-    /**
-     * < Campo di testo per la terza email del contatto.
-     */
-    @FXML
-    private TextField number1Field;
-    /**
-     * < Campo di testo per il primo numero di telefono del contatto.
-     */
-    @FXML
-    private TextField number2Field;
-    /**
-     * < Campo di testo per il secondo numero di telefono del contatto.
-     */
-    @FXML
-    private TextField number3Field;
-    /**
-     * < Campo di testo per il terzo numero di telefono del contatto.
-     */
-    @FXML
-    private TextField noteField;
-    /**
-     * < Campo di testo per le note del contatto.
-     */
-    @FXML
-    private Button editButton;
-    ///@}
-
+ 
     private boolean isEditing = false; //flag per distinguere tra aggiunta e modifica
     private Contatto contattoEsistente; //contatto da modificare se presente
     private ObservableList<Contatto> rubrica; //Lista dei contatti 
