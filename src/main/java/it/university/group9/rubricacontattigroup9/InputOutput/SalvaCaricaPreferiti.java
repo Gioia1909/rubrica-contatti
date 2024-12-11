@@ -6,11 +6,9 @@
  * e per caricarla da un file JSON esistente.
  * 
  * @author Gruppo09
- * @date 07/12/2024
+ * @date 011/12/2024
+ * @see Contatto
  */
-
-
-
 package it.university.group9.rubricacontattigroup9.InputOutput;
 
 import it.university.group9.rubricacontattigroup9.Contatto;
