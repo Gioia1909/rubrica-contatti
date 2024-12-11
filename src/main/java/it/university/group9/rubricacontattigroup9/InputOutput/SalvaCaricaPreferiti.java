@@ -23,31 +23,24 @@ public class SalvaCaricaPreferiti implements Serializable {
     
     private static final String file = "rubricapreferiti.json"; //nome del file che si creerà
     
-/**
- * @brief Salva la rubrica su file JSON.
- *
- * Questo metodo salva la rubrica fornita come parametro in un file JSON utilizzando la libreria Jackson.
- * La lista di contatti viene convertita in un formato serializzabile e scritta nel file specificato.
- * 
- * @param[in] addressBook La lista osservabile di contatti da salvare nel file JSON.
- * 
- * @pre addressBook non deve essere null.
- * @post Il file JSON viene creato o sovrascritto con i dati contenuti in addressBook.
- * @throws IOException Se si verifica un errore durante il processo di salvataggio.
- * 
- * @details
- * Il metodo utilizza `ObjectMapper` della libreria Jackson per convertire gli oggetti 
- * della lista in un file JSON. Poiché `ObservableList` non è direttamente serializzabile, 
- * viene convertita in una normale lista (`ArrayList`) prima della serializzazione.
- * 
- * In caso di errore durante la scrittura del file, viene stampato un messaggio di errore
- * e viene tracciata l'eccezione con uno stack trace.
- * 
- * @see ObjectMapper
- * @see ObservableList
- * @see IOException
- */
-    public static void salvaRubricaPreferiti(ObservableList<Contatto> addressBook) { //ObservableList<Contatto> rubrica Lista dei contatti da 
+    /**
+     * @brief Salva la rubrica su file JSON.
+     *
+     * Questo metodo salva la rubrica fornita come parametro in un file JSON utilizzando la libreria Jackson.
+     * La lista di contatti viene convertita in un formato serializzabile e scritta nel file specificato.
+     * 
+     * @param[in] addressBook La lista osservabile di contatti da salvare nel file JSON.
+     * 
+     * @pre addressBook non deve essere null.
+     * @post Il file JSON viene creato o sovrascritto con i dati contenuti in addressBook.
+     * @throws IOException Se si verifica un errore durante il processo di salvataggio.
+     * 
+     * In caso di errore durante la scrittura del file, viene stampato un messaggio di errore
+     * e viene tracciata l'eccezione con uno stack trace.
+     * 
+     * @see ObjectMapper
+     */
+    public static void saveFavoritesAddressBook(ObservableList<Contatto> addressBook) { //ObservableList<Contatto> rubrica Lista dei contatti da 
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
         ObjectMapper mapper = new ObjectMapper(); //https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.8/com/fasterxml/jackson/databind/ObjectMapper.html
         
@@ -66,17 +59,15 @@ public class SalvaCaricaPreferiti implements Serializable {
      /**
      * @brief Carica la rubrica da un file JSON, se esiste.
      * 
-     * Questo metodo carica i dati da un file JSON  e li converte in una ObservableList.
-     * Se il file non esiste, viene restituita una lista vuota e viene stampato un messaggio di errore.
-     * 
-     * @return Una ObservableList che contenente i contatti caricati, oppure una lista vuota se il file non esiste 
-     * o se si dovesser verificare un errore durante il caricamento.
-     * 
      * @pre Il file rubricapreferiti.json deve essere presente nel percorso specificato per il corretto funzionamento.
      * @post Se il file esiste, i contatti vengono caricati nella rubrica, altrimenti viene restituita una rubrica vuota.
-     * @throws IOException Se si verifica un errore durante il caricamento del file.
+     *
+     *  @return Una ObservableList che contenente i contatti caricati, oppure una lista vuota se il file non esiste 
+     *  o se si dovesser verificare un errore durante il caricamento.
+     * 
+     *  @throws IOException Se si verifica un errore durante il caricamento del file.
      */
-    public static ObservableList<Contatto> caricaRubricaPreferiti(){
+    public static ObservableList<Contatto> loadFavoritesAddressBook(){
         ObjectMapper mapper = new ObjectMapper();
         
         File filepath = new File(file); //crea un oggetto file che punta al percorso con rubricapreferiti.json
