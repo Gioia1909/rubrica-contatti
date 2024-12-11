@@ -213,24 +213,7 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         this.fAddressBook = fAddressBook;
     }
 
-    /**
-<<<<<<< HEAD
-     * @brief Inizializza il controller.
-     *
-     * @param url URL per risorse FXML.
-     * @param rb Bundle per la localizzazione.
-=======
-     * @brief Inizializza la vista del controller.
-     * 
-     * Questo metodo imposta la modalità di selezione singola per la lista dei contatti.
-     * 
-     * @param url URL di localizzazione.
-     * @param rb Risorse per la localizzazione.
-     * 
-     * @pre La lista dei contatti è già stata caricata e deve essere disponibile nel contesto.
-     * @post La modalità di selezione della lista dei contatti è impostata su "singola" (solo un contatto selezionabile alla volta).
->>>>>>> 1510d067e18e6a71af40c71021b8ee92ad7a5fba
-     */
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         contactListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -337,7 +320,7 @@ public class SelezionaContattiDaRubricaController implements Initializable {
                 FXCollections.sort(fAddressBook); // Ordina la lista preferiti
 
                 // Salva il file
-                SalvaCaricaPreferiti.salvaRubricaPreferiti(fAddressBook);
+                SalvaCaricaPreferiti.saveFavoritesAddressBook(fAddressBook);
             } else {
                 showErrorDialog("Contatto Presente", selectedContact + " è già nei Preferiti.");
             }

@@ -11,13 +11,11 @@ import java.util.*;
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a
  * tre numeri di telefono, da una a tre email e delle note.
- *
- * Questa classe è utilizzata per gestire i dati di un contatto in una rubrica.
- * Ogni contatto ha un nome, un cognome, una lista di numeri di telefono, una
- * lista di email e delle note.
+ * 
  *
  * @author Gruppo09
- * @date 03/12/2024
+ * @date 11/12/2024
+ * @version
  *
  */
 public class Contatto implements Comparable<Contatto> {
@@ -36,8 +34,6 @@ public class Contatto implements Comparable<Contatto> {
 
     /**
      * @brief Costruttore della classe Contatto.
-     *
-     * Crea un'istanza della classe Contatto con i parametri forniti.
      *
      *
      * @param[in] name Il nome del contatto.
@@ -67,7 +63,7 @@ public class Contatto implements Comparable<Contatto> {
     /**
      * @brief Metodo che restituisce il nome del contatto.
      *
-     * @return name del contatto.
+     * @return il nome del contatto.
      */
     public String getName() {
         return name;
@@ -76,7 +72,7 @@ public class Contatto implements Comparable<Contatto> {
     /**
      * @brief Metodo che restituisce il cognome del contatto.
      *
-     * @return surname del contatto.
+     * @return il cognome del contatto.
      */
     public String getSurname() {
         return surname;
@@ -151,7 +147,7 @@ public class Contatto implements Comparable<Contatto> {
      * - Un valore positivo se l'oggetto corrente segue il contatto `obj`.
      *
      * @pre L'oggetto `obj` non deve essere null.
-     *
+     * 
      */
     @Override
     public int compareTo(Contatto obj) {
@@ -166,7 +162,7 @@ public class Contatto implements Comparable<Contatto> {
      * @brief Metodo che determina l'uguaglianza tra due oggetti Contatto. Due
      * contatti sono considerati uguali se nome, cognome, numeri, email e note
      * coincidono.
-     * @param o L'oggetto da confrontare.
+     * @param[in] o L'oggetto da confrontare.
      * @return True se gli oggetti sono uguali, false se sono diversi.
      */
     @Override

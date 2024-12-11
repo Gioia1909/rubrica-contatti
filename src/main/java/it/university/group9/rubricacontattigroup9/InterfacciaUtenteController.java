@@ -310,7 +310,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         contactList = SalvaCaricaRubrica.loadAddressBook();
-        favoriteList = FXCollections.observableArrayList(SalvaCaricaPreferiti.caricaRubricaPreferiti());
+        favoriteList = FXCollections.observableArrayList(SalvaCaricaPreferiti.loadFavoritesAddressBook());
         listViewFavorites.setItems(favoriteList); // Imposta gli elementi nella ListView
         myListView.setItems(contactList);
         configureListView();
@@ -400,7 +400,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             listViewFavorites.setItems(favoriteList);
 
             // Salva i preferiti aggiornati
-            SalvaCaricaPreferiti.salvaRubricaPreferiti(favoriteList);
+            SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
         }
 
         // Salva la lista aggiornata della rubrica principale

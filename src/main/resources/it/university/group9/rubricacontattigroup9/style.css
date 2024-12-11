@@ -14,6 +14,11 @@ AnchorPane {
     -fx-background-color: transparent; /* Rimuove il colore di sfondo */
 }
 
+#addButton {
+     -fx-cursor: hand;    
+     -fx-background-color: transparent; 
+}
+
 #viewAddButton {
      -fx-cursor: hand;    
      -fx-background-color: transparent; 

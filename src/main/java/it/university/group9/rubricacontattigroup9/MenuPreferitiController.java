@@ -227,7 +227,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Rimuovi duplicati utilizzando un HashSet
-        favoriteList = FXCollections.observableArrayList(SalvaCaricaPreferiti.caricaRubricaPreferiti());
+        favoriteList = FXCollections.observableArrayList(SalvaCaricaPreferiti.loadFavoritesAddressBook());
         listViewFavorites.setItems(favoriteList);
         sortContact();
         configurePreferitiListView();
@@ -320,7 +320,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
         if (selected >= 0) {
             listViewFavorites.getItems().remove(selected);
             // Salva i contatti aggiornati nel file
-            SalvaCaricaPreferiti.salvaRubricaPreferiti(favoriteList);
+            SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
         }
     }
     
