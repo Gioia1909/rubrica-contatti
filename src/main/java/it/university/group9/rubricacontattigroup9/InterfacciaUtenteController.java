@@ -110,6 +110,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      */
     ///@}
     private ObservableList<Contatto> contactList;
+    @FXML
+    private MenuItem exportButton;
     
     public void setListViewFavorites(ListView<Contatto> listViewFavorites) {
         this.listViewFavorites = listViewFavorites;
@@ -508,6 +510,11 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
         Scene scene = favoriteButton.getScene();
         scene.setRoot(root);
+    }
+
+    @FXML
+    private void exportAction(ActionEvent event) throws IOException {
+        SalvaCaricaRubrica.exportToCSV(contactList);
     }
     
 }
