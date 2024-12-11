@@ -79,15 +79,16 @@ public class ContattoValidator {
         return false; // Email non trovata
     }
 
-public static void validateEmail(String email) throws CampoNonValidoException {
-        if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-            throw new CampoNonValidoException("Email");
-        }
-    }
-
 public static void validateName(String name) throws CampoNonValidoException {
       if (name == null || name.trim().isEmpty() || !Character.isAlphabetic(name.charAt(0))) {
             throw new CampoNonValidoException("Nome");
+        }
+    }
+
+public static void validateSurname(String surname) throws CampoNonValidoException {
+        if (surname == null || surname.trim().isEmpty() || !Character.isAlphabetic(surname.charAt(0))){    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
+                                                                                    //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
+            throw new CampoNonValidoException("Cognome");
         }
     }
 
@@ -101,10 +102,9 @@ public static void validatePhoneNumber(String phoneNumber) throws CampoNonValido
         }
     }
 
-public static void validateSurname(String surname) throws CampoNonValidoException {
-        if (surname == null || surname.trim().isEmpty() || !Character.isAlphabetic(surname.charAt(0))){    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
-                                                                                    //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
-            throw new CampoNonValidoException("Cognome");
+public static void validateEmail(String email) throws CampoNonValidoException {
+        if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+            throw new CampoNonValidoException("Email");
         }
     }
 
