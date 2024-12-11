@@ -256,7 +256,35 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         }
     }
     
-    
+    @FXML
+    protected void editContact(ActionEvent event) {
+        try {
+            String nome = nameField.getText().trim();
+            ContattoValidator.validateName(nome);
+
+            String cognome = surnameField.getText().trim();
+            ContattoValidator.validateSurname(cognome);
+
+            List<String> numeri = collectValidNumbers();
+            List<String> emails = collectValidEmails();
+
+            String note = noteField.getText().trim();
+
+            Contatto nuovoContatto = new Contatto(nome, cognome, numeri, emails, note);
+
+            int index = rubrica.indexOf(contattoEsistente);
+            if (index != -1) {
+                rubrica.set(index, nuovoContatto);
+            }
+
+            SalvaCaricaRubrica.salvaRubrica(rubrica);
+            closeWindow();
+
+        } catch (CampoNonValidoException e) {
+            handleValidationError(e.getMessage());
+        }
+    }
+
 
 
 
