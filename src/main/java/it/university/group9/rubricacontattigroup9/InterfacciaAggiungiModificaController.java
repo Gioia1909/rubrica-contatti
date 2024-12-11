@@ -199,6 +199,14 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
     
     
+    /**
+     * @brief Inizializza l'interfaccia utente.
+     * 
+     * @param url URL della risorsa utilizzata per risolvere il percorso relativo.
+     * @param rb ResourceBundle per le risorse localizzate.
+     * 
+     * @post I listener degli eventi per i pulsanti "Aggiungi" e "Modifica" sono configurati.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addButton.setOnAction(event -> {
@@ -223,14 +231,13 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      *
      * @param[in] event Evento del mouse che ha scatenato l'azione.
      *
-     * @throws IOException Se si verifica un errore durante il salvataggio della
-     * rubrica su file.
-     * @throws CampoNonValidoException se i campi forniti non sono valido. non è
-     * valido.
-     * @throws EmailNonValidaException Se una delle email fornite non è valida.
+     * @throws IOException Se si verifica un errore durante il salvataggio della rubrica su file.
+     * @throws CampoNonValidoException Se i campi forniti non sono validi.
+     * 
      *
-     * @see NomeValidator, CognomeValidator, NumeroValidator, EmailValidator,
-     * SalvaCaricaRubrica
+     * @see ContattoValidatore
+     * @see SalvaCaricaRubrica
+     * @see  userInterfaceController
      *
      */
     @FXML
@@ -276,15 +283,18 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     }
 
    
-    /**
-     * @brief
-     *
-     * @param 
-     * @param 
-     *
-     * @pre 
-     * @post 
-     */
+/**
+ * @brief Gestisce gli errori di validazione mostrando un messaggio di errore all'utente.
+ *
+ * Questo metodo visualizza una finestra di dialogo di tipo alert con un messaggio di errore,
+ * consentendo all'utente di comprendere quale problema si è verificato durante il processo
+ * di validazione dei dati.
+ *
+ * @param[in] message Il messaggio di errore da mostrare all'utente. Non deve essere null o vuoto.
+ *
+ * @pre Il parametro `message` deve contenere un messaggio descrittivo dell'errore.
+ * @post Viene mostrata una finestra di dialogo con un messaggio di errore all'utente.
+ */
     private void handleValidationError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Errore di Validazione");
@@ -297,16 +307,20 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     /**
      * @brief Modifica i dati di un contatto esistente nella rubrica.
      *
-     * @param event L'evento ActionEvent generato dal click sul pulsante
+     * @param[in] event L'evento ActionEvent generato dal click sul pulsante
      * "Modifica".
      *
      * @pre Tutti i campi del form devono essere validati correttamente prima
      * della modifica.
-     * @pre La variabile contattoEsistente deve essere un oggetto valido
+     * @pre La variabile existingContact deve essere un oggetto valido
      * presente nella rubrica.
      * @post La rubrica sarà aggiornata con i nuovi dati del contatto.
      * @post I dati aggiornati saranno salvati utilizzando il metodo
-     * SalvaCaricaRubrica.salvaRubrica.
+     * SalvaCaricaRubrica.saveAddressBook.
+     * 
+     * @see ContattoValidator.
+     * @see Contatto
+     * @see SalvaCaricaRubrica
      *
      * 
      */
