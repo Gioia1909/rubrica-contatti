@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -15,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="565.0" prefWidth="921.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaUtenteController">
+<VBox alignment="CENTER" prefHeight="565.0" prefWidth="921.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaUtenteController">
     <stylesheets>
         <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
     </stylesheets>
@@ -24,10 +31,10 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="353.0">
                     <children>
-                        <ListView fx:id="listViewFavorites" layoutX="50.0" layoutY="100.0" prefHeight="200.0" prefWidth="300.0" visible="false" />
+                        <ListView fx:id="listViewFavorites" layoutX="47.0" layoutY="123.0" prefHeight="200.0" prefWidth="300.0" visible="false" />
 
-                        <ListView fx:id="myListView" editable="true" layoutX="15.0" layoutY="100.0" prefHeight="322.0" prefWidth="306.0" />
-                        <Button fx:id="searchButton" layoutX="251.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchAction" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="52.0">
+                        <ListView fx:id="myListView" editable="true" layoutX="12.0" layoutY="123.0" prefHeight="322.0" prefWidth="306.0" />
+                        <Button fx:id="searchButton" layoutX="235.0" layoutY="75.0" mnemonicParsing="false" onAction="#searchAction" AnchorPane.leftAnchor="235.0" AnchorPane.topAnchor="75.0">
                      
                             <graphic>
                                 <ImageView fitHeight="24.0" fitWidth="27.0" layoutX="251.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
@@ -37,9 +44,9 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="favoriteButton" layoutX="97.0" layoutY="437.0" mnemonicParsing="false" onAction="#switchToFavorite" prefHeight="26.0" prefWidth="118.0" text="Menu Preferiti" />
+                        <Button fx:id="favoriteButton" layoutX="94.0" layoutY="460.0" mnemonicParsing="false" onAction="#switchToFavorite" prefHeight="26.0" prefWidth="118.0" text="Menu Preferiti" />
 
-                        <Button fx:id="viewAddButton" layoutX="285.0" layoutY="57.0" mnemonicParsing="false" onAction="#addAction" AnchorPane.leftAnchor="278.0" AnchorPane.topAnchor="52.0">
+                        <Button fx:id="viewAddButton" layoutX="275.0" layoutY="75.0" mnemonicParsing="false" onAction="#addAction" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="75.0">
                             <graphic>
                                 <ImageView fitHeight="24.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -49,7 +56,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Text layoutX="13.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="167.205078125">
+                        <Text layoutX="10.0" layoutY="59.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="167.205078125">
                             <font>
                                 <Font name="Georgia" size="24.0" />
                             </font>
@@ -57,12 +64,17 @@
                                 <ColorInput paint="#ee0707" />
                             </effect>
                         </Text>
-                        <Text layoutX="15.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="199.205078125" AnchorPane.topAnchor="23.5">
+                        <Text layoutX="12.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="199.205078125" AnchorPane.topAnchor="45.9921875">
                             <font>
                                 <Font name="Georgia Bold" size="24.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="searchBar" layoutX="14.0" layoutY="57.0" prefWidth="219.0" promptText="Cerca contatto..." />
+                        <TextField fx:id="searchBar" layoutX="11.0" layoutY="80.0" prefWidth="219.0" promptText="Cerca contatto..." />
+                  <MenuButton mnemonicParsing="false" text="File">
+                     <items>
+                        <MenuItem fx:id="exportButton" mnemonicParsing="false" onAction="#exportAction" text="Esporta Rubrica" />
+                     </items>
+                  </MenuButton>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="414.0">

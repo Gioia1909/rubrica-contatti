@@ -23,6 +23,8 @@ public class SalvaCaricaRubrica implements Serializable{
     
     private static final String file = "rubrica.json";  //nome del file che si creerà
     
+    private static final String fileCSV = "rubrica.csv";  //nome del file che si creerà
+    
     /**
      * @brief Salva la rubrica su file JSON.
      *
@@ -90,5 +92,21 @@ public class SalvaCaricaRubrica implements Serializable{
             e.printStackTrace();
             return FXCollections.observableArrayList();
         }    
+    }
+    
+    public static void exportToCSV(ObservableList<Contatto> addressBook) throws IOException{
+        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(fileCSV)))){
+            // Intestazione del CSV
+            pw.println("NOME;COGNOME;TELEFONO;EMAIL");
+            
+            for(Contatto contatto : addressBook){
+                String numeri = String.join(",", contatto.getNumbers());
+                String email = String.join(",", contatto.getEmails());
+                
+                pw.println(contatto.getName() + ";" + contatto.getSurname() + ";" + numeri + ";" + email);
+            }
+            
+        }
+        System.out.println("Rubrica esportata correttamente in " + fileCSV);
     }
 }

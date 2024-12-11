@@ -1,13 +1,13 @@
 /**
- * @file InterfacciaAggiungiController.java
- * @brief Controller per la gestione dell'interfaccia grafica per l'aggiunta di
+ * @file InterfacciaAggiungiModificheController.java
+ * @brief Controller per la gestione dell'interfaccia grafica per l'aggiunta e la modifica dei
  * contatti.
  *
- * Questa classe gestisce gli eventi e le interazioni dell'utente per aggiungere
- * un nuovo contatto alla rubrica. Include la validazione dei dati inseriti, la
+ * Questa classe gestisce gli eventi e le interazioni dell'utente per aggiungere e modificare
+ * contatti. Include la validazione dei dati inseriti, la
  * gestione di duplicati e l'aggiornamento della rubrica persistente.
- *
- * @date 07/12/2024
+ *@version 2.0
+ * @date 11/12/2024
  * @author Gruppo09
  */
 package it.university.group9.rubricacontattigroup9;
@@ -175,12 +175,20 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         addButton.setVisible(true);
         editButton.setVisible(false); // Nascondi il bottone di modifica
     }
-
+ 
     public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
         this.userInterfaceController = controller;
     }
 
-
+  /**
+     * @brief Inizializza la finestra per modificare un contatto esistente.
+     * 
+     * @param contact Contatto da modificare.
+     * @param addressBook La lista osservabile dei contatti della rubrica.
+     * 
+     * @pre `contact` e `addressBook` devono essere non null.
+     * @post La finestra è configurata per modificare i dati del contatto fornito.
+     */
     public void initializeForEdit(Contatto contact, ObservableList<Contatto> addressBook) {
         this.addressBook = addressBook;
         this.existingContact = contact;

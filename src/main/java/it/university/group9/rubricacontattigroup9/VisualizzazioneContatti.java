@@ -98,4 +98,25 @@ public abstract class VisualizzazioneContatti {
         }else email3Field.setVisible(false);
         
     }
+    
+    
+    protected void resetContactDetails() {
+    defaultText.setVisible(true); // Mostra il testo di default
+    deleteButton.setVisible(false); // Nascondi il pulsante elimina
+    deleteImageView.setVisible(false); // Nascondi l'icona di eliminazione
+    editButton.setVisible(false); // Nascondi il pulsante modifica
+    editImageView.setVisible(false); // Nascondi l'icona di modifica
+    
+    nameField.setVisible(false);
+    surnameField.setVisible(false);
+    number1Field.setVisible(false);
+    number2Field.setVisible(false);
+    number3Field.setVisible(false);
+    email1Field.setVisible(false);
+    email2Field.setVisible(false);
+    email3Field.setVisible(false);
+    noteField.setVisible(false);
+}
+    
+    
 }
