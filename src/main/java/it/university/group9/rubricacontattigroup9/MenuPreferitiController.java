@@ -322,7 +322,6 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
             // Salva i contatti aggiornati nel file
             SalvaCaricaPreferiti.salvaRubricaPreferiti(favoriteList);
         }
-
     }
     
     /**
