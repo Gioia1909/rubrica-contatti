@@ -7,7 +7,6 @@ package it.university.group9.rubricacontattigroup9;
 import java.util.LinkedList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.ArrayList;
 import java.util.*;
 
 /**
@@ -26,12 +25,12 @@ import java.util.*;
 public class Contatto implements Comparable<Contatto> {
 
     //JsonProperty serve a definire il campo che conterrà questi elementi sul file JSON
-    @JsonProperty("nome")
-    private String nome;
-    @JsonProperty("cognome")
-    private String cognome;
-    @JsonProperty("numeri")
-    private List<String> numeri;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("surname")
+    private String surname;
+    @JsonProperty("numbers")
+    private List<String> numbers;
     @JsonProperty("emails")
     private List<String> emails;
     @JsonProperty("note")
@@ -43,16 +42,16 @@ public class Contatto implements Comparable<Contatto> {
      * Crea un'istanza della classe Contatto con i parametri forniti.
      *
      *
-     * @param[in] nome Il nome del contatto.
-     * @param[in] cognome Il cognome del contatto.
-     * @param[in] numeri Lista di numeri di telefono associati al contatto.
+     * @param[in] name Il nome del contatto.
+     * @param[in] surname Il cognome del contatto.
+     * @param[in] numbers Lista di numeri di telefono associati al contatto.
      * @param[in] emails Lista di email associate al contatto.
      * @param[in] note Note aggiuntive relative al contatto.
      */
-    public Contatto(String nome, String cognome, List<String> numeri, List<String> emails, String note) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.numeri = numeri;
+    public Contatto(String name, String surname, List<String> numbers, List<String> emails, String note) {
+        this.name = name;
+        this.surname = surname;
+        this.numbers = numbers;
         this.emails = emails;
         this.note = note;
     }
@@ -63,26 +62,26 @@ public class Contatto implements Comparable<Contatto> {
      * Inizializza il contatto con liste vuote per numeri e email.
      */
     public Contatto() {
-        this.numeri = new LinkedList<>();
+        this.numbers = new LinkedList<>();
         this.emails = new LinkedList<>();
     }
 
     /**
      * @brief Metodo che restituisce il nome del contatto.
      *
-     * @return Nome del contatto.
+     * @return name del contatto.
      */
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
     /**
      * @brief Metodo che restituisce il cognome del contatto.
      *
-     * @return Cognome del contatto.
+     * @return surname del contatto.
      */
-    public String getCognome() {
-        return cognome;
+    public String getSurname() {
+        return surname;
     }
 
     /**
@@ -91,8 +90,8 @@ public class Contatto implements Comparable<Contatto> {
      *
      * @return Una lista contenente i numeri di telefono del contatto.
      */
-    public List<String> getNumeri() {
-        return numeri;
+    public List<String> getNumbers() {
+        return numbers;
     }
 
     /**
@@ -122,11 +121,11 @@ public class Contatto implements Comparable<Contatto> {
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        sb.append(nome);
+        sb.append(name);
         sb.append(" ");
-        sb.append(cognome);
-        for (String numero : numeri) {
-            sb.append(numero);
+        sb.append(surname);
+        for (String number : numbers) {
+            sb.append(numbers);
             sb.append(" ");
         }
         for (String email : emails) {
@@ -148,21 +147,21 @@ public class Contatto implements Comparable<Contatto> {
      * sempre in ordine alfabetico. Il confronto è case-insensitive.
      *
      * @param[in] obj Il contatto da confrontare con l'oggetto corrente.
-     * @return Un intero che rappresenta il risultato del confronto: - Un valore
-     * negativo se l'oggetto corrente precede il contatto `obj`. - Zero se i due
-     * contatti sono considerati equivalenti. - Un valore positivo se l'oggetto
-     * corrente segue il contatto `obj`.
+     * @return Un intero che rappresenta il risultato del confronto: 
+     * - Un valore negativo se l'oggetto corrente precede il contatto `obj`. 
+     * - Zero se i due contatti sono considerati equivalenti. 
+     * - Un valore positivo se l'oggetto corrente segue il contatto `obj`.
      *
      * @pre L'oggetto `obj` non deve essere null.
      *
      */
     @Override
     public int compareTo(Contatto obj) {
-        int risultato = this.cognome.compareToIgnoreCase(obj.cognome);
-        if (risultato == 0) {       // se hanno lo stesso cognome
-            return this.nome.compareToIgnoreCase(obj.nome); // Se i cognomi sono uguali, ordina per nome
+        int result = this.surname.compareToIgnoreCase(obj.surname);
+        if (result == 0) {       // se hanno lo stesso cognome
+            return this.name.compareToIgnoreCase(obj.name); // Se i cognomi sono uguali, ordina per nome
         }
-        return risultato;
+        return result;
     }
 
     /**
@@ -181,9 +180,9 @@ public class Contatto implements Comparable<Contatto> {
             return false;
         }
         Contatto contatto = (Contatto) o;
-        return Objects.equals(nome, contatto.nome)
-                && Objects.equals(cognome, contatto.cognome)
-                && Objects.equals(numeri, contatto.numeri)
+        return Objects.equals(name, contatto.name)
+                && Objects.equals(surname, contatto.surname)
+                && Objects.equals(numbers, contatto.numbers)
                 && Objects.equals(emails, contatto.emails)
                 && Objects.equals(note, contatto.note);
     }
@@ -199,7 +198,7 @@ public class Contatto implements Comparable<Contatto> {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(nome, cognome, numeri, emails, note);
+        return Objects.hash(name, surname, numbers, emails, note);
     }
 
 }
