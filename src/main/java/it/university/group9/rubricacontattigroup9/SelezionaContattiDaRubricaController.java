@@ -5,7 +5,7 @@
  * Questa classe gestisce l'interfaccia utente e la logica per selezionare
  * contatti dalla rubrica e aggiungerli ai preferiti. Fornisce funzionalità di
  * ricerca dinamica e gestione delle liste di contatti e preferiti.
- * @version 2.0
+ *
  * @author Group09
  * @date 11/12/2024
  */
@@ -28,15 +28,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * @class SelezionaContattiDaRubricaController
- * @brief Controller per la selezione di contatti dalla rubrica.
- *
- * Questa classe implementa la logica per:
- * - Visualizzare e filtrare i contatti della rubrica.
- * - Aggiungere i contatti selezionati ai preferiti.
- * - Gestire l'interazione con l'interfaccia utente.
- */
 public class SelezionaContattiDaRubricaController implements Initializable {
 
     /**
@@ -128,15 +119,80 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         return fAddressBook;
     }
 
-
-    public void setfAddressBook(ObservableList<Contatto> fAddressBook) {
-        this.fAddressBook = fAddressBook;
+    /**
+     * @brief Campo di testo per la barra di ricerca.
+     *
+     * Consente all'utente di digitare il testo per filtrare i contatti visibili
+     * nella lista.
+     */
+    public void setRubricaPreferiti(ObservableList<Contatto> rubricaPreferiti) {
+        this.rubricaPreferiti = rubricaPreferiti;
     }
 
+    @FXML
+    private TextField searchBar;
+    /**
+     * @brief Lista dei contatti visualizzata nella GUI.
+     *
+     * Mostra i contatti filtrati o l'intera rubrica, a seconda dell'input
+     * dell'utente nella barra di ricerca.
+     */
+    @FXML
+    private ListView<Contatto> contactListView;
+    /**
+     * @brief Pulsante per aggiungere un contatto ai preferiti.
+     *
+     * Permette di selezionare un contatto dalla lista e aggiungerlo ai
+     * preferiti.
+     */
+    @FXML
+    private Button addButton;
+    /**
+     * @brief Pulsante per chiudere la finestra attuale.
+     *
+     * Torna al menu principale dei preferiti.
+     */
+    @FXML
+    private Button closeButton;
+    /**
+     * @brief Pulsante per eseguire la ricerca.
+     *
+     * Questo pulsante non è utilizzato poiché la ricerca è implementata
+     * dinamicamente.
+     */
+    @FXML
+    private Button searchButton;
 
+    /**
+     * @brief Lista dei contatti della rubrica
+     */
+    //mantengo riferimento alla lista dei contatti della rubrica
+    private ObservableList<Contatto> rubrica;
+
+    /**
+     * @brief Contatto selezionato
+     */
+    //contatto selezionato 
+    private Contatto selectedContact;
+
+    /**
+     * @brief Lista dei contatti preferiti
+     */
+    //riferimento alla lista dei preferiti
+    private ObservableList<Contatto> rubricaPreferiti;
+
+    /**
+     * @brief Metodo di inizializzazione del controller
+     * @param[in] url URL di inizializzazione
+     * @param[in] rb ResourceBundle di inizializzazione
+     */
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         contactListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
         //https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ListView.html#selectionModelProperty--
         //così specifichiamo che la selezione del contatto nella lista è singolo 
     }
@@ -150,6 +206,8 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     public void setContacts(ObservableList<Contatto> addressBook, ObservableList<Contatto> fAddressBook) {
         if (addressBook == null || fAddressBook == null) {
             throw new NullPointerException("Le liste rubrica o preferiti sono null!");
+            //System.err.println("Le liste rubrica o preferiti sono null!");
+            // return;
         }
         this.addressBook = addressBook; //prendo la rubrica normale
         this.fAddressBook = fAddressBook;
@@ -176,16 +234,16 @@ public class SelezionaContattiDaRubricaController implements Initializable {
                 String lowerCaseFilter = newValue.toLowerCase(); //questo la rende insensitive, mette tutto in minuscolo 
 
                 //verifica se la stringa passata da textfield è contenuta dal nome del contatto o dal suo cognome
-                return contact.getName().toLowerCase().contains(lowerCaseFilter) //
-                        || contact.getSurname().toLowerCase().contains(lowerCaseFilter)
+                return contatto.getNome().toLowerCase().contains(lowerCaseFilter) //
+                        || contatto.getCognome().toLowerCase().contains(lowerCaseFilter)
                         //verifica anche per email o numeri di telefono
-                        || contact.getNumbers().stream().anyMatch(num -> num.toLowerCase().contains(lowerCaseFilter))
-                        || contact.getEmails().stream().anyMatch(email -> email.toLowerCase().contains(lowerCaseFilter));
+                        || contatto.getNumeri().stream().anyMatch(num -> num.toLowerCase().contains(lowerCaseFilter))
+                        || contatto.getEmails().stream().anyMatch(email -> email.toLowerCase().contains(lowerCaseFilter));
             });
         });
 
         //colleghiamo questa lista di contatti filtrata a quella che visualizziamo in questa finestra
-        contactListView.setItems(filteredContact);
+        contactListView.setItems(contattiFiltrati);
 
         configureContactListView();
         /*Effetto dinamico:
@@ -195,7 +253,15 @@ public class SelezionaContattiDaRubricaController implements Initializable {
          */
     }
 
-
+    /**
+     * @brief Configura la visualizzazione della lista dei contatti nella
+     * `ListView`. Ogni cella mostra il cognome e il nome del contatto. Se la
+     * cella è vuota o il contatto è nullo, il testo della cella viene impostato
+     * su `null`.
+     *
+     * @post Ogni elemento della `ListView` mostrerà il cognome seguito dal nome
+     * del contatto.
+     */
     private void configureContactListView() {
         contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
@@ -211,19 +277,25 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         });
     }
 
+    /**
+     * @brief Aggiunge il contatto selezionato ai preferiti.
+     *
+     * @param event Evento di tipo ActionEvent.
+     * @throws IOException Se si verifica un errore durante il cambio di scena
+     */
     @FXML
     private void handleAddContact(ActionEvent event) throws IOException {
         selectedContact = contactListView.getSelectionModel().getSelectedItem(); // prendo l'elemento selezionato 
 
         if (selectedContact != null) {
-            if (!fAddressBook.contains(selectedContact)) {
-                fAddressBook.add(selectedContact);
+            if (!rubricaPreferiti.contains(selectedContact)) {
+                rubricaPreferiti.add(selectedContact);
 
-                System.out.println("Aggiunto ai preferiti: " + selectedContact.getName());
-                FXCollections.sort(fAddressBook); // Ordina la lista preferiti
+                System.out.println("Aggiunto ai preferiti: " + selectedContact.getNome());
+                FXCollections.sort(rubricaPreferiti); // Ordina la lista preferiti
 
                 // Salva il file
-                SalvaCaricaPreferiti.salvaRubricaPreferiti(fAddressBook);
+                SalvaCaricaPreferiti.salvaRubricaPreferiti(rubricaPreferiti);
             } else {
                 showErrorDialog("Contatto Presente", selectedContact + " è già nei Preferiti.");
             }
@@ -234,17 +306,35 @@ public class SelezionaContattiDaRubricaController implements Initializable {
 
     }
 
+    /**
+     * @brief Torna al menu dei preferiti.
+     *
+     * @param event Evento di tipo ActionEvent.
+     * @throws IOException Se si verifica un errore durante il cambio di scena.
+     */
     @FXML
     private void handleClosePopup(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
-    private void showErrorDialog(String title, String message) {
+    /**
+     * @brief Mostra una finestra di dialogo di errore.
+     *
+     * @param titolo Il titolo della finestra di dialogo.
+     * @param messaggio Il messaggio di errore da visualizzare.
+     *
+     * @post La finestra di dialogo di errore verrà mostrata con il titolo e il
+     * messaggio specificati.
+     */
+    private void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
+    /*@FXML Questo non serve se la ricerca è dinamica
+    private void handleSearch(ActionEvent event) {
+    }*/
 }

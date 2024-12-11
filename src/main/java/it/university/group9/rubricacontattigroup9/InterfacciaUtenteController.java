@@ -40,16 +40,16 @@ public class InterfacciaUtenteController implements Initializable {
     /**
      * < Bottone per cercare un contatto.
      */
-    
+
     @FXML
     private Button modifyButton;
-    
+
     @FXML
     private ImageView modifyImageView;
-    
+
     @FXML
     private ImageView deleteImageView;
-    
+
     @FXML
     private Button favoriteButton;
     /**
@@ -57,15 +57,15 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @FXML
     private ListView<Contatto> myListView;
-    
+
     public ListView<Contatto> getListView() {
         return myListView;
     }
-    
-     public void setListView(ListView<Contatto> myListView) {
-        this.myListView=myListView;
+
+    public void setListView(ListView<Contatto> myListView) {
+        this.myListView = myListView;
     }
-    
+
     /**
      * <Bottone principale per operazioni varie.
      */
@@ -103,20 +103,18 @@ public class InterfacciaUtenteController implements Initializable {
      */
     ///@}
     private ObservableList<Contatto> contactList;
+
     @FXML
     private TextField searchBar;
-    
-    public TextField getSearchBar(){
+
+    public TextField getSearchBar() {
         return searchBar;
     }
-    
-    public void setSearchBar(TextField searchBar){
-        this.searchBar=searchBar;
+
+    public void setSearchBar(TextField searchBar) {
+        this.searchBar = searchBar;
     }
 
-    /**
-     * <Lista Osservabile dei Contatti
-     */
     /**
      * @brief Inizializza i componenti e imposta la lista di contatti
      *
@@ -124,8 +122,8 @@ public class InterfacciaUtenteController implements Initializable {
      * viene caricata. Carica la lista dei contatti utilizzando il metodo
      * SalvaCaricaRubrica.caricaRubrica(). Configura la ListView per
      * visualizzare correttamente i contatti, mostrando solo il cognome e il
-     * nome. Aggiunge un listener alla ListView per reagire alla selezione di
-     * un contatto, aggiornando i campi di testo con i dettagli del contatto
+     * nome. Aggiunge un listener alla ListView per reagire alla selezione di un
+     * contatto, aggiornando i campi di testo con i dettagli del contatto
      * selezionato
      *
      * @param[in] location URL della risorsa utilizzata per risolvere i percorsi
@@ -138,32 +136,33 @@ public class InterfacciaUtenteController implements Initializable {
         myListView.setItems(contactList);
         configureListView();
     }
-    
-   
-/**
- * @brief Configura la ListView per visualizzare e gestire i contatti.
- * 
- * 
- * @pre La ListView `myListView` e la lista `contactList` devono essere inizializzate.
- * @post La ListView viene configurata con un aspetto personalizzato e un comportamento reattivo 
- *alla selezione degli elementi.
- */
 
+    /**
+     * @brief Configura la ListView per visualizzare e gestire i contatti.
+     *
+     *
+     * @pre La ListView `myListView` e la lista `contactList` devono essere
+     * inizializzate.
+     * @post La ListView La ListView viene configurata per visualizzare solo
+     * Cognome e Nome del contatto
+     */
     private void configureListView() {
         myListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
             protected void updateItem(Contatto contatto, boolean empty) {
+                // Chiama la versione base del metodo per assicurare il corretto comportamento della cella
                 super.updateItem(contatto, empty);
                 if (empty || contatto == null) {
+                    // Se vuota o nulla, non mostra alcun testo
                     setText(null);
                 } else {
                     // Mostra solo il cognome e il nome
                     setText(contatto.getCognome() + " " + contatto.getNome());
                 }
             }
-            
+
         });
-        
+
         myListView.setItems(contactList);
 
         // listener per la selezione della ListView. Con getSelectionModel ottengo il modello di selezione della ListView, 
@@ -177,104 +176,14 @@ public class InterfacciaUtenteController implements Initializable {
             }
         });
     }
-    
-    
-/**
- * @brief Aggiorna i dettagli visualizzati per il contatto selezionato.
- * 
- * @param contattoSelezionato Contatto il cui dettaglio verrà visualizzato nei campi.
- * 
- * @pre Il contatto selezionato deve essere valido e contenere i dati aggiornati.
- * @post I campi della UI vengono aggiornati per riflettere i dati del contatto selezionato.
- */
-    private void updateContactDetails(Contatto contattoSelezionato) {
-        defaultText.setVisible(false);
-        deleteButton.setVisible(true);
-        modifyButton.setVisible(true);
-        modifyImageView.setVisible(true);
-        deleteImageView.setVisible(true);
-
-        // Gestione nome e cognome
-        if (contattoSelezionato.getNome().isEmpty() && nameField.getText().isEmpty()) {
-            nameField.setVisible(false);
-        } else {
-            nameField.setVisible(true);
-            nameField.setText(contattoSelezionato.getNome());
-        }
-        
-        if (contattoSelezionato.getCognome().isEmpty() && surnameField.getText().isEmpty()) {
-            surnameField.setVisible(false);
-        } else {
-            surnameField.setVisible(true);
-            surnameField.setText(contattoSelezionato.getCognome());
-        }
-
-        // Gestione dei numeri di telefono
-        List<String> numeri = contattoSelezionato.getNumeri();
-        
-        if (numeri.size() > 0) {
-            number1Field.setVisible(true);
-            number1Field.setText(numeri.get(0));
-        } else if (number1Field.getText().isEmpty()) {
-            number1Field.setVisible(false);
-        }
-        
-        if (numeri.size() > 1) {
-            number2Field.setVisible(true);
-            number2Field.setText(numeri.get(1));
-        } else {
-            number2Field.setVisible(false);
-        }
-        
-        if (numeri.size() > 2) {
-            number3Field.setVisible(true);
-            number3Field.setText(numeri.get(2));
-        } else {
-            number3Field.setVisible(false);
-        }
-
-        // Gestione delle email
-        List<String> emails = contattoSelezionato.getEmails();
-        
-        if (emails.size() > 0) {
-            email1Field.setVisible(true);
-            email1Field.setText(emails.get(0));
-        } else {
-            email1Field.setVisible(false);
-        }
-        
-        if (emails.size() > 1) {
-            email2Field.setVisible(true);
-            email2Field.setText(emails.get(1));
-        } else {
-            email2Field.setVisible(false);
-        }
-        
-        if (emails.size() > 2) {
-            email3Field.setVisible(true);
-            email3Field.setText(emails.get(2));
-        } else {
-            email3Field.setVisible(false);
-        }
-
-        // Gestione delle note
-        if (contattoSelezionato.getNote() == null || contattoSelezionato.getNote().isEmpty()) {
-            if (noteField.getText().isEmpty()) {
-                noteField.setVisible(false);
-            }
-        } else {
-            noteField.setVisible(true);
-            noteField.setText(contattoSelezionato.getNote());
-        }
-    }
 
     /**
      * @brief Restituisce la lista di tutti i contatti.
      *
      * Questo metodo recupera e restituisce la lista dei contatti memorizzati
      * nel sistema. La lista è rappresentata come una collezione di oggetti del
-     * tipo Contatto. Se non sono presenti contatti, viene restituita una
-     * lista vuota.
+     * tipo Contatto. Se non sono presenti contatti, viene restituita una lista
+     * vuota.
      *
      * @return Una lista di oggetti Contatto, che rappresenta tutti i contatti
      * disponibili.
@@ -302,10 +211,9 @@ public class InterfacciaUtenteController implements Initializable {
     /**
      * @brief Ordina la lista dei contatti in base al cognome e nome.
      *
-     * Questo metodo ordina la lista contactList di contatti prima per
-     * cognome, e in caso di parità, per nome. L'ordinamento è fatto in ordine
-     * crescente, utilizzando il metodo compareTo definito nella classe
-     * Contatto.
+     * Questo metodo ordina la lista contactList di contatti prima per cognome,
+     * e in caso di parità, per nome. L'ordinamento è fatto in ordine crescente,
+     * utilizzando il metodo compareTo definito nella classe Contatto.
      *
      * @post La lista dei contatti è ordinata correttamente.
      */
@@ -315,54 +223,95 @@ public class InterfacciaUtenteController implements Initializable {
     }
 
     /**
-     * @brief Passa alla schermata dei contatti preferiti.
+     * @brief Aggiorna i dettagli visualizzati per il contatto selezionato.
      *
-     * @throws IOException Se non riesce a caricare la nuova schermata.
-     * @see MenuPreferitiController
+     * @param contattoSelezionato Contatto il cui dettaglio verrà visualizzato
+     * nei campi.
+     *
+     * @pre Il contatto selezionato deve essere valido e contenere i dati
+     * aggiornati.
+     * @post I campi della UI vengono aggiornati per riflettere i dati del
+     * contatto selezionato.
      */
-    @FXML
-    private void switchToFavorite() throws IOException {
-        // Carica il file FXML della scena dei preferiti
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
-        Parent root = loader.load();
+    private void updateContactDetails(Contatto contattoSelezionato) {
+        defaultText.setVisible(false);
+        deleteButton.setVisible(true);
+        modifyButton.setVisible(true);
+        modifyImageView.setVisible(true);
+        deleteImageView.setVisible(true);
 
-        // Ottieni il controller associato alla scena caricata
-        MenuPreferitiController menuPreferitiController = loader.getController();
+        // Gestione nome e cognome
+        if (contattoSelezionato.getNome().isEmpty() && nameField.getText().isEmpty()) {
+            nameField.setVisible(false);
+        } else {
+            nameField.setVisible(true);
+            nameField.setText(contattoSelezionato.getNome());
+        }
 
-        // Passa la lista di contatti al controller dei preferiti
-        menuPreferitiController.setContactList(contactList);
+        if (contattoSelezionato.getCognome().isEmpty() && surnameField.getText().isEmpty()) {
+            surnameField.setVisible(false);
+        } else {
+            surnameField.setVisible(true);
+            surnameField.setText(contattoSelezionato.getCognome());
+        }
 
-        // Cambia la scena
-        Scene scene = favoriteButton.getScene(); // Ottieni la scena corrente
-        scene.setRoot(root); // Sostituisci il root della scena corrente con il nuovo root
-    }
+        // Gestione dei numeri di telefono
+        List<String> numeri = contattoSelezionato.getNumeri();
 
-    /**
-     * @brief Passa alla schermata di aggiunta di un nuovo contatto.
-     *
-     * Questo metodo carica la scena della finestra di aggiunta di un nuovo
-     * contatto e la visualizza in una nuova finestra. Inoltre, imposta il
-     * controller della nuova finestra per consentire l'intererazione con
-     * l'interfaccia principale
-     *
-     *
-     * @throws IOException Se non riesce a caricare la nuova schermata.
-     */
-    @FXML
-    private void switchToAdd() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
-        Parent root = loader.load(); // Carica la scena
-        // Ottieni il controller della scena di aggiunta contatto
-        InterfacciaAggiungiModificaController aggiungiController = loader.getController();
-        // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
-        aggiungiController.setInterfacciaUtenteController(this);
-        aggiungiController.initializeForAdd(contactList);
+        if (numeri.size() > 0) {
+            number1Field.setVisible(true);
+            number1Field.setText(numeri.get(0));
+        } else if (number1Field.getText().isEmpty()) {
+            number1Field.setVisible(false);
+        }
 
-        // Crea una nuova scena e visualizzala
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+        if (numeri.size() > 1) {
+            number2Field.setVisible(true);
+            number2Field.setText(numeri.get(1));
+        } else {
+            number2Field.setVisible(false);
+        }
+
+        if (numeri.size() > 2) {
+            number3Field.setVisible(true);
+            number3Field.setText(numeri.get(2));
+        } else {
+            number3Field.setVisible(false);
+        }
+
+        // Gestione delle email
+        List<String> emails = contattoSelezionato.getEmails();
+
+        if (emails.size() > 0) {
+            email1Field.setVisible(true);
+            email1Field.setText(emails.get(0));
+        } else {
+            email1Field.setVisible(false);
+        }
+
+        if (emails.size() > 1) {
+            email2Field.setVisible(true);
+            email2Field.setText(emails.get(1));
+        } else {
+            email2Field.setVisible(false);
+        }
+
+        if (emails.size() > 2) {
+            email3Field.setVisible(true);
+            email3Field.setText(emails.get(2));
+        } else {
+            email3Field.setVisible(false);
+        }
+
+        // Gestione delle note
+        if (contattoSelezionato.getNote() == null || contattoSelezionato.getNote().isEmpty()) {
+            if (noteField.getText().isEmpty()) {
+                noteField.setVisible(false);
+            }
+        } else {
+            noteField.setVisible(true);
+            noteField.setText(contattoSelezionato.getNote());
+        }
     }
 
     /**
@@ -394,8 +343,8 @@ public class InterfacciaUtenteController implements Initializable {
      * barra di ricerca.
      *
      * Questo metodo filtra la lista dei contatti in base al testo inserito
-     * nella barra di ricerca textBar. La ricerca viene effettuata
-     * considerando il nome, il cognome e il numero di telefono del contatto.
+     * nella barra di ricerca textBar. La ricerca viene effettuata considerando
+     * il nome, il cognome e il numero di telefono del contatto.
      *
      * @pre La lista di contatti contactList è già popolata.
      * @post La myListView mostra la lista filtrata di contatti che soddisfano i
@@ -406,8 +355,8 @@ public class InterfacciaUtenteController implements Initializable {
     @FXML
     public void searchContact(ActionEvent event) {
         if (contactList == null) {
-        showErrorDialog("Errore", "La lista dei contatti non è disponibile.");
-        return;
+            showErrorDialog("Errore", "La lista dei contatti non è disponibile.");
+            return;
         }
         String searchQuery = searchBar.getText().toLowerCase().trim();
         //searchQuery è una stringa che contiene il testo digitato; 
@@ -443,36 +392,66 @@ public class InterfacciaUtenteController implements Initializable {
             showErrorDialog("Errore", "Nessun contatto trovato");
         }
     }
-    
-    
-/**
- * @brief Gestisce il passaggio alla schermata di modifica di un contatto selezionato.
- *
- * 
- * @throws IOException Se si verifica un errore durante il caricamento della scena FXML.
- * 
- * @pre Il contatto selezionato deve essere presente nella ListView.
- * @post La finestra di modifica viene visualizzata con il contatto selezionato caricato nel relativo controller.
- */
+
+    /**
+     * @brief Passa alla schermata di aggiunta di un nuovo contatto.
+     *
+     * Questo metodo carica la scena della finestra di aggiunta di un nuovo
+     * contatto e la visualizza in una nuova finestra. Inoltre, imposta il
+     * controller della nuova finestra per consentire l'intererazione con
+     * l'interfaccia principale
+     *
+     *
+     * @throws IOException Se non riesce a caricare la nuova schermata.
+     */
+    @FXML
+    private void switchToAdd() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
+        Parent root = loader.load(); // Carica la scena
+        // Ottieni il controller della scena di aggiunta contatto
+        InterfacciaAggiungiModificaController aggiungiController = loader.getController();
+        // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
+        aggiungiController.setInterfacciaUtenteController(this);
+        aggiungiController.initializeForAdd(contactList);
+
+        // Crea una nuova scena e visualizzala
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * @brief Gestisce il passaggio alla schermata di modifica di un contatto
+     * selezionato.
+     *
+     *
+     * @throws IOException Se si verifica un errore durante il caricamento della
+     * scena FXML.
+     *
+     * @pre Il contatto selezionato deve essere presente nella ListView.
+     * @post La finestra di modifica viene visualizzata con il contatto
+     * selezionato caricato nel relativo controller.
+     */
     @FXML
     private void switchToModifyContact() throws IOException {
         // Ottieni il contatto selezionato
-        Contatto contattoSelezionato = myListView.getSelectionModel().getSelectedItem();    
+        Contatto contattoSelezionato = myListView.getSelectionModel().getSelectedItem();
         //getSelectionModel(): Ottiene il modello di selezione associato alla lista, che gestisce la selezione degli elementi: dà accesso a tutte le informazioni sulla selezione.
         //getSelectedItem(): Ritorna l'elemento attualmente selezionato dall'utente nella ListView.     
-        
+
         if (contattoSelezionato != null) {  //Verifica se un contatto è stato selezionato. Se null, significa che l'utente non ha selezionato nulla, quindi non deve procedere.
             // Carica la scena di modifica contatto
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
             //FXMLLoader: Classe per caricare i file FXML.
             //getClass().getResource(...): Trova il file InterfacciaModificaContatto.fxml nel percorso delle risorse.
-            Parent root = loader.load();    
+            Parent root = loader.load();
             //loader: Istanza del loader che si occuperà di caricare l'interfaccia specificata.
             //load(): Metodo che carica il file FXML e crea una gerarchia di nodi per l'interfaccia.
             //Parent root: Il nodo radice della nuova scena. Tutti i componenti grafici dell'interfaccia vengono aggiunti come figli di questo nodo.
 
             // Ottieni il controller della scena di modifica
-            InterfacciaAggiungiModificaController modificaController = loader.getController();  
+            InterfacciaAggiungiModificaController modificaController = loader.getController();
             //modificaController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
             //getController(): Ottiene il controller associato al file FXML appena caricato
 
@@ -487,23 +466,46 @@ public class InterfacciaUtenteController implements Initializable {
         }
     }
 
+    /**
+     * @brief Passa alla schermata dei contatti preferiti.
+     *
+     * @throws IOException Se non riesce a caricare la nuova schermata.
+     * @see MenuPreferitiController
+     */
+    @FXML
+    private void switchToFavorite() throws IOException {
+        // Carica il file FXML della scena dei preferiti
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
+        Parent root = loader.load();
 
-/**
- * @brief Mostra un banner di errore con un titolo e un messaggio personalizzati.
- *
- * 
- * @param titolo Il titolo della finestra di dialogo.
- * @param messaggio Il messaggio di errore da visualizzare nella finestra.
- * 
- * @pre Il titolo e il messaggio devono essere stringhe non nulle.
- * @post La finestra di dialogo di errore viene visualizzata con il titolo e il messaggio forniti.
- */
+        // Ottieni il controller associato alla scena caricata
+        MenuPreferitiController menuPreferitiController = loader.getController();
+
+        // Passa la lista di contatti al controller dei preferiti
+        menuPreferitiController.setContactList(contactList);
+
+        // Cambia la scena
+        Scene scene = favoriteButton.getScene(); // Ottieni la scena corrente
+        scene.setRoot(root); // Sostituisci il root della scena corrente con il nuovo root
+    }
+
+    /**
+     * @brief Mostra un banner di errore con un titolo e un messaggio
+     * personalizzati.
+     *
+     *
+     * @param titolo Il titolo della finestra di dialogo.
+     * @param messaggio Il messaggio di errore da visualizzare nella finestra.
+     *
+     * @pre Il titolo e il messaggio devono essere stringhe non nulle.
+     * @post La finestra di dialogo di errore viene visualizzata con il titolo e
+     * il messaggio forniti.
+     */
     private void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titolo);
         alert.setContentText(messaggio);
         alert.showAndWait();
     }
-    
-}
 
+}
