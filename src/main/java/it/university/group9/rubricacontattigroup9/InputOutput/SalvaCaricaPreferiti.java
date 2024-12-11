@@ -21,8 +21,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.*;
 import javafx.collections.FXCollections;
 
-
-
 public class SalvaCaricaPreferiti implements Serializable {
     //file che si creerà 
     private static final String file = "rubricapreferiti.json"; //nome del file
@@ -39,13 +37,13 @@ public class SalvaCaricaPreferiti implements Serializable {
      * @post Il file JSON viene creato o sovrascritto con i dati contenuti in rubrica
      * @throws IOException Se si verifica un errore durante il salvataggio del file.
      */
-    public static void salvaRubricaPreferiti(ObservableList<Contatto> rubrica) { //ObservableList<Contatto> rubrica Lista dei contatti da 
+    public static void salvaRubricaPreferiti(ObservableList<Contatto> addressBook) { //ObservableList<Contatto> rubrica Lista dei contatti da 
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
         ObjectMapper mapper = new ObjectMapper(); //https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.8/com/fasterxml/jackson/databind/ObjectMapper.html
         
         try{
             //Jackson non può serializzare un'osservable, quindi deve diventare una stringa
-            List <Contatto> serializableList = new ArrayList<>(rubrica);  //crea una nuova lista con gli elementi di rubrica
+            List <Contatto> serializableList = new ArrayList<>(addressBook);  //crea una nuova lista con gli elementi di rubrica
             mapper.writeValue(new File(file), serializableList); //accetta il file e l'oggetto da scrivere sopra
             System.out.println("Rubrica salvata correttamente in " + file);
 
@@ -88,7 +86,4 @@ public class SalvaCaricaPreferiti implements Serializable {
             return FXCollections.observableArrayList();
         }    
     }
-
-
-
 }
