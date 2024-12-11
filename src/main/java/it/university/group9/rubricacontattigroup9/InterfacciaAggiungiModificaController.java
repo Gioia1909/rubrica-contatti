@@ -370,23 +370,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     }
 
 
-     private void handleValidationError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore di Validazione");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+
      
-     private void populateFields(Contatto contatto) {
-        nameField.setText(contatto.getName());
-        surnameField.setText(contatto.getSurname());
-        noteField.setText(contatto.getNote());
-
-        List<String> numbers = contatto.getNumbers();
-        if (numbers.size() > 0) {
-            number1Field.setText(numbers.get(0));
-
-    /**
+     
+      /**
      * @brief Popola i campi del form con i dati di un contatto esistente.
      *
      * @param contatto Il contatto i cui dati devono essere inseriti nei campi
@@ -397,11 +384,16 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * cognome nei rispettivi campi. - Numeri di telefono e email nei campi
      * appropriati, fino a un massimo di tre per ciascun tipo. - Note nel campo
      * delle note.
+     
      */
+     private void populateFields(Contatto contact) {
+        nameField.setText(contact.getName());
+        surnameField.setText(contact.getSurname());
+        noteField.setText(contact.getNote());
 
-        List<String> numeri = contatto.getNumeri();
-        if (numeri.size() > 0) {
-            number1Field.setText(numeri.get(0));
+        List<String> numbers = contact.getNumbers();
+        if (numbers.size() > 0) {
+            number1Field.setText(numbers.get(0));
         }
         if (numbers.size() > 1) {
             number2Field.setText(numbers.get(1));
@@ -422,6 +414,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         } 
     
     }
+       
 
     /**
      * @brief Annulla l'operazione in corso e chiude la finestra corrente.
