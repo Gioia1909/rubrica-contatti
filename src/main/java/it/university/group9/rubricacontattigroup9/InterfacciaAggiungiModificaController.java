@@ -35,6 +35,15 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     @FXML
     private TextField number1Field, number2Field, number3Field, noteField;
 
+    private boolean isEditing = false;
+    private Contatto contattoEsistente;
+    private ObservableList<Contatto> rubrica;
+    /**
+     * @brief Riferimento al controller dell'interfaccia principale.
+     */
+    private InterfacciaUtenteController interfacciaUtenteController;
+
+    
     public Button getAddButton(){
         return addButton; 
     }
@@ -231,7 +240,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      *
      */
     @FXML
-    void switchToInterfaccia(ActionEvent event) throws IOException {
+    public void switchToInterfaccia(ActionEvent event) throws IOException {
         closeWindow();
     }
 /**
@@ -259,7 +268,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      *
      */
     @FXML
-    void addContact(ActionEvent event) {
+    public void addContact(ActionEvent event) {
         try {
             String nome = nameField.getText().trim();
             String cognome = surnameField.getText().trim();
@@ -343,6 +352,20 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         return numeri;
     }
 
+    private List<String> collectValidEmails() throws CampoNonValidoException {
+        List<String> emails = new ArrayList<>();
+        List<TextField> emailFields = Arrays.asList(email1Field, email2Field, email3Field);
+
+        for (TextField field : emailFields) {
+            String email = field.getText().trim();
+            if (!email.isEmpty()) {
+                ContattoValidator.validateEmail(email);
+                emails.add(email);
+            }
+        }
+        return emails;
+    }
+
      private boolean requestConfirmation(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
         alert.setTitle(title);
@@ -357,214 +380,39 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+     
+     private void populateFields(Contatto contatto) {
+        nameField.setText(contatto.getName());
+        surnameField.setText(contatto.getSurname());
+        noteField.setText(contatto.getNote());
 
+        List<String> numeri = contatto.getNumbers();
+        if (numeri.size() > 0) {
+            number1Field.setText(numeri.get(0));
+        }
+        if (numeri.size() > 1) {
+            number2Field.setText(numeri.get(1));
+        }
+        if (numeri.size() > 2) {
+            number3Field.setText(numeri.get(2));
+        }
 
-    
-    /**
-     * @brief Riferimento al controller dell'interfaccia principale.
-     */
-    private InterfacciaUtenteController interfacciaUtenteController;
-
- 
-    private boolean isEditing = false; //flag per distinguere tra aggiunta e modifica
-    private Contatto contattoEsistente; //contatto da modificare se presente
-    private ObservableList<Contatto> rubrica; //Lista dei contatti 
-
-   
-    
-    
-    
-    
-
-    
-    
-
-    /**
- * @brief Mostra una finestra di dialogo di conferma con due opzioni: Sì e No.
- * 
- * @param titolo Il titolo della finestra di dialogo.
- * @param messaggio Il messaggio da visualizzare nella finestra di dialogo.
- * 
- * @pre Il titolo e il messaggio non devono essere nulli o vuoti.
- * @post Viene mostrata una finestra di dialogo e viene restituito il risultato della selezione dell'utente.
- * 
- * @return true se l'utente seleziona "Sì", false se seleziona "No".
- */
-    private boolean showConfirmationDialog(String titolo, String messaggio) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, messaggio, ButtonType.YES, ButtonType.NO);
-        alert.setTitle(titolo);
-        alert.showAndWait();
-        return alert.getResult() == ButtonType.YES;
-    }
-    
-/**
- * @brief Mostra una finestra di dialogo di errore con un messaggio specificato.
- * 
- * @param titolo Il titolo della finestra di dialogo.
- * @param messaggio Il messaggio da visualizzare nella finestra di dialogo.
- * 
- * @pre Il titolo e il messaggio non devono essere nulli o vuoti.
- * @post Viene mostrata una finestra di dialogo con il messaggio di errore.
- */
-
-    private void showErrorDialog(String titolo, String messaggio) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titolo);
-        alert.setContentText(messaggio);
-        alert.showAndWait();
-    }
-
-    /**
-     * @brief Inizializza il controller.
-     *
-     * Metodo eseguito automaticamente per configurare il controller all'avvio.
-     *
-     * @param[in] url URL di inizializzazione.
-     * @param[in] rb Risorsa per la localizzazione.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-    }
-
-    //parte di modifica
-/**
- * @brief Inizializza la finestra per la modifica di un contatto esistente.
- * 
- * @param contatto Il contatto da modificare.
- * @param rubrica La rubrica che contiene il contatto esistente.
- * 
- * @pre Il parametro contatto deve essere un oggetto valido e non null.
- * @pre La rubrica deve essere un oggetto ObservableList<Contatto> non null.
- * @post Il form sarà popolato con i dati del contatto esistente.
- * @post Il pulsante "Modifica" sarà visibile, mentre il pulsante "Aggiungi" sarà nascosto.
- */
-
-    public void initializeForEdit(Contatto contatto, ObservableList<Contatto> rubrica) {
-        this.rubrica = rubrica;
-        this.contattoEsistente = contatto;
-        populateFields(contatto);
-        addButton.setVisible(false);
-        editButton.setVisible(true); // Mostra il bottone di modifica
-    }
-
-    /**
- * @brief Modifica i dati di un contatto esistente nella rubrica.
- * 
- * @param event L'evento ActionEvent generato dal click sul pulsante "Modifica".
- * 
- * @pre Tutti i campi del form devono essere validati correttamente prima della modifica.
- * @pre La variabile contattoEsistente deve essere un oggetto valido presente nella rubrica.
- * @post La rubrica sarà aggiornata con i nuovi dati del contatto.
- * @post I dati aggiornati saranno salvati utilizzando il metodo SalvaCaricaRubrica.salvaRubrica.
- * 
- * @throws NomeNonValidoException Se il nome inserito non è valido.
- * @throws CognomeNonValidoException Se il cognome inserito non è valido.
- * @throws NumeroNonValidoException Se uno o più numeri di telefono non sono validi.
- * @throws EmailNonValidaException Se uno o più indirizzi email non sono validi.
- */
-    @FXML
-    private void editContact(ActionEvent event) {
-        try {
-            // Recupera e valida i dati dai campi
-            String nome = nameField.getText().trim();
-            ContattoValidator.validateName(nome);
-
-            String cognome = surnameField.getText().trim();
-            ContattoValidator.validateSurname(cognome);
-
-            List<String> numeri = Arrays.asList(
-                    number1Field.getText().trim(),
-                    number2Field.getText().trim(),
-                    number3Field.getText().trim()
-            );
-
-            for (String numero : numeri) {
-                if (!numero.isEmpty()) {
-                    ContattoValidator.validatePhoneNumber(numero);
-                }
-            }
-
-            List<String> emails = Arrays.asList(
-                    email1Field.getText().trim(),
-                    email2Field.getText().trim(),
-                    email3Field.getText().trim()
-            );
-
-            for (String email : emails) {
-                if (!email.isEmpty()) {
-                    ContattoValidator.validateEmail(email);
-                }
-            }
-
-            String note = noteField.getText().trim();
-
-            // Creazione del nuovo contatto
-            Contatto nuovoContatto = new Contatto(nome, cognome, numeri, emails, note);
-
-            // Trova e sostituisci il contatto esistente
-            int index = rubrica.indexOf(contattoEsistente);
-            if (index != -1) {
-                rubrica.set(index, nuovoContatto);
-            }
-
-            // Salva i dati aggiornati
-            SalvaCaricaRubrica.salvaRubrica(rubrica);
-
-            // Chiudi la finestra
-            closeWindow();
-
-        } catch (CampoNonValidoException ex) {
-            showErrorDialog("Errore di Validazione", ex.getMessage());
+        List<String> emails = contatto.getEmails();
+        if (emails.size() > 0) {
+            email1Field.setText(emails.get(0));
+        }
+        if (emails.size() > 1) {
+            email2Field.setText(emails.get(1));
+        }
+        if (emails.size() > 2) {
+            email3Field.setText(emails.get(2));
         }
     }
 
-/**
- * @brief Popola i campi del form con i dati di un contatto esistente.
- * 
- * @param contatto Il contatto i cui dati devono essere inseriti nei campi del form.
- * 
- * @pre Il parametro contatto deve essere un oggetto valido e non null.
- * @post I campi del form saranno riempiti con i dati del contatto:
- *       - Nome e cognome nei rispettivi campi.
- *       - Numeri di telefono e email nei campi appropriati, fino a un massimo di tre per ciascun tipo.
- *       - Note nel campo delle note.
- */
-    private void populateFields(Contatto contatto) {
-        nameField.setText(contatto.getNome());
-        surnameField.setText(contatto.getCognome());
-        noteField.setText(contatto.getNote());
-
-        List<String> numeri = contatto.getNumeri();
-        if (numeri.size() > 0) number1Field.setText(numeri.get(0));
-        if (numeri.size() > 1) number2Field.setText(numeri.get(1));
-        if (numeri.size() > 2) number3Field.setText(numeri.get(2));
-
-        List<String> emails = contatto.getEmails();
-        if (emails.size() > 0) email1Field.setText(emails.get(0));
-        if (emails.size() > 1) email2Field.setText(emails.get(1));
-        if (emails.size() > 2) email3Field.setText(emails.get(2));
-    }
-
-/**
- * @brief Annulla l'operazione in corso e chiude la finestra corrente.
- * 
- * @pre La finestra deve essere aperta.
- * @post La finestra corrente viene chiusa.
- */
-    private void cancelOperation() {
-        closeWindow();
-    }
 
     
-/**
- * @brief Chiude la finestra corrente dell'interfaccia utente.
- * 
- * @pre Il campo nameField deve essere associato a una scena e a una finestra.
- * @post La finestra corrente viene chiusa, interrompendo l'interazione dell'utente.
- */
-    private void closeWindow() {
+      private void closeWindow() {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
-
 }
