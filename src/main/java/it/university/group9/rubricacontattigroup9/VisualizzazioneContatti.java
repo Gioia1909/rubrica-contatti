@@ -82,7 +82,7 @@ public abstract class VisualizzazioneContatti {
     
     private void visibleEmailDetails(Contatto selectedContact){
         List<String> emails = selectedContact.getEmails();
-        if(emails.size() > 0){
+        if(!emails.isEmpty()){
             email1Field.setVisible(true);
             email1Field.setText(emails.get(0));
         }else email1Field.setVisible(false);
