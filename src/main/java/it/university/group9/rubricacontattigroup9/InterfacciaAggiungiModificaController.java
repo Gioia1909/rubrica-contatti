@@ -422,7 +422,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * @pre La finestra deve essere aperta.
      * @post La finestra corrente viene chiusa.
      */
-    private void cancelOperation() {
+    @FXML
+    private void cancelOperation(ActionEvent event) {
         closeWindow();
     }
 
