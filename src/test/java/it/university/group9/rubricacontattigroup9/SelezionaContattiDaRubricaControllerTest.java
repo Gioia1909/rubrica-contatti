@@ -80,6 +80,8 @@ private ObservableList<Contatto> rubricaPreferiti;
     /**
      * Test of setContacts method, of class SelezionaContattiDaRubricaController.
      */
+   
+    
     @Test
     public void testSetContactsWithNullParameter() {
         assertThrows(NullPointerException.class,() -> controller.setContacts(null, rubricaPreferiti), "Dovrebbe lanciare un eccezione di tipo NullPointerException" );
