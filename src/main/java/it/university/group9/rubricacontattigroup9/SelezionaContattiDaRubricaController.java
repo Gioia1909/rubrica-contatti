@@ -63,9 +63,19 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     @FXML
     private Button addButton, closeButton;
 
+    /**
+     * @brief Lista osservabile contenente tutti i contatti della rubrica.
+     */
     private ObservableList<Contatto> addressBook;
+
+    /**
+     * @brief Lista osservabile contenente i contatti preferiti.
+     */
     private ObservableList<Contatto> fAddressBook;
 
+    /**
+     * @brief Contatto attualmente selezionato.
+     */
     private Contatto selectedContact;
 
     public TextField getSearchBar() {
@@ -133,7 +143,12 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         this.fAddressBook = fAddressBook;
     }
 
-
+    /**
+     * @brief Inizializza il controller.
+     *
+     * @param url URL per risorse FXML.
+     * @param rb Bundle per la localizzazione.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         contactListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
