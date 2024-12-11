@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @brief Classe per la gestione del salvataggio e caricamento della rubrica in formato JSON.
+ * 
+ * Questa classe fornisce i metodi per salvare una lista di contatti in un file JSON 
+ * e per caricarla da un file JSON esistente. 
+ *
+ *@version 2.0
+ * @author Gruppo09
+ * @date 11/12/2024
  */
 package it.university.group9.rubricacontattigroup9.InputOutput;
 
@@ -14,33 +19,27 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-/**
- * @brief Classe per la gestione del salvataggio e caricamento della rubrica in formato JSON.
- * 
- * Questa classe fornisce i metodi per salvare una lista di contatti in un file JSON 
- * e per caricarla da un file JSON esistente. 
- *
- * @author Gruppo09
- * @date 07/12/2024
- */
 public class SalvaCaricaRubrica implements Serializable{
-    //file che si creerà 
-    private static final String file = "rubrica.json"; 
     
-     /**
-     * @brief Salva la rubrica su un file JSON.
+    private static final String file = "rubrica.json";  //nome del file che si creerà
+    
+    /**
+     * @brief Salva la rubrica su file JSON.
+     *
+     * Questo metodo salva la rubrica fornita come parametro in un file JSON utilizzando la libreria Jackson.
+     * La lista di contatti viene convertita in un formato serializzabile e scritta nel file specificato.
      * 
-     * Questo metodo converte la ObservableListi n una lista di tipo List.
-     * e la serializza in un file JSON utilizzando la libreria Jackson.
-     * Se il salvataggio ha successo, verrà stampato un messaggio di conferma, altrimenti verrà gestito l'errore.
+     * @param[in] addressBook La lista osservabile di contatti da salvare nel file JSON.
      * 
-     * @param[in] rubrica La lista di contatti da salvare nel file JSON.
+     * @pre addressBook non deve essere null.
+     * @post Il file JSON viene creato o sovrascritto con i dati contenuti in addressBook.
+     * @throws IOException Se si verifica un errore durante il processo di salvataggio.
      * 
-     * @pre rubrica non deve essere null.
-     * @post Il file JSON rubrica.json viene creato o sovrascritto con i dati contenuti in rubrica
-     * @throws IOException Se si verifica un errore durante il salvataggio del file.
+     * In caso di errore durante la scrittura del file, viene stampato un messaggio di errore
+     * e viene tracciata l'eccezione con uno stack trace.
+     * 
+     * @see ObjectMapper
      */
-    
     public static void saveAddressBook(ObservableList<Contatto> addressBook) { //ObservableList<Contatto> rubrica Lista dei contatti da 
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
         ObjectMapper mapper = new ObjectMapper(); //https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.8/com/fasterxml/jackson/databind/ObjectMapper.html
