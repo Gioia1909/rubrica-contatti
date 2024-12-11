@@ -8,6 +8,7 @@ package it.university.group9.rubricacontattigroup9;
 import it.university.group9.rubricacontattigroup9.Contatto;
 import it.university.group9.rubricacontattigroup9.InterfacciaAggiungiModificaController;
 import it.university.group9.rubricacontattigroup9.InterfacciaUtenteController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -15,13 +16,18 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.testfx.framework.junit5.Start;
 
 /**
  *
@@ -32,6 +38,15 @@ public class InterfacciaAggiungiModificaControllerTest {
     private ObservableList<Contatto> contactList;
     private ObservableList<Contatto> preferitiList;
     
+    @Start
+    private void start(Stage stage) throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
+    Parent root = loader.load();
+    controller = loader.getController();
+    stage.setScene(new Scene(root));
+    stage.show();
+}
+
     
     
     @BeforeEach
