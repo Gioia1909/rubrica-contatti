@@ -20,7 +20,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-
 public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
 
     /**
@@ -29,12 +28,12 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     ///@{
     @FXML
     private ListView<Contatto> listViewFavorites;
-    
+
     private ObservableList<Contatto> favoriteList;
-    
+
     @FXML
     private Button viewAddButton;
-    
+
     /**
      * < Bottone per accedere all'interfaccia di aggiunta contatti.
      */
@@ -51,26 +50,21 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
     @FXML
     private Button editButton;
-    
-     @FXML
+
+    @FXML
     private Button favoriteButton;
 
-    
     @FXML
     private ImageView editImageView;
 
-    
     @FXML
     private ImageView deleteImageView;
 
-   
     /**
      * <Bottone per visualizzare i contatti preferiti.
      */
     @FXML
     private ListView<Contatto> myListView;
-
-   
 
     /**
      * <Bottone principale per operazioni varie.
@@ -110,15 +104,15 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      */
     ///@}
     private ObservableList<Contatto> contactList;
-    
+
     public void setListViewFavorites(ListView<Contatto> listViewFavorites) {
         this.listViewFavorites = listViewFavorites;
     }
+
     public void setFavoriteList(ObservableList<Contatto> favoriteList) {
         this.favoriteList = favoriteList;
     }
-    
-    
+
     public Button getViewAddButton() {
         return viewAddButton;
     }
@@ -159,7 +153,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.favoriteButton = favoriteButton;
     }
 
-     public ListView<Contatto> getListView() {
+    public ListView<Contatto> getListView() {
         return myListView;
     }
 
@@ -167,7 +161,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.myListView = myListView;
     }
 
-    
     public ImageView getDeleteImageView() {
         return deleteImageView;
     }
@@ -183,7 +176,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     public void setMyListView(ListView<Contatto> myListView) {
         this.myListView = myListView;
     }
-    
+
     public TextField getSearchBar() {
         return searchBar;
     }
@@ -192,7 +185,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.searchBar = searchBar;
     }
 
-     public Label getNameField() {
+    public Label getNameField() {
         return nameField;
     }
 
@@ -207,7 +200,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     public void setSurnameField(Label surnameField) {
         this.surnameField = surnameField;
     }
-    
+
     public Label getEmail1Field() {
         return email1Field;
     }
@@ -272,11 +265,11 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.defaultText = defaultText;
     }
 
-    
     public ObservableList<Contatto> getContactList() {
         return contactList;
     }
-     /**
+
+    /**
      * @brief Questo metodo permette di impostare la lista dei contatti e
      * aggiornare la ListView con nuovi dati
      *
@@ -291,7 +284,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.contactList = contactList;
         myListView.setItems(contactList);
     }
-    
+
     /**
      * @brief Inizializza i componenti e imposta la lista di contatti
      *
@@ -342,7 +335,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
         });
 
-            myListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+        myListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
             if (selectedContact != null) {
                 super.updateContactDetails(selectedContact);
             }
@@ -352,7 +345,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     public void sortContact() {
         FXCollections.sort(contactList);
     }
-    
+
     @FXML
     @Override
     public void addAction(ActionEvent event) throws IOException {
@@ -368,7 +361,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         stage.show();
     }
 
-      /**
+    /**
      * @brief Elimina il contatto selezionato dalla lista.
      *
      * Questo metodo rimuove il contatto selezionato dalla lista dei contatti
@@ -381,37 +374,38 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      *
      * @param[in] event Evento del mouse che ha attivato l'azione.
      */
-
     @FXML
     @Override
     public void deleteAction(ActionEvent event) {
         int selected = myListView.getSelectionModel().getSelectedIndex();
-        
+
         if (selected >= 0) {
             // Se il contatto è presente nei preferiti, rimuovilo
             Contatto contactToRemove = myListView.getSelectionModel().getSelectedItem();
-           contactList.remove(contactToRemove);
-            
-            
+            contactList.remove(contactToRemove);
+
             // Verifica se il contatto è presente nei preferiti
             if (favoriteList != null && favoriteList.contains(contactToRemove)) {
-            favoriteList.remove(contactToRemove);
+                favoriteList.remove(contactToRemove);
 
-            // Aggiorna la ListView dei preferiti
-            listViewFavorites.setItems(favoriteList);
+                // Aggiorna la ListView dei preferiti
+                listViewFavorites.setItems(favoriteList);
 
-            // Salva i preferiti aggiornati
-            SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
+                // Salva i preferiti aggiornati
+                SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
+            }
+
+            // Salva la lista aggiornata della rubrica principale
+            SalvaCaricaRubrica.saveAddressBook(contactList);
+
+            // Ripristina le etichette e nascondi i dettagli del contatto eliminato
+            super.resetContactDetails();
+
+            myListView.setItems(contactList);
         }
+    }
 
-        // Salva la lista aggiornata della rubrica principale
-        SalvaCaricaRubrica.saveAddressBook(contactList);
-        }
-              myListView.setItems(contactList);
-        }
-
-
-      /**
+    /**
      * @brief Cerca un contatto nella lista in base al testo inserito nella
      * barra di ricerca.
      *
@@ -483,7 +477,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             // Passa il contatto selezionato al controller della scena di modifica
             editController.initializeForEdit(selectedContact, contactList);
 
-               Stage stage = new Stage();
+            Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
         } else {
@@ -492,13 +486,12 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
     }
 
-     /**
+    /**
      * @brief Passa alla schermata dei contatti preferiti.
      *
      * @throws IOException Se non riesce a caricare la nuova schermata.
      * @see MenuPreferitiController
      */
-    
     @FXML
     protected void switchToFavorite() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
@@ -510,8 +503,5 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         Scene scene = favoriteButton.getScene();
         scene.setRoot(root);
     }
-    
-}
-    
 
-   
+}
