@@ -13,7 +13,6 @@
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
-import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +31,20 @@ import javafx.stage.Stage;
 
 
 public class SelezionaContattiDaRubricaController implements Initializable {
+
+@FXML
+private TextField  searchBar; 
+
+@FXML
+private ListView<Contatto> contactListView; 
+
+@FXML
+private Button addButton, closeButton; 
+
+private ObservableList<Contatto> addressBook; 
+private ObservableList<Contatto> fAddressBook; 
+
+private Contatto selectedContact; 
 
     public TextField getSearchBar() {
         return searchBar;
@@ -74,11 +87,11 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     }
 
     public ObservableList<Contatto> getRubrica() {
-        return rubrica;
+        return addressBook;
     }
 
-    public void setRubrica(ObservableList<Contatto> rubrica) {
-        this.rubrica = rubrica;
+    public void setRubrica(ObservableList<Contatto> addressBook) {
+        this.addressBook = addressBook;
     }
 
     public Contatto getSelectedContact() {
@@ -89,8 +102,8 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         this.selectedContact = selectedContact;
     }
 
-    public ObservableList<Contatto> getRubricaPreferiti() {
-        return rubricaPreferiti;
+    public ObservableList<Contatto> getfAddressBook() {
+        return fAddressBook;
     }
 
     /**
@@ -98,62 +111,9 @@ public class SelezionaContattiDaRubricaController implements Initializable {
      * 
      * Consente all'utente di digitare il testo per filtrare i contatti visibili nella lista.
      */
-    public void setRubricaPreferiti(ObservableList<Contatto> rubricaPreferiti) {
-        this.rubricaPreferiti = rubricaPreferiti;
+    public void setfAddressBook(ObservableList<Contatto> fAddressBook) {
+        this.fAddressBook = fAddressBook;
     }
-
-    @FXML
-    private TextField searchBar;
-  /**
-     * @brief Lista dei contatti visualizzata nella GUI.
-     * 
-     * Mostra i contatti filtrati o l'intera rubrica, a seconda dell'input dell'utente nella barra di ricerca.
-     */
-    @FXML
-    private ListView<Contatto> contactListView;
-    /**
-     * @brief Pulsante per aggiungere un contatto ai preferiti.
-     * 
-     * Permette di selezionare un contatto dalla lista e aggiungerlo ai preferiti.
-     */
-    @FXML
-    private Button addButton;
-     /**
-     * @brief Pulsante per chiudere la finestra attuale.
-     * 
-     * Torna al menu principale dei preferiti.
-     */
-    @FXML
-    private Button closeButton;
-   /**
-     * @brief Pulsante per eseguire la ricerca.
-     * 
-     * Questo pulsante non è utilizzato poiché la ricerca è implementata dinamicamente.
-     */
-    @FXML
-    private Button searchButton;
-    
-    
-    
-    /**
-     * @brief Lista dei contatti della rubrica
-     */
-    
-    //mantengo riferimento alla lista dei contatti della rubrica
-    private ObservableList <Contatto> rubrica;
-    
-    /**
-     * @brief Contatto selezionato
-     */
-    //contatto selezionato 
-    private Contatto selectedContact;
-    
-    /**
-     * @brief Lista dei contatti preferiti
-     */
-    //riferimento alla lista dei preferiti
-    private ObservableList <Contatto> rubricaPreferiti;
-    
     
     /**
      * @brief Metodo di inizializzazione del controller
@@ -168,10 +128,8 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         contactListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        
         //https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ListView.html#selectionModelProperty--
         //così specifichiamo che la selezione del contatto nella lista è singolo 
-        
     }
     /**
      * @brief Configura le liste dei contatti e dei preferiti.
@@ -179,18 +137,18 @@ public class SelezionaContattiDaRubricaController implements Initializable {
      * @param[in] rubrica Lista completa dei contatti.
      * @param[in] rubricaPreferiti Lista dei contatti preferiti.
      */
-    public void setContacts(ObservableList<Contatto> rubrica, ObservableList<Contatto> rubricaPreferiti) {
-        if (rubrica == null || rubricaPreferiti == null) {
+    public void setContacts(ObservableList<Contatto> addressBook, ObservableList<Contatto> fAddressBook) {
+        if (addressBook == null || fAddressBook == null) {
             throw new NullPointerException("Le liste rubrica o preferiti sono null!");
         //System.err.println("Le liste rubrica o preferiti sono null!");
        // return;
         }
-        this.rubrica = rubrica; //prendo la rubrica normale
-        this.rubricaPreferiti = rubricaPreferiti;
+        this.addressBook = addressBook; //prendo la rubrica normale
+        this.fAddressBook = fAddressBook;
 
         //configurazione filtro per la ricerca
         //creo una lista filtrata, che inizialmente mostra tutti i contatti, grazie al predicato p->true
-        FilteredList<Contatto> contattiFiltrati = new FilteredList<>(rubrica, p -> true); //la filtered list mostra solo quelli con predicato true
+        FilteredList<Contatto> filteredContact = new FilteredList<>(addressBook, p -> true); //la filtered list mostra solo quelli con predicato true
         //aggiungo un listener alla textProperty della barra di ricerca.  
         //Questo si attiva quando il contenuto della barra di ricerca cambia
 
@@ -199,7 +157,7 @@ public class SelezionaContattiDaRubricaController implements Initializable {
         //newValue --> valore attuale di textfield
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
 
-            contattiFiltrati.setPredicate(contatto -> { //set predicate accetta un input e restituisce un boolean. 
+            filteredContact.setPredicate(contact -> { //set predicate accetta un input e restituisce un boolean. 
                 //decidiamo se un Contatto deve essere mostrato nella lista filtrata
                 //questa operazione viene fatta per tutti i contatti
                 //contatto-> è una lambda expression, contatto in input
@@ -210,17 +168,17 @@ public class SelezionaContattiDaRubricaController implements Initializable {
                 String lowerCaseFilter = newValue.toLowerCase(); //questo la rende insensitive, mette tutto in minuscolo 
 
                 //verifica se la stringa passata da textfield è contenuta dal nome del contatto o dal suo cognome
-                return contatto.getNome().toLowerCase().contains(lowerCaseFilter) //
-                || contatto.getCognome().toLowerCase().contains(lowerCaseFilter)
+                return contact.getNome().toLowerCase().contains(lowerCaseFilter) //
+                || contact.getCognome().toLowerCase().contains(lowerCaseFilter)
                 
                 //verifica anche per email o numeri di telefono
-                || contatto.getNumeri().stream().anyMatch(num -> num.toLowerCase().contains(lowerCaseFilter))
-                || contatto.getEmails().stream().anyMatch(email -> email.toLowerCase().contains(lowerCaseFilter));
+                || contact.getNumeri().stream().anyMatch(num -> num.toLowerCase().contains(lowerCaseFilter))
+                || contact.getEmails().stream().anyMatch(email -> email.toLowerCase().contains(lowerCaseFilter));
             });
         });
 
         //colleghiamo questa lista di contatti filtrata a quella che visualizziamo in questa finestra
-        contactListView.setItems(contattiFiltrati);
+        contactListView.setItems(filteredContact);
         
         configureContactListView();
         /*Effetto dinamico:
@@ -240,13 +198,13 @@ public class SelezionaContattiDaRubricaController implements Initializable {
     private void configureContactListView() {
         contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
-            protected void updateItem(Contatto contatto, boolean empty) {
-                super.updateItem(contatto, empty);
-                if (empty || contatto == null) {
+            protected void updateItem(Contatto contact, boolean empty) {
+                super.updateItem(contact, empty);
+                if (empty || contact == null) {
                     setText(null);
                 } else {
                     // Mostra solo il cognome e il nome
-                    setText(contatto.getCognome() + " " + contatto.getNome());
+                    setText(contact.getCognome() + " " + contact.getNome());
                 }
             }
         });
