@@ -5,9 +5,9 @@
  * Questa classe gestisce l'interfaccia utente e la logica per selezionare
  * contatti dalla rubrica e aggiungerli ai preferiti. Fornisce funzionalità di
  * ricerca dinamica e gestione delle liste di contatti e preferiti.
- *
+ * @version 2.0
  * @author Group09
- * @date 05/12/2024
+ * @date 11/12/2024
  */
 package it.university.group9.rubricacontattigroup9;
 
@@ -28,17 +28,38 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * @class SelezionaContattiDaRubricaController
+ * @brief Controller per la selezione di contatti dalla rubrica.
+ *
+ * Questa classe implementa la logica per:
+ * - Visualizzare e filtrare i contatti della rubrica.
+ * - Aggiungere i contatti selezionati ai preferiti.
+ * - Gestire l'interazione con l'interfaccia utente.
+ */
 public class SelezionaContattiDaRubricaController implements Initializable {
 
+    /**
+     * @brief Barra di ricerca per filtrare i contatti.
+     */
     @FXML
     private TextField searchBar;
 
+    /**
+     * @brief Pulsante per avviare la ricerca manualmente.
+     */
     @FXML
     private Button searchButton;
 
+    /**
+     * @brief ListView che mostra i contatti della rubrica.
+     */
     @FXML
     private ListView<Contatto> contactListView;
 
+    /**
+     * @brief Pulsanti per aggiungere il contatto selezionato ai preferiti e per chiudere la finestra del popup.
+     */
     @FXML
     private Button addButton, closeButton;
 
