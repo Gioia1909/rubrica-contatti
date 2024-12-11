@@ -28,14 +28,14 @@ public class ContattoValidator {
      *
      * Controlla se il numero di telefono è già presente tra i contatti.
      *
-     * @param contatti La lista di contatti da esaminare.
-     * @param numero Il numero di telefono da verificare.
+     * @param contacts La lista di contatti da esaminare.
+     * @param number Il numero di telefono da verificare.
      * @return true se il numero è già presente, false altrimenti.
      */
-    public static boolean isNumeroDuplicato(List<Contatto> contatti, String numero) {
-        for (Contatto contatto : contatti) {
-            for (String num : contatto.getNumeri()) {
-                if (num.equals(numero)) {
+    public static boolean isNumberDuplicate(List<Contatto> contacts, String number) {
+        for (Contatto contact : contacts) {
+            for (String num : contact.getNumbers()) {
+                if (num.equals(number)) {
                     return true; // Numero già presente
                 }
             }
@@ -48,29 +48,29 @@ public class ContattoValidator {
      *
      * Controlla se esiste un contatto con lo stesso nome, cognome e numero.
      *
-     * @param contatti La lista di contatti da esaminare.
-     * @param nome Il nome del contatto.
-     * @param cognome Il cognome del contatto.
-     * @param numero Il numero di telefono del contatto.
+     * @param contacts La lista di contatti da esaminare.
+     * @param name Il nome del contatto.
+     * @param surname Il cognome del contatto.
+     * @param number Il numero di telefono del contatto.
      * @return true se il contatto esiste già, false altrimenti.
      */
-    public static boolean isContattoDuplicato(List<Contatto> contatti, String nome, String cognome) {
-        String nomePulito = nome.trim().toLowerCase();
-        String cognomePulito = cognome.trim().toLowerCase();
+    public static boolean isContactDuplicate(List<Contatto> contacts, String name, String surname) {
+        String  lowerName= name.trim().toLowerCase();
+        String  lowerSurname= surname.trim().toLowerCase();
 
-        for (Contatto contatto : contatti) {
-            String nomeC = contatto.getNome().trim().toLowerCase();
-            String cognomeC = contatto.getCognome().trim().toLowerCase();
-            if (nomeC.equals(nomePulito) && cognomeC.equals(cognomePulito)) {
+        for (Contatto contact : contacts) {
+            String contactN = contact.getName().trim().toLowerCase();
+            String contactS = contact.getSurname().trim().toLowerCase();
+            if (contactN.equals(lowerName) && contactS.equals(lowerSurname)) {
                 return true; // Contatto già esistente
             }
         }
         return false; // Contatto non trovato
     }
 
-    public static boolean isEmailDuplicata(List<Contatto> contatti, String email) {
-        for (Contatto contatto : contatti) {
-            for (String em : contatto.getEmails()) {
+    public static boolean isEmailDuplicate(List<Contatto> contacts, String email) {
+        for (Contatto contact : contacts) {
+            for (String em : contact.getEmails()) {
                 if (em.equals(email)) {
                     return true; // Email già presente
                 }
@@ -81,18 +81,13 @@ public class ContattoValidator {
 
 public static void validateEmail(String email) throws CampoNonValidoException {
         if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-            Alert alert = new Alert (Alert.AlertType.ERROR);
-            alert.setTitle("Email Non Valida.");
-            alert.setContentText("L'Email Inserita non è Valida");
-            alert.showAndWait();
-            throw new CampoNonValidoException("Email non valida");
+            throw new CampoNonValidoException("Email");
         }
     }
 
 public static void validateName(String name) throws CampoNonValidoException {
-        if (name == null || name.trim().isEmpty()|| !Character.isAlphabetic(name.charAt(0))) {    //name.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
-                                                                                    //nome apparentemente vuoto (ma con spazi) sia considerato valido.
-            throw new CampoNonValidoException("Nome non valido");
+      if (name == null || name.trim().isEmpty() || !Character.isAlphabetic(name.charAt(0))) {
+            throw new CampoNonValidoException("Nome");
         }
     }
 
