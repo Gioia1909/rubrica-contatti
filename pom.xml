@@ -12,17 +12,21 @@
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.0</version>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.5.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-    <groupId>org.testfx</groupId>
-    <artifactId>testfx-core</artifactId>
-    <version>4.0.16-alpha</version>
-    <scope>test</scope>
-</dependency>
-
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-junit5</artifactId>
+            <version>4.0.18</version>
+            <scope>test</scope>
+        </dependency>
+<dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>17</version> <!-- Usa una versione compatibile con il tuo JDK -->
+    </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -121,3 +125,4 @@
         </profile>
     </profiles>
 </project>
+
