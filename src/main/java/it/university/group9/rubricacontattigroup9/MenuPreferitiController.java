@@ -77,7 +77,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     }
 
     @FXML
-    private Button editButton, addFavButton, deleteButton, searchButton, secondaryButton;
+    private Button editButton, addButton, deleteButton, searchButton, secondaryButton;
 
     public Button getEditButton() {
         return editButton;
@@ -88,11 +88,11 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     }
 
     public Button getAddFavButton() {
-        return addFavButton;
+        return addButton;
     }
 
     public void setAddFavButton(Button addFavButton) {
-        this.addFavButton = addFavButton;
+        this.addButton = addFavButton;
     }
 
     public Button getDeleteButton() {
@@ -278,7 +278,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * preferiti
      */
     @FXML
-    private void addFavButton(ActionEvent event) throws IOException {
+    private void addAction(ActionEvent event) throws IOException {
         if (contactList != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SelezionaContattiDaRubrica.fxml"));
             //si crea un oggetto FXMLLoader per caricare il file FXML, con getClass e Resource prendiamo il file 

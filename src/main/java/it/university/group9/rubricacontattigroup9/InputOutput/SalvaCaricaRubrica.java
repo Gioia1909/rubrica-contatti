@@ -71,7 +71,7 @@ public class SalvaCaricaRubrica implements Serializable{
      * @post Se il file esiste, i contatti vengono caricati nella rubrica, altrimenti viene restituita una rubrica vuota.
      * @throws IOException Se si verifica un errore durante il caricamento del file.
      */
-    public static ObservableList<Contatto> caricaRubrica(){
+    public static ObservableList<Contatto> loadAddressBook(){
         ObjectMapper mapper = new ObjectMapper();
         
         File filepath = new File(file); //crea un oggetto file che punta al percorso con rubricapreferiti.json
