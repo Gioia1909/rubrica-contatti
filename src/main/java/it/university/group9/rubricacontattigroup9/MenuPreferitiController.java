@@ -321,6 +321,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
             listViewFavorites.getItems().remove(selected);
             // Salva i contatti aggiornati nel file
             SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
+             listViewFavorites.getSelectionModel().clearSelection();
         }
     }
     
