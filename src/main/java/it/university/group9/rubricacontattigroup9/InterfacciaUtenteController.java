@@ -19,45 +19,360 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+
 public class InterfacciaUtenteController implements Initializable {
 
     /**
      * @name Componenti FXML
      */
     ///@{
-    @FXML
-    private Button viewAddButton;
-    /**
-     * < Bottone per accedere all'interfaccia di aggiunta contatti.
-     */
-    @FXML
-    private Button deleteButton;
-    /**
-     * < Bottone per eliminare un contatto selezionato.
-     */
-    @FXML
-    private Button searchButton;
-    /**
-     * < Bottone per cercare un contatto.
-     */
     
+        private Button viewAddButton;
+
     @FXML
-    private Button modifyButton;
-    
-    @FXML
-    private ImageView modifyImageView;
-    
+    private Button deleteButton, searchButton, editButton, favoriteButton;
+    private ImageView editImageView;
     @FXML
     private ImageView deleteImageView;
-    
-    @FXML
-    private Button favoriteButton;
-    /**
-     * <Bottone per visualizzare i contatti preferiti.
-     */
     @FXML
     private ListView<Contatto> myListView;
+    @FXML
+    private TextField searchBar;
+    @FXML
+    private Label nameField, surnameField, email1Field, email2Field, email3Field;
+    @FXML
+    private Label number1Field, number2Field, number3Field, noteField, defaultText;
+
+    private ObservableList<Contatto> contactList;
+
     
+   public Button getViewAddButton() {
+        return viewAddButton;
+    }
+
+    public void setViewAddButton(Button viewAddButton) {
+        this.viewAddButton = viewAddButton;
+    }
+
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+
+    public void setDeleteButton(Button deleteButton) {
+        this.deleteButton = deleteButton;
+    }
+
+    public Button getSearchButton() {
+        return searchButton;
+    }
+
+    public void setSearchButton(Button searchButton) {
+        this.searchButton = searchButton;
+    }
+
+    public Button getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(Button editButton) {
+        this.editButton = editButton;
+    }
+
+     public Button getFavoriteButton() {
+        return favoriteButton;
+    }
+
+    public void setFavoriteButton(Button favoriteButton) {
+        this.favoriteButton = favoriteButton;
+    }
+
+    public ImageView getDeleteImageView() {
+        return deleteImageView;
+    }
+
+    public void setDeleteImageView(ImageView deleteImageView) {
+        this.deleteImageView = deleteImageView;
+    }
+
+    public ListView<Contatto> getMyListView() {
+        return myListView;
+    }
+
+    public void setMyListView(ListView<Contatto> myListView) {
+        this.myListView = myListView;
+    }
+
+    public TextField getSearchBar() {
+        return searchBar;
+    }
+
+    public void setSearchBar(TextField searchBar) {
+        this.searchBar = searchBar;
+    }
+
+    
+    public Label getNameField() {
+        return nameField;
+    }
+
+    public void setNameField(Label nameField) {
+        this.nameField = nameField;
+    }
+
+    public Label getSurnameField() {
+        return surnameField;
+    }
+
+    public void setSurnameField(Label surnameField) {
+        this.surnameField = surnameField;
+    }
+
+    public Label getEmail1Field() {
+        return email1Field;
+    }
+
+    public void setEmail1Field(Label email1Field) {
+        this.email1Field = email1Field;
+    }
+
+    public Label getEmail2Field() {
+        return email2Field;
+    }
+
+    public void setEmail2Field(Label email2Field) {
+        this.email2Field = email2Field;
+    }
+
+    public Label getEmail3Field() {
+        return email3Field;
+    }
+
+    public void setEmail3Field(Label email3Field) {
+        this.email3Field = email3Field;
+    }
+
+    
+    
+     public Label getNumber1Field() {
+        return number1Field;
+    }
+
+    public void setNumber1Field(Label number1Field) {
+        this.number1Field = number1Field;
+    }
+
+    public Label getNumber2Field() {
+        return number2Field;
+    }
+
+    public void setNumber2Field(Label number2Field) {
+        this.number2Field = number2Field;
+    }
+
+    public Label getNumber3Field() {
+        return number3Field;
+    }
+
+    public void setNumber3Field(Label number3Field) {
+        this.number3Field = number3Field;
+    }
+
+    public Label getNoteField() {
+        return noteField;
+    }
+
+    public void setNoteField(Label noteField) {
+        this.noteField = noteField;
+    }
+
+    public Label getDefaultText() {
+        return defaultText;
+    }
+
+    public void setDefaultText(Label defaultText) {
+        this.defaultText = defaultText;
+    }
+
+    public ObservableList<Contatto> getListaContatti() {
+        return contactList;
+    }
+
+    public void setContactList(ObservableList<Contatto> contactList) {
+        this.contactList = contactList;
+        myListView.setItems(contactList);
+    }
+
+     @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        contactList = SalvaCaricaRubrica.caricaRubrica();
+        myListView.setItems(contactList);
+        configureListView();
+    }
+    
+   private void configureListView() {
+        myListView.setCellFactory(listView -> new ListCell<Contatto>() {
+            @Override
+            protected void updateItem(Contatto contatto, boolean empty) {
+                super.updateItem(contatto, empty);
+                if (empty || contatto == null) {
+                    setText(null);
+                } else {
+                    setText(contatto.getCognome() + " " + contatto.getNome());
+                }
+            }
+        });
+
+        myListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+            if (selectedContact != null) {
+                updateContactDetails(selectedContact);
+            }
+        });
+    }
+
+    private void updateContactDetails(Contatto contattoSelezionato) {
+        defaultText.setVisible(false);
+        deleteButton.setVisible(true);
+        modifyButton.setVisible(true);
+        modifyImageView.setVisible(true);
+        deleteImageView.setVisible(true);
+        
+        nameField.setVisible(true);
+        surnameField.setVisible(true);
+        
+        nameField.setText(contattoSelezionato.getNome());
+        surnameField.setText(contattoSelezionato.getCognome());
+        
+        visibleNumberDetails(contattoSelezionato);
+        visibleEmailDetails(contattoSelezionato);
+        
+        if(!contattoSelezionato.getNote().isEmpty()){
+            noteField.setVisible(true);
+            noteField.setText(contattoSelezionato.getNote());
+        }else noteField.setVisible(false);
+
+    }
+    
+      private void visibleNumberDetails(Contatto contattoSelezionato){
+        List<String> numeri = contattoSelezionato.getNumeri();
+        number1Field.setVisible(true);
+        number1Field.setText(numeri.get(0));
+        if(numeri.size()>1){
+            number2Field.setVisible(true);
+            number2Field.setText(numeri.get(1));
+            
+        }else number2Field.setVisible(false);
+        
+        if(numeri.size()>2){
+            number3Field.setVisible(true);
+            number3Field.setText(numeri.get(2));
+        }else number3Field.setVisible(false);
+        
+    }
+
+      private void visibleEmailDetails(Contatto contattoSelezionato){
+        List<String> emails = contattoSelezionato.getEmails();
+        if(emails.size() > 0){
+            email1Field.setVisible(true);
+            email1Field.setText(emails.get(0));
+        }else email1Field.setVisible(false);
+        
+        if(emails.size() > 1){
+            email2Field.setVisible(true);
+            email2Field.setText(emails.get(1));
+        }else email2Field.setVisible(false);
+        
+        if(emails.size() > 2){
+            email3Field.setVisible(true);
+            email3Field.setText(emails.get(2));
+        }else email3Field.setVisible(false);
+        
+    }
+
+    public void ordinaContatti() {
+        FXCollections.sort(contactList);
+    }
+
+    
+    @FXML
+    protected void switchToFavorite() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
+        Parent root = loader.load();
+
+        MenuPreferitiController menuPreferitiController = loader.getController();
+        menuPreferitiController.setContactList(contactList);
+
+        Scene scene = favoriteButton.getScene();
+        scene.setRoot(root);
+    }
+
+       @FXML
+    protected void switchToAdd() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
+        Parent root = loader.load();
+
+        InterfacciaAggiungiModificaController aggiungiController = loader.getController();
+        aggiungiController.setInterfacciaUtenteController(this);
+        aggiungiController.initializeForAdd(contactList);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+      @FXML
+    public void deleteContact(ActionEvent event) {
+        int selezionato = myListView.getSelectionModel().getSelectedIndex();
+        if (selezionato >= 0) {
+            contactList.remove(selezionato);
+            SalvaCaricaRubrica.salvaRubrica(contactList);
+        }
+    }
+
+    @FXML
+    public void searchContact(ActionEvent event) {
+        String searchQuery = searchBar.getText().toLowerCase().trim();
+        if (searchQuery.isEmpty()) {
+            myListView.setItems(contactList);
+            return;
+        }
+
+        ObservableList<Contatto> filteredList = FXCollections.observableArrayList();
+        for (Contatto contatto : contactList) {
+            if (contatto.getNome().toLowerCase().contains(searchQuery) ||
+                contatto.getCognome().toLowerCase().contains(searchQuery) ||
+                contatto.getNumeri().stream().anyMatch(num -> num.contains(searchQuery))) {
+                filteredList.add(contatto);
+            }
+        }
+        myListView.setItems(filteredList);
+    }
+
+    @FXML
+    protected void switchToModifyContact() throws IOException {
+        Contatto contattoSelezionato = myListView.getSelectionModel().getSelectedItem();
+        if (contattoSelezionato != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
+            Parent root = loader.load();
+
+            InterfacciaAggiungiModificaController modificaController = loader.getController();
+            modificaController.initializeForEdit(contattoSelezionato, contactList);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+    }
+
+    private void showErrorDialog(String titolo, String messaggio) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titolo);
+        alert.setContentText(messaggio);
+        alert.showAndWait();
+    }
+}
+
+    
+    //CODICE VECCHIO
     public ListView<Contatto> getListView() {
         return myListView;
     }
@@ -132,12 +447,7 @@ public class InterfacciaUtenteController implements Initializable {
      * relativi.
      * @param[in] resources Risorse utilizzate per localizzare i componenti.
      */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        contactList = SalvaCaricaRubrica.caricaRubrica();
-        myListView.setItems(contactList);
-        configureListView();
-    }
+   
     
    
 /**
