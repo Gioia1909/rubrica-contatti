@@ -196,10 +196,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addButton.setOnAction(event -> {
-            addContact(event);
+            addAction(event);
 
         });
-        editButton.setOnAction(event -> editContact(new ActionEvent()));
+        editButton.setOnAction(event -> editAction(new ActionEvent()));
     }
 
   
@@ -228,7 +228,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      *
      */
     @FXML
-    public void addContact(ActionEvent event) {
+    public void addAction(ActionEvent event) {
         try {
             String name = nameField.getText().trim();
             String surname = surnameField.getText().trim();
@@ -305,7 +305,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * 
      */
     @FXML
-    protected void editContact(ActionEvent event) {
+    protected void editAction(ActionEvent event) {
         try {
             String name = nameField.getText().trim();
             ContattoValidator.validateName(name);

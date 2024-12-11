@@ -26,7 +26,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * @name Componenti FXML
      */
     ///@{
-    
+    @FXML
     private Button viewAddButton;
     
     /**
@@ -105,8 +105,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     ///@}
     private ObservableList<Contatto> contactList;
     
-    @FXML
-    private Button addButton;
+
 
     
     
