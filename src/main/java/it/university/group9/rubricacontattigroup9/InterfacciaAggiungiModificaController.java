@@ -73,6 +73,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     public InterfacciaUtenteController getInterfacciaUtenteController() {
         return userInterfaceController;
     }
+    
+     public TextField getNameField() {
+        return nameField;
+    }
 
     public void setNameField(TextField nameField) {
         this.nameField = nameField;
@@ -134,6 +138,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         this.number3Field = number3Field;
     }
 
+     public TextField getNoteField() {
+        return noteField;
+    }
+     
     public void setNoteField(TextField noteField) {
         this.noteField = noteField;
     }

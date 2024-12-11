@@ -3,6 +3,7 @@ package it.university.group9.rubricacontattigroup9;
 import it.university.group9.rubricacontattigroup9.Contatto;
 import it.university.group9.rubricacontattigroup9.InterfacciaAggiungiModificaController;
 import it.university.group9.rubricacontattigroup9.InterfacciaUtenteController;
+import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
