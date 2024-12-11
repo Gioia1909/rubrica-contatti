@@ -36,12 +36,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     private TextField number1Field, number2Field, number3Field, noteField;
 
     private boolean isEditing = false;
-    private Contatto contattoEsistente;
-    private ObservableList<Contatto> rubrica;
+    private Contatto existingContact;
+    private ObservableList<Contatto> addressBook;
     /**
      * @brief Riferimento al controller dell'interfaccia principale.
      */
-    private InterfacciaUtenteController interfacciaUtenteController;
+    private InterfacciaUtenteController userInterfaceController;
 
     
     public Button getAddButton(){
@@ -167,30 +167,30 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     }
 
 
-    public Contatto getContattoEsistente() {
-        return contattoEsistente;
+    public Contatto getExistingContact() {
+        return existingContact;
     }
     
-    public void setContattoEsistente(Contatto contattoEsistente) {
-        this.contattoEsistente = contattoEsistente;
+    public void setExistingContact(Contatto existingContact) {
+        this.existingContact = existingContact;
     }
 
 
-    public ObservableList<Contatto> getRubrica() {
-        return rubrica;
+    public ObservableList<Contatto> getAddressBook() {
+        return addressBook;
     }
     
-    public void setRubrica(ObservableList<Contatto> rubrica) {
-        this.rubrica = rubrica;
+    public void setAddressBook(ObservableList<Contatto> addressBook) {
+        this.addressBook = addressBook;
     }
 
 
     public InterfacciaUtenteController getInterfacciaUtenteController() {
-        return interfacciaUtenteController;
+        return userInterfaceController;
     }
     
     public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
-        this.interfacciaUtenteController = controller;
+        this.userInterfaceController = controller;
     }
     /**
      * @brief Imposta il riferimento al controller dell'interfaccia principale.
@@ -201,17 +201,17 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     //parte di add
     
     
-    public void initializeForAdd(ObservableList<Contatto> rubrica) {
-        this.rubrica = rubrica;
+    public void initializeForAdd(ObservableList<Contatto> addressBook) {
+        this.addressBook = addressBook;
         addButton.setVisible(true);
         editButton.setVisible(false);
     }
 
 
-    public void initializeForEdit(Contatto contatto, ObservableList<Contatto> rubrica) {
-        this.rubrica = rubrica;
-        this.contattoEsistente = contatto;
-        populateFields(contatto);
+    public void initializeForEdit(Contatto contact, ObservableList<Contatto> addressBook) {
+        this.addressBook = addressBook;
+        this.existingContact = contact;
+        populateFields(contact);
         addButton.setVisible(false);
         editButton.setVisible(true);
     }
@@ -270,19 +270,19 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     @FXML
     public void addContact(ActionEvent event) {
         try {
-            String nome = nameField.getText().trim();
-            String cognome = surnameField.getText().trim();
+            String name = nameField.getText().trim();
+            String surname = surnameField.getText().trim();
 
-            if (nome.isEmpty() || cognome.isEmpty()) {
+            if (name.isEmpty() || surname.isEmpty()) {
                 handleValidationError("Nome e cognome sono obbligatori.");
                 return;
             }
 
-            ContattoValidator.validateName(nome);
-            ContattoValidator.validateSurname(cognome);
+            ContattoValidator.validateName(name);
+            ContattoValidator.validateSurname(surname);
 
-            List<String> numeri = collectValidNumbers();
-            if (numeri.isEmpty()) {
+            List<String> numbers = collectValidNumbers();
+            if (numbers.isEmpty()) {
                 handleValidationError("Deve essere inserito almeno un numero di telefono valido.");
                 return;
             }
@@ -290,16 +290,16 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             List<String> emails = collectValidEmails();
             String note = noteField.getText().trim();
 
-            if (ContattoValidator.isContattoDuplicato(interfacciaUtenteController.getListaContatti(), nome, cognome)) {
+            if (ContattoValidator.isContattoDuplicato(userInterfaceController.getListContact(), name, surname)) {
                 if (!requestConfirmation("Contatto Duplicato", "Un contatto con lo stesso nome e cognome esiste già. Vuoi comunque aggiungerlo?")) {
                     return;
                 }
             }
 
             Contatto nuovoContatto = new Contatto(nome, cognome, numeri, emails, note);
-            interfacciaUtenteController.getListaContatti().add(nuovoContatto);
-            interfacciaUtenteController.ordinaContatti();
-            SalvaCaricaRubrica.salvaRubrica(interfacciaUtenteController.getListaContatti());
+            userInterfaceController.getListContact().add(nuovoContatto);
+            userInterfaceController.sortContact();
+            SalvaCaricaRubrica.salvaRubrica(userInterfaceController.getListContact());
 
             closeWindow();
 
@@ -311,25 +311,25 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     @FXML
     protected void editContact(ActionEvent event) {
         try {
-            String nome = nameField.getText().trim();
-            ContattoValidator.validateName(nome);
+            String name = nameField.getText().trim();
+            ContattoValidator.validateName(name);
 
-            String cognome = surnameField.getText().trim();
-            ContattoValidator.validateSurname(cognome);
+            String surname = surnameField.getText().trim();
+            ContattoValidator.validateSurname(surname);
 
-            List<String> numeri = collectValidNumbers();
+            List<String> numbers = collectValidNumbers();
             List<String> emails = collectValidEmails();
 
             String note = noteField.getText().trim();
 
-            Contatto nuovoContatto = new Contatto(nome, cognome, numeri, emails, note);
+            Contatto nuovoContatto = new Contatto(name, surname, numbers, emails, note);
 
-            int index = rubrica.indexOf(contattoEsistente);
+            int index = addressBook.indexOf(existingContact);
             if (index != -1) {
-                rubrica.set(index, nuovoContatto);
+                addressBook.set(index, nuovoContatto);
             }
 
-            SalvaCaricaRubrica.salvaRubrica(rubrica);
+            SalvaCaricaRubrica.salvaRubrica(addressBook);
             closeWindow();
 
         } catch (CampoNonValidoException e) {
@@ -339,17 +339,17 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
 
     private List<String> collectValidNumbers() throws CampoNonValidoException {
-        List<String> numeri = new ArrayList<>();
+        List<String> numbers = new ArrayList<>();
         List<TextField> numberFields = Arrays.asList(number1Field, number2Field, number3Field);
 
         for (TextField field : numberFields) {
-            String numero = field.getText().trim();
-            if (!numero.isEmpty()) {
-                ContattoValidator.validatePhoneNumber(numero);
-                numeri.add(numero);
+            String number = field.getText().trim();
+            if (!number.isEmpty()) {
+                ContattoValidator.validatePhoneNumber(number);
+                numbers.add(number);
             }
         }
-        return numeri;
+        return numbers;
     }
 
     private List<String> collectValidEmails() throws CampoNonValidoException {
@@ -386,15 +386,15 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         surnameField.setText(contatto.getSurname());
         noteField.setText(contatto.getNote());
 
-        List<String> numeri = contatto.getNumbers();
-        if (numeri.size() > 0) {
-            number1Field.setText(numeri.get(0));
+        List<String> numbers = contatto.getNumbers();
+        if (numbers.size() > 0) {
+            number1Field.setText(numbers.get(0));
         }
-        if (numeri.size() > 1) {
-            number2Field.setText(numeri.get(1));
+        if (numbers.size() > 1) {
+            number2Field.setText(numbers.get(1));
         }
-        if (numeri.size() > 2) {
-            number3Field.setText(numeri.get(2));
+        if (numbers.size() > 2) {
+            number3Field.setText(numbers.get(2));
         }
 
         List<String> emails = contatto.getEmails();
