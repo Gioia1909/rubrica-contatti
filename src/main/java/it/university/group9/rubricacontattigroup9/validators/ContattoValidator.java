@@ -92,26 +92,19 @@ public static void validateName(String name) throws CampoNonValidoException {
     }
 
 public static void validatePhoneNumber(String phoneNumber) throws CampoNonValidoException {
-        if (phoneNumber == null || !phoneNumber.matches("^[+]?[0-9]{10,15}$")) {
+        String cleanedPhoneNumber = phoneNumber.replaceAll("\\s", "");
+        if ( !cleanedPhoneNumber.matches("^[+]?[0-9]{10,15}$")) {
             /* Possono iniziare con un "+" (opzionale).
             Contengono solo cifre da 0 a 9.
             Hanno una lunghezza compresa tra 10 e 15 caratteri.*/
-            errorMessage("Numero Non Valido", "Il numero che vuoi inserire non è valido.");
-            throw new CampoNonValidoException("Numero di telefono non valido");
+            throw new CampoNonValidoException("Numero di telefono");
         }
-    }
-
-    private static void errorMessage(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
 public static void validateSurname(String surname) throws CampoNonValidoException {
         if (surname == null || surname.trim().isEmpty() || !Character.isAlphabetic(surname.charAt(0))){    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
                                                                                     //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
-            throw new CampoNonValidoException("Cognome non valido");
+            throw new CampoNonValidoException("Cognome");
         }
     }
 
