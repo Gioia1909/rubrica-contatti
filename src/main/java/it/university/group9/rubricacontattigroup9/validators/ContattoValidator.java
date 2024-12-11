@@ -51,18 +51,23 @@ public class ContattoValidator {
      * @param contacts La lista di contatti da esaminare.
      * @param name Il nome del contatto.
      * @param surname Il cognome del contatto.
-     * @param number Il numero di telefono del contatto.
+     * @param numbers Il numero di telefono del contatto.
      * @return true se il contatto esiste già, false altrimenti.
      */
-    public static boolean isContactDuplicate(List<Contatto> contacts, String name, String surname) {
-        String  lowerName= name.trim().toLowerCase();
-        String  lowerSurname= surname.trim().toLowerCase();
+    public static boolean isContactDuplicate(List<Contatto> contacts, String name, String surname, List<String> numbers) {
+        String lowerName = name.trim().toLowerCase();
+        String lowerSurname = surname.trim().toLowerCase();
 
         for (Contatto contact : contacts) {
             String contactN = contact.getName().trim().toLowerCase();
             String contactS = contact.getSurname().trim().toLowerCase();
             if (contactN.equals(lowerName) && contactS.equals(lowerSurname)) {
                 return true; // Contatto già esistente
+            }
+            for (String number : numbers) {
+                if (contact.getNumbers().contains(number.trim())) {
+                    return true; // Numero già associato a un altro contatto
+                }
             }
         }
         return false; // Contatto non trovato
@@ -79,22 +84,22 @@ public class ContattoValidator {
         return false; // Email non trovata
     }
 
-public static void validateName(String name) throws CampoNonValidoException {
-      if (name == null || name.trim().isEmpty() || !Character.isAlphabetic(name.charAt(0))) {
+    public static void validateName(String name) throws CampoNonValidoException {
+        if (name == null || name.trim().isEmpty() || !Character.isAlphabetic(name.charAt(0))) {
             throw new CampoNonValidoException("Nome");
         }
     }
 
-public static void validateSurname(String surname) throws CampoNonValidoException {
-        if (surname == null || surname.trim().isEmpty() || !Character.isAlphabetic(surname.charAt(0))){    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
-                                                                                    //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
+    public static void validateSurname(String surname) throws CampoNonValidoException {
+        if (surname == null || surname.trim().isEmpty() || !Character.isAlphabetic(surname.charAt(0))) {    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
+            //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
             throw new CampoNonValidoException("Cognome");
         }
     }
 
-public static void validatePhoneNumber(String phoneNumber) throws CampoNonValidoException {
+    public static void validatePhoneNumber(String phoneNumber) throws CampoNonValidoException {
         String cleanedPhoneNumber = phoneNumber.replaceAll("\\s", "");
-        if ( !cleanedPhoneNumber.matches("^[+]?[0-9]{10,15}$")) {
+        if (!cleanedPhoneNumber.matches("^[+]?[0-9]{10,15}$")) {
             /* Possono iniziare con un "+" (opzionale).
             Contengono solo cifre da 0 a 9.
             Hanno una lunghezza compresa tra 10 e 15 caratteri.*/
@@ -102,7 +107,7 @@ public static void validatePhoneNumber(String phoneNumber) throws CampoNonValido
         }
     }
 
-public static void validateEmail(String email) throws CampoNonValidoException {
+    public static void validateEmail(String email) throws CampoNonValidoException {
         if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
             throw new CampoNonValidoException("Email");
         }
