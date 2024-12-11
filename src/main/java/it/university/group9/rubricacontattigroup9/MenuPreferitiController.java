@@ -21,10 +21,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MenuPreferitiController implements Initializable {
+public class MenuPreferitiController extends VisualizzazioneContatti  implements Initializable  {
 
     /**
      * @brief Lista grafica dei contatti preferiti
@@ -117,7 +118,9 @@ public class MenuPreferitiController implements Initializable {
     public void setSecondaryButton(Button secondaryButton) {
         this.secondaryButton = secondaryButton;
     }
-    
+ 
+    @FXML
+    private ImageView editImageView, deleteImageView;
     
     @FXML
     private TextField searchBar;
@@ -232,7 +235,7 @@ public class MenuPreferitiController implements Initializable {
         listViewFavorites.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
             if (selectedContact != null) {
                 // Aggiorna le label con i dati del contatto selezionato
-                updateContactDetails(selectedContact);
+                super.updateContactDetails(selectedContact);
             }
         });
     }
@@ -260,76 +263,6 @@ public class MenuPreferitiController implements Initializable {
             }
         });
     }
-
-    /**
-     * @brief Aggiorna i dettagli di un contatto selezionato in base ai dati del
-     * contatto selezionato. Se un campo è vuoto, il relativo campo di input
-     * sarà nascosto.
-     *
-     * @param selectedContact Il contatto di cui aggiornare i dettagli.
-     *
-     * @pre Il contatto selezionato deve essere non nullo.
-     * @post I campi di input vengono aggiornati con i dettagli del contatto
-     * selezionato.
-     */
-    private void updateContactDetails(Contatto selectedContact) {
-        defaultText.setVisible(false);
-        deleteButton.setVisible(true);
-
-        nameField.setVisible(true);
-        surnameField.setVisible(true);
-
-        nameField.setText(selectedContact.getName());
-        surnameField.setText(selectedContact.getSurname());
-
-        visibleNumberDetails(selectedContact);
-        visibleEmailDetails(selectedContact);
-
-        if (!selectedContact.getNote().isEmpty()) {
-            noteField.setVisible(true);
-            noteField.setText(selectedContact.getNote());
-        } else {
-            noteField.setVisible(false);
-        }
-        
-    }
-
-    private void visibleNumberDetails(Contatto selectedContact){
-        List<String> numbers = selectedContact.getNumbers();
-        number1Field.setVisible(true);
-        number1Field.setText(numbers.get(0));
-        if(numbers.size()>1){
-            number2Field.setVisible(true);
-            number2Field.setText(numbers.get(1));
-            
-        }else number2Field.setVisible(false);
-        
-        if(numbers.size()>2){
-            number3Field.setVisible(true);
-            number3Field.setText(numbers.get(2));
-        }else number3Field.setVisible(false);
-        
-    }
-    
-    private void visibleEmailDetails(Contatto selectedContact){
-        List<String> emails = selectedContact.getEmails();
-        if(emails.size() > 0){
-            email1Field.setVisible(true);
-            email1Field.setText(emails.get(0));
-        }else email1Field.setVisible(false);
-        
-        if(emails.size() > 1){
-            email2Field.setVisible(true);
-            email2Field.setText(emails.get(1));
-        }else email2Field.setVisible(false);
-        
-        if(emails.size() > 2){
-            email3Field.setVisible(true);
-            email3Field.setText(emails.get(2));
-        }else email3Field.setVisible(false);
-        
-    }
-
     
         
       /**
@@ -500,7 +433,7 @@ public class MenuPreferitiController implements Initializable {
      * @throws IOException Se il caricamento della scena fallisce.
      */
     @FXML
-    private void switchToInterfaccia() throws IOException {
+    private void switchToInterface() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaUtente.fxml"));
         Parent root = loader.load();
