@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.Contatto;
 import it.university.group9.rubricacontattigroup9.InterfacciaAggiungiModificaController;
 import it.university.group9.rubricacontattigroup9.InterfacciaUtenteController;
-import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -17,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -28,7 +23,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.testfx.framework.junit5.Start;
-
 /**
  * Classe di test per InterfacciaAggiungiModificaController.
  */
@@ -40,9 +34,9 @@ public class InterfacciaAggiungiModificaControllerTest {
 
   @Start
     private void start(Stage stage) throws IOException {
-        FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
         Parent root = loader.load();
-        controller = loader.getContoller();
+        controller = loader.getController();
         stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
