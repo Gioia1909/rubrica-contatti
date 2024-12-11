@@ -20,7 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-public class InterfacciaUtenteController implements Initializable {
+public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable  {
 
     /**
      * @name Componenti FXML
@@ -50,6 +50,7 @@ public class InterfacciaUtenteController implements Initializable {
     private Button favoriteButton;
 
     
+    @FXML
     private ImageView editImageView;
 
     
@@ -68,6 +69,7 @@ public class InterfacciaUtenteController implements Initializable {
     /**
      * <Bottone principale per operazioni varie.
      */
+    @FXML
     private TextField searchBar;
     /**
      * <Barra di testo per input di ricerca.
@@ -102,6 +104,9 @@ public class InterfacciaUtenteController implements Initializable {
      */
     ///@}
     private ObservableList<Contatto> contactList;
+    
+    @FXML
+    private Button addButton;
 
     
     
@@ -169,8 +174,6 @@ public class InterfacciaUtenteController implements Initializable {
     public void setMyListView(ListView<Contatto> myListView) {
         this.myListView = myListView;
     }
-
-    
     
     public TextField getSearchBar() {
         return searchBar;
@@ -195,7 +198,7 @@ public class InterfacciaUtenteController implements Initializable {
     public void setSurnameField(Label surnameField) {
         this.surnameField = surnameField;
     }
-
+    
     public Label getEmail1Field() {
         return email1Field;
     }
@@ -338,26 +341,8 @@ public class InterfacciaUtenteController implements Initializable {
     public void sortContact() {
         FXCollections.sort(contactList);
     }
-    /**
-     * @brief Passa alla schermata dei contatti preferiti.
-     *
-     * @throws IOException Se non riesce a caricare la nuova schermata.
-     * @see MenuPreferitiController
-     */
-    @FXML
-    protected void switchToFavorite() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
-        Parent root = loader.load();
-
-        MenuPreferitiController menuPreferitiController = loader.getController();
-        menuPreferitiController.setContactList(contactList);
-
-        Scene scene = favoriteButton.getScene();
-        scene.setRoot(root);
-    }
-
     
-     @FXML
+    @FXML
     protected void addAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
         Parent root = loader.load();
@@ -426,156 +411,6 @@ public class InterfacciaUtenteController implements Initializable {
         }
         myListView.setItems(filteredList);
     }
-    
-    /**
-     * @brief Restituisce la lista di tutti i contatti.
-     *
-     * Questo metodo recupera e restituisce la lista dei contatti memorizzati
-     * nel sistema. La lista è rappresentata come una collezione di oggetti del
-     * tipo Contatto. Se non sono presenti contatti, viene restituita una lista
-     * vuota.
-     *
-     * @return Una lista di oggetti Contatto, che rappresenta tutti i contatti
-     * disponibili.
-     */
-    
-
-   
-
-    /**
-     * @brief Ordina la lista dei contatti in base al cognome e nome.
-     *
-     * Questo metodo ordina la lista contactList di contatti prima per cognome,
-     * e in caso di parità, per nome. L'ordinamento è fatto in ordine crescente,
-     * utilizzando il metodo compareTo definito nella classe Contatto.
-     *
-     * @post La lista dei contatti è ordinata correttamente.
-     */
-    public void ordinaContatti() {
-        // Utilizza il metodo sort() per ordinare direttamente la lista
-        FXCollections.sort(contactList);  // Contatto deve implementare Comparable<Contatto>
-    }
-
-    /**
-     * @brief Aggiorna i dettagli visualizzati per il contatto selezionato.
-     *
-     * @param contattoSelezionato Contatto il cui dettaglio verrà visualizzato
-     * nei campi.
-     *
-     * @pre Il contatto selezionato deve essere valido e contenere i dati
-     * aggiornati.
-     * @post I campi della UI vengono aggiornati per riflettere i dati del
-     * contatto selezionato.
-     */
-    private void updateContactDetails(Contatto contattoSelezionato) {
-        defaultText.setVisible(false);
-        deleteButton.setVisible(true);
-        editButton.setVisible(true);
-        editImageView.setVisible(true);
-        deleteImageView.setVisible(true);
-
-        // Gestione nome e cognome
-        if (contattoSelezionato.getName().isEmpty() && nameField.getText().isEmpty()) {
-            nameField.setVisible(false);
-        } else {
-            nameField.setVisible(true);
-            nameField.setText(contattoSelezionato.getName());
-        }
-
-        if (contattoSelezionato.getSurname().isEmpty() && surnameField.getText().isEmpty()) {
-            surnameField.setVisible(false);
-        } else {
-            surnameField.setVisible(true);
-            surnameField.setText(contattoSelezionato.getSurname());
-        }
-
-        // Gestione dei numeri di telefono
-        List<String> numbers = contattoSelezionato.getNumbers();
-
-        if (numbers.size() > 0) {
-            number1Field.setVisible(true);
-            number1Field.setText(numbers.get(0));
-        } else if (number1Field.getText().isEmpty()) {
-            number1Field.setVisible(false);
-        }
-
-        if (numbers.size() > 1) {
-            number2Field.setVisible(true);
-            number2Field.setText(numbers.get(1));
-        } else {
-            number2Field.setVisible(false);
-        }
-
-        if (numbers.size() > 2) {
-            number3Field.setVisible(true);
-            number3Field.setText(numbers.get(2));
-        } else {
-            number3Field.setVisible(false);
-        }
-
-        // Gestione delle email
-        List<String> emails = contattoSelezionato.getEmails();
-
-        if (emails.size() > 0) {
-            email1Field.setVisible(true);
-            email1Field.setText(emails.get(0));
-        } else {
-            email1Field.setVisible(false);
-        }
-
-        if (emails.size() > 1) {
-            email2Field.setVisible(true);
-            email2Field.setText(emails.get(1));
-        } else {
-            email2Field.setVisible(false);
-        }
-
-        if (emails.size() > 2) {
-            email3Field.setVisible(true);
-            email3Field.setText(emails.get(2));
-        } else {
-            email3Field.setVisible(false);
-        }
-
-        // Gestione delle note
-        if (contattoSelezionato.getNote() == null || contattoSelezionato.getNote().isEmpty()) {
-            if (noteField.getText().isEmpty()) {
-                noteField.setVisible(false);
-            }
-        } else {
-            noteField.setVisible(true);
-            noteField.setText(contattoSelezionato.getNote());
-        }
-    }
-
-  
-    /**
-     * @brief Passa alla schermata di aggiunta di un nuovo contatto.
-     *
-     * Questo metodo carica la scena della finestra di aggiunta di un nuovo
-     * contatto e la visualizza in una nuova finestra. Inoltre, imposta il
-     * controller della nuova finestra per consentire l'intererazione con
-     * l'interfaccia principale
-     *
-     *
-     * @throws IOException Se non riesce a caricare la nuova schermata.
-     */
-    @FXML
-    private void switchToAdd() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
-        Parent root = loader.load(); // Carica la scena
-        // Ottieni il controller della scena di aggiunta contatto
-        InterfacciaAggiungiModificaController aggiungiController = loader.getController();
-        // Passa l'istanza di InterfacciaUtenteController al controller della schermata di aggiunta
-        aggiungiController.setInterfacciaUtenteController(this);
-        aggiungiController.initializeForAdd(contactList);
-
-        // Crea una nuova scena e visualizzala
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-    }
 
     /**
      * @brief Gestisce il passaggio alla schermata di modifica di un contatto
@@ -590,7 +425,7 @@ public class InterfacciaUtenteController implements Initializable {
      * selezionato caricato nel relativo controller.
      */
     @FXML
-    private void EditAction() throws IOException {
+    private void editAction() throws IOException {
         // Ottieni il contatto selezionato
         Contatto selectedContact = myListView.getSelectionModel().getSelectedItem();
         //getSelectionModel(): Ottiene il modello di selezione associato alla lista, che gestisce la selezione degli elementi: dà accesso a tutte le informazioni sulla selezione.
@@ -623,25 +458,26 @@ public class InterfacciaUtenteController implements Initializable {
 
     }
 
-    
-   
-    /**
-     * @brief Mostra un banner di errore con un titolo e un messaggio
-     * personalizzati.
+     /**
+     * @brief Passa alla schermata dei contatti preferiti.
      *
-     *
-     * @param titolo Il titolo della finestra di dialogo.
-     * @param messaggio Il messaggio di errore da visualizzare nella finestra.
-     *
-     * @pre Il titolo e il messaggio devono essere stringhe non nulle.
-     * @post La finestra di dialogo di errore viene visualizzata con il titolo e
-     * il messaggio forniti.
+     * @throws IOException Se non riesce a caricare la nuova schermata.
+     * @see MenuPreferitiController
      */
-    private void showErrorDialog(String titolo, String messaggio) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titolo);
-        alert.setContentText(messaggio);
-        alert.showAndWait();
-    }
+    
+    @FXML
+    protected void switchToFavorite() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
+        Parent root = loader.load();
 
+        MenuPreferitiController menuPreferitiController = loader.getController();
+        menuPreferitiController.setContactList(contactList);
+
+        Scene scene = favoriteButton.getScene();
+        scene.setRoot(root);
+    }
+    
 }
+    
+
+   
