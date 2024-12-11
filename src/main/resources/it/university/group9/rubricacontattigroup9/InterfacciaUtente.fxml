@@ -24,6 +24,8 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="353.0">
                     <children>
+                        <ListView fx:id="listViewFavorites" layoutX="50.0" layoutY="100.0" prefHeight="200.0" prefWidth="300.0" visible="false" />
+
                         <ListView fx:id="myListView" editable="true" layoutX="15.0" layoutY="100.0" prefHeight="322.0" prefWidth="306.0" />
                         <Button fx:id="searchButton" layoutX="251.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchAction" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="52.0">
                      

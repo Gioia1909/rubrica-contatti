@@ -6,6 +6,7 @@
  */
 package it.university.group9.rubricacontattigroup9;
 
+import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
@@ -26,6 +27,11 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * @name Componenti FXML
      */
     ///@{
+    @FXML
+    private ListView<Contatto> listViewFavorites;
+    
+    private ObservableList<Contatto> favoriteList;
+    
     @FXML
     private Button viewAddButton;
     
@@ -105,8 +111,12 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     ///@}
     private ObservableList<Contatto> contactList;
     
-
-
+    public void setListViewFavorites(ListView<Contatto> listViewFavorites) {
+        this.listViewFavorites = listViewFavorites;
+    }
+    public void setFavoriteList(ObservableList<Contatto> favoriteList) {
+        this.favoriteList = favoriteList;
+    }
     
     
     public Button getViewAddButton() {
@@ -300,6 +310,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         contactList = SalvaCaricaRubrica.loadAddressBook();
+        favoriteList = FXCollections.observableArrayList(SalvaCaricaPreferiti.caricaRubricaPreferiti());
+        listViewFavorites.setItems(favoriteList); // Imposta gli elementi nella ListView
         myListView.setItems(contactList);
         configureListView();
     }
@@ -374,11 +386,29 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @Override
     public void deleteAction(ActionEvent event) {
         int selected = myListView.getSelectionModel().getSelectedIndex();
+        
         if (selected >= 0) {
             contactList.remove(selected);
+            // Se il contatto è presente nei preferiti, rimuovilo
+            Contatto contactToRemove = myListView.getSelectionModel().getSelectedItem();
+            
+            // Verifica se il contatto è presente nei preferiti
+            if (favoriteList != null && favoriteList.contains(contactToRemove)) {
+            favoriteList.remove(contactToRemove);
+
+            // Aggiorna la ListView dei preferiti
+            listViewFavorites.setItems(favoriteList);
+
+            // Salva i preferiti aggiornati
+            SalvaCaricaPreferiti.salvaRubricaPreferiti(favoriteList);
+        }
+
+        // Salva la lista aggiornata della rubrica principale
+        SalvaCaricaRubrica.saveAddressBook(contactList);
+        }
             SalvaCaricaRubrica.saveAddressBook(contactList);
         }
-    }
+
 
       /**
      * @brief Cerca un contatto nella lista in base al testo inserito nella
