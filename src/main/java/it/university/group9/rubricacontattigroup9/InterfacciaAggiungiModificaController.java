@@ -27,7 +27,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class InterfacciaAggiungiModificaController implements Initializable {
-    
+
     @FXML
     private Button addButton, cancelButton, editButton;
     @FXML
@@ -38,20 +38,20 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     private boolean isEditing = false;
     private Contatto existingContact;
     private ObservableList<Contatto> addressBook;
+
     /**
      * @brief Riferimento al controller dell'interfaccia principale.
      */
     private InterfacciaUtenteController userInterfaceController;
 
-    
-    public Button getAddButton(){
-        return addButton; 
+    public Button getAddButton() {
+        return addButton;
     }
-    
-    public void setAddButton(Button addButton){
-        this.addButton=addButton; 
+
+    public void setAddButton(Button addButton) {
+        this.addButton = addButton;
     }
-    
+
     public Button getCancelButton() {
         return cancelButton;
     }
@@ -60,7 +60,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         this.cancelButton = cancelButton;
     }
 
-       public Button getEditButton() {
+    public Button getEditButton() {
         return editButton;
     }
 
@@ -68,64 +68,61 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         this.editButton = editButton;
     }
 
-    public ObservableList<Contatto> getRubrica() {
-        return rubrica;
+    public ObservableList<Contatto> getAdressBook() {
+        return addressBook;
     }
 
     public InterfacciaUtenteController getInterfacciaUtenteController() {
-        return interfacciaUtenteController;
+        return userInterfaceController;
+    }
+    
+    public TextField getNameField() {
+        return nameField;
     }
 
     public void setNameField(TextField nameField) {
         this.nameField = nameField;
     }
 
+    public TextField getSurnameField() {
+        return surnameField;
+    }
+
     public void setSurnameField(TextField surnameField) {
         this.surnameField = surnameField;
     }
 
-     
-    
-     
-     public TextField getEmail1Field() {
+    public TextField getEmail1Field() {
         return email1Field;
     }
-    
-     public void setEmail1Field(TextField email1Field) {
+
+    public void setEmail1Field(TextField email1Field) {
         this.email1Field = email1Field;
     }
 
-
-   
-     
-     public TextField getEmail2Field() {
+    public TextField getEmail2Field() {
         return email2Field;
     }
 
-     public void setEmail2Field(TextField email2Field) {
+    public void setEmail2Field(TextField email2Field) {
         this.email2Field = email2Field;
     }
 
-   
-     
-     public TextField getEmail3Field() {
+    public TextField getEmail3Field() {
         return email3Field;
     }
-    
+
     public void setEmail3Field(TextField email3Field) {
         this.email3Field = email3Field;
     }
 
-    
     public TextField getNumber1Field() {
         return number1Field;
     }
-    
+
     public void setNumber1Field(TextField number1Field) {
         this.number1Field = number1Field;
     }
-
-    
 
     public TextField getNumber2Field() {
         return number2Field;
@@ -135,7 +132,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         this.number2Field = number2Field;
     }
 
-    
     public TextField getNumber3Field() {
         return number3Field;
     }
@@ -151,57 +147,54 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     public boolean isIsEditing() {
         return isEditing;
     }
-    
+
     public void setIsEditing(boolean isEditing) {
         this.isEditing = isEditing;
     }
 
-
     public Contatto getExistingContact() {
         return existingContact;
     }
-    
+
     public void setExistingContact(Contatto existingContact) {
         this.existingContact = existingContact;
     }
 
-
     public ObservableList<Contatto> getAddressBook() {
         return addressBook;
     }
-    
+
     public void setAddressBook(ObservableList<Contatto> addressBook) {
         this.addressBook = addressBook;
     }
 
-
-    public InterfacciaUtenteController getInterfacciaUtenteController() {
+    public InterfacciaUtenteController getUserInterfaceController() {
         return userInterfaceController;
     }
-    
-    public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
+
+    public void setUserInterfaceController(InterfacciaUtenteController controller) {
         this.userInterfaceController = controller;
     }
-    /**
-     * @brief Imposta il riferimento al controller dell'interfaccia principale.
-     * @param[in] controller Riferimento al controller principale.
-     * @post Viene aggiornato il riferimento al controller principale.
-     */
-
-    //parte di add
-    
-    
+        
     public void initializeForAdd(ObservableList<Contatto> addressBook) {
         this.addressBook = addressBook;
         addButton.setVisible(true);
         editButton.setVisible(false); // Nascondi il bottone di modifica
     }
 
-    public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
-        this.interfacciaUtenteController = controller;
-    }
-
-
+  /**
+     * @brief Inizializza la finestra per la modifica di un contatto esistente.
+     *
+     * @param contact Il contatto da modificare.
+     * @param addressBook La rubrica che contiene il contatto esistente.
+     *
+     * @pre Il parametro contatto deve essere un oggetto valido e non null.
+     * @pre La rubrica deve essere un oggetto ObservableList<Contatto> non null.
+     * @post Il form sarà popolato con i dati del contatto esistente.
+     * @post Il pulsante "Modifica" sarà visibile, mentre il pulsante "Aggiungi"
+     * sarà nascosto.
+     */
+    
     public void initializeForEdit(Contatto contact, ObservableList<Contatto> addressBook) {
         this.addressBook = addressBook;
         this.existingContact = contact;
@@ -210,34 +203,19 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         editButton.setVisible(true);
     }
 
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addButton.setOnAction(event -> {
-
             addContact(event);
 
         });
-
         editButton.setOnAction(event -> editContact(new ActionEvent()));
     }
+
+  
     /**
-     * @brief Torna all'interfaccia principale.
-     *
-     * Questo metodo chiude la finestra corrente e ritorna alla schermata
-     * principale dell'applicazione.
-     *
-     * @param[in] event Evento del mouse che ha scatenato l'azione.
-     * @throws IOException Se non è possibile caricare la scena.
-     * @post La finestra corrente viene chiusa e l'applicazione torna alla
-     * schermata principale.
-     * @see InterfacciaUtenteController
-     *
-     */
-    @FXML
-    public void switchToInterfaccia(ActionEvent event) throws IOException {
-        closeWindow();
-    }
-/**
      * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di
      * aggiunta contatti aggiornando la rubrica
      *
@@ -284,16 +262,16 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             List<String> emails = collectValidEmails();
             String note = noteField.getText().trim();
 
-            if (ContattoValidator.isContattoDuplicato(userInterfaceController.getListContact(), name, surname)) {
+            if (ContattoValidator.isContactDuplicate(userInterfaceController.getContactList(), name, surname)) {
                 if (!requestConfirmation("Contatto Duplicato", "Un contatto con lo stesso nome e cognome esiste già. Vuoi comunque aggiungerlo?")) {
                     return;
                 }
             }
 
-            Contatto nuovoContatto = new Contatto(name, surname, numbers, emails, note);
-            userInterfaceController.getListContact().add(nuovoContatto);
+            Contatto newContact = new Contatto(name, surname, numbers, emails, note);
+            userInterfaceController.getContactList().add(newContact);
             userInterfaceController.sortContact();
-            SalvaCaricaRubrica.salvaRubrica(userInterfaceController.getListContact());
+            SalvaCaricaRubrica.saveAddressBook(userInterfaceController.getContactList());
 
             closeWindow();
 
@@ -301,85 +279,26 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             handleValidationError(e.getMessage());
         }
 
-        Contatto nuovoContatto = new Contatto(nome, cognome, numeri, emails, note);
-
-        interfacciaUtenteController.getListaContatti().add(nuovoContatto);
-        interfacciaUtenteController.ordinaContatti();
-        //aggiornamento file 
-        SalvaCaricaRubrica.salvaRubrica((ObservableList<Contatto>) interfacciaUtenteController.getListaContatti());
-        switchToInterfaccia(event);
-
     }
 
+   
     /**
-     * @brief Mostra una finestra di dialogo di conferma con due opzioni: Sì e
-     * No.
+     * @brief
      *
-     * @param titolo Il titolo della finestra di dialogo.
-     * @param messaggio Il messaggio da visualizzare nella finestra di dialogo.
+     * @param 
+     * @param 
      *
-     * @pre Il titolo e il messaggio non devono essere nulli o vuoti.
-     * @post Viene mostrata una finestra di dialogo e viene restituito il
-     * risultato della selezione dell'utente.
-     *
-     * @return true se l'utente seleziona "Sì", false se seleziona "No".
+     * @pre 
+     * @post 
      */
-    private boolean showConfirmationDialog(String titolo, String messaggio) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, messaggio, ButtonType.YES, ButtonType.NO);
-        alert.setTitle(titolo);
-        alert.showAndWait();
-        return alert.getResult() == ButtonType.YES;
-    }
-
-    /**
-     * @brief Mostra una finestra di dialogo di errore con un messaggio
-     * specificato.
-     *
-     * @param titolo Il titolo della finestra di dialogo.
-     * @param messaggio Il messaggio da visualizzare nella finestra di dialogo.
-     *
-     * @pre Il titolo e il messaggio non devono essere nulli o vuoti.
-     * @post Viene mostrata una finestra di dialogo con il messaggio di errore.
-     */
-    private void showErrorDialog(String titolo, String messaggio) {
+    private void handleValidationError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titolo);
-        alert.setContentText(messaggio);
+        alert.setTitle("Errore di Validazione");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
-    /**
-     * @brief Inizializza il controller.
-     *
-     * Metodo eseguito automaticamente per configurare il controller all'avvio.
-     *
-     * @param[in] url URL di inizializzazione.
-     * @param[in] rb Risorsa per la localizzazione.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-    }
 
-    //parte di modifica
-    /**
-     * @brief Inizializza la finestra per la modifica di un contatto esistente.
-     *
-     * @param contatto Il contatto da modificare.
-     * @param rubrica La rubrica che contiene il contatto esistente.
-     *
-     * @pre Il parametro contatto deve essere un oggetto valido e non null.
-     * @pre La rubrica deve essere un oggetto ObservableList<Contatto> non null.
-     * @post Il form sarà popolato con i dati del contatto esistente.
-     * @post Il pulsante "Modifica" sarà visibile, mentre il pulsante "Aggiungi"
-     * sarà nascosto.
-     */
-    public void initializeForEdit(Contatto contatto, ObservableList<Contatto> rubrica) {
-        this.rubrica = rubrica;
-        this.contattoEsistente = contatto;
-        populateFields(contatto);
-        addButton.setVisible(false);
-        editButton.setVisible(true); // Mostra il bottone di modifica
-    }
 
     /**
      * @brief Modifica i dati di un contatto esistente nella rubrica.
@@ -395,12 +314,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * @post I dati aggiornati saranno salvati utilizzando il metodo
      * SalvaCaricaRubrica.salvaRubrica.
      *
-     * @throws NomeNonValidoException Se il nome inserito non è valido.
-     * @throws CognomeNonValidoException Se il cognome inserito non è valido.
-     * @throws NumeroNonValidoException Se uno o più numeri di telefono non sono
-     * validi.
-     * @throws EmailNonValidaException Se uno o più indirizzi email non sono
-     * validi.
+     * 
      */
     @FXML
     protected void editContact(ActionEvent event) {
@@ -416,11 +330,11 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
             String note = noteField.getText().trim();
 
-            Contatto nuovoContatto = new Contatto(name, surname, numbers, emails, note);
+            Contatto newContact = new Contatto(name, surname, numbers, emails, note);
 
             int index = addressBook.indexOf(existingContact);
             if (index != -1) {
-                addressBook.set(index, nuovoContatto);
+                addressBook.set(index, newContact);
             }
 
             SalvaCaricaRubrica.saveAddressBook(addressBook);
@@ -430,8 +344,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             handleValidationError(e.getMessage());
         }
     }
-
-<<<<<<< HEAD
 
     private List<String> collectValidNumbers() throws CampoNonValidoException {
         List<String> numbers = new ArrayList<>();
@@ -461,30 +373,14 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         return emails;
     }
 
-     private boolean requestConfirmation(String title, String message) {
+    private boolean requestConfirmation(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
         alert.setTitle(title);
         alert.showAndWait();
         return alert.getResult() == ButtonType.YES;
     }
 
-
-     private void handleValidationError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore di Validazione");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-     
-     private void populateFields(Contatto contatto) {
-        nameField.setText(contatto.getName());
-        surnameField.setText(contatto.getSurname());
-        noteField.setText(contatto.getNote());
-
-        List<String> numbers = contatto.getNumbers();
-        if (numbers.size() > 0) {
-            number1Field.setText(numbers.get(0));
-=======
+  
     /**
      * @brief Popola i campi del form con i dati di un contatto esistente.
      *
@@ -497,15 +393,15 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * appropriati, fino a un massimo di tre per ciascun tipo. - Note nel campo
      * delle note.
      */
-    private void populateFields(Contatto contatto) {
-        nameField.setText(contatto.getNome());
-        surnameField.setText(contatto.getCognome());
-        noteField.setText(contatto.getNote());
 
-        List<String> numeri = contatto.getNumeri();
-        if (numeri.size() > 0) {
-            number1Field.setText(numeri.get(0));
->>>>>>> 1510d067e18e6a71af40c71021b8ee92ad7a5fba
+    private void populateFields(Contatto contact) {
+        nameField.setText(contact.getName());
+        surnameField.setText(contact.getSurname());
+        noteField.setText(contact.getNote());
+
+        List<String> numbers = contact.getNumbers();
+        if (numbers.size() > 0) {
+            number1Field.setText(numbers.get(0));
         }
         if (numbers.size() > 1) {
             number2Field.setText(numbers.get(1));
@@ -514,7 +410,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             number3Field.setText(numbers.get(2));
         }
 
-        List<String> emails = contatto.getEmails();
+        List<String> emails = contact.getEmails();
         if (emails.size() > 0) {
             email1Field.setText(emails.get(0));
         }
@@ -523,7 +419,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         }
         if (emails.size() > 2) {
             email3Field.setText(emails.get(2));
-        }
+        } 
+    
     }
 
     /**
@@ -548,8 +445,25 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
-<<<<<<< HEAD
-=======
+    
+    
+      /**
+     * @brief Torna all'interfaccia principale.
+     *
+     * Questo metodo chiude la finestra corrente e ritorna alla schermata
+     * principale dell'applicazione.
+     *
+     * @param[in] event Evento del mouse che ha scatenato l'azione.
+     * @throws IOException Se non è possibile caricare la scena.
+     * @post La finestra corrente viene chiusa e l'applicazione torna alla
+     * schermata principale.
+     * @see InterfacciaUtenteController
+     *
+     */
+    @FXML
+    public void switchToInterface(ActionEvent event) throws IOException {
+        closeWindow();
+    }
 
->>>>>>> 1510d067e18e6a71af40c71021b8ee92ad7a5fba
+
 }
