@@ -75,10 +75,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     public InterfacciaUtenteController getInterfacciaUtenteController() {
         return userInterfaceController;
     }
-    
-    public TextField getNameField() {
-        return nameField;
-    }
 
     public void setNameField(TextField nameField) {
         this.nameField = nameField;
@@ -182,19 +178,11 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         editButton.setVisible(false); // Nascondi il bottone di modifica
     }
 
-  /**
-     * @brief Inizializza la finestra per la modifica di un contatto esistente.
-     *
-     * @param contact Il contatto da modificare.
-     * @param addressBook La rubrica che contiene il contatto esistente.
-     *
-     * @pre Il parametro contatto deve essere un oggetto valido e non null.
-     * @pre La rubrica deve essere un oggetto ObservableList<Contatto> non null.
-     * @post Il form sarà popolato con i dati del contatto esistente.
-     * @post Il pulsante "Modifica" sarà visibile, mentre il pulsante "Aggiungi"
-     * sarà nascosto.
-     */
-    
+    public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
+        this.userInterfaceController = controller;
+    }
+
+
     public void initializeForEdit(Contatto contact, ObservableList<Contatto> addressBook) {
         this.addressBook = addressBook;
         this.existingContact = contact;
@@ -345,6 +333,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         }
     }
 
+
     private List<String> collectValidNumbers() throws CampoNonValidoException {
         List<String> numbers = new ArrayList<>();
         List<TextField> numberFields = Arrays.asList(number1Field, number2Field, number3Field);
@@ -380,7 +369,23 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         return alert.getResult() == ButtonType.YES;
     }
 
-  
+
+     private void handleValidationError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore di Validazione");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+     
+     private void populateFields(Contatto contatto) {
+        nameField.setText(contatto.getName());
+        surnameField.setText(contatto.getSurname());
+        noteField.setText(contatto.getNote());
+
+        List<String> numbers = contatto.getNumbers();
+        if (numbers.size() > 0) {
+            number1Field.setText(numbers.get(0));
+
     /**
      * @brief Popola i campi del form con i dati di un contatto esistente.
      *
@@ -394,14 +399,9 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * delle note.
      */
 
-    private void populateFields(Contatto contact) {
-        nameField.setText(contact.getName());
-        surnameField.setText(contact.getSurname());
-        noteField.setText(contact.getNote());
-
-        List<String> numbers = contact.getNumbers();
-        if (numbers.size() > 0) {
-            number1Field.setText(numbers.get(0));
+        List<String> numeri = contatto.getNumeri();
+        if (numeri.size() > 0) {
+            number1Field.setText(numeri.get(0));
         }
         if (numbers.size() > 1) {
             number2Field.setText(numbers.get(1));
@@ -445,25 +445,5 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
-    
-    
-      /**
-     * @brief Torna all'interfaccia principale.
-     *
-     * Questo metodo chiude la finestra corrente e ritorna alla schermata
-     * principale dell'applicazione.
-     *
-     * @param[in] event Evento del mouse che ha scatenato l'azione.
-     * @throws IOException Se non è possibile caricare la scena.
-     * @post La finestra corrente viene chiusa e l'applicazione torna alla
-     * schermata principale.
-     * @see InterfacciaUtenteController
-     *
-     */
-    @FXML
-    public void switchToInterface(ActionEvent event) throws IOException {
-        closeWindow();
-    }
-
 
 }

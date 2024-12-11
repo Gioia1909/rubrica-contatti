@@ -26,8 +26,9 @@ public class InterfacciaUtenteController implements Initializable {
      * @name Componenti FXML
      */
     ///@{
-    @FXML
+    
     private Button viewAddButton;
+    
     /**
      * < Bottone per accedere all'interfaccia di aggiunta contatti.
      */
@@ -43,34 +44,31 @@ public class InterfacciaUtenteController implements Initializable {
      */
 
     @FXML
-    private Button modifyButton;
+    private Button editButton;
+    
+     @FXML
+    private Button favoriteButton;
 
-    @FXML
-    private ImageView modifyImageView;
+    
+    private ImageView editImageView;
 
+    
     @FXML
     private ImageView deleteImageView;
 
-    @FXML
-    private Button favoriteButton;
+   
     /**
      * <Bottone per visualizzare i contatti preferiti.
      */
     @FXML
     private ListView<Contatto> myListView;
 
-    public ListView<Contatto> getListView() {
-        return myListView;
-    }
-
-    public void setListView(ListView<Contatto> myListView) {
-        this.myListView = myListView;
-    }
+   
 
     /**
      * <Bottone principale per operazioni varie.
      */
-    private TextField textBar;
+    private TextField searchBar;
     /**
      * <Barra di testo per input di ricerca.
      */
@@ -105,9 +103,75 @@ public class InterfacciaUtenteController implements Initializable {
     ///@}
     private ObservableList<Contatto> contactList;
 
-    @FXML
-    private TextField searchBar;
+    
+    
+    public Button getViewAddButton() {
+        return viewAddButton;
+    }
 
+    public void setViewAddButton(Button viewAddButton) {
+        this.viewAddButton = viewAddButton;
+    }
+
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+
+    public void setDeleteButton(Button deleteButton) {
+        this.deleteButton = deleteButton;
+    }
+
+    public Button getSearchButton() {
+        return searchButton;
+    }
+
+    public void setSearchButton(Button searchButton) {
+        this.searchButton = searchButton;
+    }
+
+    public Button getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(Button editButton) {
+        this.editButton = editButton;
+    }
+
+    public Button getFavoriteButton() {
+        return favoriteButton;
+    }
+
+    public void setFavoriteButton(Button favoriteButton) {
+        this.favoriteButton = favoriteButton;
+    }
+
+     public ListView<Contatto> getListView() {
+        return myListView;
+    }
+
+    public void setListView(ListView<Contatto> myListView) {
+        this.myListView = myListView;
+    }
+
+    
+    public ImageView getDeleteImageView() {
+        return deleteImageView;
+    }
+
+    public void setDeleteImageView(ImageView deleteImageView) {
+        this.deleteImageView = deleteImageView;
+    }
+
+    public ListView<Contatto> getMyListView() {
+        return myListView;
+    }
+
+    public void setMyListView(ListView<Contatto> myListView) {
+        this.myListView = myListView;
+    }
+
+    
+    
     public TextField getSearchBar() {
         return searchBar;
     }
@@ -116,6 +180,106 @@ public class InterfacciaUtenteController implements Initializable {
         this.searchBar = searchBar;
     }
 
+     public Label getNameField() {
+        return nameField;
+    }
+
+    public void setNameField(Label nameField) {
+        this.nameField = nameField;
+    }
+
+    public Label getSurnameField() {
+        return surnameField;
+    }
+
+    public void setSurnameField(Label surnameField) {
+        this.surnameField = surnameField;
+    }
+
+    public Label getEmail1Field() {
+        return email1Field;
+    }
+
+    public void setEmail1Field(Label email1Field) {
+        this.email1Field = email1Field;
+    }
+
+    public Label getEmail2Field() {
+        return email2Field;
+    }
+
+    public void setEmail2Field(Label email2Field) {
+        this.email2Field = email2Field;
+    }
+
+    public Label getEmail3Field() {
+        return email3Field;
+    }
+
+    public void setEmail3Field(Label email3Field) {
+        this.email3Field = email3Field;
+    }
+
+    public Label getNumber1Field() {
+        return number1Field;
+    }
+
+    public void setNumber1Field(Label number1Field) {
+        this.number1Field = number1Field;
+    }
+
+    public Label getNumber2Field() {
+        return number2Field;
+    }
+
+    public void setNumber2Field(Label number2Field) {
+        this.number2Field = number2Field;
+    }
+
+    public Label getNumber3Field() {
+        return number3Field;
+    }
+
+    public void setNumber3Field(Label number3Field) {
+        this.number3Field = number3Field;
+    }
+
+    public Label getNoteField() {
+        return noteField;
+    }
+
+    public void setNoteField(Label noteField) {
+        this.noteField = noteField;
+    }
+
+    public Label getDefaultText() {
+        return defaultText;
+    }
+
+    public void setDefaultText(Label defaultText) {
+        this.defaultText = defaultText;
+    }
+
+    
+    public ObservableList<Contatto> getContactList() {
+        return contactList;
+    }
+     /**
+     * @brief Questo metodo permette di impostare la lista dei contatti e
+     * aggiornare la ListView con nuovi dati
+     *
+     *
+     * @param[in] contactList Lista osservabile dei contatti.
+     * @post La lista di contatti è stata aggiornata nel controller e la
+     * ListView è stata aggiornata con i nuovi contatti.
+     *
+     */
+
+    public void setContactList(ObservableList<Contatto> contactList) {
+        this.contactList = contactList;
+        myListView.setItems(contactList);
+    }
+    
     /**
      * @brief Inizializza i componenti e imposta la lista di contatti
      *
@@ -133,7 +297,7 @@ public class InterfacciaUtenteController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        contactList = SalvaCaricaRubrica.caricaRubrica();
+        contactList = SalvaCaricaRubrica.loadAddressBook();
         myListView.setItems(contactList);
         configureListView();
     }
@@ -150,34 +314,119 @@ public class InterfacciaUtenteController implements Initializable {
     private void configureListView() {
         myListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
-            protected void updateItem(Contatto contatto, boolean empty) {
+            protected void updateItem(Contatto contact, boolean empty) {
                 // Chiama la versione base del metodo per assicurare il corretto comportamento della cella
-                super.updateItem(contatto, empty);
-                if (empty || contatto == null) {
+                super.updateItem(contact, empty);
+                if (empty || contact == null) {
                     // Se vuota o nulla, non mostra alcun testo
                     setText(null);
                 } else {
                     // Mostra solo il cognome e il nome
-                    setText(contatto.getCognome() + " " + contatto.getNome());
+                    setText(contact.getSurname() + " " + contact.getName());
                 }
             }
 
         });
 
-        myListView.setItems(contactList);
-
-        // listener per la selezione della ListView. Con getSelectionModel ottengo il modello di selezione della ListView, 
-        //  selecredItemProperty è la proprietà che rappresenta l'elemento selezionato. A questa aggiungo un listener.
-        // observable è la proprietà osservata (selectedItem), contattoPrecedente è il valore dell'elemento selezionato prima che la seleziona cambiasse
-        // contattoSelezionato  il nuvoo valore dell'elemento selezionato dopo che è cambiato. 
-        myListView.getSelectionModel().selectedItemProperty().addListener((observable, contattoPrecedente, contattoSelezionato) -> {
-            if (contattoSelezionato != null) {
-                // Aggiorna le label con i dati del contatto selezionato
-                updateContactDetails(contattoSelezionato);
+            myListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+            if (selectedContact != null) {
+                super.updateContactDetails(selectedContact);
             }
         });
     }
 
+    public void sortContact() {
+        FXCollections.sort(contactList);
+    }
+    /**
+     * @brief Passa alla schermata dei contatti preferiti.
+     *
+     * @throws IOException Se non riesce a caricare la nuova schermata.
+     * @see MenuPreferitiController
+     */
+    @FXML
+    protected void switchToFavorite() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
+        Parent root = loader.load();
+
+        MenuPreferitiController menuPreferitiController = loader.getController();
+        menuPreferitiController.setContactList(contactList);
+
+        Scene scene = favoriteButton.getScene();
+        scene.setRoot(root);
+    }
+
+    
+     @FXML
+    protected void addAction() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
+        Parent root = loader.load();
+
+        InterfacciaAggiungiModificaController addController = loader.getController();
+        addController.setInterfacciaUtenteController(this);
+        addController.initializeForAdd(contactList);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+      /**
+     * @brief Elimina il contatto selezionato dalla lista.
+     *
+     * Questo metodo rimuove il contatto selezionato dalla lista dei contatti
+     * visualizzata nell'interfaccia utente. Dopo aver rimosso il contatto, il
+     * metodo salva la lista aggiornata nel file per persistente i dati.
+     *
+     * @pre Il contatto selezionato deve esistere nella lista.
+     * @post Il contatto selezionato è stato rimosso dalla lista dei contatti e
+     * la lista aggiornata è stata salvata nel file.
+     *
+     * @param[in] event Evento del mouse che ha attivato l'azione.
+     */
+
+    @FXML
+    public void deleteAction(ActionEvent event) {
+        int selected = myListView.getSelectionModel().getSelectedIndex();
+        if (selected >= 0) {
+            contactList.remove(selected);
+            SalvaCaricaRubrica.saveAddressBook(contactList);
+        }
+    }
+
+      /**
+     * @brief Cerca un contatto nella lista in base al testo inserito nella
+     * barra di ricerca.
+     *
+     * Questo metodo filtra la lista dei contatti in base al testo inserito
+     * nella barra di ricerca textBar. La ricerca viene effettuata considerando
+     * il nome, il cognome e il numero di telefono del contatto.
+     *
+     * @pre La lista di contatti contactList è già popolata.
+     * @post La myListView mostra la lista filtrata di contatti che soddisfano i
+     * criteri di ricerca.
+     *
+     * @param[in] event Evento associato al bottone di ricerca.
+     */
+    @FXML
+    public void searchAction(ActionEvent event) {
+        String searchQuery = searchBar.getText().toLowerCase().trim();
+        if (searchQuery.isEmpty()) {
+            myListView.setItems(contactList);
+            return;
+        }
+
+        ObservableList<Contatto> filteredList = FXCollections.observableArrayList();
+        for (Contatto contact : contactList) {
+            if (contact.getName().toLowerCase().contains(searchQuery)
+                    || contact.getSurname().toLowerCase().contains(searchQuery)
+                    || contact.getNumbers().stream().anyMatch(num -> num.contains(searchQuery))) {
+                filteredList.add(contact);
+            }
+        }
+        myListView.setItems(filteredList);
+    }
+    
     /**
      * @brief Restituisce la lista di tutti i contatti.
      *
@@ -189,25 +438,9 @@ public class InterfacciaUtenteController implements Initializable {
      * @return Una lista di oggetti Contatto, che rappresenta tutti i contatti
      * disponibili.
      */
-    public ObservableList<Contatto> getListaContatti() {
-        return contactList;
-    }
+    
 
-    /**
-     * @brief Questo metodo permette di impostare la lista dei contatti e
-     * aggiornare la ListView con nuovi dati
-     *
-     *
-     * @param[in] contactList Lista osservabile dei contatti.
-     * @post La lista di contatti è stata aggiornata nel controller e la
-     * ListView è stata aggiornata con i nuovi contatti.
-     *
-     */
-    public void setContactList(ObservableList<Contatto> contactList) {
-        this.contactList = contactList;
-        // Aggiorna la ListView con i nuovi dati
-        myListView.setItems(contactList);
-    }
+   
 
     /**
      * @brief Ordina la lista dei contatti in base al cognome e nome.
@@ -237,45 +470,45 @@ public class InterfacciaUtenteController implements Initializable {
     private void updateContactDetails(Contatto contattoSelezionato) {
         defaultText.setVisible(false);
         deleteButton.setVisible(true);
-        modifyButton.setVisible(true);
-        modifyImageView.setVisible(true);
+        editButton.setVisible(true);
+        editImageView.setVisible(true);
         deleteImageView.setVisible(true);
 
         // Gestione nome e cognome
-        if (contattoSelezionato.getNome().isEmpty() && nameField.getText().isEmpty()) {
+        if (contattoSelezionato.getName().isEmpty() && nameField.getText().isEmpty()) {
             nameField.setVisible(false);
         } else {
             nameField.setVisible(true);
-            nameField.setText(contattoSelezionato.getNome());
+            nameField.setText(contattoSelezionato.getName());
         }
 
-        if (contattoSelezionato.getCognome().isEmpty() && surnameField.getText().isEmpty()) {
+        if (contattoSelezionato.getSurname().isEmpty() && surnameField.getText().isEmpty()) {
             surnameField.setVisible(false);
         } else {
             surnameField.setVisible(true);
-            surnameField.setText(contattoSelezionato.getCognome());
+            surnameField.setText(contattoSelezionato.getSurname());
         }
 
         // Gestione dei numeri di telefono
-        List<String> numeri = contattoSelezionato.getNumeri();
+        List<String> numbers = contattoSelezionato.getNumbers();
 
-        if (numeri.size() > 0) {
+        if (numbers.size() > 0) {
             number1Field.setVisible(true);
-            number1Field.setText(numeri.get(0));
+            number1Field.setText(numbers.get(0));
         } else if (number1Field.getText().isEmpty()) {
             number1Field.setVisible(false);
         }
 
-        if (numeri.size() > 1) {
+        if (numbers.size() > 1) {
             number2Field.setVisible(true);
-            number2Field.setText(numeri.get(1));
+            number2Field.setText(numbers.get(1));
         } else {
             number2Field.setVisible(false);
         }
 
-        if (numeri.size() > 2) {
+        if (numbers.size() > 2) {
             number3Field.setVisible(true);
-            number3Field.setText(numeri.get(2));
+            number3Field.setText(numbers.get(2));
         } else {
             number3Field.setVisible(false);
         }
@@ -315,85 +548,7 @@ public class InterfacciaUtenteController implements Initializable {
         }
     }
 
-    /**
-     * @brief Elimina il contatto selezionato dalla lista.
-     *
-     * Questo metodo rimuove il contatto selezionato dalla lista dei contatti
-     * visualizzata nell'interfaccia utente. Dopo aver rimosso il contatto, il
-     * metodo salva la lista aggiornata nel file per persistente i dati.
-     *
-     * @pre Il contatto selezionato deve esistere nella lista.
-     * @post Il contatto selezionato è stato rimosso dalla lista dei contatti e
-     * la lista aggiornata è stata salvata nel file.
-     *
-     * @param[in] event Evento del mouse che ha attivato l'azione.
-     */
-    @FXML
-    public void deleteContact(ActionEvent event) {
-        int selezionato = myListView.getSelectionModel().getSelectedIndex();
-        if (selezionato >= 0) {
-            myListView.getItems().remove(selezionato);
-
-            // Salva i contatti aggiornati nel file
-            SalvaCaricaRubrica.salvaRubrica(contactList);
-        }
-    }
-
-    /**
-     * @brief Cerca un contatto nella lista in base al testo inserito nella
-     * barra di ricerca.
-     *
-     * Questo metodo filtra la lista dei contatti in base al testo inserito
-     * nella barra di ricerca textBar. La ricerca viene effettuata considerando
-     * il nome, il cognome e il numero di telefono del contatto.
-     *
-     * @pre La lista di contatti contactList è già popolata.
-     * @post La myListView mostra la lista filtrata di contatti che soddisfano i
-     * criteri di ricerca.
-     *
-     * @param[in] event Evento associato al bottone di ricerca.
-     */
-    @FXML
-    public void searchContact(ActionEvent event) {
-        if (contactList == null) {
-            showErrorDialog("Errore", "La lista dei contatti non è disponibile.");
-            return;
-        }
-        String searchQuery = searchBar.getText().toLowerCase().trim();
-        //searchQuery è una stringa che contiene il testo digitato; 
-        //textBar.getText(), recupera il testo che ha digitato l'utente; 
-        // toLowerCase() rende tutto minuscolo per avere un ricerca case insensitive; 
-        //trim() rimuove spazi bianchi all'inizio o alla fine del testo; 
-
-        //Se la barra di ricerca è vuota, ripristina la lista completa
-        if (searchQuery.isEmpty()) {
-            myListView.setItems(contactList);       //la lista viene ripristinata per mostrare tutti gli elementi della contactList  
-            return;
-        }
-
-        //Filtra la lista basandosi sul nome, cognome o numeri di telefono
-        ObservableList<Contatto> filteredList = FXCollections.observableArrayList();    //lista che contiene i contatti con i criteri di ricerca inseriti
-        for (Contatto contatto : contactList) {         //Scorre tutti gli oggetti Contatto presenti nella lista contactList
-            if (contatto.getNome().toLowerCase().contains(searchQuery) //converte il nome del contatto in minuscolo per una ricerca case insensitive e controlla se il nome contiene la sottostringa searchQuery
-                    || contatto.getCognome().toLowerCase().contains(searchQuery) //stessa cosa del nome 
-                    || contatto.getNumeri().stream().anyMatch(num -> num.contains(searchQuery))) {
-                // contatto.getNumeri() restituisce una lista di numeri associati al contatto, 
-                //stream() trasforma la lista in uno stream, in modo da avere una sequenza su cui poter applicare operazioni 
-                //anyMatch() verifica se almeno uno dei numeri soddisfa la condizione 
-                //num -> num.contains(searchQuery) Per ogni elemento num (numero di telefono) nello stream, verifica se contiene la stringa searchQuery
-                filteredList.add(contatto); //Se il contatto soddisfa almeno una delle condizioni, viene aggiunto alla lista filteredList
-            }
-        }
-
-        //Aggiorna la ListView con la lista filtrata 
-        myListView.setItems(filteredList);
-
-//Mostra un avviso se nessun contatto corrisponde ai criteri di ricerca
-        if (filteredList.isEmpty()) {
-            showErrorDialog("Errore", "Nessun contatto trovato");
-        }
-    }
-
+  
     /**
      * @brief Passa alla schermata di aggiunta di un nuovo contatto.
      *
@@ -435,13 +590,13 @@ public class InterfacciaUtenteController implements Initializable {
      * selezionato caricato nel relativo controller.
      */
     @FXML
-    private void switchToModifyContact() throws IOException {
+    private void EditAction() throws IOException {
         // Ottieni il contatto selezionato
-        Contatto contattoSelezionato = myListView.getSelectionModel().getSelectedItem();
+        Contatto selectedContact = myListView.getSelectionModel().getSelectedItem();
         //getSelectionModel(): Ottiene il modello di selezione associato alla lista, che gestisce la selezione degli elementi: dà accesso a tutte le informazioni sulla selezione.
         //getSelectedItem(): Ritorna l'elemento attualmente selezionato dall'utente nella ListView.     
 
-        if (contattoSelezionato != null) {  //Verifica se un contatto è stato selezionato. Se null, significa che l'utente non ha selezionato nulla, quindi non deve procedere.
+        if (selectedContact != null) {  //Verifica se un contatto è stato selezionato. Se null, significa che l'utente non ha selezionato nulla, quindi non deve procedere.
             // Carica la scena di modifica contatto
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
             //FXMLLoader: Classe per caricare i file FXML.
@@ -452,44 +607,24 @@ public class InterfacciaUtenteController implements Initializable {
             //Parent root: Il nodo radice della nuova scena. Tutti i componenti grafici dell'interfaccia vengono aggiunti come figli di questo nodo.
 
             // Ottieni il controller della scena di modifica
-            InterfacciaAggiungiModificaController modificaController = loader.getController();
+            InterfacciaAggiungiModificaController editController = loader.getController();
             //modificaController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
             //getController(): Ottiene il controller associato al file FXML appena caricato
 
             // Passa il contatto selezionato al controller della scena di modifica
-            modificaController.initializeForEdit(contattoSelezionato, contactList);
+            editController.initializeForEdit(selectedContact, contactList);
 
-            // Mostra la scena
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();      //new Stage(): Crea una finestra separata dall'attuale.
-            stage.setScene(scene);          //Imposta la scena appena creata nella finestra (Stage).
-            stage.show();                           //Mostra la nuova finestra all'utente.
+               Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } else {
+            System.out.println("Nessun contatto selezionato");
         }
+
     }
 
-    /**
-     * @brief Passa alla schermata dei contatti preferiti.
-     *
-     * @throws IOException Se non riesce a caricare la nuova schermata.
-     * @see MenuPreferitiController
-     */
-    @FXML
-    private void switchToFavorite() throws IOException {
-        // Carica il file FXML della scena dei preferiti
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
-        Parent root = loader.load();
-
-        // Ottieni il controller associato alla scena caricata
-        MenuPreferitiController menuPreferitiController = loader.getController();
-
-        // Passa la lista di contatti al controller dei preferiti
-        menuPreferitiController.setContactList(contactList);
-
-        // Cambia la scena
-        Scene scene = favoriteButton.getScene(); // Ottieni la scena corrente
-        scene.setRoot(root); // Sostituisci il root della scena corrente con il nuovo root
-    }
-
+    
+   
     /**
      * @brief Mostra un banner di errore con un titolo e un messaggio
      * personalizzati.
@@ -510,5 +645,3 @@ public class InterfacciaUtenteController implements Initializable {
     }
 
 }
-
-
