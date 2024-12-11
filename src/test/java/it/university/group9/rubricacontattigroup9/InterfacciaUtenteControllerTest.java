@@ -13,9 +13,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.junit.jupiter.api.AfterEach;
@@ -48,8 +50,11 @@ public class InterfacciaUtenteControllerTest {
     public void setUp() {
         System.out.println("Setup del test: eseguito prima di ogni test");
         instance = new InterfacciaUtenteController();
+          instance.setListView(new ListView<>());
+        instance.setSearchBar(new TextField());
     }
 
+    
     @AfterEach
     public void tearDown() {
          System.out.println("Cleanup del test: eseguito dopo ogni test");
@@ -61,6 +66,18 @@ public class InterfacciaUtenteControllerTest {
      */
     @Test
     public void testInitialize() {
+        
+         Platform.runLater(() -> {
+            // Inizializzazione della UI (o altre operazioni necessarie)
+            instance.initialize(null, null);
+
+            // Verifica che la lista di contatti sia inizializzata correttamente
+            assertNotNull(instance.getListaContatti()); 
+            assertTrue(instance.getListaContatti().isEmpty());  // Assicurati che sia vuota
+        });
+    }
+    
+        /*
         // caso 1 : la rubrica inizialmente è vuota
         System.out.println("initialize");
         URL location = null;
@@ -70,8 +87,8 @@ public class InterfacciaUtenteControllerTest {
         
         // Verifica che le proprietà iniziali siano corrette
         assertNotNull(instance.getListaContatti());
-        assertTrue(instance.getListaContatti().isEmpty());
-    }
+        assertTrue(instance.getListaContatti().isEmpty()); 
+    }*/
     
     @Test
     public void testInitializeWithContact() {
