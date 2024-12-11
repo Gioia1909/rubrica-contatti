@@ -388,9 +388,10 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         int selected = myListView.getSelectionModel().getSelectedIndex();
         
         if (selected >= 0) {
-            contactList.remove(selected);
             // Se il contatto è presente nei preferiti, rimuovilo
             Contatto contactToRemove = myListView.getSelectionModel().getSelectedItem();
+           contactList.remove(contactToRemove);
+            
             
             // Verifica se il contatto è presente nei preferiti
             if (favoriteList != null && favoriteList.contains(contactToRemove)) {
@@ -406,7 +407,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         // Salva la lista aggiornata della rubrica principale
         SalvaCaricaRubrica.saveAddressBook(contactList);
         }
-            SalvaCaricaRubrica.saveAddressBook(contactList);
+              myListView.setItems(contactList);
         }
 
 
