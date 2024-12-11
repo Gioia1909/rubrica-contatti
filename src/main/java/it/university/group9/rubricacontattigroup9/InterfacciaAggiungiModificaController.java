@@ -250,8 +250,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             List<String> emails = collectValidEmails();
             String note = noteField.getText().trim();
 
-            if (ContattoValidator.isContactDuplicate(userInterfaceController.getContactList(), name, surname)) {
-                if (!requestConfirmation("Contatto Duplicato", "Un contatto con lo stesso nome e cognome esiste già. Vuoi comunque aggiungerlo?")) {
+            if (ContattoValidator.isContactDuplicate(userInterfaceController.getContactList(), name, surname, numbers)) {
+                if (!requestConfirmation("Contatto Duplicato", "Un contatto con le stesse informazioni esiste già. Vuoi comunque aggiungerlo?")) {
                     return;
                 }
             }
