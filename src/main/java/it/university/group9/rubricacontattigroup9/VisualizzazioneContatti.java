@@ -19,25 +19,13 @@ import javafx.scene.image.ImageView;
 public abstract class VisualizzazioneContatti {
     
     @FXML
-    private ListView<Contatto> listViewPreferiti;
-    @FXML
-    private Button editButton, addPrefButton, deleteButton, searchButton;
+    private Button editButton, deleteButton;
     @FXML
     private ImageView editImageView, deleteImageView;
-    
-    @FXML
-    private TextField searchBar;
     @FXML
     private Label nameField, surnameField, number1Field, number2Field, number3Field;
     @FXML
     private Label email1Field, email2Field, email3Field, noteField, defaultText;
-
-    private ObservableList<Contatto> preferitiList;
-    private ObservableList<Contatto> contactList;
-    private Button viewAddButton;
-
-    @FXML
-    private ListView<Contatto> myListView;
     
     public void updateContactDetails(Contatto selectedContact) {
         defaultText.setVisible(false);
