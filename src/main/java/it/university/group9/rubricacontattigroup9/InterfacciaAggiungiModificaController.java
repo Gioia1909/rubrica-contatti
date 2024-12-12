@@ -175,10 +175,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         addButton.setVisible(true);
         editButton.setVisible(false); // Nascondi il bottone di modifica
     }
- 
-    public void setInterfacciaUtenteController(InterfacciaUtenteController controller) {
-        this.userInterfaceController = controller;
-    }
 
   /**
      * @brief Inizializza la finestra per modificare un contatto esistente.

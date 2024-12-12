@@ -355,7 +355,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         Parent root = loader.load();
 
         InterfacciaAggiungiModificaController addController = loader.getController();
-        addController.setInterfacciaUtenteController(this);
+        addController.setUserInterfaceController(this);
         addController.initializeForAdd(contactList);
 
         Stage stage = new Stage();
