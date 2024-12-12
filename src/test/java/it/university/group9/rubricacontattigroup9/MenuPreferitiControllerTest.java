@@ -51,7 +51,7 @@ public class MenuPreferitiControllerTest {
         contactList = FXCollections.observableArrayList();
         preferitiList = FXCollections.observableArrayList();
         
-        instance.setListViewPreferiti(new ListView());
+        instance.setListViewFavorites(new ListView());
         
     }
     
@@ -95,14 +95,14 @@ public class MenuPreferitiControllerTest {
         preferitiList.add(contatto2);
         
         //salvo la lista creata 
-        SalvaCaricaPreferiti.salvaRubricaPreferiti(preferitiList);
+        SalvaCaricaPreferiti.saveFavoritesAddressBook(preferitiList);
         
         //chiamata metodo da testare 
-        instance.setPreferitiList(preferitiList); // Simula il caricamento della lista
+        instance.setFavoriteList(preferitiList); // Simula il caricamento della lista
         instance.initialize(null, null);
         
         //Controlla che i preferiti 
-        assertEquals(preferitiList, instance.getListViewPreferiti().getItems());
+        assertEquals(preferitiList, instance.getListViewFavorites().getItems());
     }
     /**
      * Test dell'azione di eleininazione dal menu dei preferiti
@@ -117,10 +117,10 @@ public class MenuPreferitiControllerTest {
         Contatto contatto2 = new Contatto ("Luigi", "Bianchi", Arrays.asList("082535204"), Arrays.asList("luigi.bianchi@hotmail.com"), " ");
         preferitiList.add(contatto1);
         preferitiList.add(contatto2);
-        instance.setPreferitiList(preferitiList);
+        instance.setFavoriteList(preferitiList);
         
         //simulazione Selezione di un contatto e chiamata Delete 
-        instance.getListViewPreferiti().getSelectionModel().select(contatto1);
+        instance.getListViewFavorites().getSelectionModel().select(contatto1);
         instance.deleteAction(new ActionEvent());
         
         //verifica che il contatto1 sia stato rimosso 
@@ -144,8 +144,8 @@ public class MenuPreferitiControllerTest {
         preferitiList.addAll(contatto1,contatto2,contatto3);
         
         //Imposta la lista preferiti e la list view
-        instance.setPreferitiList(preferitiList);
-        instance.getListViewPreferiti().setItems(preferitiList);
+        instance.setFavoriteList(preferitiList);
+        instance.getListViewFavorites().setItems(preferitiList);
         
         //simula l'inserimento di una stringa da barra di ricerca
         TextField searchBar = new TextField();
@@ -157,7 +157,7 @@ public class MenuPreferitiControllerTest {
         
         
         //verifica che la lista filtrata contenga solo il contatto corrispondente
-        ObservableList <Contatto> filteredList = instance.getListViewPreferiti().getItems();
+        ObservableList <Contatto> filteredList = instance.getListViewFavorites().getItems();
         assertEquals(1, filteredList.size(), "La lista filtrata dovrebbe contenere un solo elemento.");
         assertTrue(filteredList.contains(contatto2), "Il contatto Luigi Bianchi dovrebbe essere nell'elenco filtrato.");
         
@@ -180,8 +180,8 @@ public class MenuPreferitiControllerTest {
         preferitiList.addAll(contatto1,contatto2,contatto3);
         
         //Imposta la lista preferiti e la list view
-        instance.setPreferitiList(preferitiList);
-        instance.getListViewPreferiti().setItems(preferitiList);
+        instance.setFavoriteList(preferitiList);
+        instance.getListViewFavorites().setItems(preferitiList);
         
         //simula l'inserimento di una stringa da barra di ricerca
         TextField searchBar = new TextField();
@@ -193,7 +193,7 @@ public class MenuPreferitiControllerTest {
         
         
         //verifica che la lista filtrata contenga solo il contatto corrispondente
-        ObservableList <Contatto> filteredList = instance.getListViewPreferiti().getItems();
+        ObservableList <Contatto> filteredList = instance.getListViewFavorites().getItems();
         assertTrue(filteredList.isEmpty(), "La lista filtrata dovrebbe essere vuota.");
         assertEquals(preferitiList.size(), filteredList.size(), "La lista filtrata dovrebbe contenere tutti gli elementi.");
     }
@@ -209,8 +209,8 @@ public class MenuPreferitiControllerTest {
         Contatto contatto1 = new Contatto("Mario", "Rossi", Arrays.asList("082535203"), Arrays.asList("mario.rossi@gmail.com"), "");
         Contatto contatto2 = new Contatto("Luigi", "Bianchi", Arrays.asList("082535204"), Arrays.asList("luigi.bianchi@hotmail.com"), "");
         preferitiList.addAll(contatto1, contatto2);
-        instance.setPreferitiList(preferitiList);
-        instance.getListViewPreferiti().setItems(preferitiList);
+        instance.setFavoriteList(preferitiList);
+        instance.getListViewFavorites().setItems(preferitiList);
 
         TextField searchBar = new TextField();
         instance.setSearchBar(searchBar);
@@ -218,7 +218,7 @@ public class MenuPreferitiControllerTest {
 
         instance.searchAction(new ActionEvent());
 
-        ObservableList<Contatto> filteredList = instance.getListViewPreferiti().getItems();
+        ObservableList<Contatto> filteredList = instance.getListViewFavorites().getItems();
         assertTrue(filteredList.isEmpty(), "La lista filtrata dovrebbe essere vuota.");
     }
     

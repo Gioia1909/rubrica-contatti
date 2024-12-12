@@ -72,8 +72,8 @@ public class InterfacciaUtenteControllerTest {
             instance.initialize(null, null);
 
             // Verifica che la lista di contatti sia inizializzata correttamente
-            assertNotNull(instance.getListaContatti()); 
-            assertTrue(instance.getListaContatti().isEmpty());  // Assicurati che sia vuota
+            assertNotNull(instance.getContactList()); 
+            assertTrue(instance.getContactList().isEmpty());  // Assicurati che sia vuota
         });
     }
     
@@ -101,29 +101,29 @@ public class InterfacciaUtenteControllerTest {
                 new Contatto("Rossella", "Farese", Arrays.asList("1234567891"), Arrays.asList("r.farese@gmail.com"), "Nota di test")
         );
 
-        SalvaCaricaRubrica.salvaRubrica(contattiIniziali);
+        SalvaCaricaRubrica.saveAddressBook(contattiIniziali);
 
         URL location = null;
         ResourceBundle resources = null;
         instance.initialize(location, resources);
 
-        assertNotNull(instance.getListaContatti());
-        assertFalse(instance.getListaContatti().isEmpty());
+        assertNotNull(instance.getContactList());
+        assertFalse(instance.getContactList().isEmpty());
 
-        ObservableList<Contatto> contattiCaricati = instance.getListaContatti();
+        ObservableList<Contatto> contattiCaricati = instance.getContactList();
         assertEquals(2, contattiCaricati.size()); // Dovrebbero esserci 2 contatti
 
         Contatto contatto1 = contattiCaricati.get(0);
-        assertEquals("Emanuela", contatto1.getNome());
-        assertEquals("Rossi", contatto1.getCognome());
-        assertEquals("9876543219", contatto1.getNumeri().get(0));
+        assertEquals("Emanuela", contatto1.getName());
+        assertEquals("Rossi", contatto1.getSurname());
+        assertEquals("9876543219", contatto1.getNumbers().get(0));
         assertEquals("e.rossi@gmail.com", contatto1.getEmails().get(0));
         assertEquals("Nota di test", contatto1.getNote());
 
         Contatto contatto2 = contattiCaricati.get(1);
-        assertEquals("Rossella", contatto2.getNome());
-        assertEquals("Farese", contatto2.getCognome());
-        assertEquals("1234567891", contatto2.getNumeri().get(0));
+        assertEquals("Rossella", contatto2.getName());
+        assertEquals("Farese", contatto2.getSurname());
+        assertEquals("1234567891", contatto2.getNumbers().get(0));
         assertEquals("r.farese@gmail.com", contatto2.getEmails().get(0));
         assertEquals("Nota di test", contatto2.getNote());
 
@@ -147,7 +147,7 @@ public class InterfacciaUtenteControllerTest {
         instance.setContactList(listaContatti);
 
         // Recupera la lista tramite il metodo getListaContatti
-        ObservableList<Contatto> result = instance.getListaContatti();
+        ObservableList<Contatto> result = instance.getContactList();
 
         // Verifica che la lista non sia null
         assertNotNull(result);
@@ -155,9 +155,9 @@ public class InterfacciaUtenteControllerTest {
         // Verifica che la lista contenga il contatto atteso
         assertEquals(1, result.size());
         Contatto contatto = result.get(0);
-        assertEquals("Luigi", contatto.getNome());
-        assertEquals("Bianchi", contatto.getCognome());
-        assertEquals("987654321", contatto.getNumeri().get(0));
+        assertEquals("Luigi", contatto.getName());
+        assertEquals("Bianchi", contatto.getSurname());
+        assertEquals("987654321", contatto.getNumbers().get(0));
         assertEquals("luigi.bianchi@example.com", contatto.getEmails().get(0));
         assertEquals("Nota importante", contatto.getNote());
 
@@ -180,7 +180,7 @@ public class InterfacciaUtenteControllerTest {
         instance.setContactList(contactList);
 
         // Recupera la lista tramite il metodo getListaContatti
-        ObservableList<Contatto> result = instance.getListaContatti();
+        ObservableList<Contatto> result = instance.getContactList();
 
         // Verifica che la lista non sia null
         assertNotNull(result);
@@ -190,17 +190,17 @@ public class InterfacciaUtenteControllerTest {
 
         // Controlla le proprietà del primo contatto
         Contatto primoContatto = result.get(0);
-        assertEquals("Anna", primoContatto.getNome());
-        assertEquals("Verdi", primoContatto.getCognome());
-        assertEquals("123456789", primoContatto.getNumeri().get(0));
+        assertEquals("Anna", primoContatto.getName());
+        assertEquals("Verdi", primoContatto.getSurname());
+        assertEquals("123456789", primoContatto.getNumbers().get(0));
         assertEquals("anna.verdi@example.com", primoContatto.getEmails().get(0));
         assertEquals("Nota di test", primoContatto.getNote());
 
         // Controlla le proprietà del secondo contatto
         Contatto secondoContatto = result.get(1);
-        assertEquals("Marco", secondoContatto.getNome());
-        assertEquals("Neri", secondoContatto.getCognome());
-        assertEquals("987654321", secondoContatto.getNumeri().get(0));
+        assertEquals("Marco", secondoContatto.getName());
+        assertEquals("Neri", secondoContatto.getSurname());
+        assertEquals("987654321", secondoContatto.getNumbers().get(0));
         assertEquals("marco.neri@example.com", secondoContatto.getEmails().get(0));
         assertEquals("Un'altra nota", secondoContatto.getNote());
     }
@@ -220,21 +220,21 @@ public class InterfacciaUtenteControllerTest {
         );
 
         instance.setContactList(listaContatti);
-        instance.ordinaContatti();
+        instance.sortContact();
 
      
-        ObservableList<Contatto> result = instance.getListaContatti();
+        ObservableList<Contatto> result = instance.getContactList();
 
         assertEquals(3, result.size());
         
         
-        assertEquals("Farese", result.get(0).getCognome());
-        assertEquals("Rossi", result.get(1).getCognome());
-        assertEquals("Rossi", result.get(2).getCognome());
+        assertEquals("Farese", result.get(0).getSurname());
+        assertEquals("Rossi", result.get(1).getSurname());
+        assertEquals("Rossi", result.get(2).getSurname());
 
-        assertEquals("Rossella", result.get(0).getNome());
-        assertEquals("Emanuela", result.get(1).getNome());
-        assertEquals("Luigi", result.get(2).getNome());
+        assertEquals("Rossella", result.get(0).getNumbers());
+        assertEquals("Emanuela", result.get(1).getName());
+        assertEquals("Luigi", result.get(2).getName());
 
     }
 
@@ -252,26 +252,26 @@ public class InterfacciaUtenteControllerTest {
         );
         
         instance.setContactList(listaContatti);
-         assertEquals(3, instance.getListaContatti().size());
-        instance.deleteContact(new ActionEvent());
+         assertEquals(3, instance.getContactList().size());
+        instance.deleteAction(new ActionEvent());
         
         //verifico la lista dopo l'eliminazione 
-          ObservableList<Contatto> result = instance.getListaContatti();
+          ObservableList<Contatto> result = instance.getContactList();
           assertEquals(2, result.size());
           
            // Controlla le proprietà del primo contatto
         Contatto primoContatto = result.get(0);
-        assertEquals("Emanuela", primoContatto.getNome());
-        assertEquals("Rossi", primoContatto.getCognome());
-        assertEquals("9876543219", primoContatto.getNumeri().get(0));
+        assertEquals("Emanuela", primoContatto.getName());
+        assertEquals("Rossi", primoContatto.getSurname());
+        assertEquals("9876543219", primoContatto.getNumbers().get(0));
         assertEquals("e.rossi@gmail.com", primoContatto.getEmails().get(0));
         assertEquals("Nota di test", primoContatto.getNote());
 
         // Controlla le proprietà del secondo contatto
         Contatto secondoContatto = result.get(1);
-        assertEquals("Luigi", secondoContatto.getNome());
-        assertEquals("Rossi", secondoContatto.getCognome());
-        assertEquals("9876543210", secondoContatto.getNumeri().get(0));
+        assertEquals("Luigi", secondoContatto.getName());
+        assertEquals("Rossi", secondoContatto.getSurname());
+        assertEquals("9876543210", secondoContatto.getNumbers().get(0));
         assertEquals("luigi.bianchi@gmail.com", secondoContatto.getEmails().get(0));
         assertEquals("Nota di test", secondoContatto.getNote());  
      
@@ -299,7 +299,7 @@ public class InterfacciaUtenteControllerTest {
             TextField searchBar = new TextField();
             instance.setSearchBar(searchBar);
             searchBar.setText("Emanuela");
-            instance.searchContact(new ActionEvent());
+            instance.searchAction(new ActionEvent());
             
             //Verifica che la lista filtrata contenga solo il contatto corrispondente 
    

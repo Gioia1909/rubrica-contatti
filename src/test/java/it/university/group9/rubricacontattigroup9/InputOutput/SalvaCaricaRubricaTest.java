@@ -51,25 +51,25 @@ public class SalvaCaricaRubricaTest {
     public void testSalvaRubrica() {
         System.out.println("salvaRubrica");
         // Salva la rubrica
-        SalvaCaricaRubrica.salvaRubrica(rubrica);
+        SalvaCaricaRubrica.saveAddressBook(rubrica);
         // Verifica che non vengano lanciate eccezioni durante il salvataggio
-        assertDoesNotThrow(() -> SalvaCaricaRubrica.salvaRubrica(rubrica));
+        assertDoesNotThrow(() -> SalvaCaricaRubrica.saveAddressBook(rubrica));
     }
 
     @Test
     public void testCaricaRubrica() {
         System.out.println("caricaRubrica");
         // Carica la rubrica e confronta i risultati
-        ObservableList<Contatto> result = SalvaCaricaRubrica.caricaRubrica();
+        ObservableList<Contatto> result = SalvaCaricaRubrica.loadAddressBook();
         assertNotNull(result);
         assertEquals(rubrica.size(), result.size());
         // Confronta il contenuto della rubrica caricata con quella salvata
         for (int i = 0; i < rubrica.size(); i++) {
             Contatto expectedContact = rubrica.get(i);
             Contatto actualContact = result.get(i);
-            assertEquals(expectedContact.getNome(), actualContact.getNome());
-            assertEquals(expectedContact.getCognome(), actualContact.getCognome());
-            assertEquals(expectedContact.getNumeri(), actualContact.getNumeri());
+            assertEquals(expectedContact.getName(), actualContact.getName());
+            assertEquals(expectedContact.getSurname(), actualContact.getSurname());
+            assertEquals(expectedContact.getNumbers(), actualContact.getNumbers());
             assertEquals(expectedContact.getEmails(), actualContact.getEmails());
             assertEquals(expectedContact.getNote(), actualContact.getNote());
         }

@@ -29,7 +29,6 @@ import org.testfx.framework.junit5.Start;
 /**
  * Classe di test per InterfacciaAggiungiModificaController.
  */
-
 public class InterfacciaAggiungiModificaControllerTest {
 
     private InterfacciaAggiungiModificaController controller;
@@ -45,7 +44,6 @@ public class InterfacciaAggiungiModificaControllerTest {
         stage.show();
     }
 
- 
     /**
      * Test Inizializzazione con Lista Vuota
      */
@@ -87,8 +85,8 @@ public class InterfacciaAggiungiModificaControllerTest {
                 CampoNonValidoException exception = assertThrows(CampoNonValidoException.class, () -> controller.addAction(new ActionEvent()));
                 assertEquals("Nome e cognome sono obbligatori.", exception.getMessage());
             }
-        });
-
+        }
+        );
     }
 
     @Test

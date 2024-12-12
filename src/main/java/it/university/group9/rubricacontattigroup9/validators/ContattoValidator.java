@@ -14,6 +14,7 @@ package it.university.group9.rubricacontattigroup9.validators;
 import it.university.group9.rubricacontattigroup9.Contatto;
 import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
 import java.util.List;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 /**
@@ -32,7 +33,7 @@ public class ContattoValidator {
      * @param number Il numero di telefono da verificare.
      * @return true se il numero è già presente, false altrimenti.
      */
-    public static boolean isNumberDuplicate(List<Contatto> contacts, String number) {
+    public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, String number) {
         for (Contatto contact : contacts) {
             for (String num : contact.getNumbers()) {
                 if (num.equals(number)) {
