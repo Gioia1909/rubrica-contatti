@@ -60,7 +60,7 @@ public class SalvaCaricaPreferitiTest {
     public void testCaricaRubricaPreferiti() {
         System.out.println("caricaRubricaPreferiti");
         ObservableList<Contatto> expResult = FXCollections.observableArrayList(new Contatto("Debora", "Villano", Arrays.asList("3923816991"), Arrays.asList("deboravillano1@gmail.com"), "Nota Debbi"));
-        ObservableList<Contatto> result = SalvaCaricaPreferiti.caricaRubricaPreferiti();
+        ObservableList<Contatto> result = SalvaCaricaPreferiti.loadFavoritesBookAddress();
         // Verifica che la lista caricata contenga gli stessi dati di quella di esempio
         assertNotNull(result); // La lista non deve essere null
         assertEquals(expResult.size(), result.size()); // La dimensione delle liste deve essere uguale
