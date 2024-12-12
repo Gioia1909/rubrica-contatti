@@ -388,8 +388,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         return numbers;
     }
 
- 
- /**
+  /**
  * @brief Raccoglie e valida gli indirizzi email inseriti nei campi di input.
  *
  * Questo metodo legge i valori inseriti nei campi dedicati agli indirizzi email, 
