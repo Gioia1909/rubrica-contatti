@@ -23,6 +23,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import static org.junit.jupiter.api.Assertions.*;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
@@ -31,7 +32,7 @@ import org.testfx.framework.junit5.Start;
  * Classe di test per InterfacciaAggiungiModificaController.
  */
 
-@ExtendsWith(ApplicationExtension.class)
+@ExtendWith(ApplicationExtension.class)
 public class InterfacciaAggiungiModificaControllerTest {
 
     private InterfacciaAggiungiModificaController controller;

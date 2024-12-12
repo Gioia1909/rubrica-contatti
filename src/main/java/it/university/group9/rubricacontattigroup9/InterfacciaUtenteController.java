@@ -486,6 +486,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            
         } else {
             System.out.println("Nessun contatto selezionato");
         }
