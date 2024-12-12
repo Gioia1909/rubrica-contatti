@@ -175,7 +175,7 @@ public class SelezionaContattiDaRubricaController implements Initializable {
      * 
      * @param addressBook La rubrica dei contatti da impostare.
      */
-    public void setRubrica(ObservableList<Contatto> addressBook) {
+    public void setAddressBook(ObservableList<Contatto> addressBook) {
         this.addressBook = addressBook;
     }
 

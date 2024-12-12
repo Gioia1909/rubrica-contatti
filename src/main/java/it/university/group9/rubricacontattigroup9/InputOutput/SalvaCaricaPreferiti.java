@@ -90,21 +90,7 @@ public class SalvaCaricaPreferiti implements Serializable {
         }    
     }
     
-    public static void exportToCSV(ObservableList<Contatto> addressBook) throws IOException{
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(fileCSV)))){
-            // Intestazione del CSV
-            pw.println("NOME;COGNOME;TELEFONO;EMAIL");
-            
-            for(Contatto contatto : addressBook){
-                String numeri = String.join("\n", contatto.getNumbers());
-                String email = String.join("\n", contatto.getEmails());
-                
-                pw.println(contatto.getName() + ";" + contatto.getSurname() + ";" + numeri + ";" + email);
-            }
-            
-        }
-        System.out.println("Rubrica esportata correttamente in " + fileCSV);
-    }
+
     
     
 }
