@@ -86,8 +86,10 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addressBook = new Rubrica();
-        favoriteList = addressBook.getFavoriteList();
+        favoriteList = FXCollections.observableArrayList(addressBook.getFavoriteList());
+        System.out.println("Stato preferiti attuale: " + favoriteList);
         favoriteListView.setItems(favoriteList);
+        System.out.println("Stato Vista Lista preferiti attuale: " + favoriteListView);
         configurePreferitiListView();
     }
 
@@ -138,10 +140,14 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     @Override
     public void deleteAction(ActionEvent event) {
         Contatto selectedContact = favoriteListView.getSelectionModel().getSelectedItem();
+        System.out.println("Ho premuto cancella su " + selectedContact);
+        
         if (selectedContact != null) {
             addressBook.removeFromFavorites(selectedContact);
+            refreshFavoriteList();
             favoriteListView.getSelectionModel().clearSelection();
         }
+        System.out.println("La lista contiene ora: " + favoriteList);
     }
 
     /**
@@ -168,6 +174,9 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+            
+            // Dopo la modifica, aggiorna la lista
+            refreshFavoriteList();
         }
     }
 
@@ -183,15 +192,21 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     @FXML
     @Override
     public void searchAction(ActionEvent event) {
+        System.out.println("Ho premuto la Ricerca");
         String searchQuery = searchBar.getText().toLowerCase().trim();
 
         if (searchQuery.isEmpty()) {
-            favoriteListView.setItems(favoriteList);
+            refreshFavoriteList(); // Assicurati che la lista originale sia sincronizzata
+            System.out.println("Con la SearchQuery vuota la Lista preferiti: " + favoriteList.size());
             return;
         }
-        ObservableList<Contatto> filteredList = addressBook.searchFavoriteContact(searchQuery);
-
+        ObservableList<Contatto> filteredList = FXCollections.observableArrayList(
+        addressBook.searchFavoriteContact(searchQuery)
+        );
+        System.out.println("Lista filtrata: " + filteredList.size());
+        
         if (filteredList.isEmpty()) {
+            favoriteListView.setItems(FXCollections.observableArrayList());
             showErrorDialog("Errore", "Nessun contatto trovato.");
         } else {
             favoriteListView.setItems(filteredList);
@@ -238,6 +253,11 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
         Scene scene = favoriteListView.getScene();
         scene.setRoot(root);
 
+    }
+
+    private void refreshFavoriteList() {
+        favoriteList.setAll(addressBook.getFavoriteList());
+        favoriteListView.setItems(favoriteList); // Risincronizza la vista grafica
     }
 
 }

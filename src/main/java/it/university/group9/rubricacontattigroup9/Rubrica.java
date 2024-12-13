@@ -28,7 +28,8 @@ public class Rubrica implements GestioneRubrica {
     public Rubrica() {
         this.contactList = SalvaCaricaRubrica.loadAddressBook();
         this.favoriteList = SalvaCaricaPreferiti.loadFavoritesAddressBook();
-        synchronizeFavorites();
+        //synchronizeFavorites();
+        System.out.println("Lista iniziale dei preferiti: " + favoriteList.size());
     }
 
     /**
@@ -38,7 +39,12 @@ public class Rubrica implements GestioneRubrica {
      * principale, viene rimosso automaticamente dai preferiti.
      */
     private void synchronizeFavorites() {
-        favoriteList.removeIf(fav -> !contactList.contains(fav));
+    System.out.println("Sincronizzazione dei preferiti prima: " + favoriteList.size());    
+    System.out.println("Contenuto dei preferiti prima: " + favoriteList);
+    System.out.println("Contenuto della rubrica principale: " + contactList);
+    favoriteList.removeIf(fav -> !contactList.contains(fav));
+    System.out.println("Sincronizzazione dei preferiti dopo: " + favoriteList.size());
+    System.out.println("Contenuto dei preferiti dopo: " + favoriteList);
     }
 
     /**
@@ -157,10 +163,14 @@ public class Rubrica implements GestioneRubrica {
      * @brief Rimuove un contatto dai preferiti.
      */
     public void removeFromFavorites(Contatto contact) {
-        int index = contactList.indexOf(contact);
+        System.out.println("Sto cercando di rimuovere: " + contact);
+        System.out.println("Lista dei preferiti prima: " + favoriteList);
+        int index = favoriteList.indexOf(contact);
         if (index != -1) {
             contact.setFav(false); // Rimuovi lo stato di preferito
             favoriteList.remove(contact);
+            System.out.println("Sto nella Rubrica ho rimosso " + contact);
+            System.out.println("La lista dei preferiti contiene " + favoriteList);
             try {
                 saveFavorites(); // Salva le modifiche
             } catch (IOException ex) {
@@ -190,6 +200,11 @@ public class Rubrica implements GestioneRubrica {
      * @brief Cerca contatti nella rubrica dei preferiti.
      */
     public ObservableList<Contatto> searchFavoriteContact(String param) {
+        System.out.println("Esecuzione della ricerca nei preferiti con il parametro: " + param);
+        for (Contatto contact : favoriteList) {
+            System.out.println("Preferito: " + contact.getName() + " " + contact.getSurname());
+        }
+
         ObservableList<Contatto> result = FXCollections.observableArrayList();
         for (Contatto contact : favoriteList) {
             if (contact.getName().toLowerCase().contains(param.toLowerCase())
@@ -199,6 +214,7 @@ public class Rubrica implements GestioneRubrica {
                 result.add(contact);
             }
         }
+        System.out.println("Risultati della ricerca: " + result.size());
         return result;
     }
 
