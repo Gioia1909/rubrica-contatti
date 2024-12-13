@@ -55,6 +55,10 @@ public class Contatto implements Comparable<Contatto> {
     public void setFav(boolean flag){
         this.fav=flag;
     }
+    
+    public boolean isFav(){
+        return fav;
+    }
 
     /**
      * @brief Costruttore predefinito della classe Contatto.

@@ -194,18 +194,24 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         stage.show();
     }
     
-    
-    @FXML
+       @FXML
     void addToFavoriteAction(ActionEvent event) {
-            Contatto selectedContact = contactListView.getSelectionModel().getSelectedItem();
-            if(selectedContact!=null) {
-               selectedContact.setFav(true);
+        Contatto selectedContact = contactListView.getSelectionModel().getSelectedItem();
+        if (selectedContact != null && !selectedContact.isFav()) {
+            selectedContact.setFav(true);
+
+            addressBook.addToFavorites(selectedContact);
+            /*Mostra un messaggio di conferma con un popup
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Contatto aggiunto ai preferiti");
+            alert.setHeaderText("Il contatto è stato aggiunto ai preferiti con successo!");
+            //       alert.setContentText("Il file CSV è stato salvato correttamente in: \n" + fileCSV);
+            alert.showAndWait(); */
       
-           addressBook.addToFavorites(selectedContact);
+        }
     }
-    }
-    
-    
+
+
 
     /**
      * @brief Elimina il contatto selezionato dalla lista.
