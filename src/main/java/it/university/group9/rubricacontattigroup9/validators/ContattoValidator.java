@@ -106,19 +106,25 @@ public class ContattoValidator {
         }
     }
 
-    public static void validatePhoneNumber(String phoneNumber) throws CampoNonValidoException {
-        String cleanedPhoneNumber = phoneNumber.replaceAll("\\s", "");
-        if (!cleanedPhoneNumber.matches("^[+]?[0-9]{10,15}$")) {
-            /* Possono iniziare con un "+" (opzionale).
+    public static void validatePhoneNumber(List <String> numbers) throws CampoNonValidoException {
+        for (String number : numbers) {
+
+            String cleanedPhoneNumber = number.replaceAll("\\s", "");
+            if (!cleanedPhoneNumber.matches("^[+]?[0-9]{10,15}$")) {
+                /* Possono iniziare con un "+" (opzionale).
             Contengono solo cifre da 0 a 9.
             Hanno una lunghezza compresa tra 10 e 15 caratteri.*/
-            throw new CampoNonValidoException("Numero di telefono");
+                throw new CampoNonValidoException("Numero di telefono");
+            }
         }
     }
 
-    public static void validateEmail(String email) throws CampoNonValidoException {
-        if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-            throw new CampoNonValidoException("Email");
+    public static void validateEmail(List<String> emails) throws CampoNonValidoException {
+        for (String email : emails) {
+
+            if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+                throw new CampoNonValidoException("Email");
+            }
         }
     }
 

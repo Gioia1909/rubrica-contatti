@@ -36,42 +36,15 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     private boolean isEditing = false;
     private Contatto existingContact;
     private Rubrica addressBook;
+    private ObservableList<Contatto> contactList;
 
 
     /**
      * @brief Riferimento al controller dell'interfaccia principale.
      */
     private InterfacciaUtenteController userInterfaceController;
-
-    public void initializeForEdit(Contatto contact, List<Contatto> addressBook) {
-        // Carica i dettagli del contatto selezionato nei campi
-            nameField.setText(contact.getName());
-            surnameField.setText(contact.getSurname());
-            noteField.setText(contact.getNote());
-
-        // Carica i numeri (se esistono) nei campi specifici
-            List<String> numbers = contact.getNumbers();
-            if (numbers.size() > 0) number1Field.setText(numbers.get(0));
-            if (numbers.size() > 1) number2Field.setText(numbers.get(1));
-            if (numbers.size() > 2) number3Field.setText(numbers.get(2));
-
-           // Carica le email (se esistono) nei campi specifici
-            List<String> emails = contact.getEmails();
-            if (emails.size() > 0) email1Field.setText(emails.get(0));
-            if (emails.size() > 1) email2Field.setText(emails.get(1));
-            if (emails.size() > 2) email3Field.setText(emails.get(2));
-            
-            // Memorizza il contatto selezionato per aggiornarlo successivamente
-            this.existingContact = contact;
-}
-        
-    public void initializeForAdd(ObservableList<Contatto> addressBook) {
-        this.addressBook = addressBook;
-        addButton.setVisible(true);
-        editButton.setVisible(false); // Nascondi il bottone di modifica
-    }
-
-  /**
+    
+    /**
      * @brief Inizializza la finestra per modificare un contatto esistente.
      * 
      * @param contact Contatto da modificare.
@@ -80,12 +53,20 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * @pre `contact` e `addressBook` devono essere non null.
      * @post La finestra è configurata per modificare i dati del contatto fornito.
      */
-    public void initializeForEdit(Contatto contact, ObservableList<Contatto> addressBook) {
-        this.addressBook = addressBook;
-        this.existingContact = contact;
-        populateFields(contact);
-        addButton.setVisible(false);
-        editButton.setVisible(true);
+    public void initializeForEdit(Rubrica addressBook, Contatto contact, ObservableList<Contatto> contactList) {
+            this.addressBook = addressBook; // Salva il riferimento alla Rubrica
+            this.contactList = contactList;
+            this.existingContact = contact;
+            populateFields(contact);
+            addButton.setVisible(false);
+            editButton.setVisible(true);
+}
+        
+    public void initializeForAdd(Rubrica addressBook, ObservableList<Contatto> contactList) {
+        this.addressBook = addressBook; // Salva il riferimento alla Rubrica
+        this.contactList = contactList;
+        addButton.setVisible(true);
+        editButton.setVisible(false); // Nascondi il bottone di modifica
     }
 
     
@@ -100,6 +81,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.contactList = contactList;
         addButton.setOnAction(event -> addAction(event));
         editButton.setOnAction(event -> editAction(event));
     }
@@ -138,10 +120,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
                 handleValidationError("Nome e cognome sono obbligatori.");
                 return;
             }
-
-            ContattoValidator.validateName(name);
-            ContattoValidator.validateSurname(surname);
-
             List<String> numbers = collectValidNumbers();
             if (numbers.isEmpty()) {
                 handleValidationError("Deve essere inserito almeno un numero di telefono valido.");
@@ -151,17 +129,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             List<String> emails = collectValidEmails();
             String note = noteField.getText().trim();
 
-            if (ContattoValidator.isContactDuplicate(userInterfaceController.getContactList(), name, surname, numbers)) {
+            if (ContattoValidator.isContactDuplicate(contactList, name, surname, numbers)) {
                 if (!requestConfirmation("Contatto Duplicato", "Un contatto con le stesse informazioni esiste già. Vuoi comunque aggiungerlo?")) {
                     return;
                 }
             }
-
-            Contatto newContact = new Contatto(name, surname, numbers, emails, note);
-            userInterfaceController.getContactList().add(newContact);
-            userInterfaceController.sortContact();
-            SalvaCaricaRubrica.saveAddressBook(userInterfaceController.getContactList());
-
+            addressBook.addContact(name, surname, numbers, emails, note);
             closeWindow();
 
         } catch (CampoNonValidoException e) {
@@ -224,13 +197,15 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
             String note = noteField.getText().trim();
 
-            Contatto newContact = new Contatto(name, surname, numbers, emails, note);
-
-            if (ContattoValidator.isNumberDuplicate(addressBook.getContactList(), numbers)){
-                
+            Contatto updatedContact = new Contatto(name, surname, numbers, emails, note);
+            
+            // Verifica se la modifica genera duplicazioni
+            if (!addressBook.isEditValid(existingContact, updatedContact)) {
+                handleValidationError("Le modifiche generano un duplicato nella rubrica.");
+                return;
             }
 
-            SalvaCaricaRubrica.saveAddressBook(addressBook);
+            addressBook.editContact(existingContact, name, surname, numbers, emails, note);
             closeWindow();
 
         } catch (CampoNonValidoException e) {
@@ -256,16 +231,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
  */
 
     private List<String> collectValidNumbers() throws CampoNonValidoException {
-        List<String> numbers = new ArrayList<>();
-        List<TextField> numberFields = ArrvalidatePhoneNumberays.asList(number1Field, number2Field, number3Field);
-
-        for (TextField field : numberFields) {
-            String number = field.getText().trim();
-            if (!number.isEmpty()) {
-                ContattoValidator.(number);
-                numbers.add(number);
-            }
-        }
+        List<String> numbers = new ArrayList<>(Arrays.asList(
+        number1Field.getText(),
+        number2Field.getText(),
+        number3Field.getText()
+        ));
+        ContattoValidator.validatePhoneNumber(numbers);
         return numbers;
     }
 
@@ -287,16 +258,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
  * @see ContattoValidator
  */
     private List<String> collectValidEmails() throws CampoNonValidoException {
-        List<String> emails = new ArrayList<>();
-        List<TextField> emailFields = Arrays.asList(email1Field, email2Field, email3Field);
-
-        for (TextField field : emailFields) {
-            String email = field.getText().trim();
-            if (!email.isEmpty()) {
-                ContattoValidator.validateEmail(email);
-                emails.add(email);
-            }
-        }
+        List<String> emails = new ArrayList<>(Arrays.asList(
+        email1Field.getText(),
+        email2Field.getText(),
+        email3Field.getText()
+        ));
+        ContattoValidator.validateEmail(emails);
         return emails;
     }
 

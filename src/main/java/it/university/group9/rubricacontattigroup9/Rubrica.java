@@ -12,10 +12,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Rubrica implements GestioneRubrica{
+public class Rubrica implements GestioneRubrica {
 
     private ObservableList<Contatto> contactList;
     private ObservableList<Contatto> favoriteList;
+
+    public void setContactList(ObservableList<Contatto> contactList) {
+        this.contactList = contactList;
+    }
+
+    public void setFavoriteList(ObservableList<Contatto> favoriteList) {
+        this.favoriteList = favoriteList;
+    }
 
     public Rubrica() {
         this.contactList = SalvaCaricaRubrica.loadAddressBook();
@@ -26,8 +34,8 @@ public class Rubrica implements GestioneRubrica{
     /**
      * @brief Sincronizza la lista dei preferiti con i contatti principali.
      *
-     * Se un contatto nella lista dei preferiti non è più presente nella rubrica principale,
-     * viene rimosso automaticamente dai preferiti.
+     * Se un contatto nella lista dei preferiti non è più presente nella rubrica
+     * principale, viene rimosso automaticamente dai preferiti.
      */
     private void synchronizeFavorites() {
         favoriteList.removeIf(fav -> !contactList.contains(fav));
@@ -55,19 +63,14 @@ public class Rubrica implements GestioneRubrica{
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
-
     @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException {
 
         ContattoValidator.validateName(name);
         ContattoValidator.validateSurname(surname);
-        for (String number : numbers) {
-            ContattoValidator.validatePhoneNumber(number);
-        }
-        for (String email : emails) {
-            ContattoValidator.validateEmail(email);
-        }
+        ContattoValidator.validateEmail(emails);
+        ContattoValidator.validatePhoneNumber(numbers);
 
         if (ContattoValidator.isContactDuplicate(contactList, name, surname, numbers)) {
             throw new CampoNonValidoException("Contatto duplicato");
@@ -86,19 +89,14 @@ public class Rubrica implements GestioneRubrica{
     /**
      * @brief Modifica un contatto esistente.
      */
-    
     @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException {
 
         ContattoValidator.validateName(name);
         ContattoValidator.validateSurname(surname);
-        for (String number : numbers) {
-            ContattoValidator.validatePhoneNumber(number);
-        }
-        for (String email : emails) {
-            ContattoValidator.validateEmail(email);
-        }
+        ContattoValidator.validateEmail(emails);
+        ContattoValidator.validatePhoneNumber(numbers);
 
         int index = contactList.indexOf(oldContact);
         if (index != -1) {
@@ -121,7 +119,7 @@ public class Rubrica implements GestioneRubrica{
      * @brief Rimuove un contatto dalla rubrica principale e dai preferiti.
      */
     @Override
-    public void deleteContact(Contatto contact){
+    public void deleteContact(Contatto contact) {
         int index = contactList.indexOf(contact);
         if (index != -1) {
             contactList.remove(contact);
@@ -142,7 +140,7 @@ public class Rubrica implements GestioneRubrica{
     /**
      * @brief Aggiunge un contatto ai preferiti.
      */
-    public void addToFavorites(Contatto contact){
+    public void addToFavorites(Contatto contact) {
         if (contactList.contains(contact) && !favoriteList.contains(contact)) {
             favoriteList.add(contact);
             contact.setFav(true); // Imposta il contatto come preferito
@@ -179,7 +177,7 @@ public class Rubrica implements GestioneRubrica{
         ObservableList<Contatto> result = FXCollections.observableArrayList();
         for (Contatto contact : contactList) {
             if (contact.getName().toLowerCase().contains(param.toLowerCase())
-                    || contact.getSurname().toLowerCase().contains(param.toLowerCase()) 
+                    || contact.getSurname().toLowerCase().contains(param.toLowerCase())
                     || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
                     || contact.getEmails().stream().anyMatch(email -> email.contains(param))) {
                 result.add(contact);
@@ -187,7 +185,7 @@ public class Rubrica implements GestioneRubrica{
         }
         return result;
     }
-    
+
     /**
      * @brief Cerca contatti nella rubrica dei preferiti.
      */
@@ -195,13 +193,43 @@ public class Rubrica implements GestioneRubrica{
         ObservableList<Contatto> result = FXCollections.observableArrayList();
         for (Contatto contact : favoriteList) {
             if (contact.getName().toLowerCase().contains(param.toLowerCase())
-                    || contact.getSurname().toLowerCase().contains(param.toLowerCase()) 
+                    || contact.getSurname().toLowerCase().contains(param.toLowerCase())
                     || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
                     || contact.getEmails().stream().anyMatch(email -> email.contains(param))) {
                 result.add(contact);
             }
         }
         return result;
+    }
+
+    /**
+     * @brief Verifica se la modifica di un contatto esistente genera un
+     * duplicato nella rubrica.
+     *
+     * Questo metodo verifica se i dati modificati di un contatto sono validi e
+     * non creano un duplicato con altri contatti presenti nella rubrica.
+     *
+     * @param oldContact Il contatto originale prima della modifica.
+     * @param updatedContact Il contatto aggiornato con i nuovi dati.
+     * @return true se la modifica è valida (non genera duplicati), false
+     * altrimenti.
+     */
+    public boolean isEditValid(Contatto oldContact, Contatto updatedContact) {
+        for (Contatto contact : contactList) {
+            // Salta il contatto che stiamo modificando
+            if (contact.equals(oldContact)) {
+                continue;
+            }
+            // Controlla duplicati di nome, cognome e numeri
+            boolean sameNameAndSurname = contact.getName().equalsIgnoreCase(updatedContact.getName())
+                    && contact.getSurname().equalsIgnoreCase(updatedContact.getSurname());
+            boolean overlappingNumbers = updatedContact.getNumbers().stream()
+                    .anyMatch(number -> contact.getNumbers().contains(number));
+            if (sameNameAndSurname || overlappingNumbers) {
+                return false; // Modifica non valida, genera duplicati
+            }
+        }
+        return true; // Modifica valida
     }
 
     /**
@@ -218,8 +246,8 @@ public class Rubrica implements GestioneRubrica{
         SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
     }
 
-    private void sort(ObservableList<Contatto> contactList){
+    private void sort(ObservableList<Contatto> contactList) {
         FXCollections.sort(contactList);
     }
-    
+
 }
