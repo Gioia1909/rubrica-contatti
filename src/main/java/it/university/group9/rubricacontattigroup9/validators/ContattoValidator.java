@@ -30,14 +30,14 @@ public class ContattoValidator {
      * Controlla se il numero di telefono è già presente tra i contatti.
      *
      * @param contacts La lista di contatti da esaminare.
-     * @param number Il numero di telefono da verificare.
+     * @param numbers La lista dei numeri di telefono da verificare.
      * @return true se il numero è già presente, false altrimenti.
      */
-    public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, String number) {
+    public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, List<String> numbers) {
         for (Contatto contact : contacts) {
-            for (String num : contact.getNumbers()) {
-                if (num.equals(number)) {
-                    return true; // Numero già presente
+            for (String number : numbers) {
+                if (contact.getNumbers().contains(number)) {
+                    return true; // Almeno un numero duplicato trovato
                 }
             }
         }
@@ -52,7 +52,7 @@ public class ContattoValidator {
      * @param contacts La lista di contatti da esaminare.
      * @param name Il nome del contatto.
      * @param surname Il cognome del contatto.
-     * @param numbers Il numero di telefono del contatto.
+     * @param numbers I numeri di telefono del contatto.
      * @return true se il contatto esiste già, false altrimenti.
      */
     public static boolean isContactDuplicate(List<Contatto> contacts, String name, String surname, List<String> numbers) {
@@ -73,12 +73,20 @@ public class ContattoValidator {
         }
         return false; // Contatto non trovato
     }
-
-    public static boolean isEmailDuplicate(List<Contatto> contacts, String email) {
+    /**
+     * @brief Verifica se un numero di telefono è duplicato.
+     *
+     * Controlla se il numero di telefono è già presente tra i contatti.
+     *
+     * @param contacts La lista di contatti da esaminare.
+     * @param emails La lista delle email da verificare.
+     * @return true se il numero è già presente, false altrimenti.
+     */
+    public static boolean isEmailDuplicate(List<Contatto> contacts,  List<String> emails) {
         for (Contatto contact : contacts) {
-            for (String em : contact.getEmails()) {
-                if (em.equals(email)) {
-                    return true; // Email già presente
+            for (String email : emails) {
+                if (contact.getEmails().contains(email)) {
+                    return true; // Almeno un'email duplicato trovato
                 }
             }
         }

@@ -214,7 +214,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
         InterfacciaUtenteController controller = loader.getController();
 
         // Passa la lista di contatti al nuovo controller
-        controller.setContactList(addressBook.getContactList());
+        //controller.setContactList(addressBook.getContactList());
 
         // Cambia la scena
         Scene scene = favoriteListView.getScene();
