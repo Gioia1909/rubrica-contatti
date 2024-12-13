@@ -78,9 +78,6 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateEmail(emails);
         ContattoValidator.validatePhoneNumber(numbers);
 
-        if (ContattoValidator.isContactDuplicate(contactList, name, surname, numbers)) {
-            throw new CampoNonValidoException("Contatto duplicato");
-        }
 
         Contatto newContact = new Contatto(name, surname, numbers, emails, note);
         contactList.add(newContact);

@@ -122,7 +122,15 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             }
             List<String> emails = collectValidEmails();
             List<String> numbers = collectValidNumbers();
-            if (numbers.isEmpty()) {
+            int e=0; 
+            int n=0; 
+            for(String email : emails){
+                if(email.isEmpty()) e++;
+            }
+            for(String number : numbers){
+                if(number.isEmpty()) n++;
+            }
+            if (n==3 && e==3) {
                 handleValidationError("Deve essere inserito almeno un numero di telefono valido o email valida.");
                 return;
             }
@@ -134,6 +142,13 @@ public class InterfacciaAggiungiModificaController implements Initializable {
                     return;
                 }
             }
+            
+            if(ContattoValidator.isNumberDuplicate(contactList, numbers)) {
+                if (!requestConfirmation("Numero Duplicato", "Numero duplicato, vuoi comunque aggiungerlo?")) {
+                    return;
+                }
+            }
+            
             addressBook.addContact(name, surname, numbers, emails, note);
             closeWindow();
 

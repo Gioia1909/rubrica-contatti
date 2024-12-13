@@ -106,13 +106,13 @@ public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, List<
     }
 
     public static void validateName(String name) throws CampoNonValidoException {
-        if (name == null || name.trim().isEmpty() || !Character.isAlphabetic(name.charAt(0))) {
+        if (!name.trim().isEmpty() && !Character.isAlphabetic(name.charAt(0))) {
             throw new CampoNonValidoException("Nome");
         }
     }
 
     public static void validateSurname(String surname) throws CampoNonValidoException {
-        if (surname == null || surname.trim().isEmpty() || !Character.isAlphabetic(surname.charAt(0))) {    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
+        if (!surname.trim().isEmpty() && !Character.isAlphabetic(surname.charAt(0))) {    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
             //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
             throw new CampoNonValidoException("Cognome");
         }
