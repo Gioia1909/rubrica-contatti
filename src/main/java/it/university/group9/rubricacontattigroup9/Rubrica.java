@@ -4,6 +4,10 @@
  */
 package it.university.group9.rubricacontattigroup9;
 
+import it.university.group9.rubricacontattigroup9.exceptions.*;
+import it.university.group9.rubricacontattigroup9.validators.*;
+import java.io.IOException;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,9 +15,10 @@ import javafx.collections.ObservableList;
  *
  * @author ari19
  */
-public class Rubrica {
+public class Rubrica implements GestioneRubrica {
 
     private ObservableList<Contatto> addressBook;
+    
 
     public Rubrica() {
         this.addressBook = FXCollections.observableArrayList();
@@ -22,21 +27,82 @@ public class Rubrica {
     public ObservableList<Contatto> getContact() {
         return addressBook;
     }
+    
+    /**
+     * @brief Aggiunge un contatto alla rubrica.
+     * 
+     * @param name Nome del contatto.
+     * @param surname Cognome del contatto.
+     * @param numbers Lista di numeri di telefono del contatto.
+     * @param emails Lista di email del contatto.
+     * @param note Note associate al contatto.
+     * @throws CampoNonValidoException Se uno dei campi non è valido.
+     * @throws IOException Se si verifica un errore durante il salvataggio.
+     */
 
-    public void addContact(Contatto contact) {
-        addressBook.add(contact);
+    public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
+            throws CampoNonValidoException, IOException {
+
+        ContattoValidator.validateName(name);
+        ContattoValidator.validateSurname(surname);
+        for (String number : numbers) {
+            ContattoValidator.validatePhoneNumber(number);
+        }
+        for (String email : emails) {
+            ContattoValidator.validateEmail(email);
+        }
+
+        if (ContattoValidator.isContactDuplicate(addressBook, name, surname, numbers)) {
+            throw new CampoNonValidoException("Contatto duplicato");
+        }
+
+        Contatto newContact = new Contatto(name, surname, numbers, emails, note);
+        addressBook.add(newContact);
+        saveContacts();
     }
 
-    public void editContact(Contatto existingContact, Contatto editedContact) {
-        int index = addressBook.indexOf(existingContact);
+    /**
+     * @brief Modifica un contatto esistente.
+     * 
+     * @param oldContact Il contatto da modificare.
+     * @param name Nuovo nome del contatto.
+     * @param surname Nuovo cognome del contatto.
+     * @param numbers Nuovi numeri di telefono del contatto.
+     * @param emails Nuove email del contatto.
+     * @param note Nuove note associate al contatto.
+     * @throws CampoNonValidoException Se uno dei campi non è valido.
+     * @throws IOException Se si verifica un errore durante il salvataggio.
+     */
+    public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
+            throws CampoNonValidoException, IOException {
+
+        ContattoValidator.validateName(name);
+        ContattoValidator.validateSurname(surname);
+        for (String number : numbers) {
+            ContattoValidator.validatePhoneNumber(number);
+        }
+        for (String email : emails) {
+            ContattoValidator.validateEmail(email);
+        }
+
+        int index = addressBook.indexOf(oldContact);
         if (index != -1) {
-            addressBook.set(index, editedContact);
+            Contatto updatedContact = new Contatto(name, surname, numbers, emails, note);
+            addressBook.set(index, updatedContact);
+            saveContacts();
         }
     }
-
-    public void deleteContact(Contatto contact) {
+    /**
+     * @brief Rimuove un contatto dalla rubrica.
+     * 
+     * @param contact Il contatto da rimuovere.
+     * @throws IOException Se si verifica un errore durante il salvataggio.
+     */
+    public void deleteContact(Contatto contact) throws IOException{
         addressBook.remove(contact);
+        saveContacts();
     }
+    
 
     public ObservableList<Contatto> searchContact(String param) {
         ObservableList<Contatto> result = FXCollections.observableArrayList();
