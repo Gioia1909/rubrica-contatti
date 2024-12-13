@@ -4,6 +4,7 @@
  */
 package it.university.group9.rubricacontattigroup9;
 
+import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
 import it.university.group9.rubricacontattigroup9.exceptions.*;
 import it.university.group9.rubricacontattigroup9.validators.*;
 import java.io.IOException;
@@ -17,15 +18,15 @@ import javafx.collections.ObservableList;
  */
 public class Rubrica implements GestioneRubrica {
 
-    private ObservableList<Contatto> addressBook;
+    private ObservableList<Contatto> contactList;
     
 
     public Rubrica() {
-        this.addressBook = FXCollections.observableArrayList();
+        this.contactList = FXCollections.observableArrayList();
     }
 
     public ObservableList<Contatto> getContact() {
-        return addressBook;
+        return contactList;
     }
     
     /**
@@ -39,7 +40,7 @@ public class Rubrica implements GestioneRubrica {
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
-
+    @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
 
@@ -52,12 +53,12 @@ public class Rubrica implements GestioneRubrica {
             ContattoValidator.validateEmail(email);
         }
 
-        if (ContattoValidator.isContactDuplicate(addressBook, name, surname, numbers)) {
+        if (ContattoValidator.isContactDuplicate(contactList, name, surname, numbers)) {
             throw new CampoNonValidoException("Contatto duplicato");
         }
 
         Contatto newContact = new Contatto(name, surname, numbers, emails, note);
-        addressBook.add(newContact);
+        contactList.add(newContact);
         saveContacts();
     }
 
@@ -73,6 +74,7 @@ public class Rubrica implements GestioneRubrica {
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
+    @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
 
@@ -85,10 +87,10 @@ public class Rubrica implements GestioneRubrica {
             ContattoValidator.validateEmail(email);
         }
 
-        int index = addressBook.indexOf(oldContact);
+        int index = contactList.indexOf(oldContact);
         if (index != -1) {
             Contatto updatedContact = new Contatto(name, surname, numbers, emails, note);
-            addressBook.set(index, updatedContact);
+            contactList.set(index, updatedContact);
             saveContacts();
         }
     }
@@ -98,15 +100,17 @@ public class Rubrica implements GestioneRubrica {
      * @param contact Il contatto da rimuovere.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
+    
+    @Override
     public void deleteContact(Contatto contact) throws IOException{
-        addressBook.remove(contact);
+        contactList.remove(contact);
         saveContacts();
     }
     
 
     public ObservableList<Contatto> searchContact(String param) {
         ObservableList<Contatto> result = FXCollections.observableArrayList();
-        for (Contatto contact : addressBook) {
+        for (Contatto contact : contactList) {
             if (contact.getName().toLowerCase().contains(param.toLowerCase())
                     || contact.getSurname().toLowerCase().contains(param.toLowerCase())) {
                 result.add(contact);
@@ -115,5 +119,14 @@ public class Rubrica implements GestioneRubrica {
         return result;
 
     }
+    /**
+     * @brief Salva i contatti sul file JSON.
+     * 
+     * @throws IOException Se si verifica un errore durante il salvataggio.
+     */
+    private void saveContacts() throws IOException {
+        SalvaCaricaRubrica.saveAddressBook(contactList);
+    }
+    
     
 }
