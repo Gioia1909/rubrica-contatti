@@ -31,93 +31,20 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * @brief Lista grafica dei contatti preferiti
      */
     @FXML
-    private ListView<Contatto> listViewFavorites;
-
-    /**
-     * @brief Lista dei contatti preferiti
-     */
-    private ObservableList<Contatto> favoriteList;
+    private ListView<Contatto> favoriteListView;
     
-       /**
-        * @brief Lista di tutti i contatti
-        */
-    private ObservableList<Contatto> contactList; // Riferimento alla lista utenti
+    private Rubrica addressBook;
 
-    public ListView<Contatto> getListViewFavorites() {
-        return listViewFavorites;
+    public ListView<Contatto> getFavoriteListView() {
+        return favoriteListView;
     }
 
     public void setListViewFavorites(ListView<Contatto> listViewFavorites) {
-        this.listViewFavorites = listViewFavorites;
-    }
-
-    public ObservableList<Contatto> getFavoriteList() {
-        return favoriteList;
-    }
-
-    public void setFavoriteList(ObservableList<Contatto> favoriteList) {
-        this.favoriteList = favoriteList;
-    }
-    
-    public ObservableList<Contatto> getContactList() {
-        return contactList;
-    }
-    
-       /**
-     * @brief Imposta la lista dei contatti.
-     *
-     *
-     * @pre La lista di contatti fornita deve essere valida e non nulla.
-     * @post La lista dei contatti viene impostata correttamente nel controller.
-     *
-     * @param[in] contactList La lista di contatti da impostare.
-     */
-    public void setContactList(ObservableList<Contatto> contactList) {
-        this.contactList = contactList;
+        this.favoriteListView = listViewFavorites;
     }
 
     @FXML
     private Button editButton, addButton, deleteButton, searchButton, secondaryButton;
-
-    public Button getEditButton() {
-        return editButton;
-    }
-
-    public void setEditButton(Button editButton) {
-        this.editButton = editButton;
-    }
-
-    public Button getAddFavButton() {
-        return addButton;
-    }
-
-    public void setAddFavButton(Button addFavButton) {
-        this.addButton = addFavButton;
-    }
-
-    public Button getDeleteButton() {
-        return deleteButton;
-    }
-
-    public void setDeleteButton(Button deleteButton) {
-        this.deleteButton = deleteButton;
-    }
-
-    public Button getSearchButton() {
-        return searchButton;
-    }
-
-    public void setSearchButton(Button searchButton) {
-        this.searchButton = searchButton;
-    }
-
-    public Button getSecondaryButton() {
-        return secondaryButton;
-    }
-
-    public void setSecondaryButton(Button secondaryButton) {
-        this.secondaryButton = secondaryButton;
-    }
  
     @FXML
     private ImageView editImageView, deleteImageView;
@@ -126,92 +53,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     private TextField searchBar;
     @FXML
     private Label nameField, surnameField, number1Field, number2Field, number3Field, email1Field, email2Field, email3Field, noteField, defaultText;
-
     
-    public TextField getSearchBar() {
-        return searchBar;
-    }
-
-    public void setSearchBar(TextField searchBar) {
-        this.searchBar = searchBar;
-    }
-
-    public Label getNameField() {
-        return nameField;
-    }
-
-    public void setNameField(Label nameField) {
-        this.nameField = nameField;
-    }
-
-    public Label getSurnameField() {
-        return surnameField;
-    }
-
-    public void setSurnameField(Label surnameField) {
-        this.surnameField = surnameField;
-    }
-
-    public Label getNumber1Field() {
-        return number1Field;
-    }
-
-    public void setNumber1Field(Label number1Field) {
-        this.number1Field = number1Field;
-    }
-
-    public Label getNumber2Field() {
-        return number2Field;
-    }
-
-    public void setNumber2Field(Label number2Field) {
-        this.number2Field = number2Field;
-    }
-
-    public Label getNumber3Field() {
-        return number3Field;
-    }
-
-    public void setNumber3Field(Label number3Field) {
-        this.number3Field = number3Field;
-    }
-
-    public Label getEmail1Field() {
-        return email1Field;
-    }
-
-    public void setEmail1Field(Label email1Field) {
-        this.email1Field = email1Field;
-    }
-
-    public Label getEmail2Field() {
-        return email2Field;
-    }
-
-    public void setEmail2Field(Label email2Field) {
-        this.email2Field = email2Field;
-    }
-
-    public Label getEmail3Field() {
-        return email3Field;
-    }
-
-    public void setEmail3Field(Label email3Field) {
-        this.email3Field = email3Field;
-    }
-
-    public Label getNoteField() {
-        return noteField;
-    }
-
-    public void setNoteField(Label noteField) {
-        this.noteField = noteField;
-    }
-
-    public Label getDefaultText() {
-        return defaultText;
-    }
-
     public void setDefaultText(Label defaultText) {
         this.defaultText = defaultText;
     }
@@ -230,12 +72,11 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Rimuovi duplicati utilizzando un HashSet
-        favoriteList = FXCollections.observableArrayList(SalvaCaricaPreferiti.loadFavoritesAddressBook());
-        listViewFavorites.setItems(favoriteList);
-        sortContact();
+        addressBook = new Rubrica(); 
+        favoriteListView.setItems(addressBook.getFavoriteList());
         configurePreferitiListView();
 
-        listViewFavorites.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+        favoriteListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
             if (selectedContact != null) {
                 // Aggiorna le label con i dati del contatto selezionato
                 super.updateContactDetails(selectedContact);
@@ -251,7 +92,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * @post La cell factory di `listViewFavorites` è configurata per visualizzare solo cognome e nome dei contatti. Gli elementi vuoti o nulli nella lista vengono rappresentati come celle vuote.
      */
     private void configurePreferitiListView() {
-        listViewFavorites.setCellFactory(listView -> new ListCell<Contatto>() {
+        favoriteListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
             protected void updateItem(Contatto contact, boolean empty) {
                 super.updateItem(contact, empty);
@@ -265,45 +106,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
         });
     }
     
-        
-      /**
-     * @brief Aggiunge un contatto alla lista dei preferiti.
-     *
-     * @pre  `contactList` deve essere inizializzato e non nullo.
-     * @pre Il file FXML "SelezionaContattiDaRubrica.fxml" deve essere presente e accessibile nella directory delle risorse.
-     * @post L'elemento aggiunto deve essere visto nella rubrica preferiti.
-     * @param[in] event L'evento che ha generato l'azione di aggiunta.
-     * @throws IOException Se il caricamento del popup fallisce.
-     * @throws ContattoGiaAggiuntoException Se il contatto è già presente nei
-     * preferiti
-     */
-    @FXML
-    @Override
-    public void addAction(ActionEvent event) throws IOException {
-        if (contactList != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SelezionaContattiDaRubrica.fxml"));
-            //si crea un oggetto FXMLLoader per caricare il file FXML, con getClass e Resource prendiamo il file 
-            Parent root = loader.load(); //legge il contenuto del file FXML e ritorna un oggetto parent come scena
-
-             //creo un oggetto SelezionaContattiDaRubrica per passargli qualcosa nel "costruttore" --> setContacts
-            SelezionaContattiDaRubricaController popupController = loader.getController();
-            //così accediamo ai metodi 
-            popupController.setContacts(contactList, favoriteList); //passiamo la lista della rubrica e quella dei preferiti da aggiornare
-            // Crea una nuova finestra (Stage) per il popup
-            Stage popupStage = new Stage();
-            popupStage.setTitle("Seleziona Contatto");
-            popupStage.setScene(new Scene(root, 336, 400)); // Imposta le dimensioni precise
-            popupStage.setResizable(false); // Blocca il ridimensionamento
-            popupStage.initModality(Modality.APPLICATION_MODAL); // Blocca interazioni con altre finestre
-            popupStage.show();
-            sortContact();
-        } else {
-            System.out.println("La lista dei contatti non è disponibile.");
-        }
-
-    }
-    
-      /**
+     /**
      * @brief Gestisce l'azione di eliminazione di un contatto dalla lista
      * preferiti.
      *
@@ -316,12 +119,10 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     @FXML
     @Override
     public void deleteAction(ActionEvent event) {
-        int selected = listViewFavorites.getSelectionModel().getSelectedIndex();
-        if (selected >= 0) {
-            listViewFavorites.getItems().remove(selected);
-            // Salva i contatti aggiornati nel file
-            SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
-             listViewFavorites.getSelectionModel().clearSelection();
+        Contatto selectedContact = favoriteListView.getSelectionModel().getSelectedItem();
+        if (selectedContact != null) {
+            addressBook.removeFromFavorites(selectedContact);
+            favoriteListView.getSelectionModel().clearSelection();
         }
     }
     
@@ -338,12 +139,12 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     @FXML
     @Override
     public void editAction(ActionEvent event) throws IOException {
-        Contatto selectedContact = listViewFavorites.getSelectionModel().getSelectedItem();
+        Contatto selectedContact = favoriteListView.getSelectionModel().getSelectedItem();
         if (selectedContact != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
             Parent root = loader.load();
             InterfacciaAggiungiModificaController modificaController = loader.getController();
-            modificaController.initializeForEdit(selectedContact, favoriteList);
+            modificaController.initializeForEdit(selectedContact, addressBook.getFavoriteList());
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -355,7 +156,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     /**
      * @brief Gestisce l'azione di ricerca dei contatti nella lista preferiti
      * 
-     * @param event  L'evento che ha attivato l'azione di ricerca
+     * @param event L'evento che ha attivato l'azione di ricerca
      * 
      * @pre La barra di ricerca contiene il testo da cercare
      * @post La ListView dei preferiti viene aggiornata con i contatti che corrispondono alla ricerca
@@ -367,46 +168,14 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
         String searchQuery = searchBar.getText().toLowerCase().trim();
 
         if (searchQuery.isEmpty()) {
-            listViewFavorites.setItems(favoriteList);
+            favoriteListView.setItems(addressBook.getFavoriteList());
             return;
         }
-
-        ObservableList<Contatto> filteredList = FXCollections.observableArrayList();
-        for (Contatto contact : favoriteList) {
-            String lowerName = contact.getName().trim().toLowerCase();
-            String lowerSurname = contact.getSurname().trim().toLowerCase();
-            
-            if(lowerName.contains(searchQuery) || lowerSurname.contains(searchQuery)){
-                filteredList.add(contact);
-            }
-            
-            for( String number : contact.getNumbers()) {
-                if (number.contains(searchQuery)) {
-                    filteredList.add(contact);
-                }
-            }
-        }
-
-        listViewFavorites.setItems(filteredList);
+        ObservableList<Contatto> filteredList = addressBook.searchFavoriteContact(searchQuery);
 
         if (filteredList.isEmpty()) {
             showErrorDialog("Errore", "Nessun contatto trovato.");
-        }
-    }
- 
-      
- 
-    
-    
-     /**
-     * @brief Ordina i contatti nella lista dei preferiti in base all'ordine
-     * naturale dei contatti,
-     *
-     *
-     * @post La lista dei preferiti viene ordinata.
-     */
-    private void sortContact() {
-        FXCollections.sort(favoriteList);
+        } else favoriteListView.setItems(filteredList);
     }
 
   
@@ -430,7 +199,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
     }
 
    
-       /**
+     /**
      * @brief Cambia la scena all'interfaccia utente.
      *
      * @param[in] event L'evento che ha generato l'azione di switch.
@@ -445,10 +214,10 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
         InterfacciaUtenteController controller = loader.getController();
 
         // Passa la lista di contatti al nuovo controller
-        controller.setContactList(this.contactList);
+        controller.setContactList(addressBook.getContactList());
 
         // Cambia la scena
-        Scene scene = listViewFavorites.getScene();
+        Scene scene = favoriteListView.getScene();
         scene.setRoot(root);
 
     }
