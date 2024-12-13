@@ -165,7 +165,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
 
     @FXML
-    @Override
     public void addAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
         Parent root = loader.load();
@@ -240,6 +239,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         for (Contatto contact : addressBook.getContactList()) {
             if (contact.getName().toLowerCase().contains(searchQuery)
                     || contact.getSurname().toLowerCase().contains(searchQuery)
+                    || contact.getNumbers().stream().anyMatch(num -> num.contains(searchQuery))
                     || contact.getNumbers().stream().anyMatch(num -> num.contains(searchQuery))) {
                 filteredList.add(contact);
             }
