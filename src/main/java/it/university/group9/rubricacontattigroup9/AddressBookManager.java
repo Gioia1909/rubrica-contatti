@@ -19,6 +19,6 @@ public interface AddressBookManager {
 
     public void searchAction(ActionEvent event);
 
-    private void showErrorDialog(String titolo, String messaggio); 
+    public void showErrorDialog(String titolo, String messaggio); 
 
 }

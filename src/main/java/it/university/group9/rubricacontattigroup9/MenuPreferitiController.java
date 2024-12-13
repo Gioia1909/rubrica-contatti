@@ -211,7 +211,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
      * forniti.
      */
     @Override
-    private void showErrorDialog(String titolo, String messaggio) {
+    public void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titolo);
         alert.setContentText(messaggio);
