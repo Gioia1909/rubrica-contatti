@@ -53,6 +53,7 @@ public class Rubrica implements GestioneRubrica{
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
+
     @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
@@ -78,6 +79,7 @@ public class Rubrica implements GestioneRubrica{
     /**
      * @brief Modifica un contatto esistente.
      */
+    
     @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {

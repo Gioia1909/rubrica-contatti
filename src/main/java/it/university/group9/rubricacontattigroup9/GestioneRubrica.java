@@ -16,7 +16,11 @@ import javafx.collections.ObservableList;
  */
 public interface GestioneRubrica {
     
+<<<<<<< Upstream, based on origin/main
     public ObservableList<Contatto> getContactList();
+=======
+    public ObservableList<Contatto> getContact();
+>>>>>>> 8e6c66e Gestione Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException, IOException;
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException, IOException ;
     public void deleteContact(Contatto contact) throws IOException;
