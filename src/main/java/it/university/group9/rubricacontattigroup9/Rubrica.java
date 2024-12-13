@@ -25,6 +25,7 @@ public class Rubrica implements GestioneRubrica {
         this.contactList = FXCollections.observableArrayList();
     }
 
+    @Override
     public ObservableList<Contatto> getContact() {
         return contactList;
     }
@@ -40,6 +41,7 @@ public class Rubrica implements GestioneRubrica {
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
+
     @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
@@ -74,6 +76,7 @@ public class Rubrica implements GestioneRubrica {
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
+    
     @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
@@ -100,7 +103,6 @@ public class Rubrica implements GestioneRubrica {
      * @param contact Il contatto da rimuovere.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
-    
     @Override
     public void deleteContact(Contatto contact) throws IOException{
         contactList.remove(contact);
@@ -108,6 +110,7 @@ public class Rubrica implements GestioneRubrica {
     }
     
 
+    @Override
     public ObservableList<Contatto> searchContact(String param) {
         ObservableList<Contatto> result = FXCollections.observableArrayList();
         for (Contatto contact : contactList) {
