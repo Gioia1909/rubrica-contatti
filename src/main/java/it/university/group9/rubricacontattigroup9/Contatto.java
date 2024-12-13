@@ -31,6 +31,7 @@ public class Contatto implements Comparable<Contatto> {
     private List<String> emails;
     @JsonProperty("note")
     private String note;
+    private boolean fav;
 
     /**
      * @brief Costruttore della classe Contatto.
@@ -48,6 +49,11 @@ public class Contatto implements Comparable<Contatto> {
         this.numbers = numbers;
         this.emails = emails;
         this.note = note;
+        this.fav = false;
+    }
+  
+    public void setFav(boolean flag){
+        this.fav=flag;
     }
 
     /**

@@ -105,10 +105,11 @@ public class Rubrica implements GestioneRubrica{
      */
     @Override
     public void deleteContact(Contatto contact) throws IOException {
-        contactList.remove(contact);
-        favoriteList.remove(contact);
-        saveContacts();
-        saveFavorites();
+        int index = contactList.indexOf(contact);
+        if (index != -1) {
+            contact.setFav(true); // Imposta il contatto come preferito
+            saveFavorites(); // Salva le modifiche
+        }
     }
 
     /**
@@ -125,8 +126,11 @@ public class Rubrica implements GestioneRubrica{
      * @brief Rimuove un contatto dai preferiti.
      */
     public void removeFromFavorites(Contatto contact) throws IOException {
-        favoriteList.remove(contact);
-        saveFavorites();
+        int index = contactList.indexOf(contact);
+        if (index != -1) {
+            contact.setFav(false); // Rimuovi lo stato di preferito
+            saveContacts(); // Salva le modifiche
+        }
     }
 
     /**
