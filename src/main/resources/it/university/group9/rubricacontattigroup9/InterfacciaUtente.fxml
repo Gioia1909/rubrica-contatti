@@ -100,12 +100,20 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Label fx:id="noteField" layoutX="150.0" layoutY="370.0" styleClass="dati" visible="false" />
+                        <Label fx:id="noteField" layoutX="150.0" layoutY="371.0" styleClass="dati" visible="false" />
                         <Label fx:id="defaultText" layoutX="186.0" layoutY="228.0" text="Seleziona un contatto">
                             <font>
                                 <Font name="Neue Haas Grotesk Text Pro Italic" size="16.0" />
                             </font>
                         </Label>
+                  <Button fx:id="addToFavorite" layoutX="260.0" layoutY="441.0" mnemonicParsing="false" onAction="#addToFavoriteAction" prefHeight="26.0" prefWidth="40.0" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@stellaVuota.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                     </children>
                 </AnchorPane>
             </items>

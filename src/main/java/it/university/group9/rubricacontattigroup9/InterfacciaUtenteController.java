@@ -114,10 +114,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.contactListView = contactListView;
     }
 
-  //   @FXML
- //   private ListView<Contatto> favoriteListView;
-    
-
+   
     private ObservableList<Contatto> contactList;
     
      public ObservableList<Contatto> getContactList() {
@@ -128,13 +125,17 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.contactList = contactList;
     }
   
+    private ObservableList<Contatto> favoriteList;
+    
+    
    @Override
    public void initialize(URL location, ResourceBundle resources) {
         this.addressBook = new Rubrica ();
         contactList=addressBook.getContactList();
+        favoriteList = addressBook.getFavoriteList();
         // Carica i contatti e i preferiti nelle rispettive ListView
         contactListView.setItems(contactList);
-   //     favoriteListView.setItems(addressBook.getFavoriteList());
+  //      favoriteListView.setItems(favoriteList);
         configureContactListView();
         
         // Aggiungi un listener per la ricerca
@@ -196,11 +197,11 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     
     @FXML
     void addToFavoriteAction(ActionEvent event) {
-        int selected = contactListView.getSelectionModel().getSelectedIndex();
-
-        if (selected >= 0) {
-        
-
+            Contatto selectedContact = contactListView.getSelectionModel().getSelectedItem();
+            if(selectedContact!=null) {
+               selectedContact.setFav(true);
+      
+    
     }
     }
     
@@ -343,7 +344,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         Parent root = loader.load();
 
         MenuPreferitiController menuPreferitiController = loader.getController();
-        menuPreferitiController.setFavoriteList(contactList);
+        menuPreferitiController.setFavoriteList(favoriteList);
 
         Scene scene = favoriteButton.getScene();
         scene.setRoot(root);
