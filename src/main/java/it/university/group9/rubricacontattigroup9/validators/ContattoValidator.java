@@ -72,15 +72,19 @@ public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, List<
             String contactN = contact.getName().trim().toLowerCase();
             String contactS = contact.getSurname().trim().toLowerCase();
             if (contactN.equals(lowerName) && contactS.equals(lowerSurname)) {
-                return true; // Contatto già esistente
+                for (String number : numbers) { 
+                    if (!number.isEmpty() && contact.getNumbers().contains(number.trim())) {
+                        return true;}
+            }
+                
             }
             
-            if (ContattoValidator.isNumberDuplicate(contacts, numbers)){
-            return true;
-            }
+            
     }
           return false; // Contatto non duplicato
     }
+    
+    
     /**
      * @brief Verifica se un numero di telefono è duplicato.
      *
