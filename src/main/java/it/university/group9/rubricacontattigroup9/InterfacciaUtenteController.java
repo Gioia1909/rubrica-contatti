@@ -212,8 +212,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
            super.resetContactDetails();
 
-           contactListView.setItems(contactList);
-           contactListView.getSelectionModel().clearSelection();
+  //         contactListView.setItems(contactList);
+  //         contactListView.getSelectionModel().clearSelection();
         }
     }
     
