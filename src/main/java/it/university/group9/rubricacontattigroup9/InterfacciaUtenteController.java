@@ -201,7 +201,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             if(selectedContact!=null) {
                selectedContact.setFav(true);
       
-    
+           addressBook.addToFavorites(selectedContact);
     }
     }
     
