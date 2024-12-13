@@ -73,6 +73,7 @@ public class Rubrica implements GestioneRubrica{
 
         Contatto newContact = new Contatto(name, surname, numbers, emails, note);
         contactList.add(newContact);
+        sort(contactList);
         saveContacts();
     }
 
@@ -109,7 +110,6 @@ public class Rubrica implements GestioneRubrica{
     public void deleteContact(Contatto contact) throws IOException {
         int index = contactList.indexOf(contact);
         if (index != -1) {
-            contact.setFav(true); // Imposta il contatto come preferito
             saveFavorites(); // Salva le modifiche
         }
     }
@@ -120,6 +120,8 @@ public class Rubrica implements GestioneRubrica{
     public void addToFavorites(Contatto contact) throws IOException {
         if (contactList.contains(contact) && !favoriteList.contains(contact)) {
             favoriteList.add(contact);
+            contact.setFav(true); // Imposta il contatto come preferito
+            sort(favoriteList);// ordiniamo la lista dei preferiti
             saveFavorites();
         }
     }
@@ -131,7 +133,7 @@ public class Rubrica implements GestioneRubrica{
         int index = contactList.indexOf(contact);
         if (index != -1) {
             contact.setFav(false); // Rimuovi lo stato di preferito
-            saveContacts(); // Salva le modifiche
+            saveFavorites(); // Salva le modifiche
         }
     }
 
@@ -166,5 +168,8 @@ public class Rubrica implements GestioneRubrica{
         SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
     }
 
+    private void sort(ObservableList<Contatto> contactList){
+        FXCollections.sort(contactList);
+    }
     
 }
