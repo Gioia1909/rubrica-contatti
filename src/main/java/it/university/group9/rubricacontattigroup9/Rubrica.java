@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.util.List;
 
-public class Rubrica {
+public class Rubrica implements GestioneRubrica{
 
     private ObservableList<Contatto> contactList;
     private ObservableList<Contatto> favoriteList;
@@ -35,6 +35,7 @@ public class Rubrica {
      * @brief Restituisce la lista dei contatti.
      * @return Lista osservabile dei contatti principali.
      */
+    @Override
     public ObservableList<Contatto> getContactList() {
         return contactList;
     }
@@ -52,6 +53,7 @@ public class Rubrica {
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
+    @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
 
@@ -76,6 +78,7 @@ public class Rubrica {
     /**
      * @brief Modifica un contatto esistente.
      */
+    @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
 
@@ -100,6 +103,7 @@ public class Rubrica {
     /**
      * @brief Rimuove un contatto dalla rubrica principale e dai preferiti.
      */
+    @Override
     public void deleteContact(Contatto contact) throws IOException {
         contactList.remove(contact);
         favoriteList.remove(contact);
@@ -128,6 +132,7 @@ public class Rubrica {
     /**
      * @brief Cerca contatti nella rubrica principale.
      */
+    @Override
     public ObservableList<Contatto> searchContact(String param) {
         ObservableList<Contatto> result = FXCollections.observableArrayList();
         for (Contatto contact : contactList) {
@@ -152,4 +157,6 @@ public class Rubrica {
     private void saveFavorites() throws IOException {
         SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
     }
+
+    
 }

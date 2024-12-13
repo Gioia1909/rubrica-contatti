@@ -16,7 +16,7 @@ import javafx.collections.ObservableList;
  */
 public interface GestioneRubrica {
     
-    public ObservableList<Contatto> getContact();
+    public ObservableList<Contatto> getContactList();
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException, IOException;
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException, IOException ;
     public void deleteContact(Contatto contact) throws IOException;
