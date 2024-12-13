@@ -208,8 +208,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             //       alert.setContentText("Il file CSV è stato salvato correttamente in: \n" + fileCSV);
             alert.showAndWait(); */
       
+        }
            addressBook.addToFavorites(selectedContact);
-    }
     }
 
 
