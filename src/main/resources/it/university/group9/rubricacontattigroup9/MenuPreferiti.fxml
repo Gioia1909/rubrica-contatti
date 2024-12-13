@@ -75,9 +75,9 @@
                                 </ImageView>
                      </graphic>
                         </Button>
-                  <Button fx:id="addToFavorite" layoutX="397.0" layoutY="419.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="36.0" prefWidth="48.0" visible="false">
+                  <Button fx:id="addToFavorite" layoutX="397.0" layoutY="419.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="36.0" prefWidth="48.0" visible="true">
                      <graphic>
-                        <ImageView fx:id="deleteImageView" fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView fx:id="deleteImageView" fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="true">
                            <image>
                               <Image url="@stellaPiena.png" />
                            </image>

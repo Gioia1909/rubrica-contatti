@@ -121,7 +121,6 @@ public class ContattoValidator {
 
     public static void validateEmail(List<String> emails) throws CampoNonValidoException {
         for (String email : emails) {
-
             if (!email.isEmpty() && !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
                 throw new CampoNonValidoException("Email");
             }
