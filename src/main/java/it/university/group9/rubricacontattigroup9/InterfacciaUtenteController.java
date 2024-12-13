@@ -52,12 +52,17 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
     @FXML
     private Button favoriteButton;
+    
+    @FXML
+    private Button addToFavorite;
 
     @FXML
     private ImageView editImageView;
 
     @FXML
     private ImageView deleteImageView;
+    
+ 
 
   
     @FXML
@@ -187,6 +192,18 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         stage.setScene(new Scene(root));
         stage.show();
     }
+    
+    
+    @FXML
+    void addToFavoriteAction(ActionEvent event) {
+        int selected = contactListView.getSelectionModel().getSelectedIndex();
+
+        if (selected >= 0) {
+        
+
+    }
+    
+    
 
     /**
      * @brief Elimina il contatto selezionato dalla lista.
