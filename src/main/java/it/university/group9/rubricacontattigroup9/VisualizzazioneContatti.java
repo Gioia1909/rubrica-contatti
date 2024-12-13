@@ -19,7 +19,8 @@ import javafx.scene.image.ImageView;
 public abstract class VisualizzazioneContatti {
     
     @FXML
-    private Button editButton, deleteButton, addToFavorite;
+    private Button editButton, addToFavorite;
+    //deleteButton; // Nascondi il pulsante elimina
 
     @FXML
     private ImageView editImageView, deleteImageView;
@@ -30,29 +31,81 @@ public abstract class VisualizzazioneContatti {
     
     
     public void updateContactDetails(Contatto selectedContact) {
+        if (selectedContact == null) {
+        clearFields();
+        return;
+    }
         defaultText.setVisible(false);
-        deleteButton.setVisible(true);
+        //deleteButton.setVisible(false); // Nascondi il pulsante elimina
         deleteImageView.setVisible(true);
         editButton.setVisible(true);
         addToFavorite.setVisible(true);
         editImageView.setVisible(true);
         
-        
-        nameField.setVisible(true);
-        surnameField.setVisible(true);
-        
-        nameField.setText(selectedContact.getName());
-        surnameField.setText(selectedContact.getSurname());
-        
-        visibleNumberDetails(selectedContact);
-        visibleEmailDetails(selectedContact);
-        
-        if(!selectedContact.getNote().isEmpty()){
-            noteField.setVisible(true);
-            noteField.setText(selectedContact.getNote());
-        }else noteField.setVisible(false);
+        // Aggiorna i campi con visibilità
+    nameField.setText(selectedContact.getName() != null ? selectedContact.getName() : "");
+    nameField.setVisible(true);
 
-    }
+    surnameField.setText(selectedContact.getSurname() != null ? selectedContact.getSurname() : "");
+    surnameField.setVisible(true);
+
+    number1Field.setText(selectedContact.getNumbers().size() > 0 ? selectedContact.getNumbers().get(0) : "");
+    number1Field.setVisible(true);
+
+    number2Field.setText(selectedContact.getNumbers().size() > 1 ? selectedContact.getNumbers().get(1) : "");
+    number2Field.setVisible(selectedContact.getNumbers().size() > 1);
+
+    number3Field.setText(selectedContact.getNumbers().size() > 2 ? selectedContact.getNumbers().get(2) : "");
+    number3Field.setVisible(selectedContact.getNumbers().size() > 2);
+
+    email1Field.setText(selectedContact.getEmails().size() > 0 ? selectedContact.getEmails().get(0) : "");
+    email1Field.setVisible(true);
+
+    email2Field.setText(selectedContact.getEmails().size() > 1 ? selectedContact.getEmails().get(1) : "");
+    email2Field.setVisible(selectedContact.getEmails().size() > 1);
+
+    email3Field.setText(selectedContact.getEmails().size() > 2 ? selectedContact.getEmails().get(2) : "");
+    email3Field.setVisible(selectedContact.getEmails().size() > 2);
+
+    noteField.setText(selectedContact.getNote() != null ? selectedContact.getNote() : "");
+    noteField.setVisible(true);
+
+    defaultText.setVisible(false); // Nasconde il messaggio predefinito
+}
+
+    
+
+private void clearFields() {
+    nameField.setText("");
+    nameField.setVisible(false);
+
+    surnameField.setText("");
+    surnameField.setVisible(false);
+
+    number1Field.setText("");
+    number1Field.setVisible(false);
+
+    number2Field.setText("");
+    number2Field.setVisible(false);
+
+    number3Field.setText("");
+    number3Field.setVisible(false);
+
+    email1Field.setText("");
+    email1Field.setVisible(false);
+
+    email2Field.setText("");
+    email2Field.setVisible(false);
+
+    email3Field.setText("");
+    email3Field.setVisible(false);
+
+    noteField.setText("");
+    noteField.setVisible(false);
+
+    defaultText.setVisible(true); // Mostra il messaggio predefinito
+}
+
     
     private void visibleNumberDetails(Contatto selectedContact){
         List<String> numbers = selectedContact.getNumbers();
@@ -93,7 +146,7 @@ public abstract class VisualizzazioneContatti {
     
     protected void resetContactDetails() {
     defaultText.setVisible(true); // Mostra il testo di default
-    deleteButton.setVisible(false); // Nascondi il pulsante elimina
+    //deleteButton.setVisible(false); // Nascondi il pulsante elimina
     deleteImageView.setVisible(false); // Nascondi l'icona di eliminazione
     editButton.setVisible(false); // Nascondi il pulsante modifica
     editImageView.setVisible(false); // Nascondi l'icona di modifica

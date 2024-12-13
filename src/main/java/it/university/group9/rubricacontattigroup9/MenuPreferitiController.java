@@ -146,6 +146,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
             addressBook.removeFromFavorites(selectedContact);
             refreshFavoriteList();
             favoriteListView.getSelectionModel().clearSelection();
+            super.resetContactDetails();
         }
         System.out.println("La lista contiene ora: " + favoriteList);
     }

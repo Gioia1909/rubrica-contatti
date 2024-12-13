@@ -113,7 +113,8 @@
                               <Image url="@stellaVuota.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                  </Button>
                     </children>
                 </AnchorPane>
             </items>
