@@ -6,6 +6,7 @@ package it.university.group9.rubricacontattigroup9;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -17,5 +18,7 @@ public interface AddressBookManager {
     public void editAction(ActionEvent event) throws IOException;
 
     public void searchAction(ActionEvent event);
+
+    private void showErrorDialog(String titolo, String messaggio); 
 
 }
