@@ -123,7 +123,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.contactList = contactList;
     }
   
-   public void initialize() {
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
         this.addressBook = new Rubrica ();
         contactList=addressBook.getContactList();
         // Carica i contatti e i preferiti nelle rispettive ListView
