@@ -209,8 +209,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             alert.showAndWait(); */
       
         }
+           addressBook.addToFavorites(selectedContact);
     }
-
 
 
     /**

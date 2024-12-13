@@ -116,17 +116,17 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             String name = nameField.getText().trim();
             String surname = surnameField.getText().trim();
 
-            if (name.isEmpty() || surname.isEmpty()) {
+            if (name.isEmpty() && surname.isEmpty()) {
                 handleValidationError("Nome e cognome sono obbligatori.");
                 return;
             }
+            List<String> emails = collectValidEmails();
             List<String> numbers = collectValidNumbers();
             if (numbers.isEmpty()) {
-                handleValidationError("Deve essere inserito almeno un numero di telefono valido.");
+                handleValidationError("Deve essere inserito almeno un numero di telefono valido o email valida.");
                 return;
             }
 
-            List<String> emails = collectValidEmails();
             String note = noteField.getText().trim();
 
             if (ContattoValidator.isContactDuplicate(contactList, name, surname, numbers)) {

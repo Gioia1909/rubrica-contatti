@@ -127,22 +127,5 @@ public class ContattoValidator {
             }
         }
     }
-    
-    public static void validateFields(String name, String surname, List<String> numbers, List<String> emails) throws CampoNonValidoException{
-    if(name.isEmpty() && surname.isEmpty())
-        throw new CampoNonValidoException("Nome o Cognome");
-    
-    int n=0; 
-    int e=0;  
-    for(String number : numbers){
-        if(number.isEmpty()) n++;
-    }
-       for(String email : emails){
-        if(email.isEmpty()) e++;
-    } 
-       if(e == 3 && n == 3)
-           throw new CampoNonValidoException("Numeri o Emails");
-       
-    }
 
 }

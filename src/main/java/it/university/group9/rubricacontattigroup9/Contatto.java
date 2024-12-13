@@ -186,8 +186,8 @@ public class Contatto implements Comparable<Contatto> {
         Contatto contatto = (Contatto) o;
         return Objects.equals(name, contatto.name)
                 && Objects.equals(surname, contatto.surname)
-                && Objects.equals(numbers, contatto.numbers)
-                && Objects.equals(emails, contatto.emails)
+                && Objects.equals(numbers, contatto.getNumbers())
+                && Objects.equals(emails, contatto.getEmails())
                 && Objects.equals(note, contatto.note);
     }
 
