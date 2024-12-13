@@ -58,7 +58,7 @@ public class Rubrica implements GestioneRubrica{
 
     @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
-            throws CampoNonValidoException, IOException {
+            throws CampoNonValidoException {
 
         ContattoValidator.validateName(name);
         ContattoValidator.validateSurname(surname);
@@ -76,7 +76,11 @@ public class Rubrica implements GestioneRubrica{
         Contatto newContact = new Contatto(name, surname, numbers, emails, note);
         contactList.add(newContact);
         sort(contactList);
-        saveContacts();
+        try {
+            saveContacts();
+        } catch (IOException ex) {
+            System.out.println("Errore nel Salvataggio della Rubrica dopo l'aggiunta di " + newContact);
+        }
     }
 
     /**
@@ -85,7 +89,7 @@ public class Rubrica implements GestioneRubrica{
     
     @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
-            throws CampoNonValidoException, IOException {
+            throws CampoNonValidoException {
 
         ContattoValidator.validateName(name);
         ContattoValidator.validateSurname(surname);
@@ -100,8 +104,16 @@ public class Rubrica implements GestioneRubrica{
         if (index != -1) {
             Contatto updatedContact = new Contatto(name, surname, numbers, emails, note);
             contactList.set(index, updatedContact);
-            saveContacts();
-            saveFavorites(); // Aggiorna anche il file dei preferiti
+            try {
+                saveFavorites(); // Salva le modifiche
+            } catch (IOException ex) {
+                System.out.println("Errore nel Salvataggio dei Preferiti dopo la modifica di " + oldContact);
+            }
+            try {
+                saveContacts();
+            } catch (IOException ex) {
+                System.out.println("Errore nel Salvataggio dei Contatti dopo la modifica di " + oldContact);
+            }
         }
     }
 
@@ -109,22 +121,37 @@ public class Rubrica implements GestioneRubrica{
      * @brief Rimuove un contatto dalla rubrica principale e dai preferiti.
      */
     @Override
-    public void deleteContact(Contatto contact) throws IOException {
+    public void deleteContact(Contatto contact){
         int index = contactList.indexOf(contact);
         if (index != -1) {
-            saveFavorites(); // Salva le modifiche
+            contactList.remove(contact);
+            favoriteList.remove(contact);
+            try {
+                saveFavorites(); // Salva le modifiche
+            } catch (IOException ex) {
+                System.out.println("Errore nel Salvataggio dei Preferiti dopo la rimozione di " + contact);
+            }
+            try {
+                saveContacts();
+            } catch (IOException ex) {
+                System.out.println("Errore nel Salvataggio dei Contatti dopo la rimozione di " + contact);
+            }
         }
     }
 
     /**
      * @brief Aggiunge un contatto ai preferiti.
      */
-    public void addToFavorites(Contatto contact) throws IOException {
+    public void addToFavorites(Contatto contact){
         if (contactList.contains(contact) && !favoriteList.contains(contact)) {
             favoriteList.add(contact);
             contact.setFav(true); // Imposta il contatto come preferito
             sort(favoriteList);// ordiniamo la lista dei preferiti
-            saveFavorites();
+            try {
+                saveFavorites();
+            } catch (IOException ex) {
+                System.out.println("Errore nel Salvataggio dei Preferiti dopo l'aggiunta di " + contact);
+            }
         }
     }
 
@@ -135,6 +162,7 @@ public class Rubrica implements GestioneRubrica{
         int index = contactList.indexOf(contact);
         if (index != -1) {
             contact.setFav(false); // Rimuovi lo stato di preferito
+            favoriteList.remove(contact);
             try {
                 saveFavorites(); // Salva le modifiche
             } catch (IOException ex) {
