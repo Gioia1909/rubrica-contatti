@@ -198,7 +198,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         int selected = contactListView.getSelectionModel().getSelectedIndex();
 
         if (selected >= 0) {
-            // Se il contatto è presente nei preferiti, rimuovilo
             Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();
             addressBook.deleteContact(contactToRemove);
 
@@ -230,21 +229,22 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @FXML
     @Override
     public void searchAction(ActionEvent event) {
+        // se la barra di ricerca è vuota, restituisci tutta la lista
         String searchQuery = searchBar.getText().toLowerCase().trim();
         if (searchQuery.isEmpty()) {
-            myListView.setItems(contactList);
+            contactListView.setItems(addressBook.getContactList());
             return;
         }
 
         ObservableList<Contatto> filteredList = FXCollections.observableArrayList();
-        for (Contatto contact : contactList) {
+        for (Contatto contact : addressBook.getContactList()) {
             if (contact.getName().toLowerCase().contains(searchQuery)
                     || contact.getSurname().toLowerCase().contains(searchQuery)
                     || contact.getNumbers().stream().anyMatch(num -> num.contains(searchQuery))) {
                 filteredList.add(contact);
             }
         }
-        myListView.setItems(filteredList);
+        contactListView.setItems(filteredList);
     }
 
     /**
