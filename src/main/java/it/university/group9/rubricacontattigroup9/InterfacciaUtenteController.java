@@ -109,17 +109,26 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.contactListView = contactListView;
     }
 
-     @FXML
-    private ListView<Contatto> favoriteListView;
+  //   @FXML
+ //   private ListView<Contatto> favoriteListView;
     
 
- 
+    private ObservableList<Contatto> contactList;
+    
+     public ObservableList<Contatto> getContactList() {
+        return contactList;
+    }
+
+    public void setList(ObservableList<Contatto> contactList) {
+        this.contactList = contactList;
+    }
   
    public void initialize() {
         this.addressBook = new Rubrica ();
+        contactList=addressBook.getContactList();
         // Carica i contatti e i preferiti nelle rispettive ListView
-        contactListView.setItems(addressBook.getContactList());
-        favoriteListView.setItems(addressBook.getFavoriteList());
+        contactListView.setItems(contactList);
+   //     favoriteListView.setItems(addressBook.getFavoriteList());
         configureContactListView();
         
         // Aggiungi un listener per la ricerca
@@ -170,8 +179,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         Parent root = loader.load();
 
         InterfacciaAggiungiModificaController addController = loader.getController();
-        addController.setUserInterfaceController(this);
-        addController.initializeForAdd(addressBook.getContactList());
+     //   addController.setUserInterfaceController(this);
+        addController.initializeForAdd(contactList);
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -203,7 +212,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
            super.resetContactDetails();
 
-           contactListView.setItems(addressBook.getContactList());
+           contactListView.setItems(contactList);
            contactListView.getSelectionModel().clearSelection();
         }
     }
@@ -231,12 +240,12 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         // se la barra di ricerca è vuota, restituisci tutta la lista
         String searchQuery = searchBar.getText().toLowerCase().trim();
         if (searchQuery.isEmpty()) {
-            contactListView.setItems(addressBook.getContactList());
+            contactListView.setItems(contactList);
             return;
         }
 
         ObservableList<Contatto> filteredList = FXCollections.observableArrayList();
-        for (Contatto contact : addressBook.getContactList()) {
+        for (Contatto contact : contactList) {
             if (contact.getName().toLowerCase().contains(searchQuery)
                     || contact.getSurname().toLowerCase().contains(searchQuery)
                     || contact.getNumbers().stream().anyMatch(num -> num.contains(searchQuery))
@@ -263,25 +272,18 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @Override
     public void editAction(ActionEvent event) throws IOException {
         // Ottieni il contatto selezionato
-        Contatto selectedContact = myListView.getSelectionModel().getSelectedItem();
+        Contatto selectedContact = contactListView.getSelectionModel().getSelectedItem();
         //getSelectionModel(): Ottiene il modello di selezione associato alla lista, che gestisce la selezione degli elementi: dà accesso a tutte le informazioni sulla selezione.
         //getSelectedItem(): Ritorna l'elemento attualmente selezionato dall'utente nella ListView.     
 
         if (selectedContact != null) {  //Verifica se un contatto è stato selezionato. Se null, significa che l'utente non ha selezionato nulla, quindi non deve procedere.
             // Carica la scena di modifica contatto
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
-            //FXMLLoader: Classe per caricare i file FXML.
-            //getClass().getResource(...): Trova il file InterfacciaModificaContatto.fxml nel percorso delle risorse.
             Parent root = loader.load();
-            //loader: Istanza del loader che si occuperà di caricare l'interfaccia specificata.
-            //load(): Metodo che carica il file FXML e crea una gerarchia di nodi per l'interfaccia.
-            //Parent root: Il nodo radice della nuova scena. Tutti i componenti grafici dell'interfaccia vengono aggiunti come figli di questo nodo.
-
             // Ottieni il controller della scena di modifica
             InterfacciaAggiungiModificaController editController = loader.getController();
-            //modificaController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
+            //editController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
             //getController(): Ottiene il controller associato al file FXML appena caricato
-
             // Passa il contatto selezionato al controller della scena di modifica
             editController.initializeForEdit(selectedContact, contactList);
 
@@ -289,10 +291,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             stage.setScene(new Scene(root));
             stage.show();
             
-        } else {
-            System.out.println("Nessun contatto selezionato");
         }
-
     }
 
     /**
