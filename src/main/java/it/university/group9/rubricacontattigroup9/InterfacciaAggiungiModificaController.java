@@ -12,7 +12,7 @@
  */
 package it.university.group9.rubricacontattigroup9;
 
-import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
+import it.university.group9.rubricacontattigroup9.*;
 import it.university.group9.rubricacontattigroup9.exceptions.*;
 import it.university.group9.rubricacontattigroup9.validators.*;
 import java.io.IOException;
@@ -35,148 +35,35 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
     private boolean isEditing = false;
     private Contatto existingContact;
-    private ObservableList<Contatto> addressBook;
+    private Rubrica addressBook;
+
 
     /**
      * @brief Riferimento al controller dell'interfaccia principale.
      */
     private InterfacciaUtenteController userInterfaceController;
 
-    public Button getAddButton() {
-        return addButton;
-    }
+    public void initializeForEdit(Contatto contact, List<Contatto> addressBook) {
+        // Carica i dettagli del contatto selezionato nei campi
+            nameField.setText(contact.getName());
+            surnameField.setText(contact.getSurname());
+            noteField.setText(contact.getNote());
 
-    public void setAddButton(Button addButton) {
-        this.addButton = addButton;
-    }
+        // Carica i numeri (se esistono) nei campi specifici
+            List<String> numbers = contact.getNumbers();
+            if (numbers.size() > 0) number1Field.setText(numbers.get(0));
+            if (numbers.size() > 1) number2Field.setText(numbers.get(1));
+            if (numbers.size() > 2) number3Field.setText(numbers.get(2));
 
-    public Button getCancelButton() {
-        return cancelButton;
-    }
-
-    public void setCancelButton(Button cancelButton) {
-        this.cancelButton = cancelButton;
-    }
-
-    public Button getEditButton() {
-        return editButton;
-    }
-
-    public void setEditButton(Button editButton) {
-        this.editButton = editButton;
-    }
-
-    public ObservableList<Contatto> getAdressBook() {
-        return addressBook;
-    }
-
-    public InterfacciaUtenteController getInterfacciaUtenteController() {
-        return userInterfaceController;
-    }
-    
-     public TextField getNameField() {
-        return nameField;
-    }
-
-    public void setNameField(TextField nameField) {
-        this.nameField = nameField;
-    }
-
-    public TextField getSurnameField() {
-        return surnameField;
-    }
-
-    public void setSurnameField(TextField surnameField) {
-        this.surnameField = surnameField;
-    }
-
-    public TextField getEmail1Field() {
-        return email1Field;
-    }
-
-    public void setEmail1Field(TextField email1Field) {
-        this.email1Field = email1Field;
-    }
-
-    public TextField getEmail2Field() {
-        return email2Field;
-    }
-
-    public void setEmail2Field(TextField email2Field) {
-        this.email2Field = email2Field;
-    }
-
-    public TextField getEmail3Field() {
-        return email3Field;
-    }
-
-    public void setEmail3Field(TextField email3Field) {
-        this.email3Field = email3Field;
-    }
-
-    public TextField getNumber1Field() {
-        return number1Field;
-    }
-
-    public void setNumber1Field(TextField number1Field) {
-        this.number1Field = number1Field;
-    }
-
-    public TextField getNumber2Field() {
-        return number2Field;
-    }
-
-    public void setNumber2Field(TextField number2Field) {
-        this.number2Field = number2Field;
-    }
-
-    public TextField getNumber3Field() {
-        return number3Field;
-    }
-
-    public void setNumber3Field(TextField number3Field) {
-        this.number3Field = number3Field;
-    }
-
-     public TextField getNoteField() {
-        return noteField;
-    }
-     
-    public void setNoteField(TextField noteField) {
-        this.noteField = noteField;
-    }
-
-    public boolean isIsEditing() {
-        return isEditing;
-    }
-
-    public void setIsEditing(boolean isEditing) {
-        this.isEditing = isEditing;
-    }
-
-    public Contatto getExistingContact() {
-        return existingContact;
-    }
-
-    public void setExistingContact(Contatto existingContact) {
-        this.existingContact = existingContact;
-    }
-
-    public ObservableList<Contatto> getAddressBook() {
-        return addressBook;
-    }
-
-    public void setAddressBook(ObservableList<Contatto> addressBook) {
-        this.addressBook = addressBook;
-    }
-
-    public InterfacciaUtenteController getUserInterfaceController() {
-        return userInterfaceController;
-    }
-
-    public void setUserInterfaceController(InterfacciaUtenteController controller) {
-        this.userInterfaceController = controller;
-    }
+           // Carica le email (se esistono) nei campi specifici
+            List<String> emails = contact.getEmails();
+            if (emails.size() > 0) email1Field.setText(emails.get(0));
+            if (emails.size() > 1) email2Field.setText(emails.get(1));
+            if (emails.size() > 2) email3Field.setText(emails.get(2));
+            
+            // Memorizza il contatto selezionato per aggiornarlo successivamente
+            this.existingContact = contact;
+}
         
     public void initializeForAdd(ObservableList<Contatto> addressBook) {
         this.addressBook = addressBook;
@@ -213,11 +100,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        addButton.setOnAction(event -> {
-            addAction(event);
-
-        });
-        editButton.setOnAction(event -> editAction(new ActionEvent()));
+        addButton.setOnAction(event -> addAction(event));
+        editButton.setOnAction(event -> editAction(event));
     }
 
   
@@ -332,10 +216,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     protected void editAction(ActionEvent event) {
         try {
             String name = nameField.getText().trim();
-            ContattoValidator.validateName(name);
 
             String surname = surnameField.getText().trim();
-            ContattoValidator.validateSurname(surname);
 
             List<String> numbers = collectValidNumbers();
             List<String> emails = collectValidEmails();
@@ -344,9 +226,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
             Contatto newContact = new Contatto(name, surname, numbers, emails, note);
 
-            int index = addressBook.indexOf(existingContact);
-            if (index != -1) {
-                addressBook.set(index, newContact);
+            if (ContattoValidator.isNumberDuplicate(addressBook.getContactList(), numbers)){
+                
             }
 
             SalvaCaricaRubrica.saveAddressBook(addressBook);
@@ -376,12 +257,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
     private List<String> collectValidNumbers() throws CampoNonValidoException {
         List<String> numbers = new ArrayList<>();
-        List<TextField> numberFields = Arrays.asList(number1Field, number2Field, number3Field);
+        List<TextField> numberFields = ArrvalidatePhoneNumberays.asList(number1Field, number2Field, number3Field);
 
         for (TextField field : numberFields) {
             String number = field.getText().trim();
             if (!number.isEmpty()) {
-                ContattoValidator.validatePhoneNumber(number);
+                ContattoValidator.(number);
                 numbers.add(number);
             }
         }
