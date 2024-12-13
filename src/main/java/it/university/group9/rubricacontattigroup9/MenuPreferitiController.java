@@ -25,15 +25,15 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MenuPreferitiController extends VisualizzazioneContatti  implements Initializable, AddressBookManager  {
+public class MenuPreferitiController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
+
+    private Rubrica addressBook;
 
     /**
      * @brief Lista grafica dei contatti preferiti
      */
     @FXML
     private ListView<Contatto> favoriteListView;
-    
-    private Rubrica addressBook;
 
     public ListView<Contatto> getFavoriteListView() {
         return favoriteListView;
@@ -45,20 +45,30 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
 
     @FXML
     private Button editButton, addButton, deleteButton, searchButton, secondaryButton;
- 
+
     @FXML
     private ImageView editImageView, deleteImageView;
-    
+
     @FXML
     private TextField searchBar;
     @FXML
     private Label nameField, surnameField, number1Field, number2Field, number3Field, email1Field, email2Field, email3Field, noteField, defaultText;
-    
+
     public void setDefaultText(Label defaultText) {
         this.defaultText = defaultText;
     }
-    
-     /**
+
+    private ObservableList<Contatto> favoriteList;
+
+    public ObservableList<Contatto> getFavoriteList() {
+        return favoriteList;
+    }
+
+    public void setFavoriteList(ObservableList<Contatto> favoriteList) {
+        this.favoriteList = favoriteList;
+    }
+
+    /**
      * @brief Inizializza il controller e configura la lista dei preferiti
      * nell'elemento ListView. Configura una Label per la visualizzazione delle
      * celle della lista, chiamando la funzione creaLabelContatto.
@@ -66,30 +76,30 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * @param[in] location URL di localizzazione del file FXML.
      * @param[in] resources Risorse per la localizzazione.
      *
-     * @pre La classe deve essere caricata con una vista FXML valida. Gli elementi `listViewFavorites` devono essere correttamente inizializzati.
-     * @post  La lista `favoriteList` contiene contatti univoci caricati da `SalvaCaricaPreferiti`. La vista `listViewFavorites` è popolata con i contatti preferiti ordinati. I dettagli del contatto selezionato sono aggiornati automaticamente al cambiamento della selezione.
+     * @pre La classe deve essere caricata con una vista FXML valida. Gli
+     * elementi `listViewFavorites` devono essere correttamente inizializzati.
+     * @post La lista `favoriteList` contiene contatti univoci caricati da
+     * `SalvaCaricaPreferiti`. La vista `listViewFavorites` è popolata con i
+     * contatti preferiti ordinati. I dettagli del contatto selezionato sono
+     * aggiornati automaticamente al cambiamento della selezione.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Rimuovi duplicati utilizzando un HashSet
-        addressBook = new Rubrica(); 
-        favoriteListView.setItems(addressBook.getFavoriteList());
+        addressBook = new Rubrica();
+        favoriteList = addressBook.getFavoriteList();
+        favoriteListView.setItems(favoriteList);
         configurePreferitiListView();
-
-        favoriteListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
-            if (selectedContact != null) {
-                // Aggiorna le label con i dati del contatto selezionato
-                super.updateContactDetails(selectedContact);
-            }
-        });
     }
 
     /**
      * @brief Configura la ListView per mostrare solo nome e cognome dei
      * contatti
      *
-     * @pre L'elemento `listViewFavorites` deve essere inizializzato e non nullo.
-     * @post La cell factory di `listViewFavorites` è configurata per visualizzare solo cognome e nome dei contatti. Gli elementi vuoti o nulli nella lista vengono rappresentati come celle vuote.
+     * @pre L'elemento `listViewFavorites` deve essere inizializzato e non
+     * nullo.
+     * @post La cell factory di `listViewFavorites` è configurata per
+     * visualizzare solo cognome e nome dei contatti. Gli elementi vuoti o nulli
+     * nella lista vengono rappresentati come celle vuote.
      */
     private void configurePreferitiListView() {
         favoriteListView.setCellFactory(listView -> new ListCell<Contatto>() {
@@ -104,9 +114,17 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
                 }
             }
         });
+        
+          favoriteListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+            if (selectedContact != null) {
+                // Aggiorna le label con i dati del contatto selezionato
+                super.updateContactDetails(selectedContact);
+            }
+        });
+          
     }
-    
-     /**
+
+    /**
      * @brief Gestisce l'azione di eliminazione di un contatto dalla lista
      * preferiti.
      *
@@ -125,8 +143,9 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
             favoriteListView.getSelectionModel().clearSelection();
         }
     }
-    
+
     /**
+     * @throws java.io.IOException
      * @brief Gestisce l'azione di modifica di un contatto selezionato dalla
      * lista dei preferiti.
      *
@@ -144,41 +163,41 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
             Parent root = loader.load();
             InterfacciaAggiungiModificaController modificaController = loader.getController();
-            modificaController.initializeForEdit(selectedContact, addressBook.getFavoriteList());
+            modificaController.initializeForEdit(selectedContact, favoriteList);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
         }
     }
-       
-    
+
     /**
      * @brief Gestisce l'azione di ricerca dei contatti nella lista preferiti
-     * 
+     *
      * @param event L'evento che ha attivato l'azione di ricerca
-     * 
+     *
      * @pre La barra di ricerca contiene il testo da cercare
-     * @post La ListView dei preferiti viene aggiornata con i contatti che corrispondono alla ricerca
+     * @post La ListView dei preferiti viene aggiornata con i contatti che
+     * corrispondono alla ricerca
      */
-    
     @FXML
     @Override
     public void searchAction(ActionEvent event) {
         String searchQuery = searchBar.getText().toLowerCase().trim();
 
         if (searchQuery.isEmpty()) {
-            favoriteListView.setItems(addressBook.getFavoriteList());
+            favoriteListView.setItems(favoriteList);
             return;
         }
         ObservableList<Contatto> filteredList = addressBook.searchFavoriteContact(searchQuery);
 
         if (filteredList.isEmpty()) {
             showErrorDialog("Errore", "Nessun contatto trovato.");
-        } else favoriteListView.setItems(filteredList);
+        } else {
+            favoriteListView.setItems(filteredList);
+        }
     }
 
-  
     /**
      * @brief Mostra una finestra di dialogo di errore con un messaggio
      * personalizzato,una finestra di dialogo di tipo errore con un titolo e un
@@ -191,6 +210,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
      * @post Viene mostrata una finestra di dialogo con il titolo e il messaggio
      * forniti.
      */
+    @Override
     private void showErrorDialog(String titolo, String messaggio) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titolo);
@@ -198,8 +218,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
         alert.showAndWait();
     }
 
-   
-     /**
+    /**
      * @brief Cambia la scena all'interfaccia utente.
      *
      * @param[in] event L'evento che ha generato l'azione di switch.
@@ -215,12 +234,10 @@ public class MenuPreferitiController extends VisualizzazioneContatti  implements
 
         // Passa la lista di contatti al nuovo controller
         //controller.setContactList(addressBook.getContactList());
-
         // Cambia la scena
         Scene scene = favoriteListView.getScene();
         scene.setRoot(root);
 
     }
-  
-    
+
 }

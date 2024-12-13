@@ -180,7 +180,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
         InterfacciaAggiungiModificaController addController = loader.getController();
      //   addController.setUserInterfaceController(this);
-        addController.initializeForAdd(contactList);
+        addController.initializeForAdd(addressBook,contactList);
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -218,44 +218,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     }
     
   
-    
-
-    /**
-     * @brief Cerca un contatto nella lista in base al testo inserito nella
-     * barra di ricerca.
-     *
-     * Questo metodo filtra la lista dei contatti in base al testo inserito
-     * nella barra di ricerca textBar. La ricerca viene effettuata considerando
-     * il nome, il cognome e il numero di telefono del contatto.
-     *
-     * @pre La lista di contatti contactList è già popolata.
-     * @post La myListView mostra la lista filtrata di contatti che soddisfano i
-     * criteri di ricerca.
-     *
-     * @param[in] event Evento associato al bottone di ricerca.
-     */
-    @FXML
-    @Override
-    public void searchAction(ActionEvent event) {
-        // se la barra di ricerca è vuota, restituisci tutta la lista
-        String searchQuery = searchBar.getText().toLowerCase().trim();
-        if (searchQuery.isEmpty()) {
-            contactListView.setItems(contactList);
-            return;
-        }
-
-        ObservableList<Contatto> filteredList = FXCollections.observableArrayList();
-        for (Contatto contact : contactList) {
-            if (contact.getName().toLowerCase().contains(searchQuery)
-                    || contact.getSurname().toLowerCase().contains(searchQuery)
-                    || contact.getNumbers().stream().anyMatch(num -> num.contains(searchQuery))
-                    || contact.getNumbers().stream().anyMatch(num -> num.contains(searchQuery))) {
-                filteredList.add(contact);
-            }
-        }
-        contactListView.setItems(filteredList);
-    }
-
+   
     /**
      * @brief Gestisce il passaggio alla schermata di modifica di un contatto
      * selezionato.
@@ -285,7 +248,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             //editController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
             //getController(): Ottiene il controller associato al file FXML appena caricato
             // Passa il contatto selezionato al controller della scena di modifica
-            editController.initializeForEdit(selectedContact, contactList);
+            editController.initializeForEdit(addressBook, selectedContact, contactList);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -293,6 +256,61 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             
         }
     }
+    
+     /**
+     * @brief Cerca un contatto nella lista in base al testo inserito nella
+     * barra di ricerca.
+     *
+     * Questo metodo filtra la lista dei contatti in base al testo inserito
+     * nella barra di ricerca textBar. La ricerca viene effettuata considerando
+     * il nome, il cognome e il numero di telefono del contatto.
+     *
+     * @pre La lista di contatti contactList è già popolata.
+     * @post La myListView mostra la lista filtrata di contatti che soddisfano i
+     * criteri di ricerca.
+     *
+     * @param[in] event Evento associato al bottone di ricerca.
+     */
+    @FXML
+    @Override
+    public void searchAction(ActionEvent event) {
+        // se la barra di ricerca è vuota, restituisci tutta la lista
+        String searchQuery = searchBar.getText().toLowerCase().trim();
+        if (searchQuery.isEmpty()) {
+            contactListView.setItems(contactList);
+            return;
+        }
+
+        ObservableList<Contatto> filteredList = addressBook.searchContact(searchQuery);
+        
+        if(filteredList.isEmpty()){
+            showErrorDialog("Errore","Nessun contatto trovato");
+        }
+        
+        contactListView.setItems(filteredList);
+    } 
+    
+    
+     /**
+     * @brief Mostra una finestra di dialogo di errore con un messaggio
+     * personalizzato,una finestra di dialogo di tipo errore con un titolo e un
+     * messaggio.
+     *
+     * @param titolo Il titolo della finestra di dialogo.
+     * @param messaggio Il contenuto del messaggio da visualizzare nella
+     * finestra di dialogo.
+     *
+     * @post Viene mostrata una finestra di dialogo con il titolo e il messaggio
+     * forniti.
+     */
+    @Override
+    private void showErrorDialog(String titolo, String messaggio) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titolo);
+        alert.setContentText(messaggio);
+        alert.showAndWait();
+    }
+
 
     /**
      * @brief Passa alla schermata dei contatti preferiti.
