@@ -19,7 +19,8 @@ import javafx.scene.image.ImageView;
 public abstract class VisualizzazioneContatti {
     
     @FXML
-    private Button editButton, deleteButton;
+    private Button editButton, deleteButton, addToFavorite;
+
     @FXML
     private ImageView editImageView, deleteImageView;
     @FXML
@@ -27,11 +28,13 @@ public abstract class VisualizzazioneContatti {
     @FXML
     private Label email1Field, email2Field, email3Field, noteField, defaultText;
     
+    
     public void updateContactDetails(Contatto selectedContact) {
         defaultText.setVisible(false);
         deleteButton.setVisible(true);
         deleteImageView.setVisible(true);
         editButton.setVisible(true);
+        addToFavorite.setVisible(true);
         editImageView.setVisible(true);
         
         
@@ -94,6 +97,7 @@ public abstract class VisualizzazioneContatti {
     deleteImageView.setVisible(false); // Nascondi l'icona di eliminazione
     editButton.setVisible(false); // Nascondi il pulsante modifica
     editImageView.setVisible(false); // Nascondi l'icona di modifica
+    addToFavorite.setVisible(false);
     
     nameField.setVisible(false);
     surnameField.setVisible(false);
