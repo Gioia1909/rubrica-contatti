@@ -21,15 +21,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
+    
+    public Rubrica addressBook;
 
     /**
      * @name Componenti FXML
      */
     ///@{
-    @FXML
-    private ListView<Contatto> listViewFavorites;
-
-    private ObservableList<Contatto> favoriteList;
+   
 
     @FXML
     private Button viewAddButton;
@@ -60,15 +59,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @FXML
     private ImageView deleteImageView;
 
-    /**
-     * <Bottone per visualizzare i contatti preferiti.
-     */
-    @FXML
-    private ListView<Contatto> myListView;
-
-    /**
-     * <Bottone principale per operazioni varie.
-     */
+  
     @FXML
     private TextField searchBar;
     /**
@@ -103,225 +94,52 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * <Label Testo di Default
      */
     ///@}
-    private ObservableList<Contatto> contactList;
+   
     @FXML
     private MenuItem exportButton;
     
-    public void setListViewFavorites(ListView<Contatto> listViewFavorites) {
-        this.listViewFavorites = listViewFavorites;
+    @FXML
+    private ListView<Contatto> contactListView;
+
+    public ListView<Contatto> getContactListView() {
+        return contactListView;
     }
 
-    public void setFavoriteList(ObservableList<Contatto> favoriteList) {
-        this.favoriteList = favoriteList;
+    public void setListView(ListView<Contatto> contactListView) {
+        this.contactListView = contactListView;
     }
 
-    public Button getViewAddButton() {
-        return viewAddButton;
+     @FXML
+    private ListView<Contatto> favoriteListView;
+    
+
+ 
+  
+   public void initialize() {
+        this.addressBook = new Rubrica ();
+        // Carica i contatti e i preferiti nelle rispettive ListView
+        contactListView.setItems(addressBook.getContactList());
+        favoriteListView.setItems(addressBook.getFavoriteList());
+        configureContactListView();
+        
+        // Aggiungi un listener per la ricerca
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            contactListView.setItems(addressBook.searchContact(newValue));
+        });
+        
     }
-
-    public void setViewAddButton(Button viewAddButton) {
-        this.viewAddButton = viewAddButton;
-    }
-
-    public Button getDeleteButton() {
-        return deleteButton;
-    }
-
-    public void setDeleteButton(Button deleteButton) {
-        this.deleteButton = deleteButton;
-    }
-
-    public Button getSearchButton() {
-        return searchButton;
-    }
-
-    public void setSearchButton(Button searchButton) {
-        this.searchButton = searchButton;
-    }
-
-    public Button getEditButton() {
-        return editButton;
-    }
-
-    public void setEditButton(Button editButton) {
-        this.editButton = editButton;
-    }
-
-    public Button getFavoriteButton() {
-        return favoriteButton;
-    }
-
-    public void setFavoriteButton(Button favoriteButton) {
-        this.favoriteButton = favoriteButton;
-    }
-
-    public ListView<Contatto> getListView() {
-        return myListView;
-    }
-
-    public void setListView(ListView<Contatto> myListView) {
-        this.myListView = myListView;
-    }
-
-    public ImageView getDeleteImageView() {
-        return deleteImageView;
-    }
-
-    public void setDeleteImageView(ImageView deleteImageView) {
-        this.deleteImageView = deleteImageView;
-    }
-
-    public ListView<Contatto> getMyListView() {
-        return myListView;
-    }
-
-    public void setMyListView(ListView<Contatto> myListView) {
-        this.myListView = myListView;
-    }
-
-    public TextField getSearchBar() {
-        return searchBar;
-    }
-
-    public void setSearchBar(TextField searchBar) {
-        this.searchBar = searchBar;
-    }
-
-    public Label getNameField() {
-        return nameField;
-    }
-
-    public void setNameField(Label nameField) {
-        this.nameField = nameField;
-    }
-
-    public Label getSurnameField() {
-        return surnameField;
-    }
-
-    public void setSurnameField(Label surnameField) {
-        this.surnameField = surnameField;
-    }
-
-    public Label getEmail1Field() {
-        return email1Field;
-    }
-
-    public void setEmail1Field(Label email1Field) {
-        this.email1Field = email1Field;
-    }
-
-    public Label getEmail2Field() {
-        return email2Field;
-    }
-
-    public void setEmail2Field(Label email2Field) {
-        this.email2Field = email2Field;
-    }
-
-    public Label getEmail3Field() {
-        return email3Field;
-    }
-
-    public void setEmail3Field(Label email3Field) {
-        this.email3Field = email3Field;
-    }
-
-    public Label getNumber1Field() {
-        return number1Field;
-    }
-
-    public void setNumber1Field(Label number1Field) {
-        this.number1Field = number1Field;
-    }
-
-    public Label getNumber2Field() {
-        return number2Field;
-    }
-
-    public void setNumber2Field(Label number2Field) {
-        this.number2Field = number2Field;
-    }
-
-    public Label getNumber3Field() {
-        return number3Field;
-    }
-
-    public void setNumber3Field(Label number3Field) {
-        this.number3Field = number3Field;
-    }
-
-    public Label getNoteField() {
-        return noteField;
-    }
-
-    public void setNoteField(Label noteField) {
-        this.noteField = noteField;
-    }
-
-    public Label getDefaultText() {
-        return defaultText;
-    }
-
-    public void setDefaultText(Label defaultText) {
-        this.defaultText = defaultText;
-    }
-
-    public ObservableList<Contatto> getContactList() {
-        return contactList;
-    }
-
-    /**
-     * @brief Questo metodo permette di impostare la lista dei contatti e
-     * aggiornare la ListView con nuovi dati
-     *
-     *
-     * @param[in] contactList Lista osservabile dei contatti.
-     * @post La lista di contatti è stata aggiornata nel controller e la
-     * ListView è stata aggiornata con i nuovi contatti.
-     *
-     */
-
-    public void setContactList(ObservableList<Contatto> contactList) {
-        this.contactList = contactList;
-        myListView.setItems(contactList);
-    }
-
-    /**
-     * @brief Inizializza i componenti e imposta la lista di contatti
-     *
-     * Questo metodo viene eseguito automaticamente quando l'interfaccia utente
-     * viene caricata. Carica la lista dei contatti utilizzando il metodo
-     * SalvaCaricaRubrica.caricaRubrica(). Configura la ListView per
-     * visualizzare correttamente i contatti, mostrando solo il cognome e il
-     * nome. Aggiunge un listener alla ListView per reagire alla selezione di un
-     * contatto, aggiornando i campi di testo con i dettagli del contatto
-     * selezionato
-     *
-     * @param[in] location URL della risorsa utilizzata per risolvere i percorsi
-     * relativi.
-     * @param[in] resources Risorse utilizzate per localizzare i componenti.
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        contactList = SalvaCaricaRubrica.loadAddressBook();
-        favoriteList = FXCollections.observableArrayList(SalvaCaricaPreferiti.loadFavoritesAddressBook());
-        listViewFavorites.setItems(favoriteList); // Imposta gli elementi nella ListView
-        myListView.setItems(contactList);
-        configureListView();
-    }
-
+     
     /**
      * @brief Configura la ListView per visualizzare e gestire i contatti.
      *
      *
-     * @pre La ListView `myListView` e la lista `contactList` devono essere
-     * inizializzate.
+     * @pre La ListView `contactListView` deve essere
+     * inizializzata
      * @post La ListView La ListView viene configurata per visualizzare solo
      * Cognome e Nome del contatto
      */
-    private void configureListView() {
-        myListView.setCellFactory(listView -> new ListCell<Contatto>() {
+    private void configureContactListView() {
+        contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
             protected void updateItem(Contatto contact, boolean empty) {
                 // Chiama la versione base del metodo per assicurare il corretto comportamento della cella
@@ -337,16 +155,14 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
         });
 
-        myListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+        contactListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
             if (selectedContact != null) {
                 super.updateContactDetails(selectedContact);
             }
         });
     }
 
-    public void sortContact() {
-        FXCollections.sort(contactList);
-    }
+
 
     @FXML
     @Override
@@ -356,7 +172,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
         InterfacciaAggiungiModificaController addController = loader.getController();
         addController.setUserInterfaceController(this);
-        addController.initializeForAdd(contactList);
+        addController.initializeForAdd(addressBook.getContactList());
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -379,32 +195,18 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @FXML
     @Override
     public void deleteAction(ActionEvent event) {
-        int selected = myListView.getSelectionModel().getSelectedIndex();
+        int selected = contactListView.getSelectionModel().getSelectedIndex();
 
         if (selected >= 0) {
             // Se il contatto è presente nei preferiti, rimuovilo
-            Contatto contactToRemove = myListView.getSelectionModel().getSelectedItem();
-            contactList.remove(contactToRemove);
-
-            // Verifica se il contatto è presente nei preferiti
-            if (favoriteList != null && favoriteList.contains(contactToRemove)) {
-                favoriteList.remove(contactToRemove);
-
-                // Aggiorna la ListView dei preferiti
-                listViewFavorites.setItems(favoriteList);
-
-                // Salva i preferiti aggiornati
-                SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
-            }
-
-            // Salva la lista aggiornata della rubrica principale
-            SalvaCaricaRubrica.saveAddressBook(contactList);
+            Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();
+            addressBook.deleteContact(contactToRemove);
 
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
            super.resetContactDetails();
 
-           myListView.setItems(contactList);
-           myListView.getSelectionModel().clearSelection();
+           contactListView.setItems(addressBook.getContactList());
+           contactListView.getSelectionModel().clearSelection();
         }
     }
     
