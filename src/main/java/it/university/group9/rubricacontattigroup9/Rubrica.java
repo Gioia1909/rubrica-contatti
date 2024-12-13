@@ -141,7 +141,9 @@ public class Rubrica implements GestioneRubrica{
         ObservableList<Contatto> result = FXCollections.observableArrayList();
         for (Contatto contact : contactList) {
             if (contact.getName().toLowerCase().contains(param.toLowerCase())
-                    || contact.getSurname().toLowerCase().contains(param.toLowerCase())) {
+                    || contact.getSurname().toLowerCase().contains(param.toLowerCase()) 
+                    || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
+                    || contact.getEmails().stream().anyMatch(email -> email.contains(param))) {
                 result.add(contact);
             }
         }
