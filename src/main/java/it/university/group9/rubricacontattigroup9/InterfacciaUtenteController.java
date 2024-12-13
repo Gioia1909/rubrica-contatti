@@ -119,7 +119,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         return contactList;
     }
 
-    public void setList(ObservableList<Contatto> contactList) {
+    public void setContactList(ObservableList<Contatto> contactList) {
         this.contactList = contactList;
     }
   
@@ -324,7 +324,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         Parent root = loader.load();
 
         MenuPreferitiController menuPreferitiController = loader.getController();
-        menuPreferitiController.setContactList(contactList);
+        menuPreferitiController.setFavoriteList(contactList);
 
         Scene scene = favoriteButton.getScene();
         scene.setRoot(root);
