@@ -55,6 +55,7 @@ public class Rubrica implements GestioneRubrica{
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante il salvataggio.
      */
+
     @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
@@ -74,12 +75,14 @@ public class Rubrica implements GestioneRubrica{
 
         Contatto newContact = new Contatto(name, surname, numbers, emails, note);
         contactList.add(newContact);
+        sort(contactList);
         saveContacts();
     }
 
     /**
      * @brief Modifica un contatto esistente.
      */
+    
     @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException, IOException {
@@ -109,7 +112,6 @@ public class Rubrica implements GestioneRubrica{
     public void deleteContact(Contatto contact) throws IOException {
         int index = contactList.indexOf(contact);
         if (index != -1) {
-            contact.setFav(true); // Imposta il contatto come preferito
             saveFavorites(); // Salva le modifiche
         }
     }
@@ -120,6 +122,8 @@ public class Rubrica implements GestioneRubrica{
     public void addToFavorites(Contatto contact) throws IOException {
         if (contactList.contains(contact) && !favoriteList.contains(contact)) {
             favoriteList.add(contact);
+            contact.setFav(true); // Imposta il contatto come preferito
+            sort(favoriteList);// ordiniamo la lista dei preferiti
             saveFavorites();
         }
     }
@@ -186,5 +190,8 @@ public class Rubrica implements GestioneRubrica{
         SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
     }
 
+    private void sort(ObservableList<Contatto> contactList){
+        FXCollections.sort(contactList);
+    }
     
 }
