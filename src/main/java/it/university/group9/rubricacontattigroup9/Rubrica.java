@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Rubrica implements GestioneRubrica{
 
@@ -125,11 +127,15 @@ public class Rubrica implements GestioneRubrica{
     /**
      * @brief Rimuove un contatto dai preferiti.
      */
-    public void removeFromFavorites(Contatto contact) throws IOException {
+    public void removeFromFavorites(Contatto contact) {
         int index = contactList.indexOf(contact);
         if (index != -1) {
             contact.setFav(false); // Rimuovi lo stato di preferito
-            saveContacts(); // Salva le modifiche
+            try {
+                saveFavorites(); // Salva le modifiche
+            } catch (IOException ex) {
+                System.out.println("Errore nel Salvataggio dei Preferiti dopo la rimozione di " + contact);
+            }
         }
     }
 
@@ -140,6 +146,22 @@ public class Rubrica implements GestioneRubrica{
     public ObservableList<Contatto> searchContact(String param) {
         ObservableList<Contatto> result = FXCollections.observableArrayList();
         for (Contatto contact : contactList) {
+            if (contact.getName().toLowerCase().contains(param.toLowerCase())
+                    || contact.getSurname().toLowerCase().contains(param.toLowerCase()) 
+                    || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
+                    || contact.getEmails().stream().anyMatch(email -> email.contains(param))) {
+                result.add(contact);
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * @brief Cerca contatti nella rubrica dei preferiti.
+     */
+    public ObservableList<Contatto> searchFavoriteContact(String param) {
+        ObservableList<Contatto> result = FXCollections.observableArrayList();
+        for (Contatto contact : favoriteList) {
             if (contact.getName().toLowerCase().contains(param.toLowerCase())
                     || contact.getSurname().toLowerCase().contains(param.toLowerCase()) 
                     || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
