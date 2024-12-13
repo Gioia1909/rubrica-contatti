@@ -24,6 +24,16 @@ AnchorPane {
      -fx-background-color: transparent; 
 }
 
+#addPrefButton {
+     -fx-cursor: hand;    
+     -fx-background-color: transparent; 
+}
+
+#addToFavorite {
+    -fx-cursor: hand;    
+     -fx-background-color: transparent;
+}
+
 .scroll-bar {
     -fx-background-color: lightgrey; /* Colore di sfondo */
     -fx-border-color: black; /* Colore del bordo */
