@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -194,7 +195,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         stage.show();
     }
     
-       @FXML
+ @FXML
     void addToFavoriteAction(ActionEvent event) {
         Contatto selectedContact = contactListView.getSelectionModel().getSelectedItem();
         if (selectedContact != null && !selectedContact.isFav()) {
@@ -209,7 +210,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             alert.showAndWait(); */
       
         }
-           addressBook.addToFavorites(selectedContact);
     }
 
 
@@ -362,6 +362,3 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     }
     
 }
-    
-
-

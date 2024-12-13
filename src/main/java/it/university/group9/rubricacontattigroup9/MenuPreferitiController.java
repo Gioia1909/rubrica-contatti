@@ -44,7 +44,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     }
 
     @FXML
-    private Button editButton, deleteButton, searchButton, secondaryButton;
+    private Button editButton, deleteButton, searchButton, secondaryButton, addToFavorite;
 
     @FXML
     private ImageView editImageView, deleteImageView;
