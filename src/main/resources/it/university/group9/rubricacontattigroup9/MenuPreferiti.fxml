@@ -73,7 +73,7 @@
                      <graphic>
                         <ImageView fx:id="deleteImageView" fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
-                              <Image url="@delete.png" />
+                              <Image url="@stellaPiena.png" />
                            </image>
                         </ImageView>
                      </graphic>
