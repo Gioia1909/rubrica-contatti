@@ -85,9 +85,16 @@ public class Rubrica implements GestioneRubrica {
         // Aggiornamento del contatto
         int index = contactList.indexOf(oldContact);
         contactList.set(index, updatedContact);
+        synchronizeFavorites(oldContact, updatedContact);
         saveData();
     }
 
+    public void synchronizeFavorites(Contatto oldContact, Contatto updatedContact){
+        int favoriteIndex = favoriteList.indexOf(oldContact);
+        if(favoriteIndex != -1){
+            favoriteList.set(favoriteIndex, updatedContact);
+        }
+    }
     @Override
     public void deleteContact(Contatto contact) {
         if (contactList.remove(contact)) {

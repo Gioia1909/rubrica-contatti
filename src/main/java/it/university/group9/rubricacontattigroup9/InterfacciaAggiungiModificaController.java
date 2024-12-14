@@ -156,7 +156,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             List<String> numbers = collectNumbers();
             List<String> emails = collectEmails();
             String note = noteField.getText().trim();
-
+            
             addressBook.editContact(existingContact, name, surname, numbers, emails, note);
             // Aggiorna la lista filtrata se vengo da una ricerca 
             //updateFilteredList();
