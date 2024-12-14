@@ -25,7 +25,7 @@ public interface GestioneRubrica {
     public ObservableList<Contatto> getContactList();
 
     /**
-     * Aggiunge un nuovo contatto alla rubrica.
+     * @brief Aggiunge un nuovo contatto alla rubrica.
      * 
      * @param name Il nome del contatto.
      * @param surname Il cognome del contatto.
@@ -34,6 +34,9 @@ public interface GestioneRubrica {
      * @param note Eventuali note relative al contatto.
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante la gestione dei dati.
+     *
+     * @pre Il contatto non deve già esistere nella rubrica.
+     * @post Il contatto viene aggiunto alla rubrica se è valido.
      */
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException, IOException;
 
@@ -48,6 +51,9 @@ public interface GestioneRubrica {
      * @param note Le nuove note relative al contatto.
      * @throws CampoNonValidoException Se uno dei campi non è valido.
      * @throws IOException Se si verifica un errore durante la gestione dei dati.
+     *
+     * @pre Il contatto da modificare deve esistere nella rubrica.
+     * @post Il contatto viene modificato se le modifiche non creano duplicati.
      */
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException, IOException ;
     
@@ -56,6 +62,9 @@ public interface GestioneRubrica {
      * 
      * @param contact Il contatto da eliminare.
      * @throws IOException Se si verifica un errore durante la gestione dei dati.
+     *
+     * @pre Il contatto deve esistere nella rubrica.
+     * @post Il contatto viene rimosso dalla rubrica.
      */
     public void deleteContact(Contatto contact) throws IOException;
 
@@ -64,6 +73,8 @@ public interface GestioneRubrica {
      * 
      * @param param Il parametro di ricerca (nome, cognome, numero di telefono, email).
      * @return ObservableList contenente i contatti che corrispondono al parametro di ricerca.
+     *
+     * @pre La rubrica deve essere inizializzata.
      */
     public ObservableList<Contatto> searchContact(String param);
         
