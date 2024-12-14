@@ -9,13 +9,18 @@ import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Rubrica implements GestioneRubrica {
 
     private ObservableList<Contatto> contactList;
     private ObservableList<Contatto> favoriteList;
+
+    public Rubrica() {
+        this.contactList = SalvaCaricaRubrica.loadAddressBook();
+        this.favoriteList = SalvaCaricaPreferiti.loadFavoritesAddressBook();
+        System.out.println("Lista iniziale dei preferiti: " + favoriteList.size());
+    }
 
     public void setContactList(ObservableList<Contatto> contactList) {
         this.contactList = contactList;
@@ -25,50 +30,15 @@ public class Rubrica implements GestioneRubrica {
         this.favoriteList = favoriteList;
     }
 
-    public Rubrica() {
-        this.contactList = SalvaCaricaRubrica.loadAddressBook();
-        this.favoriteList = SalvaCaricaPreferiti.loadFavoritesAddressBook();
-        //synchronizeFavorites();
-        System.out.println("Lista iniziale dei preferiti: " + favoriteList.size());
-    }
-
-    /**
-     * @brief Sincronizza la lista dei preferiti con i contatti principali.
-     *
-     * Se un contatto nella lista dei preferiti non è più presente nella rubrica
-     * principale, viene rimosso automaticamente dai preferiti.
-     */
-    private void synchronizeFavorites() {
-    System.out.println("Sincronizzazione dei preferiti prima: " + favoriteList.size());    
-    System.out.println("Contenuto dei preferiti prima: " + favoriteList);
-    System.out.println("Contenuto della rubrica principale: " + contactList);
-    favoriteList.removeIf(fav -> !contactList.contains(fav));
-    System.out.println("Sincronizzazione dei preferiti dopo: " + favoriteList.size());
-    System.out.println("Contenuto dei preferiti dopo: " + favoriteList);
-    }
-
-    /**
-     * @brief Restituisce la lista dei contatti.
-     * @return Lista osservabile dei contatti principali.
-     */
     @Override
     public ObservableList<Contatto> getContactList() {
         return contactList;
     }
 
-    /**
-     * @brief Restituisce la lista dei contatti preferiti.
-     * @return Lista osservabile dei contatti preferiti.
-     */
     public ObservableList<Contatto> getFavoriteList() {
         return favoriteList;
     }
 
-    /**
-     * @brief Aggiunge un contatto alla rubrica principale.
-     * @throws CampoNonValidoException Se uno dei campi non è valido.
-     * @throws IOException Se si verifica un errore durante il salvataggio.
-     */
     @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException {
@@ -77,21 +47,14 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateSurname(surname);
         ContattoValidator.validateEmail(emails);
         ContattoValidator.validatePhoneNumber(numbers);
-
+         ContattoValidator.validateFields(name,surname,numbers);
 
         Contatto newContact = new Contatto(name, surname, numbers, emails, note);
         contactList.add(newContact);
         sort(contactList);
-        try {
-            saveContacts();
-        } catch (IOException ex) {
-            System.out.println("Errore nel Salvataggio della Rubrica dopo l'aggiunta di " + newContact);
-        }
+        saveData();
     }
 
-    /**
-     * @brief Modifica un contatto esistente.
-     */
     @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
             throws CampoNonValidoException {
@@ -100,167 +63,100 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateSurname(surname);
         ContattoValidator.validateEmail(emails);
         ContattoValidator.validatePhoneNumber(numbers);
+           ContattoValidator.validateFields(name,surname,numbers);
 
         int index = contactList.indexOf(oldContact);
         if (index != -1) {
             Contatto updatedContact = new Contatto(name, surname, numbers, emails, note);
             contactList.set(index, updatedContact);
-            try {
-                saveFavorites(); // Salva le modifiche
-            } catch (IOException ex) {
-                System.out.println("Errore nel Salvataggio dei Preferiti dopo la modifica di " + oldContact);
-            }
-            try {
-                saveContacts();
-            } catch (IOException ex) {
-                System.out.println("Errore nel Salvataggio dei Contatti dopo la modifica di " + oldContact);
-            }
+            saveData();
         }
     }
 
-    /**
-     * @brief Rimuove un contatto dalla rubrica principale e dai preferiti.
-     */
     @Override
     public void deleteContact(Contatto contact) {
-        int index = contactList.indexOf(contact);
-        if (index != -1) {
-            contactList.remove(contact);
+        if (contactList.remove(contact)) {
             favoriteList.remove(contact);
-            try {
-                saveFavorites(); // Salva le modifiche
-            } catch (IOException ex) {
-                System.out.println("Errore nel Salvataggio dei Preferiti dopo la rimozione di " + contact);
-            }
-            try {
-                saveContacts();
-            } catch (IOException ex) {
-                System.out.println("Errore nel Salvataggio dei Contatti dopo la rimozione di " + contact);
-            }
+            saveData();
         }
     }
 
-    /**
-     * @brief Aggiunge un contatto ai preferiti.
-     */
     public void addToFavorites(Contatto contact) {
         if (contactList.contains(contact) && !favoriteList.contains(contact)) {
             favoriteList.add(contact);
-            contact.setFav(true); // Imposta il contatto come preferito
-            sort(favoriteList);// ordiniamo la lista dei preferiti
-            try {
-                saveFavorites();
-            } catch (IOException ex) {
-                System.out.println("Errore nel Salvataggio dei Preferiti dopo l'aggiunta di " + contact);
-            }
+            contact.setFav(true);
+            sort(favoriteList);
+            saveFavorites();
         }
     }
 
-    /**
-     * @brief Rimuove un contatto dai preferiti.
-     */
     public void removeFromFavorites(Contatto contact) {
-        System.out.println("Sto cercando di rimuovere: " + contact);
-        System.out.println("Lista dei preferiti prima: " + favoriteList);
-        int index = favoriteList.indexOf(contact);
-        if (index != -1) {
-            contact.setFav(false); // Rimuovi lo stato di preferito
-            favoriteList.remove(contact);
-            System.out.println("Sto nella Rubrica ho rimosso " + contact);
-            System.out.println("La lista dei preferiti contiene " + favoriteList);
-            try {
-                saveFavorites(); // Salva le modifiche
-            } catch (IOException ex) {
-                System.out.println("Errore nel Salvataggio dei Preferiti dopo la rimozione di " + contact);
-            }
+        if (favoriteList.remove(contact)) {
+            contact.setFav(false);
+            saveFavorites();
         }
     }
 
-    /**
-     * @brief Cerca contatti nella rubrica principale.
-     */
     @Override
     public ObservableList<Contatto> searchContact(String param) {
-        ObservableList<Contatto> result = FXCollections.observableArrayList();
-        for (Contatto contact : contactList) {
-            if (contact.getName().toLowerCase().contains(param.toLowerCase())
-                    || contact.getSurname().toLowerCase().contains(param.toLowerCase())
-                    || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
-                    || contact.getEmails().stream().anyMatch(email -> email.contains(param))) {
-                result.add(contact);
-            }
-        }
-        return result;
+        return contactList.stream()
+                .filter(contact -> matchesContact(contact, param))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    /**
-     * @brief Cerca contatti nella rubrica dei preferiti.
-     */
     public ObservableList<Contatto> searchFavoriteContact(String param) {
-        System.out.println("Esecuzione della ricerca nei preferiti con il parametro: " + param);
-        for (Contatto contact : favoriteList) {
-            System.out.println("Preferito: " + contact.getName() + " " + contact.getSurname());
-        }
-
-        ObservableList<Contatto> result = FXCollections.observableArrayList();
-        for (Contatto contact : favoriteList) {
-            if (contact.getName().toLowerCase().contains(param.toLowerCase())
-                    || contact.getSurname().toLowerCase().contains(param.toLowerCase())
-                    || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
-                    || contact.getEmails().stream().anyMatch(email -> email.contains(param))) {
-                result.add(contact);
-            }
-        }
-        System.out.println("Risultati della ricerca: " + result.size());
-        return result;
+        return favoriteList.stream()
+                .filter(contact -> matchesContact(contact, param))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    /**
-     * @brief Verifica se la modifica di un contatto esistente genera un
-     * duplicato nella rubrica.
-     *
-     * Questo metodo verifica se i dati modificati di un contatto sono validi e
-     * non creano un duplicato con altri contatti presenti nella rubrica.
-     *
-     * @param oldContact Il contatto originale prima della modifica.
-     * @param updatedContact Il contatto aggiornato con i nuovi dati.
-     * @return true se la modifica è valida (non genera duplicati), false
-     * altrimenti.
-     */
+    private boolean matchesContact(Contatto contact, String param) {
+        String lowerParam = param.toLowerCase();
+        return contact.getName().toLowerCase().contains(lowerParam)
+                || contact.getSurname().toLowerCase().contains(lowerParam)
+                || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
+                || contact.getEmails().stream().anyMatch(email -> email.contains(param));
+    }
+
     public boolean isEditValid(Contatto oldContact, Contatto updatedContact) {
         for (Contatto contact : contactList) {
-            // Salta il contatto che stiamo modificando
-            if (contact.equals(oldContact)) {
-                continue;
-            }
-            // Controlla duplicati di nome, cognome e numeri
+            if (contact.equals(oldContact)) continue;
+
+            System.out.println("[DEBUG] Confronto con contatto esistente: " + contact);
+
+            List<String> normalizedUpdatedNumbers = normalizeNumbers(updatedContact.getNumbers());
+            List<String> normalizedContactNumbers = normalizeNumbers(contact.getNumbers());
+
+            boolean overlappingNumbers = normalizedUpdatedNumbers.stream()
+                    .anyMatch(normalizedContactNumbers::contains);
+
             boolean sameNameAndSurname = contact.getName().equalsIgnoreCase(updatedContact.getName())
                     && contact.getSurname().equalsIgnoreCase(updatedContact.getSurname());
-            boolean overlappingNumbers = updatedContact.getNumbers().stream()
-                    .anyMatch(number -> contact.getNumbers().contains(number));
-            if (sameNameAndSurname || overlappingNumbers) {
-                return false; // Modifica non valida, genera duplicati
+
+            if (sameNameAndSurname && overlappingNumbers) {
+                System.out.println("[DEBUG] Duplicato trovato: " + contact);
+                return false;
             }
         }
-        return true; // Modifica valida
+        return true;
     }
 
-    /**
-     * @brief Salva i contatti principali sul file JSON.
-     */
-    private void saveContacts() throws IOException {
+    private List<String> normalizeNumbers(List<String> numbers) {
+        return numbers.stream()
+                .map(number -> number.replaceAll("\\s+", "").trim())
+                .collect(Collectors.toList());
+    }
+
+    private void saveData() {
         SalvaCaricaRubrica.saveAddressBook(contactList);
+        saveFavorites();
     }
 
-    /**
-     * @brief Salva i contatti preferiti sul file JSON.
-     */
-    private void saveFavorites() throws IOException {
+    private void saveFavorites() {
         SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
     }
 
-    private void sort(ObservableList<Contatto> contactList) {
-        FXCollections.sort(contactList);
+    private void sort(ObservableList<Contatto> list) {
+        FXCollections.sort(list);
     }
-
 }

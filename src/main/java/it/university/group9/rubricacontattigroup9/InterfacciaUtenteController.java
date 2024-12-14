@@ -12,8 +12,9 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 import javafx.collections.*;
-import javafx.event.ActionEvent; 
+import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -22,15 +23,13 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
-    
+
     public Rubrica addressBook;
 
     /**
      * @name Componenti FXML
      */
     ///@{
-   
-
     @FXML
     private Button viewAddButton;
 
@@ -53,7 +52,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
     @FXML
     private Button favoriteButton;
-    
+
     @FXML
     private Button addToFavorite;
 
@@ -62,10 +61,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
     @FXML
     private ImageView deleteImageView;
-    
- 
 
-  
     @FXML
     private TextField searchBar;
     /**
@@ -100,10 +96,10 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * <Label Testo di Default
      */
     ///@}
-   
+
     @FXML
     private MenuItem exportButton;
-    
+
     @FXML
     private ListView<Contatto> contactListView;
 
@@ -115,43 +111,40 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.contactListView = contactListView;
     }
 
-   
     private ObservableList<Contatto> contactList;
-    
-     public ObservableList<Contatto> getContactList() {
+
+    public ObservableList<Contatto> getContactList() {
         return contactList;
     }
 
     public void setContactList(ObservableList<Contatto> contactList) {
         this.contactList = contactList;
     }
-  
+
     private ObservableList<Contatto> favoriteList;
-    
-    
-   @Override
-   public void initialize(URL location, ResourceBundle resources) {
-        this.addressBook = new Rubrica ();
-        contactList=addressBook.getContactList();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.addressBook = new Rubrica();
+        contactList = addressBook.getContactList();
         favoriteList = addressBook.getFavoriteList();
         // Carica i contatti e i preferiti nelle rispettive ListView
         contactListView.setItems(contactList);
-  //      favoriteListView.setItems(favoriteList);
+        //      favoriteListView.setItems(favoriteList);
         configureContactListView();
-        
+
         // Aggiungi un listener per la ricerca
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
             contactListView.setItems(addressBook.searchContact(newValue));
         });
-        
+
     }
-     
+
     /**
      * @brief Configura la ListView per visualizzare e gestire i contatti.
      *
      *
-     * @pre La ListView `contactListView` deve essere
-     * inizializzata
+     * @pre La ListView `contactListView` deve essere inizializzata
      * @post La ListView La ListView viene configurata per visualizzare solo
      * Cognome e Nome del contatto
      */
@@ -178,7 +171,47 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             }
         });
     }
+    
+    public boolean isEditValid(Contatto oldContact, Contatto updatedContact) {
+    for (Contatto contact : contactList) {
+        // Ignora il confronto con il contatto originale
+        if (contact.equals(oldContact)) {
+            continue;
+        }
 
+        // Log per debug
+        System.out.println("[DEBUG] Confronto con contatto esistente: " + contact);
+        System.out.println("[DEBUG] Contatto originale: " + oldContact);
+        System.out.println("[DEBUG] Contatto aggiornato: " + updatedContact);
+
+        // Normalizza i numeri di telefono per evitare falsi duplicati
+        List<String> normalizedUpdatedNumbers = updatedContact.getNumbers().stream()
+                .map(number -> number.replaceAll("\\s+", "").trim()) // Rimuovi spazi
+                .collect(Collectors.toList());
+        List<String> normalizedContactNumbers = contact.getNumbers().stream()
+                .map(number -> number.replaceAll("\\s+", "").trim())
+                .collect(Collectors.toList());
+
+        boolean overlappingNumbers = normalizedUpdatedNumbers.stream()
+                .anyMatch(normalizedContactNumbers::contains);
+
+        boolean sameNameAndSurname = contact.getName().equalsIgnoreCase(updatedContact.getName())
+                && contact.getSurname().equalsIgnoreCase(updatedContact.getSurname());
+
+        // Condizione per considerare un duplicato
+        if (sameNameAndSurname && overlappingNumbers) {
+            System.out.println("[DEBUG] Duplicato trovato: " + contact);
+            return false; // Modifica non valida
+        }
+
+        // Permetti sovrapposizione di numeri se nome e cognome sono differenti
+        if (overlappingNumbers && !sameNameAndSurname) {
+            System.out.println("[DEBUG] Sovrapposizione numeri ma contatti distinti: " + contact);
+            continue;
+        }
+    }
+    return true; // Modifica valida
+}
 
 
     @FXML
@@ -187,15 +220,15 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         Parent root = loader.load();
 
         InterfacciaAggiungiModificaController addController = loader.getController();
-     //   addController.setUserInterfaceController(this);
-        addController.initializeForAdd(addressBook,contactList);
+        //   addController.setUserInterfaceController(this);
+        addController.initializeForAdd(addressBook, contactList);
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
     }
-    
- @FXML
+
+    @FXML
     void addToFavoriteAction(ActionEvent event) {
         Contatto selectedContact = contactListView.getSelectionModel().getSelectedItem();
         if (selectedContact != null && !selectedContact.isFav()) {
@@ -208,10 +241,9 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             alert.setHeaderText("Il contatto è stato aggiunto ai preferiti con successo!");
             //       alert.setContentText("Il file CSV è stato salvato correttamente in: \n" + fileCSV);
             alert.showAndWait(); */
-      
+
         }
     }
-
 
     /**
      * @brief Elimina il contatto selezionato dalla lista.
@@ -233,18 +265,25 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
         if (selected >= 0) {
             Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();
+            //System.out.println("sto passando al gestore della rubrica il contatto " + );
+            System.out.println("Ho selezionato da eliminare " + contactToRemove);
             addressBook.deleteContact(contactToRemove);
-
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
-           super.resetContactDetails();
-
-  //         contactListView.setItems(contactList);
-  //         contactListView.getSelectionModel().clearSelection();
+            super.resetContactDetails();
+            // Verifica se si sta visualizzando una lista filtrata
+            String searchQuery = searchBar.getText().toLowerCase().trim();
+            if (searchQuery.isEmpty()) {
+                // Mostra la lista principale se non c'è filtro
+                refreshContactList();
+            } else {
+                // Aggiorna la lista filtrata
+                ObservableList<Contatto> filteredList = addressBook.searchContact(searchQuery);
+                contactListView.setItems(filteredList);
+            }
         }
+        contactListView.getSelectionModel().clearSelection();
     }
-    
-  
-   
+
     /**
      * @brief Gestisce il passaggio alla schermata di modifica di un contatto
      * selezionato.
@@ -279,11 +318,11 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-            
+
         }
     }
-    
-     /**
+
+    /**
      * @brief Cerca un contatto nella lista in base al testo inserito nella
      * barra di ricerca.
      *
@@ -308,16 +347,14 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         }
 
         ObservableList<Contatto> filteredList = addressBook.searchContact(searchQuery);
-        
-        if(filteredList.isEmpty()){
-            showErrorDialog("Errore","Nessun contatto trovato");
+        if (filteredList.isEmpty()) {
+            showErrorDialog("Errore", "Nessun contatto trovato");
         }
-        
+
         contactListView.setItems(filteredList);
-    } 
-    
-    
-     /**
+    }
+
+    /**
      * @brief Mostra una finestra di dialogo di errore con un messaggio
      * personalizzato,una finestra di dialogo di tipo errore con un titolo e un
      * messaggio.
@@ -336,7 +373,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         alert.setContentText(messaggio);
         alert.showAndWait();
     }
-
 
     /**
      * @brief Passa alla schermata dei contatti preferiti.
@@ -360,5 +396,11 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     private void exportAction(ActionEvent event) throws IOException {
         SalvaCaricaRubrica.exportToCSV(contactList);
     }
-    
+
+    private void refreshContactList() {
+        contactList.setAll(addressBook.getContactList());
+        contactListView.setItems(contactList); // Risincronizza la vista grafica
+        contactListView.getSelectionModel().clearSelection(); // Deseleziona qualsiasi elemento
+    }
+
 }
