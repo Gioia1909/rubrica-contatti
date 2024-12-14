@@ -172,46 +172,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         });
     }
     
-    public boolean isEditValid(Contatto oldContact, Contatto updatedContact) {
-    for (Contatto contact : contactList) {
-        // Ignora il confronto con il contatto originale
-        if (contact.equals(oldContact)) {
-            continue;
-        }
-
-        // Log per debug
-        System.out.println("[DEBUG] Confronto con contatto esistente: " + contact);
-        System.out.println("[DEBUG] Contatto originale: " + oldContact);
-        System.out.println("[DEBUG] Contatto aggiornato: " + updatedContact);
-
-        // Normalizza i numeri di telefono per evitare falsi duplicati
-        List<String> normalizedUpdatedNumbers = updatedContact.getNumbers().stream()
-                .map(number -> number.replaceAll("\\s+", "").trim()) // Rimuovi spazi
-                .collect(Collectors.toList());
-        List<String> normalizedContactNumbers = contact.getNumbers().stream()
-                .map(number -> number.replaceAll("\\s+", "").trim())
-                .collect(Collectors.toList());
-
-        boolean overlappingNumbers = normalizedUpdatedNumbers.stream()
-                .anyMatch(normalizedContactNumbers::contains);
-
-        boolean sameNameAndSurname = contact.getName().equalsIgnoreCase(updatedContact.getName())
-                && contact.getSurname().equalsIgnoreCase(updatedContact.getSurname());
-
-        // Condizione per considerare un duplicato
-        if (sameNameAndSurname && overlappingNumbers) {
-            System.out.println("[DEBUG] Duplicato trovato: " + contact);
-            return false; // Modifica non valida
-        }
-
-        // Permetti sovrapposizione di numeri se nome e cognome sono differenti
-        if (overlappingNumbers && !sameNameAndSurname) {
-            System.out.println("[DEBUG] Sovrapposizione numeri ma contatti distinti: " + contact);
-            continue;
-        }
-    }
-    return true; // Modifica valida
-}
 
 
     @FXML
@@ -267,11 +227,15 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();
             //System.out.println("sto passando al gestore della rubrica il contatto " + );
             System.out.println("Ho selezionato da eliminare " + contactToRemove);
+            
             addressBook.deleteContact(contactToRemove);
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
             super.resetContactDetails();
+            
+            refreshContactList();
             // Verifica se si sta visualizzando una lista filtrata
             String searchQuery = searchBar.getText().toLowerCase().trim();
+          
             if (searchQuery.isEmpty()) {
                 // Mostra la lista principale se non c'è filtro
                 refreshContactList();
@@ -318,8 +282,10 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-
+            
         }
+        refreshContactList();
+        
     }
 
     /**
@@ -378,8 +344,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * @brief Passa alla schermata dei contatti preferiti.
      *
      * @throws IOException Se non riesce a caricare la nuova schermata.
-     * @see MenuPreferitiController
-     */
+     * @see MenuPreferitiController*/
     @FXML
     protected void switchToFavorite() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
@@ -398,9 +363,49 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     }
 
     private void refreshContactList() {
-        contactList.setAll(addressBook.getContactList());
-        contactListView.setItems(contactList); // Risincronizza la vista grafica
-        contactListView.getSelectionModel().clearSelection(); // Deseleziona qualsiasi elemento
+    ObservableList<Contatto> contactList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList
+    contactListView.setItems(contactList);
+        //contactListView.getSelectionModel().clearSelection(); // Deseleziona qualsiasi elemento
     }
 
+    public boolean isEditValid(Contatto oldContact, Contatto updatedContact) {
+    for (Contatto contact : contactList) {
+        // Ignora il confronto con il contatto originale
+        if (contact.equals(oldContact)) {
+            continue;
+        }
+
+        // Log per debug
+        System.out.println("[DEBUG] Confronto con contatto esistente: " + contact);
+        System.out.println("[DEBUG] Contatto originale: " + oldContact);
+        System.out.println("[DEBUG] Contatto aggiornato: " + updatedContact);
+
+        // Normalizza i numeri di telefono per evitare falsi duplicati
+        List<String> normalizedUpdatedNumbers = updatedContact.getNumbers().stream()
+                .map(number -> number.replaceAll("\\s+", "").trim()) // Rimuovi spazi
+                .collect(Collectors.toList());
+        List<String> normalizedContactNumbers = contact.getNumbers().stream()
+                .map(number -> number.replaceAll("\\s+", "").trim())
+                .collect(Collectors.toList());
+
+        boolean overlappingNumbers = normalizedUpdatedNumbers.stream()
+                .anyMatch(normalizedContactNumbers::contains);
+
+        boolean sameNameAndSurname = contact.getName().equalsIgnoreCase(updatedContact.getName())
+                && contact.getSurname().equalsIgnoreCase(updatedContact.getSurname());
+
+        // Condizione per considerare un duplicato
+        if (sameNameAndSurname && overlappingNumbers) {
+            System.out.println("[DEBUG] Duplicato trovato: " + contact);
+            return false; // Modifica non valida
+        }
+
+        // Permetti sovrapposizione di numeri se nome e cognome sono differenti
+        if (overlappingNumbers && !sameNameAndSurname) {
+            System.out.println("[DEBUG] Sovrapposizione numeri ma contatti distinti: " + contact);
+            continue;
+        }
+    }
+    return true; // Modifica valida
+}
 }

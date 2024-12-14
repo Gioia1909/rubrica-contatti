@@ -47,9 +47,13 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateSurname(surname);
         ContattoValidator.validateEmail(emails);
         ContattoValidator.validatePhoneNumber(numbers);
-         ContattoValidator.validateFields(name,surname,numbers);
+        ContattoValidator.validateFields(name, surname, numbers);
 
         Contatto newContact = new Contatto(name, surname, numbers, emails, note);
+        // Controllo duplicati prima dell'aggiunta
+        if (!isAddValid(newContact)) {
+            throw new CampoNonValidoException("Il contatto è già presente nella rubrica.");
+        }
         contactList.add(newContact);
         sort(contactList);
         saveData();
@@ -63,15 +67,29 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateSurname(surname);
         ContattoValidator.validateEmail(emails);
         ContattoValidator.validatePhoneNumber(numbers);
-           ContattoValidator.validateFields(name,surname,numbers);
-
-        int index = contactList.indexOf(oldContact);
-        if (index != -1) {
-            Contatto updatedContact = new Contatto(name, surname, numbers, emails, note);
-            contactList.set(index, updatedContact);
-            saveData();
+        ContattoValidator.validateFields(name, surname, numbers);
+        Contatto updatedContact = new Contatto(name, surname, numbers, emails, note);
+        // Controllo validità della modifica
+        if (!isModifyValid(oldContact, updatedContact)) {
+            throw new CampoNonValidoException("Le modifiche generano un duplicato nella rubrica.");
         }
+
+for (Contatto c : favoriteList) {
+    if (ContattoValidator.isContactDuplicate(contactList, updatedContact.getName(), updatedContact.getSurname(), updatedContact.getNumbers())) {
+        for (String email : updatedContact.getEmails()) { 
+            if (!email.isEmpty() && c.getEmails().contains(email.trim())) {
+               saveFavorites(); 
+        }
+        break; // Esci dal ciclo esterno, non c'è bisogno di continuare
     }
+}
+        // Aggiornamento del contatto
+        int index = contactList.indexOf(oldContact);
+        contactList.set(index, updatedContact);
+
+        saveData();
+    }
+}
 
     @Override
     public void deleteContact(Contatto contact) {
@@ -118,32 +136,96 @@ public class Rubrica implements GestioneRubrica {
                 || contact.getEmails().stream().anyMatch(email -> email.contains(param));
     }
 
-    public boolean isEditValid(Contatto oldContact, Contatto updatedContact) {
+    public boolean isModifyValid(Contatto oldContact, Contatto updatedContact) {
         for (Contatto contact : contactList) {
-            if (contact.equals(oldContact)) continue;
+            // Salta il contatto che si sta modificando
+            if (contact.equals(oldContact)) {
+                continue;
+            }
 
-            System.out.println("[DEBUG] Confronto con contatto esistente: " + contact);
+            System.out.println("[DEBUG] Confronto contatto aggiornato: " + updatedContact);
+            System.out.println("[DEBUG] Contatto esistente: " + contact);
 
+            // Normalizza numeri di telefono
             List<String> normalizedUpdatedNumbers = normalizeNumbers(updatedContact.getNumbers());
             List<String> normalizedContactNumbers = normalizeNumbers(contact.getNumbers());
 
+            // Normalizza emails
+            List<String> normalizedUpdatedEmails = normalizeEmails(updatedContact.getEmails());
+            List<String> normalizedContactEmails = normalizeEmails(contact.getEmails());
+
+            // Verifica numeri di telefono sovrapposti
             boolean overlappingNumbers = normalizedUpdatedNumbers.stream()
                     .anyMatch(normalizedContactNumbers::contains);
+            System.out.println("[DEBUG] Numeri sovrapposti: " + overlappingNumbers);
 
+            // Verifica email sovrapposte
+            boolean overlappingEmails = normalizedUpdatedEmails.stream()
+                    .anyMatch(normalizedContactEmails::contains);
+
+            System.out.println("[DEBUG] Email aggiornate normalizzate: " + normalizedUpdatedEmails);
+            System.out.println("[DEBUG] Email esistenti normalizzate: " + normalizedContactEmails);
+            System.out.println("[DEBUG] Sovrapposizione email rilevata: " + overlappingEmails);
+
+            // Verifica nome e cognome
             boolean sameNameAndSurname = contact.getName().equalsIgnoreCase(updatedContact.getName())
                     && contact.getSurname().equalsIgnoreCase(updatedContact.getSurname());
+            System.out.println("[DEBUG] Nome e cognome uguali: " + sameNameAndSurname);
 
-            if (sameNameAndSurname && overlappingNumbers) {
+            // Rileva duplicato se almeno una condizione è vera
+            if (overlappingNumbers || overlappingEmails || sameNameAndSurname) {
+                System.out.println("[DEBUG] Duplicato trovato: " + contact);
+                return false; // Rilevato duplicato
+            }
+        }
+        return true; // Nessun duplicato trovato
+
+    }
+
+    private boolean isAddValid(Contatto newContact) {
+        for (Contatto contact : contactList) {
+            System.out.println("[DEBUG] Confronto nuovo contatto: " + newContact + " con contatto esistente: " + contact);
+
+            // Normalizza numeri di telefono
+            List<String> normalizedNewNumbers = normalizeNumbers(newContact.getNumbers());
+            List<String> normalizedContactNumbers = normalizeNumbers(contact.getNumbers());
+
+            // Verifica numeri di telefono sovrapposti
+            boolean overlappingNumbers = normalizedNewNumbers.stream()
+                    .anyMatch(normalizedContactNumbers::contains);
+            System.out.println("[DEBUG] Numeri sovrapposti: " + overlappingNumbers);
+
+            // Verifica email sovrapposte
+            List<String> normalizedNewEmails = normalizeEmails(newContact.getEmails());
+            List<String> normalizedContactEmails = normalizeEmails(contact.getEmails());
+            boolean overlappingEmails = normalizedNewEmails.stream()
+                    .anyMatch(normalizedContactEmails::contains);
+            System.out.println("[DEBUG] Email sovrapposte: " + overlappingEmails);
+
+            // Verifica nome e cognome
+            boolean sameNameAndSurname = contact.getName().equalsIgnoreCase(newContact.getName())
+                    && contact.getSurname().equalsIgnoreCase(newContact.getSurname());
+            System.out.println("[DEBUG] Nome e cognome uguali: " + sameNameAndSurname);
+
+            // Rileva duplicato se almeno una condizione è vera
+            if (overlappingNumbers || overlappingEmails || sameNameAndSurname) {
                 System.out.println("[DEBUG] Duplicato trovato: " + contact);
                 return false;
             }
         }
-        return true;
+        return true; // Nessun duplicato trovato
     }
 
     private List<String> normalizeNumbers(List<String> numbers) {
         return numbers.stream()
                 .map(number -> number.replaceAll("\\s+", "").trim())
+                .collect(Collectors.toList());
+    }
+
+    private List<String> normalizeEmails(List<String> emails) {
+        return emails.stream()
+                .filter(email -> email != null && !email.trim().isEmpty()) // Rimuove email vuote o nulle
+                .map(email -> email.trim().toLowerCase()) // Rimuove spazi e converte a minuscolo
                 .collect(Collectors.toList());
     }
 

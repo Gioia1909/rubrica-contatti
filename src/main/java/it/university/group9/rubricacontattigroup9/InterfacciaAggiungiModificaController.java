@@ -77,7 +77,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * @param rb ResourceBundle per le risorse localizzate.
      *
      * @post I listener degli eventi per i pulsanti "Aggiungi" e "Modifica" sono
-     * configurati. 
+     * configurati.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -171,7 +171,11 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             String note = noteField.getText().trim();
 
             addressBook.editContact(existingContact, name, surname, numbers, emails, note);
+            // Aggiorna la lista filtrata se vengo da una ricerca 
+            //updateFilteredList();
+            
             closeWindow();
+
         } catch (CampoNonValidoException e) {
             handleValidationError(e.getMessage());
         }
@@ -179,9 +183,9 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
     private List<String> collectValidNumbers() throws CampoNonValidoException {
         List<String> numbers = new ArrayList<>(Arrays.asList(
-            number1Field.getText(),
-            number2Field.getText(),
-            number3Field.getText()
+                number1Field.getText(),
+                number2Field.getText(),
+                number3Field.getText()
         ));
         numbers.removeIf(number -> number == null || number.trim().isEmpty());
         ContattoValidator.validatePhoneNumber(numbers);
@@ -195,6 +199,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
                 email3Field.getText()
         ));
     }
+    
+    
 
     private boolean requestConfirmation(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
@@ -241,4 +247,5 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
+    
 }
