@@ -412,9 +412,22 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     }
 
     @FXML
-    private void exportAction(ActionEvent event) throws IOException {
-        SalvaCaricaRubrica.exportToCSV(contactList);
-    }
+    private void exportAction(ActionEvent event) {
+        try {
+            SalvaCaricaRubrica.exportToCSV(contactList);
+        } catch (IOException ex) {
+            showErrorDialog("Errore durante l'esportazione", "Si è verificato un errore durante il salvataggio del file CSV. ");
+        }
+               Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Esportazione completata");
+            alert.setHeaderText("Rubrica esportata con successo!");
+            alert.setContentText("Il file CSV è stato salvato correttamente.");
+            alert.showAndWait();
+        } 
+       
+    
+    
+    
 
     /*  protected void refreshContactList() {
         ObservableList<Contatto> contactList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList

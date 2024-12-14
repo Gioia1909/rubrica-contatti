@@ -43,6 +43,10 @@ public class SalvaCaricaPreferiti implements Serializable {
      * @see ObjectMapper
      */
     public static void saveFavoritesAddressBook(ObservableList<Contatto> addressBook) { //ObservableList<Contatto> rubrica Lista dei contatti da 
+      if(addressBook== null) {
+             throw new IllegalArgumentException("La lista dei preferiti non può essere null o vuota.");
+      }
+
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
         ObjectMapper mapper = new ObjectMapper(); //https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.8/com/fasterxml/jackson/databind/ObjectMapper.html
         

@@ -48,6 +48,7 @@ public class SalvaCaricaRubrica implements Serializable {
      * @see ObjectMapper
      */
     public static void saveAddressBook(ObservableList<Contatto> addressBook) { //ObservableList<Contatto> rubrica Lista dei contatti da 
+       
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
         ObjectMapper mapper = new ObjectMapper(); //https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.8/com/fasterxml/jackson/databind/ObjectMapper.html
 
@@ -115,20 +116,7 @@ public class SalvaCaricaRubrica implements Serializable {
 
                 pw.println(contact.getName() + ";" + contact.getSurname() + ";" + numbers + ";" + email);
             }
-
-            //Mostra un messaggio di conferma con un popup
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Esportazione completata");
-            alert.setHeaderText("Rubrica esportata con successo!");
-            alert.setContentText("Il file CSV è stato salvato correttamente in: \n" + fileCSV);
-            alert.showAndWait();
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Errore durante l'esportazione");
-            alert.setHeaderText("Esportazione fallita!");
-            alert.setContentText("Si è verificato un errore durante il salvataggio del file CSV.");
-            alert.showAndWait();
-        }
-        System.out.println("Rubrica esportata correttamente in " + fileCSV);
-    }
+      }
+}
+    
 }
