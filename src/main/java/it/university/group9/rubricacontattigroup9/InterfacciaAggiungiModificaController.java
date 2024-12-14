@@ -222,8 +222,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         }
         if (emails.size() > 2) {
             email3Field.setText(emails.get(2));
-        }
-
+        }        
+       
     }
 
     @FXML

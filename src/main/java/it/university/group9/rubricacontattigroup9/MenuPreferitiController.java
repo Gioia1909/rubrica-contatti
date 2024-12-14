@@ -177,8 +177,9 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
             stage.show();
             
             // Dopo la modifica, aggiorna la lista
-            refreshFavoriteList();
+            
         }
+        refreshFavoriteList();
     }
 
     /**
@@ -257,8 +258,9 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     }
 
     private void refreshFavoriteList() {
-        favoriteList.setAll(addressBook.getFavoriteList());
-        favoriteListView.setItems(favoriteList); // Risincronizza la vista grafica
+        ObservableList<Contatto> favoriteList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList
+    favoriteListView.setItems(favoriteList);
+        
     }
 
 }

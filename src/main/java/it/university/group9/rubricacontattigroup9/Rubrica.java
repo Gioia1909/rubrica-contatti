@@ -83,17 +83,25 @@ public class Rubrica implements GestioneRubrica {
         }
 
         // Aggiornamento del contatto
-        int index = contactList.indexOf(oldContact);
-        contactList.set(index, updatedContact);
-        synchronizeFavorites(oldContact, updatedContact);
+        //int index = contactList.indexOf(oldContact);
+        //contactList.set(index, updatedContact);
+        synchronizeContacts(oldContact, updatedContact);
         saveData();
+        saveFavorites();
     }
+    
+   
 
-    public void synchronizeFavorites(Contatto oldContact, Contatto updatedContact){
+    public void synchronizeContacts(Contatto oldContact, Contatto updatedContact){
         int favoriteIndex = favoriteList.indexOf(oldContact);
+        int contactIndex = contactList.indexOf(oldContact);
         if(favoriteIndex != -1){
             favoriteList.set(favoriteIndex, updatedContact);
         }
+        if(contactIndex != -1){
+            contactList.set(favoriteIndex, updatedContact);
+        }
+        
     }
     @Override
     public void deleteContact(Contatto contact) {
@@ -139,7 +147,7 @@ public class Rubrica implements GestioneRubrica {
                 || contact.getNumbers().stream().anyMatch(num -> num.contains(param))
                 || contact.getEmails().stream().anyMatch(email -> email.contains(param));
     }
-
+    
     public boolean isModifyValid(Contatto oldContact, Contatto updatedContact) {
         for (Contatto contact : contactList) {
             // Salta il contatto che si sta modificando
