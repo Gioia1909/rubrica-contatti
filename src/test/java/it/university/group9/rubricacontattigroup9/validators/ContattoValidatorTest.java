@@ -7,107 +7,101 @@ package it.university.group9.rubricacontattigroup9.validators;
 
 import it.university.group9.rubricacontattigroup9.Contatto;
 import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  *
- * @author Gruppo09
+ * @author monto
  */
 public class ContattoValidatorTest {
 
-    private ObservableList<Contatto> rubrica; // Variabile di classe
+    /**
+     * Test of validateName method, of class ContattoValidator.
+     */
+    @Test
+    public void testValidateName() throws Exception {
+        // Creazione di contatti con nome valido e non valido
+        List<String> numeri = new ArrayList<>(Arrays.asList("1234567890"));
+        List<String> emails = new ArrayList<>(Arrays.asList("email@gmail.com"));
+        Contatto validContatto = new Contatto("Luigi", "Montonetti", numeri, emails, " ");
+        Contatto invalidContatto = new Contatto("1Debora", "Villano", numeri, emails, " ");
 
-    public ContattoValidatorTest() {
-    }
+        // Test per nome valido (non deve sollevare eccezioni)
+        assertDoesNotThrow(() -> ContattoValidator.validateName(validContatto.getName()));
 
-    @BeforeAll
-    public static void setUpClass() {
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-    }
-
-    @BeforeEach
-    public void setUp() {
-        // Inizializzazione della rubrica da usare nei test
-        rubrica = FXCollections.observableArrayList(
-            new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Nota Mario"),
-            new Contatto("Luigi", "Bianchi", Arrays.asList("9876543210"), Arrays.asList("luigi.bianchi@gmail.com"), "Nota Luigi")
-        );
-    }
-
-    @AfterEach
-    public void tearDown() {
+        // Test per nome non valido (deve sollevare eccezione CampoNonValidoException)
+        assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateName(invalidContatto.getName()));
     }
 
     @Test
-    public void testIsNumeroDuplicato() {
-        System.out.println("isNumeroDuplicato");
-        assertTrue(ContattoValidator.isNumberDuplicate(rubrica, "1234567890")); // Numero duplicato
-        assertFalse(ContattoValidator.isNumberDuplicate(rubrica, "1111111111")); // Numero non presente
-    }
+    public void testValidateSurname() throws Exception {
+        // Creazione di contatti con cognome valido e non valido
+        List<String> numeri = new ArrayList<>(Arrays.asList("1234567890"));
+        List<String> emails = new ArrayList<>(Arrays.asList("email@gmail.com"));
+        Contatto validContatto = new Contatto("Luigi", "Montonetti", numeri, emails, " ");
+        Contatto invalidContatto = new Contatto("Debora", "1Villano", numeri, emails, " ");
 
-    /*
-    @Test
-    public void testIsContattoDuplicato() {
-        System.out.println("isContattoDuplicato");
-        assertTrue(ContattoValidator.isNumberDuplicate(rubrica, "Mario", "Rossi")); // Contatto duplicato
-        assertFalse(ContattoValidator.isNumberDuplicate(rubrica, "Anna", "Verdi")); // Contatto non presente
-    }*/
+        // Test per cognome valido (non deve sollevare eccezioni)
+        assertDoesNotThrow(() -> ContattoValidator.validateSurname(validContatto.getSurname()));;
 
-    @Test
-    public void testIsEmailDuplicata() {
-        System.out.println("isEmailDuplicata");
-        assertTrue(ContattoValidator.isEmailDuplicate(rubrica, "mario.rossi@gmail.com")); // Email duplicata
-        assertFalse(ContattoValidator.isEmailDuplicate(rubrica, "anna.verdi@gmail.com")); // Email non presente
+        // Test per cognome non valido (deve sollevare eccezione CampoNonValidoException)
+        assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateSurname(invalidContatto.getSurname()));
     }
 
     @Test
-    public void testValidateEmail() {
-        System.out.println("validateEmail");
-        // Email valida
-        assertDoesNotThrow(() -> ContattoValidator.validateEmail("test.email@gmail.com"));
-        // Email non valida
-        Exception exception = assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateEmail("test.email"));
-        assertEquals("Email non valida", exception.getMessage());
+    public void testValidatePhoneNumber() throws Exception {
+        // Creazione di numeri di telefono validi e non validi
+        List<String> validNumbers = new ArrayList<>(Arrays.asList("1234567890", "+391234567890"));
+        List<String> invalidNumbers = new ArrayList<>(Arrays.asList("123", "abc123", "a123bc"));
+
+        // Test per numeri validi (non deve sollevare eccezioni)
+        assertDoesNotThrow(() -> ContattoValidator.validatePhoneNumber(validNumbers));
+
+        // Test per numeri non validi (deve sollevare eccezione CampoNonValidoException)
+        assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validatePhoneNumber(invalidNumbers));
     }
 
     @Test
-    public void testValidateName() {
-        System.out.println("validateName");
-        // Nome valido
-        assertDoesNotThrow(() -> ContattoValidator.validateName("Mario"));
-        // Nome non valido
-        Exception exception = assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateName(""));
-        assertEquals("Nome non valido", exception.getMessage());
+    public void testValidateEmail() throws Exception {
+        // Creazione di email valide e non valide
+        List<String> validEmails = new ArrayList<>(Arrays.asList("email1@example.com", "email2@example.com"));
+        List<String> invalidEmails = new ArrayList<>(Arrays.asList("invalid-email", "email@com"));
+
+        // Test per email valide (non deve sollevare eccezioni)
+        assertDoesNotThrow(() -> ContattoValidator.validateEmail(validEmails));
+
+        // Test per email non valide (deve sollevare eccezione CampoNonValidoException)
+        assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateEmail(invalidEmails));
     }
 
     @Test
-    public void testValidatePhoneNumber() {
-        System.out.println("validatePhoneNumber");
-        // Numero valido
-        assertDoesNotThrow(() -> ContattoValidator.validatePhoneNumber("+12345678901"));
-        // Numero non valido
-        Exception exception = assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validatePhoneNumber("12345"));
-        assertEquals("Numero di telefono non valido", exception.getMessage());
-    }
+    public void testValidateFields() throws Exception {
+        // Creazione di contatti con numeri e campi validi e non validi
+        List<String> validNumbers = new ArrayList<>(Arrays.asList("1234567890"));
+        List<String> invalidNumbers = new ArrayList<>(Arrays.asList("", "", ""));
+        Contatto validContatto = new Contatto("Luigi", "Montonetti", validNumbers, Arrays.asList("email@gmail.com"), " ");
+        Contatto invalidContatto = new Contatto("", "", invalidNumbers, Arrays.asList("email@example.com"), " ");
+        Contatto invalidContatto2 = new Contatto("", "", validNumbers, Arrays.asList("email@example.com"), " ");
+        Contatto invalidContatto3 = new Contatto("Luigi", "Montonetti", invalidNumbers, Arrays.asList("email@example.com"), " ");
 
-    @Test
-    public void testValidateSurname() {
-        System.out.println("validateSurname");
-        // Cognome valido
-        assertDoesNotThrow(() -> ContattoValidator.validateSurname("Rossi"));
-        // Cognome non valido
-        Exception exception = assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateSurname(""));
-        assertEquals("Cognome non valido", exception.getMessage());
+        // Test per campi validi (non deve sollevare eccezioni)
+        assertDoesNotThrow(() -> ContattoValidator.validateFields(validContatto.getName(), validContatto.getSurname(), validContatto.getNumbers()));
+
+        // Test per campi non validi (deve sollevare eccezione CampoNonValidoException)
+        assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateFields(invalidContatto.getName(), invalidContatto.getSurname(), invalidContatto.getNumbers()));
+        assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateFields(invalidContatto2.getName(), invalidContatto2.getSurname(), invalidContatto.getNumbers()));
+        assertThrows(CampoNonValidoException.class, () -> ContattoValidator.validateFields(invalidContatto3.getName(), invalidContatto3.getSurname(),invalidContatto.getNumbers()));
     }
 }

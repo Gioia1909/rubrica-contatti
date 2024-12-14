@@ -125,6 +125,9 @@ public class ContattoValidator {
         }
         return false;  // Numero non trovato
     }
+    
+    
+    
 
     public static void validateName(String name) throws CampoNonValidoException {
         if (!name.isEmpty() && !Character.isAlphabetic(name.charAt(0))) {
