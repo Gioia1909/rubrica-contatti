@@ -8,6 +8,7 @@
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferiti;
+import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -21,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -35,6 +37,12 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     @FXML
     private ListView<Contatto> favoriteListView;
 
+    @FXML
+    private ToggleButton favoriteButton;
+
+    @FXML
+    private ImageView favoriteImageView;
+
     public ListView<Contatto> getFavoriteListView() {
         return favoriteListView;
     }
@@ -44,10 +52,10 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     }
 
     @FXML
-    private Button editButton, deleteButton, searchButton, secondaryButton, addToFavorite;
+    private Button editButton, searchButton, secondaryButton;
 
     @FXML
-    private ImageView editImageView, deleteImageView;
+    private ImageView editImageView;
 
     @FXML
     private TextField searchBar;
@@ -91,6 +99,34 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
         favoriteListView.setItems(favoriteList);
         System.out.println("Stato Vista Lista preferiti attuale: " + favoriteListView);
         configurePreferitiListView();
+
+        // Aggiungi un listener per la selezione di un contatto
+        favoriteListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+            if (selectedContact != null) {
+                // Aggiorna i dettagli del contatto
+                super.updateContactDetails(selectedContact);
+
+                // Aggiorna l'icona dei preferiti
+                updateFavoriteIcon(selectedContact);
+            } else {
+                // Se nessun contatto è selezionato, nascondi l'icona
+                favoriteImageView.setImage(null);
+            }
+        });
+
+        // Aggiungi un listener per la ricerca
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            favoriteListView.setItems(addressBook.searchFavoriteContact(newValue));
+        });
+
+    }
+
+    private void updateFavoriteIcon(Contatto selectedContact) {
+        if (selectedContact.isFav()) {
+            favoriteImageView.setImage(new Image(getClass().getResourceAsStream("stellaPiena.png")));
+        } else {
+            favoriteImageView.setImage(new Image(getClass().getResourceAsStream("stellaVuota.png")));
+        }
     }
 
     /**
@@ -116,14 +152,14 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
                 }
             }
         });
-        
-          favoriteListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+
+        favoriteListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
             if (selectedContact != null) {
                 // Aggiorna le label con i dati del contatto selezionato
                 super.updateContactDetails(selectedContact);
             }
         });
-          
+
     }
 
     /**
@@ -136,12 +172,11 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
      * @post Il contatto selezionato viene rimosso dalla `ListView` e i contatti
      * aggiornati vengono salvati nel file.
      */
-    @FXML
     @Override
     public void deleteAction(ActionEvent event) {
         Contatto selectedContact = favoriteListView.getSelectionModel().getSelectedItem();
         System.out.println("Ho premuto cancella su " + selectedContact);
-        
+
         if (selectedContact != null) {
             addressBook.removeFromFavorites(selectedContact);
             refreshFavoriteList();
@@ -175,11 +210,10 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
-            
+
             // Dopo la modifica, aggiorna la lista
-            
+            refreshFavoriteList();
         }
-        refreshFavoriteList();
     }
 
     /**
@@ -203,10 +237,10 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
             return;
         }
         ObservableList<Contatto> filteredList = FXCollections.observableArrayList(
-        addressBook.searchFavoriteContact(searchQuery)
+                addressBook.searchFavoriteContact(searchQuery)
         );
         System.out.println("Lista filtrata: " + filteredList.size());
-        
+
         if (filteredList.isEmpty()) {
             favoriteListView.setItems(FXCollections.observableArrayList());
             showErrorDialog("Errore", "Nessun contatto trovato.");
@@ -243,24 +277,63 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
      */
     @FXML
     private void switchToInterface() throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaUtente.fxml"));
         Parent root = loader.load();
-        // Ottieni il controller
+
+        // Ottieni il controller della rubrica
         InterfacciaUtenteController controller = loader.getController();
 
         // Passa la lista di contatti al nuovo controller
         controller.setContactList(addressBook.getContactList());
+
         // Cambia la scena
         Scene scene = favoriteListView.getScene();
         scene.setRoot(root);
 
+        // Risincronizza la lista dei contatti
+        controller.refreshContactList();
     }
 
     private void refreshFavoriteList() {
-        ObservableList<Contatto> favoriteList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList
-    favoriteListView.setItems(favoriteList);
-        
+        ObservableList<Contatto> favoriteList = addressBook.getFavoriteList(); // Assumendo che restituisca una ObservableList
+        favoriteListView.setItems(favoriteList);
     }
 
-}
+    @FXML
+    private void toggleFavorite(ActionEvent event) {
+        // Ottieni il contatto selezionato
+        Contatto selectedContatto = favoriteListView.getSelectionModel().getSelectedItem();
+
+        if (selectedContatto == null) {
+            System.out.println("Nessun contatto selezionato.");
+            return;
+        }
+
+        // Cambia lo stato del preferito
+        if (selectedContatto.isFav()) {
+            selectedContatto.setFav(false); // Aggiorna il valore booleano
+            // Aggiorna sia nella lista principale che nei preferiti
+            for (Contatto contatto : addressBook.getContactList()) {
+                if (contatto.equals(selectedContatto)) {
+                    contatto.setFav(selectedContatto.isFav()); // Sincronizza il valore isFav nella rubrica principale
+                    break;
+                }
+                }
+                SalvaCaricaRubrica.saveAddressBook(addressBook.getContactList());
+                SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
+                addressBook.removeFromFavorites(selectedContatto); // Rimuovi dai preferiti
+
+                System.out.println("Rimosso dai preferiti: " + selectedContatto);
+            }else{
+            selectedContatto.setFav(true); // Aggiorna il valore booleano
+            SalvaCaricaRubrica.saveAddressBook(addressBook.getContactList());
+            SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
+            addressBook.addToFavorites(selectedContatto); // Rimuovi dai preferiti
+        }
+
+            // Aggiorna l'icona in base al nuovo stato
+            updateFavoriteIcon(selectedContatto);
+
+        }
+
+    }

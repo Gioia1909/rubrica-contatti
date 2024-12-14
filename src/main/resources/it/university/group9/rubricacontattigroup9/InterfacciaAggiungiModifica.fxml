@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
@@ -11,29 +10,24 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaAggiungiModificaController">
-   <stylesheets>
-       <URL value="@interfacciaaggiungi.css" />
-   </stylesheets>
-  <children>
-     <TextField fx:id="nameField" layoutX="77.0" layoutY="109.0" promptText="Inserisci nome..." />
-     <TextField fx:id="number1Field" layoutX="77.0" layoutY="164.0" promptText="Inserisci numero 1..." />
-     <TextField fx:id="number2Field" layoutX="77.0" layoutY="219.0" promptText="Inserisci numero 2..." />
-     <TextField fx:id="surnameField" layoutX="373.0" layoutY="109.0" promptText="Inserisci cognome..." />
-     <TextField fx:id="email1Field" layoutX="373.0" layoutY="164.0" promptText="Inserisci email 1..." />
-     <TextField fx:id="email2Field" layoutX="373.0" layoutY="219.0" promptText="Inserisci email 2..." />
-     <TextField fx:id="number3Field" layoutX="77.0" layoutY="282.0" promptText="Inserisci numero 3..." />
-     <TextField fx:id="email3Field" layoutX="373.0" layoutY="282.0" promptText="Inserisci email 3..." />
-     <Label layoutX="251.0" layoutY="62.0" text="Informazioni Contatto" />
-     <TextField fx:id="noteField" layoutX="225.0" layoutY="333.0" promptText="Inserisci note..." />
-     <Button fx:id="cancelButton" layoutX="51.0" layoutY="30.0" mnemonicParsing="false" onAction="#cancelOperation" text="Annulla" />
-     <Button fx:id="addButton" layoutX="501.0" layoutY="30.0" mnemonicParsing="false" onAction="#addAction" text="Aggiungi" />
-     <Button fx:id="editButton" layoutX="503.0" layoutY="30.0" mnemonicParsing="false" onAction="#editAction" text="Modifica" />
-     <Button fx:id="bttnHelp" layoutX="563.0" layoutY="357.0" mnemonicParsing="false" onAction="#doFillValue" prefHeight="17.0" prefWidth="17.0" text="Annulla" />
-  </children>
+    <stylesheets>
+        <URL value="@interfacciaaggiungi.css" />
+    </stylesheets>
+   <children>
+      <TextField fx:id="nameField" layoutX="77.0" layoutY="109.0" promptText="Inserisci nome..." />
+      <TextField fx:id="number1Field" layoutX="77.0" layoutY="164.0" promptText="Inserisci numero 1..." />
+      <TextField fx:id="number2Field" layoutX="77.0" layoutY="219.0" promptText="Inserisci numero 2..." />
+      <TextField fx:id="surnameField" layoutX="373.0" layoutY="109.0" promptText="Inserisci cognome..." />
+      <TextField fx:id="email1Field" layoutX="373.0" layoutY="164.0" promptText="Inserisci email 1..." />
+      <TextField fx:id="email2Field" layoutX="373.0" layoutY="219.0" promptText="Inserisci email 2..." />
+      <TextField fx:id="number3Field" layoutX="77.0" layoutY="282.0" promptText="Inserisci numero 3..." />
+      <TextField fx:id="email3Field" layoutX="373.0" layoutY="282.0" promptText="Inserisci email 3..." />
+      <Label layoutX="251.0" layoutY="62.0" text="Informazioni Contatto" />
+      <TextField fx:id="noteField" layoutX="225.0" layoutY="333.0" promptText="Inserisci note..." />
+      <Button fx:id="cancelButton" layoutX="51.0" layoutY="30.0" mnemonicParsing="false" onAction="#cancelOperation" text="Annulla" />
+      <Button fx:id="addButton" layoutX="501.0" layoutY="30.0" mnemonicParsing="false" onAction="#addAction" text="Aggiungi" />
+      <Button fx:id="editButton" layoutX="503.0" layoutY="30.0" mnemonicParsing="false" onAction="#editAction" text="Modifica" />
+      <Button fx:id="bttnHelp" layoutX="563.0" layoutY="357.0" mnemonicParsing="false" onAction="#doFillValue" prefHeight="17.0" prefWidth="17.0" text="Annulla" />
+   </children>
 </AnchorPane>
-
-
-
-

@@ -156,10 +156,11 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             List<String> numbers = collectNumbers();
             List<String> emails = collectEmails();
             String note = noteField.getText().trim();
-            
+
             addressBook.editContact(existingContact, name, surname, numbers, emails, note);
             // Aggiorna la lista filtrata se vengo da una ricerca 
             //updateFilteredList();
+            
 
             closeWindow();
 
@@ -197,6 +198,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         ));
     }
 
+
+
     private void populateFields(Contatto contact) {
         nameField.setText(contact.getName());
         surnameField.setText(contact.getSurname());
@@ -222,8 +225,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         }
         if (emails.size() > 2) {
             email3Field.setText(emails.get(2));
-        }        
-       
+        }
+
     }
 
     @FXML

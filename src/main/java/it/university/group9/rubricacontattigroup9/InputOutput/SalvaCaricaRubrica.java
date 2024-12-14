@@ -68,7 +68,7 @@ public class SalvaCaricaRubrica implements Serializable {
      *
      * Questo metodo carica i dati da un file JSON e li converte in una
      * ObservableList Se il file non esiste, viene restituita una lista vuota e
-     * viene stampato un messaggio di errore.
+     * viene gestito l'eventuale errore di creazione ,viene stampato un messaggio.
      *
      * @return Una ObservableList che contenente i contatti caricati oppure una
      * lista vuota se il file non esiste o si verifica un errore durante il

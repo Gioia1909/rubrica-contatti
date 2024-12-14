@@ -54,10 +54,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     private Button editButton;
 
     @FXML
-    private Button favoriteButton;
-
-    @FXML
-    private Button addToFavorite;
+    private ToggleButton favoriteButton;
 
     @FXML
     private ImageView editImageView;
@@ -106,16 +103,22 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     // Vista della Rubrica
     @FXML
     private ListView<Contatto> contactListView;
+    @FXML
+    private ListView<Contatto> listViewFavorites;
+    @FXML
+    private Button switchToFavoriteButton;
+    @FXML
+    private ImageView favoriteImageView;
 
     public ListView<Contatto> getContactListView() throws IOException {
-        if(contactListView == null){
+        if (contactListView == null) {
             throw new IOException("contactListView non valida");
         }
         return contactListView;
     }
 
-    public void setListView(ListView<Contatto> contactListView)throws IOException{
-        if(contactListView == null){
+    public void setListView(ListView<Contatto> contactListView) throws IOException {
+        if (contactListView == null) {
             throw new IOException("contactListView : Argomento non valido");
         }
         this.contactListView = contactListView;
@@ -124,17 +127,17 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     // Reattore alla lista dei contatti (Add, Edit, Delete)
     private ObservableList<Contatto> contactList;
 
-    public ObservableList<Contatto> getContactList() throws IOException{
-        if(contactList == null){
+    public ObservableList<Contatto> getContactList() throws IOException {
+        if (contactList == null) {
             throw new IOException("Contact List non valida");
         }
         return contactList;
     }
 
-    public void setContactList(ObservableList<Contatto> contactList) throws IOException{
-        if(contactList == null){
+    public void setContactList(ObservableList<Contatto> contactList) throws IOException {
+        if (contactList == null) {
             throw new IOException("contactList: Argomento non valido");
-        }  
+        }
         this.contactList = contactList;
     }
 
@@ -145,20 +148,36 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     public void initialize(URL location, ResourceBundle resources) {
         try {
             // Verifica degli argomenti
-            if(location == null || resources == null){
+            if (location == null || resources == null) {
                 System.err.print("Initialize : Argomenti non validi");
             }
-            
+
             this.addressBook = new Rubrica();
             contactList = addressBook.getContactList();
             favoriteList = addressBook.getFavoriteList();
-            
+
             // Carica i contatti e i preferiti nelle rispettive ListView
             contactListView.setItems(contactList);
             //      favoriteListView.setItems(favoriteList);
             // Sincronizzo la vista del contatto corrente
             configureContactListView();
-            
+
+            // Aggiungi un listener per la selezione di un contatto
+            contactListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
+                if (selectedContact != null) {
+                    // Aggiorna i dettagli del contatto
+                    super.updateContactDetails(selectedContact);
+                    deleteButton.setVisible(true);
+                    deleteImageView.setVisible(true);
+
+                    // Aggiorna l'icona dei preferiti
+                    updateFavoriteIcon(selectedContact);
+                } else {
+                    // Se nessun contatto è selezionato, nascondi l'icona
+                    favoriteImageView.setImage(null);
+                }
+            });
+
             // Aggiungi un listener per la ricerca
             searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
                 contactListView.setItems(addressBook.searchContact(newValue));
@@ -167,6 +186,14 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             Logger.getLogger(InterfacciaUtenteController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private void updateFavoriteIcon(Contatto selectedContact) {
+        if (selectedContact.isFav()) {
+            favoriteImageView.setImage(new Image(getClass().getResourceAsStream("stellaPiena.png")));
+        } else {
+            favoriteImageView.setImage(new Image(getClass().getResourceAsStream("stellaVuota.png")));
+        }
     }
 
     /**
@@ -178,31 +205,28 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * Cognome e Nome del contatto
      */
     private void configureContactListView() {
-        // setto la cella con nome e cognome
         contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
+
             @Override
             protected void updateItem(Contatto contact, boolean empty) {
-                // Chiama la versione base del metodo per assicurare il corretto comportamento della cella
                 super.updateItem(contact, empty);
                 if (empty || contact == null) {
-                    // Se vuota o nulla, non mostra alcun testo
                     setText(null);
+                    setGraphic(null);
                 } else {
-                    // Mostra solo il cognome e il nome
                     setText(contact.getSurname() + " " + contact.getName());
+
+                    // Configura l'icona in base allo stato `isFav`
+                    if (contact.isFav()) {
+                        favoriteImageView.setImage(new Image(getClass().getResourceAsStream("stellaPiena.png")));
+                    } else {
+                        favoriteImageView.setImage(new Image(getClass().getResourceAsStream("stellaVuota.png")));
+                    }
+
                 }
-            }
-
-        });
-
-        contactListView.getSelectionModel().selectedItemProperty().addListener((observable, oldContact, selectedContact) -> {
-            if (selectedContact != null) {
-                super.updateContactDetails(selectedContact);
             }
         });
     }
-    
-
 
     @FXML
     public void addAction(ActionEvent event) throws IOException {
@@ -218,7 +242,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         stage.show();
     }
 
-    @FXML
     void addToFavoriteAction(ActionEvent event) {
         Contatto selectedContact = contactListView.getSelectionModel().getSelectedItem();
         if (selectedContact != null && !selectedContact.isFav()) {
@@ -257,15 +280,15 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();
             //System.out.println("sto passando al gestore della rubrica il contatto " + );
             System.out.println("Ho selezionato da eliminare " + contactToRemove);
-            
+
             addressBook.deleteContact(contactToRemove);
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
             super.resetContactDetails();
-            
+
             refreshContactList();
             // Verifica se si sta visualizzando una lista filtrata
             String searchQuery = searchBar.getText().toLowerCase().trim();
-          
+
             if (searchQuery.isEmpty()) {
                 // Mostra la lista principale se non c'è filtro
                 refreshContactList();
@@ -312,10 +335,10 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-            
+
         }
-        refreshContactList();
-        
+        //     refreshContactList();
+
     }
 
     /**
@@ -374,7 +397,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * @brief Passa alla schermata dei contatti preferiti.
      *
      * @throws IOException Se non riesce a caricare la nuova schermata.
-     * @see MenuPreferitiController*/
+     * @see MenuPreferitiController
+     */
     @FXML
     protected void switchToFavorite() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPreferiti.fxml"));
@@ -392,50 +416,46 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         SalvaCaricaRubrica.exportToCSV(contactList);
     }
 
-    private void refreshContactList() {
-    ObservableList<Contatto> contactList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList
-    contactListView.setItems(contactList);
+    /*  protected void refreshContactList() {
+        ObservableList<Contatto> contactList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList
+        contactListView.setItems(contactList);
         //contactListView.getSelectionModel().clearSelection(); // Deseleziona qualsiasi elemento
+    }*/
+    public void refreshContactList() {
+        ObservableList<Contatto> contactList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList
+        contactListView.setItems(contactList);
+        //contactListView.getSelectionModel().clearSelection();
     }
 
-    public boolean isEditValid(Contatto oldContact, Contatto updatedContact) {
-    for (Contatto contact : contactList) {
-        // Ignora il confronto con il contatto originale
-        if (contact.equals(oldContact)) {
-            continue;
+    @FXML
+    private void toggleFavorite(ActionEvent event) {
+        System.out.println("Sono in toggle favorite");
+
+        // Ottieni il contatto selezionato
+        Contatto selectedContatto = contactListView.getSelectionModel().getSelectedItem();
+
+        if (selectedContatto == null) {
+            System.out.println("Nessun contatto selezionato.");
+            return;
         }
 
-        // Log per debug
-        System.out.println("[DEBUG] Confronto con contatto esistente: " + contact);
-        System.out.println("[DEBUG] Contatto originale: " + oldContact);
-        System.out.println("[DEBUG] Contatto aggiornato: " + updatedContact);
-
-        // Normalizza i numeri di telefono per evitare falsi duplicati
-        List<String> normalizedUpdatedNumbers = updatedContact.getNumbers().stream()
-                .map(number -> number.replaceAll("\\s+", "").trim()) // Rimuovi spazi
-                .collect(Collectors.toList());
-        List<String> normalizedContactNumbers = contact.getNumbers().stream()
-                .map(number -> number.replaceAll("\\s+", "").trim())
-                .collect(Collectors.toList());
-
-        boolean overlappingNumbers = normalizedUpdatedNumbers.stream()
-                .anyMatch(normalizedContactNumbers::contains);
-
-        boolean sameNameAndSurname = contact.getName().equalsIgnoreCase(updatedContact.getName())
-                && contact.getSurname().equalsIgnoreCase(updatedContact.getSurname());
-
-        // Condizione per considerare un duplicato
-        if (sameNameAndSurname && overlappingNumbers) {
-            System.out.println("[DEBUG] Duplicato trovato: " + contact);
-            return false; // Modifica non valida
+        // Cambia lo stato del preferito
+        if (selectedContatto.isFav()) {
+            selectedContatto.setFav(false); // Aggiorna il valore booleano
+            SalvaCaricaRubrica.saveAddressBook(contactList);
+            SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
+            addressBook.removeFromFavorites(selectedContatto); // Rimuovi dai preferiti
+            System.out.println("Rimosso dai preferiti: " + selectedContatto);
+        } else {
+            selectedContatto.setFav(true); // Aggiorna il valore booleano
+            SalvaCaricaRubrica.saveAddressBook(contactList);
+            SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
+            addressBook.addToFavorites(selectedContatto); // Aggiungi ai preferiti
+            System.out.println("Aggiunto ai preferiti: " + selectedContatto);
         }
 
-        // Permetti sovrapposizione di numeri se nome e cognome sono differenti
-        if (overlappingNumbers && !sameNameAndSurname) {
-            System.out.println("[DEBUG] Sovrapposizione numeri ma contatti distinti: " + contact);
-            continue;
-        }
+        // Aggiorna l'icona in base al nuovo stato
+        updateFavoriteIcon(selectedContatto);
     }
-    return true; // Modifica valida
-}
+
 }

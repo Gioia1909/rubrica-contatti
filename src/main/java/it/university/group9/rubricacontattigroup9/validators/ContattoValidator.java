@@ -77,8 +77,25 @@ public class ContattoValidator {
      * @param numbers I numeri di telefono del contatto.
      * @return true se il contatto esiste già, false altrimenti.
      */
-  
+    public static boolean isContactDuplicate(ObservableList<Contatto> contacts, String name, String surname, List<String> numbers) {
+        String lowerName = name.trim().toLowerCase();
+        String lowerSurname = surname.trim().toLowerCase();
 
+        for (Contatto contact : contacts) {
+            String contactN = contact.getName().trim().toLowerCase();
+            String contactS = contact.getSurname().trim().toLowerCase();
+            if (contactN.equals(lowerName) && contactS.equals(lowerSurname)) {
+                for (String number : numbers) {
+                    if (!number.isEmpty() && contact.getNumbers().contains(number.trim())) {
+                        return true;
+                    }
+                }
+
+            }
+
+        }
+        return false; // Contatto non duplicato
+    }
 
     /**
      * @brief Verifica se un numero di telefono è duplicato.

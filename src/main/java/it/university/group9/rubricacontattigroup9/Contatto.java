@@ -31,6 +31,7 @@ public class Contatto implements Comparable<Contatto> {
     private List<String> emails;
     @JsonProperty("note")
     private String note="";
+    @JsonProperty("fav")
     private boolean fav=false;
 
     /**
