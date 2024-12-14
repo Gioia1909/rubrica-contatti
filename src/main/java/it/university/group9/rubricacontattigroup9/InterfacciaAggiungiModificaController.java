@@ -85,6 +85,16 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         addButton.setOnAction(event -> addAction(event));
         editButton.setOnAction(event -> editAction(event));
+
+        nameField.setFocusTraversable(false);
+        surnameField.setFocusTraversable(false);
+        noteField.setFocusTraversable(false);
+        number1Field.setFocusTraversable(false);
+        number2Field.setFocusTraversable(false);
+        number3Field.setFocusTraversable(false);
+        email1Field.setFocusTraversable(false);
+        email2Field.setFocusTraversable(false);
+        email3Field.setFocusTraversable(false);
     }
 
     /**
