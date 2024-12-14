@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color: pink;  /* Colore di sfondo */
+    -fx-background-color: grey;  /* Colore di sfondo */
 }
 
 AnchorPane {
@@ -68,17 +68,16 @@ AnchorPane {
     -fx-background-color: transparent;    
 }
 
-.dati{
-    -fx-border-color: pink;      /* Colore del bordo */
-    -fx-border-width: 2px;        /* Larghezza del bordo */
-    -fx-border-radius: 5px;       /* Arrotonda gli angoli del bordo */
-    -fx-padding: 5px;             /* Distanza tra il bordo e il testo */
-    -fx-pref-width: 200px;        /* Larghezza prefissata della label */
-    -fx-pref-height: 40px;        /* Altezza prefissata della label */
-    -fx-wrap-text: true;          /* Abilita l'andata a capo per il testo */
-    -fx-max-width: 250px;         /* Limita la larghezza massima */
- -fx-margin: 60px; 
-
+.dati {
+    -fx-border-color: grey;      /* Colore del bordo */
+    -fx-border-width: 2px;       /* Larghezza del bordo */
+    -fx-border-radius: 5px;      /* Arrotonda gli angoli del bordo */
+    -fx-padding: 5px;            /* Distanza tra il bordo e il testo */
+    -fx-pref-width: 200px;       /* Larghezza prefissata */
+    -fx-pref-height: 40px;       /* Altezza prefissata */
+    -fx-wrap-text: true;         /* Abilita l'andata a capo per il testo */
+    -fx-max-width: 250px;        /* Limita la larghezza massima */
+    -fx-alignment: center;       /* Allinea il testo al centro */
 }
 
 

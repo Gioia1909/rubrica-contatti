@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.*;
 import javafx.event.ActionEvent;
@@ -24,10 +26,11 @@ import javafx.stage.Stage;
 
 public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
 
+    // MODEL della rubrica. Gestisce le funzioni di Add, Delete, Edit, Search
     public Rubrica addressBook;
 
     /**
-     * @name Componenti FXML
+     * @name Componenti FXML della interfaccia
      */
     ///@{
     @FXML
@@ -100,43 +103,69 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @FXML
     private MenuItem exportButton;
 
+    // Vista della Rubrica
     @FXML
     private ListView<Contatto> contactListView;
 
-    public ListView<Contatto> getContactListView() {
+    public ListView<Contatto> getContactListView() throws IOException {
+        if(contactListView == null){
+            throw new IOException("contactListView non valida");
+        }
         return contactListView;
     }
 
-    public void setListView(ListView<Contatto> contactListView) {
+    public void setListView(ListView<Contatto> contactListView)throws IOException{
+        if(contactListView == null){
+            throw new IOException("contactListView : Argomento non valido");
+        }
         this.contactListView = contactListView;
     }
 
+    // Reattore alla lista dei contatti (Add, Edit, Delete)
     private ObservableList<Contatto> contactList;
 
-    public ObservableList<Contatto> getContactList() {
+    public ObservableList<Contatto> getContactList() throws IOException{
+        if(contactList == null){
+            throw new IOException("Contact List non valida");
+        }
         return contactList;
     }
 
-    public void setContactList(ObservableList<Contatto> contactList) {
+    public void setContactList(ObservableList<Contatto> contactList) throws IOException{
+        if(contactList == null){
+            throw new IOException("contactList: Argomento non valido");
+        }  
         this.contactList = contactList;
     }
 
+    // Lista dei preferiti
     private ObservableList<Contatto> favoriteList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.addressBook = new Rubrica();
-        contactList = addressBook.getContactList();
-        favoriteList = addressBook.getFavoriteList();
-        // Carica i contatti e i preferiti nelle rispettive ListView
-        contactListView.setItems(contactList);
-        //      favoriteListView.setItems(favoriteList);
-        configureContactListView();
-
-        // Aggiungi un listener per la ricerca
-        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            contactListView.setItems(addressBook.searchContact(newValue));
-        });
+        try {
+            // Verifica degli argomenti
+            if(location == null || resources == null){
+                System.err.print("Initialize : Argomenti non validi");
+            }
+            
+            this.addressBook = new Rubrica();
+            contactList = addressBook.getContactList();
+            favoriteList = addressBook.getFavoriteList();
+            
+            // Carica i contatti e i preferiti nelle rispettive ListView
+            contactListView.setItems(contactList);
+            //      favoriteListView.setItems(favoriteList);
+            // Sincronizzo la vista del contatto corrente
+            configureContactListView();
+            
+            // Aggiungi un listener per la ricerca
+            searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+                contactListView.setItems(addressBook.searchContact(newValue));
+            });
+        } catch (Exception ex) {
+            Logger.getLogger(InterfacciaUtenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -149,6 +178,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * Cognome e Nome del contatto
      */
     private void configureContactListView() {
+        // setto la cella con nome e cognome
         contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
             @Override
             protected void updateItem(Contatto contact, boolean empty) {

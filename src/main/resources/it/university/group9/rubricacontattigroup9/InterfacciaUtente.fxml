@@ -47,7 +47,7 @@
                                     <image>
                                         <Image url="@add.png" />
                                     </image>
-                          
+                         
                                 </ImageView>
                             </graphic>
                         </Button>

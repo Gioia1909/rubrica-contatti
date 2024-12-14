@@ -22,16 +22,16 @@ public class Contatto implements Comparable<Contatto> {
 
     //JsonProperty serve a definire il campo che conterrà questi elementi sul file JSON
     @JsonProperty("name")
-    private String name;
+    private String name="";
     @JsonProperty("surname")
-    private String surname;
+    private String surname="";
     @JsonProperty("numbers")
     private List<String> numbers;
     @JsonProperty("emails")
     private List<String> emails;
     @JsonProperty("note")
-    private String note;
-    private boolean fav;
+    private String note="";
+    private boolean fav=false;
 
     /**
      * @brief Costruttore della classe Contatto.

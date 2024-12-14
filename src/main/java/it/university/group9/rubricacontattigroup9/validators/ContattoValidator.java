@@ -33,40 +33,38 @@ public class ContattoValidator {
      * @param numbers La lista dei numeri di telefono da verificare.
      * @return true se il numero è già presente, false altrimenti.
      */
-public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, Contatto contactToCheck) {
-    for (Contatto contact : contacts) {
-        // Escludi il contatto stesso dal confronto
-        if (contact == contactToCheck) {
-            continue;
-        }
-
-        // Itera sui numeri del contatto da verificare
-        for (String numberToCheck : contactToCheck.getNumbers()) {
-            if (numberToCheck == null || numberToCheck.trim().isEmpty()) {
-                continue; // Salta numeri nulli o vuoti
+    public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, Contatto contactToCheck) {
+        for (Contatto contact : contacts) {
+            // Escludi il contatto stesso dal confronto
+            if (contact == contactToCheck) {
+                continue;
             }
 
-            String normalizedNumberToCheck = numberToCheck.trim().toLowerCase();
-
-            // Itera sui numeri del contatto nella lista
-            for (String contactNumber : contact.getNumbers()) {
-                if (contactNumber == null || contactNumber.trim().isEmpty()) {
+            // Itera sui numeri del contatto da verificare
+            for (String numberToCheck : contactToCheck.getNumbers()) {
+                if (numberToCheck == null || numberToCheck.trim().isEmpty()) {
                     continue; // Salta numeri nulli o vuoti
                 }
 
-                String normalizedContactNumber = contactNumber.trim().toLowerCase();
+                String normalizedNumberToCheck = numberToCheck.trim().toLowerCase();
 
-                // Confronta i numeri normalizzati
-                if (normalizedContactNumber.equals(normalizedNumberToCheck)) {
-                    return true; // Numero duplicato trovato
+                // Itera sui numeri del contatto nella lista
+                for (String contactNumber : contact.getNumbers()) {
+                    if (contactNumber == null || contactNumber.trim().isEmpty()) {
+                        continue; // Salta numeri nulli o vuoti
+                    }
+
+                    String normalizedContactNumber = contactNumber.trim().toLowerCase();
+
+                    // Confronta i numeri normalizzati
+                    if (normalizedContactNumber.equals(normalizedNumberToCheck)) {
+                        return true; // Numero duplicato trovato
+                    }
                 }
             }
         }
+        return false; // Nessun numero duplicato trovato
     }
-    return false; // Nessun numero duplicato trovato
-}
-
-
 
     /**
      * @brief Verifica se un contatto è duplicato.
@@ -87,18 +85,18 @@ public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, Conta
             String contactN = contact.getName().trim().toLowerCase();
             String contactS = contact.getSurname().trim().toLowerCase();
             if (contactN.equals(lowerName) && contactS.equals(lowerSurname)) {
-                for (String number : numbers) { 
+                for (String number : numbers) {
                     if (!number.isEmpty() && contact.getNumbers().contains(number.trim())) {
-                        return true;}
+                        return true;
+                    }
+                }
+
             }
-                
-            }
-           
+
+        }
+        return false; // Contatto non duplicato
     }
-          return false; // Contatto non duplicato
-    }
-    
-    
+
     /**
      * @brief Verifica se un numero di telefono è duplicato.
      *
@@ -108,52 +106,48 @@ public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, Conta
      * @param emails La lista delle email da verificare.
      * @return true se il numero è già presente, false altrimenti.
      */
-    public static boolean isEmailDuplicate(List<Contatto> contacts,  List<String> emails) {
-       for (Contatto contact : contacts) {
-        for (String email : emails) {
-            if (email == null || email.trim().isEmpty()) {
-                continue; // Salta email nulle o vuote
-            }
-            String normalizedEmail = email.trim().toLowerCase();
-            for (String contactEmail : contact.getEmails()) {
-                if (contactEmail == null || contactEmail.trim().isEmpty()) {
-                    continue; // Salta email nulle o vuote nei contatti
+    public static boolean isEmailDuplicate(List<Contatto> contacts, List<String> emails) {
+        for (Contatto contact : contacts) {
+            for (String email : emails) {
+                if (email == null || email.trim().isEmpty()) {
+                    continue; // Salta email nulle o vuote
                 }
-                if (contactEmail.trim().toLowerCase().equals(normalizedEmail)) {
-                    return true; // Almeno un email duplicata trovato
+                String normalizedEmail = email.trim().toLowerCase();
+                for (String contactEmail : contact.getEmails()) {
+                    if (contactEmail == null || contactEmail.trim().isEmpty()) {
+                        continue; // Salta email nulle o vuote nei contatti
+                    }
+                    if (contactEmail.trim().toLowerCase().equals(normalizedEmail)) {
+                        return true; // Almeno un email duplicata trovato
+                    }
                 }
             }
         }
+        return false;  // Numero non trovato
     }
-    return false;  // Numero non trovato
-    }
-    
-    
-    
-  
 
     public static void validateName(String name) throws CampoNonValidoException {
         if (!name.isEmpty() && !Character.isAlphabetic(name.charAt(0))) {
-            throw new CampoNonValidoException("Nome");
+            throw new CampoNonValidoException("il formato del nome non è valido");
         }
     }
 
     public static void validateSurname(String surname) throws CampoNonValidoException {
         if (!surname.isEmpty() && !Character.isAlphabetic(surname.charAt(0))) {    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
             //surnome apparentemente vuoto (ma con spazi) sia considerato valido.
-            throw new CampoNonValidoException("Cognome");
+            throw new CampoNonValidoException("\"Il formato del cognome non è valido");
         }
     }
 
-    public static void validatePhoneNumber(List <String> numbers) throws CampoNonValidoException {
+    public static void validatePhoneNumber(List<String> numbers) throws CampoNonValidoException {
         for (String number : numbers) {
 
             String cleanedPhoneNumber = number.replaceAll("\\s", "");
-            if (!cleanedPhoneNumber.matches("^[+]?[0-9]{10,15}$") && !cleanedPhoneNumber.isEmpty()) {
+            if (!cleanedPhoneNumber.matches("^[+]?[0-9]{10,13}$") && !cleanedPhoneNumber.isEmpty()) {
                 /* Possono iniziare con un "+" (opzionale).
             Contengono solo cifre da 0 a 9.
-            Hanno una lunghezza compresa tra 10 e 15 caratteri.*/
-                throw new CampoNonValidoException("Numero di telefono");
+            Hanno una lunghezza compresa tra 10 e 13 caratteri.*/
+                throw new CampoNonValidoException("Il formato del numero di telefono non è valido");
             }
         }
     }
@@ -161,22 +155,22 @@ public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, Conta
     public static void validateEmail(List<String> emails) throws CampoNonValidoException {
         for (String email : emails) {
             if (!email.isEmpty() && !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-                throw new CampoNonValidoException("Email");
+                throw new CampoNonValidoException("Il formato della mail non è valido");
             }
         }
     }
 
-    
-    public static void validateFields(String name, String surname,List<String> numbers) throws CampoNonValidoException {
-        if (name.isEmpty() && surname.isEmpty()){
-              throw new CampoNonValidoException("nome o cognome ");
+    public static void validateFields(String name, String surname, List<String> numbers) throws CampoNonValidoException {
+        if (name.isEmpty() && surname.isEmpty()) {
+            throw new CampoNonValidoException("Devi inserire almeno un nome o un cognome ");
         }
-        if (numbers.isEmpty()){
-              throw new CampoNonValidoException("numeri ");
+
+        System.out.println("numero 1 :" + numbers.get(0) + "numero 2" + numbers.get(1) + "numero 3 :" + numbers.get(2));
+        // Controllo per numeri di telefono
+        if (numbers.get(0).equals("") && numbers.get(1).equals("") && numbers.get(2).equals("")) {
+            throw new CampoNonValidoException("Devi inserire almeno un numero di telefono.");
         }
+
     }
-    
-   
-    
-    
+
 }

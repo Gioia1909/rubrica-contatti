@@ -10,32 +10,38 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-
+// Modello della Rubrica : Edit, Add, Delete
 public class Rubrica implements GestioneRubrica {
 
     private ObservableList<Contatto> contactList;
     private ObservableList<Contatto> favoriteList;
 
     public Rubrica() {
+        // Inizializziamo le observables
         this.contactList = SalvaCaricaRubrica.loadAddressBook();
         this.favoriteList = SalvaCaricaPreferiti.loadFavoritesAddressBook();
+        System.out.println("Lista iniziale dei contatti: " + contactList.size());
         System.out.println("Lista iniziale dei preferiti: " + favoriteList.size());
     }
 
-    public void setContactList(ObservableList<Contatto> contactList) {
+    public void setContactList(ObservableList<Contatto> contactList) throws Exception {
+        if(contactList == null) throw new Exception("Argomento non valido ");
         this.contactList = contactList;
     }
 
     public void setFavoriteList(ObservableList<Contatto> favoriteList) {
+        if(favoriteList == null);
         this.favoriteList = favoriteList;
     }
 
     @Override
     public ObservableList<Contatto> getContactList() {
+        if(contactList == null) System.out.println("contactList  non valida ");
         return contactList;
     }
 
-    public ObservableList<Contatto> getFavoriteList() {
+    public ObservableList<Contatto> getFavoriteList(){
+        if(favoriteList == null);
         return favoriteList;
     }
 
@@ -48,6 +54,8 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateEmail(emails);
         ContattoValidator.validatePhoneNumber(numbers);
         ContattoValidator.validateFields(name, surname, numbers);
+        // Verifichiamo che la lista dei numeri sia benformata
+        
 
         Contatto newContact = new Contatto(name, surname, numbers, emails, note);
         // Controllo duplicati prima dell'aggiunta
@@ -74,22 +82,11 @@ public class Rubrica implements GestioneRubrica {
             throw new CampoNonValidoException("Le modifiche generano un duplicato nella rubrica.");
         }
 
-for (Contatto c : favoriteList) {
-    if (ContattoValidator.isContactDuplicate(contactList, updatedContact.getName(), updatedContact.getSurname(), updatedContact.getNumbers())) {
-        for (String email : updatedContact.getEmails()) { 
-            if (!email.isEmpty() && c.getEmails().contains(email.trim())) {
-               saveFavorites(); 
-        }
-        break; // Esci dal ciclo esterno, non c'è bisogno di continuare
-    }
-}
         // Aggiornamento del contatto
         int index = contactList.indexOf(oldContact);
         contactList.set(index, updatedContact);
-
         saveData();
     }
-}
 
     @Override
     public void deleteContact(Contatto contact) {
@@ -218,6 +215,7 @@ for (Contatto c : favoriteList) {
 
     private List<String> normalizeNumbers(List<String> numbers) {
         return numbers.stream()
+                .filter(number -> number != null && !number.trim().isEmpty()) // Rimuove email vuote o nulle
                 .map(number -> number.replaceAll("\\s+", "").trim())
                 .collect(Collectors.toList());
     }

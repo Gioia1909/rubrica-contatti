@@ -42,6 +42,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * @brief Riferimento al controller dell'interfaccia principale.
      */
     private InterfacciaUtenteController userInterfaceController;
+    @FXML
+    private Button bttnHelp;
 
     /**
      * @brief Inizializza la finestra per modificare un contatto esistente.
@@ -109,25 +111,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             String name = nameField.getText().trim();
             String surname = surnameField.getText().trim();
 
-            if (name.isEmpty() && surname.isEmpty()) {
-                handleValidationError("Nome o cognome sono obbligatori.");
-                return;
-            }
             List<String> emails = collectEmails();
-            List<String> numbers = collectValidNumbers();
-
-            if (numbers.isEmpty() && emails.isEmpty()) {
-                handleValidationError("Deve essere inserito almeno un numero di telefono valido o email valida.");
-                return;
-            }
-
+            List<String> numbers = collectNumbers(); 
             String note = noteField.getText().trim();
-
-            if (ContattoValidator.isContactDuplicate(contactList, name, surname, numbers)) {
-                if (!requestConfirmation("Contatto Duplicato", "Un contatto con le stesse informazioni esiste già. Vuoi comunque aggiungerlo?")) {
-                    return;
-                }
-            }
+         
             addressBook.addContact(name, surname, numbers, emails, note);
             closeWindow();
 
@@ -166,14 +153,14 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         try {
             String name = nameField.getText().trim();
             String surname = surnameField.getText().trim();
-            List<String> numbers = collectValidNumbers();
+            List<String> numbers = collectNumbers();
             List<String> emails = collectEmails();
             String note = noteField.getText().trim();
 
             addressBook.editContact(existingContact, name, surname, numbers, emails, note);
             // Aggiorna la lista filtrata se vengo da una ricerca 
             //updateFilteredList();
-            
+
             closeWindow();
 
         } catch (CampoNonValidoException e) {
@@ -181,32 +168,33 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         }
     }
 
-    private List<String> collectValidNumbers() throws CampoNonValidoException {
+    private String checkField(String csValue) {
+        if (csValue == null) {
+            return "";
+        }
+        return csValue;
+    }
+
+    private List<String> collectNumbers() throws CampoNonValidoException {
         List<String> numbers = new ArrayList<>(Arrays.asList(
-                number1Field.getText(),
-                number2Field.getText(),
-                number3Field.getText()
+                checkField(number1Field.getText()),
+                checkField(number2Field.getText()),
+                checkField(number3Field.getText())
         ));
-        numbers.removeIf(number -> number == null || number.trim().isEmpty());
+        if (numbers.isEmpty()) {
+            throw new CampoNonValidoException("Devi inserire almeno un numero di telefono.");
+        }
+
         ContattoValidator.validatePhoneNumber(numbers);
         return numbers;
     }
 
     private List<String> collectEmails() {
         return new ArrayList<>(Arrays.asList(
-                email1Field.getText(),
-                email2Field.getText(),
-                email3Field.getText()
+                checkField(email1Field.getText()),
+                checkField(email2Field.getText()),
+                checkField(email3Field.getText())
         ));
-    }
-    
-    
-
-    private boolean requestConfirmation(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
-        alert.setTitle(title);
-        alert.showAndWait();
-        return alert.getResult() == ButtonType.YES;
     }
 
     private void populateFields(Contatto contact) {
@@ -247,5 +235,21 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
-    
+
+    @FXML
+    private void doFillValue(ActionEvent event) {
+        if (nameField == null) {
+            return;
+        }
+        nameField.setText("Nome1");
+        surnameField.setText("Cognome1");
+        email1Field.setText("Email1@g.com");
+        email2Field.setText("Email2@g.com");
+        email3Field.setText("Email3@g.com");
+        number1Field.setText("1234567890");
+        number2Field.setText("2345678901");
+        number3Field.setText("3456789012");
+        noteField.setText("Note");
+    }
+
 }

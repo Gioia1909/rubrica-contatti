@@ -22,7 +22,7 @@ public class CampoNonValidoException extends Exception {
      * 
      * @param field Il nome del campo che ha causato l'errore (ad esempio "nome" o "cognome").
      */
-    public CampoNonValidoException(String field) {
-        super("Il campo " + field + " non è valido.");
+    public CampoNonValidoException(String msg) {
+        super(msg);
     }
 }

@@ -169,8 +169,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
         if (selectedContact != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
             Parent root = loader.load();
-            InterfacciaAggiungiModificaController editController = loader.getController();
-            editController.initializeForEdit(addressBook, selectedContact, favoriteList);
+            InterfacciaAggiungiModificaController modificaController = loader.getController();
+            modificaController.initializeForEdit(addressBook, selectedContact, favoriteList);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
