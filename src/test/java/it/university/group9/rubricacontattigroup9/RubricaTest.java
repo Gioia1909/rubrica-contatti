@@ -15,7 +15,17 @@ public class RubricaTest {
 
     private Rubrica rubrica;
 
-     @Test
+    /*@BeforeEach
+    public void setUp() {
+        rubrica = new Rubrica();
+        rubrica.setContactList(FXCollections.observableArrayList());
+        rubrica.setFavoriteList(FXCollections.observableArrayList());
+
+        assertNotNull(rubrica.getContactList(), "La lista dei contatti non dovrebbe essere null.");
+        assertNotNull(rubrica.getFavoriteList(), "La lista dei preferiti non dovrebbe essere null.");
+    }
+*/
+    @Test
     public void testAddContact_ValidContact_ShouldAddSuccessfully() throws CampoNonValidoException {
         rubrica = new Rubrica();
         rubrica.setContactList(FXCollections.observableArrayList());
@@ -24,8 +34,8 @@ public class RubricaTest {
         // Arrange
         String name = "Mario";
         String surname = "Rossi";
-        List<String> numbers = Arrays.asList("1234567890");
-        List<String> emails = Arrays.asList("mario.rossi@gmail.com");
+        List<String> numbers = Arrays.asList("1234567890", "1234567891", "1234567892");
+        List<String> emails = Arrays.asList("mario.rossi@gmail.com","mario1.rossi@gmail.com", "mario2.rossi@gmail.com");
         String note = "Test note";
 
         // Act
@@ -50,8 +60,8 @@ public class RubricaTest {
         // Arrange
         String name = "Mario";
         String surname = "Rossi";
-        List<String> numbers = Arrays.asList("1234567890");
-        List<String> emails = Arrays.asList("mario.rossi@gmail.com");
+        List<String> numbers = Arrays.asList("1234567890", "", "");
+        List<String> emails = Arrays.asList("mario.rossi@gmail.com", "", "");
         String note = "Test note";
 
         try {
@@ -71,13 +81,13 @@ public class RubricaTest {
         rubrica.setContactList(FXCollections.observableArrayList());
         rubrica.setFavoriteList(FXCollections.observableArrayList());
         // Arrange
-        Contatto oldContact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "note vecchie");
+        Contatto oldContact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890", "", ""), Arrays.asList("mario.rossi@gmail.com", "", ""), "note vecchie");
         rubrica.getContactList().add(oldContact);
 
         String newName = "Maria";
         String newSurname = "Rossi";
-        List<String> newNumbers = Arrays.asList("0987654321");
-        List<String> newEmails = Arrays.asList("jane.smith@example.com");
+        List<String> newNumbers = Arrays.asList("0987654321", "", "");
+        List<String> newEmails = Arrays.asList("jane.smith@example.com", "", "");
         String newNote = "note nuove";
 
         // Act
