@@ -165,7 +165,7 @@ public class ContattoValidator {
             throw new CampoNonValidoException("Devi inserire almeno un nome o un cognome ");
         }
 
-        System.out.println("numero 1 :" + numbers.get(0) + "numero 2" + numbers.get(1) + "numero 3 :" + numbers.get(2));
+        //System.out.println("numero 1 :" + numbers.get(0) + "numero 2" + numbers.get(1) + "numero 3 :" + numbers.get(2));
         // Controllo per numeri di telefono
         if (numbers.get(0).equals("") && numbers.get(1).equals("") && numbers.get(2).equals("")) {
             throw new CampoNonValidoException("Devi inserire almeno un numero di telefono.");

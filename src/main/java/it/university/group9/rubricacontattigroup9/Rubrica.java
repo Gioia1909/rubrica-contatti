@@ -27,28 +27,20 @@ public class Rubrica implements GestioneRubrica {
         System.out.println("Lista iniziale dei preferiti: " + favoriteList.size());
     }
 
-    public void setContactList(ObservableList<Contatto> contactList) throws Exception {
-        if (contactList == null) {
-            throw new Exception("Argomento non valido ");
-        }
+    public void setContactList(ObservableList<Contatto> contactList){
         this.contactList = contactList;
     }
 
     public void setFavoriteList(ObservableList<Contatto> favoriteList) {
-        if (favoriteList == null);
         this.favoriteList = favoriteList;
     }
 
     @Override
     public ObservableList<Contatto> getContactList() {
-        if (contactList == null) {
-            System.out.println("contactList  non valida ");
-        }
         return contactList;
     }
 
     public ObservableList<Contatto> getFavoriteList() {
-        if (favoriteList == null);
         return favoriteList;
     }
 
@@ -100,7 +92,7 @@ public class Rubrica implements GestioneRubrica {
         int favoriteIndex = favoriteList.indexOf(oldContact);
         int contactIndex = contactList.indexOf(oldContact);
         updatedContact.setFav(oldContact.isFav());
-        
+       
         if (favoriteIndex != -1) {
             favoriteList.set(favoriteIndex, updatedContact);
         }
