@@ -10,7 +10,7 @@ import javafx.scene.control.Alert;
 
 /**
  *
- * @author deboravillano
+ * @author Gruppo09
  */
 public interface AddressBookManager {
     public void deleteAction(ActionEvent event);

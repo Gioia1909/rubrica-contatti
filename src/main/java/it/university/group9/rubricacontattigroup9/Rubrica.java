@@ -28,7 +28,7 @@ public class Rubrica implements GestioneRubrica {
         System.out.println("Lista iniziale dei preferiti: " + favoriteList.size());
     }
 
-    public void setContactList(ObservableList<Contatto> contactList){
+    public void setContactList(ObservableList<Contatto> contactList) {
         this.contactList = contactList;
     }
 
@@ -46,7 +46,7 @@ public class Rubrica implements GestioneRubrica {
     }
 
     @Override
-    public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note)
+    public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note, String selectedGender)
             throws CampoNonValidoException {
 
         ContattoValidator.validateName(name);
@@ -56,9 +56,9 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateFields(name, surname, numbers);
         // Verifichiamo che la lista dei numeri sia benformata
 
-        Contatto newContact = new Contatto(name, surname, numbers, emails, note);
+        Contatto newContact = new Contatto(name, surname, numbers, emails, note, selectedGender);
         // Controllo duplicati prima dell'aggiunta
-        if (!GestioneDuplicati.isAddValid(newContact,contactList)) {
+        if (!GestioneDuplicati.isAddValid(newContact, contactList)) {
             throw new CampoNonValidoException("Il contatto è già presente nella rubrica.");
         }
         contactList.add(newContact);
@@ -67,7 +67,7 @@ public class Rubrica implements GestioneRubrica {
     }
 
     @Override
-    public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note)
+    public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note, String selectedGender)
             throws CampoNonValidoException {
 
         ContattoValidator.validateName(name);
@@ -75,9 +75,9 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateEmail(emails);
         ContattoValidator.validatePhoneNumber(numbers);
         ContattoValidator.validateFields(name, surname, numbers);
-        Contatto updatedContact = new Contatto(name, surname, numbers, emails, note);
+        Contatto updatedContact = new Contatto(name, surname, numbers, emails, note, selectedGender);
         // Controllo validità della modifica
-        if (!GestioneDuplicati.isModifyValid(oldContact, updatedContact, contactList)) {
+        if (!GestioneDuplicati.isModifyValid(oldContact, updatedContact,contactList)) {
             throw new CampoNonValidoException("Le modifiche generano un duplicato nella rubrica.");
         }
         synchronizeContacts(oldContact, updatedContact);
@@ -93,7 +93,7 @@ public class Rubrica implements GestioneRubrica {
         int favoriteIndex = favoriteList.indexOf(oldContact);
         int contactIndex = contactList.indexOf(oldContact);
         updatedContact.setFav(oldContact.isFav());
-       
+
         if (favoriteIndex != -1) {
             favoriteList.set(favoriteIndex, updatedContact);
         }

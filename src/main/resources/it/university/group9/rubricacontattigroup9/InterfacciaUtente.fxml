@@ -122,6 +122,7 @@
                         </ImageView>
                      </graphic>
                   </ToggleButton>
+                  <ImageView fx:id="profilePicImageView" fitHeight="94.0" fitWidth="118.0" layoutX="207.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </AnchorPane>
             </items>

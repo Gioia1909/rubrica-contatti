@@ -9,6 +9,7 @@ import java.util.List;
 import javafx.collections.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -24,7 +25,7 @@ public abstract class VisualizzazioneContatti {
     @FXML
     private ToggleButton favoriteButton;
     @FXML
-    private ImageView editImageView, deleteImageView, favoriteImageView;;
+    private ImageView editImageView, deleteImageView, favoriteImageView, profilePicImageView;
     @FXML
     private Label nameField, surnameField, number1Field, number2Field, number3Field;
     @FXML
@@ -72,6 +73,16 @@ public abstract class VisualizzazioneContatti {
         noteField.setVisible(true);
 
         defaultText.setVisible(false); // Nasconde il messaggio predefinito
+        
+        //foto profilo 
+        if(selectedContact.getGen().equals("default")){
+            profilePicImageView.setImage(new Image(getClass().getResourceAsStream("user.png")));
+        }else if(selectedContact.getGen().equals("male")){
+            profilePicImageView.setImage(new Image(getClass().getResourceAsStream("man.png")));
+        }else{
+            profilePicImageView.setImage(new Image(getClass().getResourceAsStream("woman.png")));
+        }
+        profilePicImageView.setVisible(true);
     }
 
     private void clearFields() {
@@ -159,7 +170,8 @@ public abstract class VisualizzazioneContatti {
         editImageView.setVisible(false); // Nascondi l'icona di modifica
         favoriteButton.setVisible(false);
         favoriteImageView.setVisible(false);
-
+        
+        profilePicImageView.setVisible(false);
         nameField.setVisible(false);
         surnameField.setVisible(false);
         number1Field.setVisible(false);
@@ -169,6 +181,7 @@ public abstract class VisualizzazioneContatti {
         email2Field.setVisible(false);
         email3Field.setVisible(false);
         noteField.setVisible(false);
+        
     }
 
 }

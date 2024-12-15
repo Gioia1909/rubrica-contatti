@@ -10,10 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 
-
 /**
  *
- * @author Gruppo9
+ * @author Gruppo09
  */
 public class GestioneDuplicati {
     public static boolean isModifyValid(Contatto oldContact, Contatto updatedContact, ObservableList<Contatto>contactList) {
@@ -95,10 +94,6 @@ public class GestioneDuplicati {
         }
         return true; // Nessun duplicato trovato
     }
-    
-    
-    
-    
 
     private static List<String> normalizeNumbers(List<String> numbers) {
         return numbers.stream()
@@ -115,4 +110,3 @@ public class GestioneDuplicati {
     }
     
 }
-

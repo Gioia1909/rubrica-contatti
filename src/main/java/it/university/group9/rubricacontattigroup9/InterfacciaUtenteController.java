@@ -109,6 +109,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     private Button switchToFavoriteButton;
     @FXML
     private ImageView favoriteImageView;
+    @FXML
+    private ImageView profilePicImageView;
 
     public ListView<Contatto> getContactListView() throws IOException {
         if (contactListView == null) {
@@ -235,7 +237,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
         InterfacciaAggiungiModificaController addController = loader.getController();
         //   addController.setUserInterfaceController(this);
-        addController.initializeForAdd(addressBook, contactList);
+        addController.initializeForAdd( addressBook, contactList);
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -281,7 +283,9 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             //System.out.println("sto passando al gestore della rubrica il contatto " + );
             System.out.println("Ho selezionato da eliminare " + contactToRemove);
 
-            addressBook.deleteContact(contactToRemove);
+            
+                addressBook.deleteContact(contactToRemove);
+            
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
             super.resetContactDetails();
 
@@ -412,22 +416,9 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     }
 
     @FXML
-    private void exportAction(ActionEvent event) {
-        try {
-            SalvaCaricaRubrica.exportToCSV(contactList);
-        } catch (IOException ex) {
-            showErrorDialog("Errore durante l'esportazione", "Si è verificato un errore durante il salvataggio del file CSV. ");
-        }
-               Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Esportazione completata");
-            alert.setHeaderText("Rubrica esportata con successo!");
-            alert.setContentText("Il file CSV è stato salvato correttamente.");
-            alert.showAndWait();
-        } 
-       
-    
-    
-    
+    private void exportAction(ActionEvent event) throws IOException {
+        SalvaCaricaRubrica.exportToCSV(contactList);
+    }
 
     /*  protected void refreshContactList() {
         ObservableList<Contatto> contactList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList

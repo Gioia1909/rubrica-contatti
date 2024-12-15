@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
@@ -17,17 +19,42 @@
    <children>
       <TextField fx:id="nameField" layoutX="77.0" layoutY="109.0" promptText="Inserisci nome..." />
       <TextField fx:id="number1Field" layoutX="77.0" layoutY="164.0" promptText="Inserisci numero 1..." />
-      <TextField fx:id="number2Field" layoutX="77.0" layoutY="219.0" promptText="Inserisci numero 2..." />
+      <TextField fx:id="number2Field" layoutX="77.0" layoutY="221.0" promptText="Inserisci numero 2..." />
       <TextField fx:id="surnameField" layoutX="373.0" layoutY="109.0" promptText="Inserisci cognome..." />
       <TextField fx:id="email1Field" layoutX="373.0" layoutY="164.0" promptText="Inserisci email 1..." />
-      <TextField fx:id="email2Field" layoutX="373.0" layoutY="219.0" promptText="Inserisci email 2..." />
+      <TextField fx:id="email2Field" layoutX="373.0" layoutY="220.0" promptText="Inserisci email 2..." />
       <TextField fx:id="number3Field" layoutX="77.0" layoutY="282.0" promptText="Inserisci numero 3..." />
       <TextField fx:id="email3Field" layoutX="373.0" layoutY="282.0" promptText="Inserisci email 3..." />
-      <Label layoutX="251.0" layoutY="62.0" text="Informazioni Contatto" />
-      <TextField fx:id="noteField" layoutX="225.0" layoutY="333.0" promptText="Inserisci note..." />
+      <TextField fx:id="noteField" layoutX="220.0" layoutY="337.0" promptText="Inserisci note..." />
       <Button fx:id="cancelButton" layoutX="51.0" layoutY="30.0" mnemonicParsing="false" onAction="#cancelOperation" text="Annulla" />
       <Button fx:id="addButton" layoutX="501.0" layoutY="30.0" mnemonicParsing="false" onAction="#addAction" text="Aggiungi" />
       <Button fx:id="editButton" layoutX="503.0" layoutY="30.0" mnemonicParsing="false" onAction="#editAction" text="Modifica" />
       <Button fx:id="bttnHelp" layoutX="563.0" layoutY="357.0" mnemonicParsing="false" onAction="#doFillValue" prefHeight="17.0" prefWidth="17.0" text="Annulla" />
+      <Button fx:id="maleButton" layoutX="198.0" layoutY="52.0" mnemonicParsing="false" onAction="#setMale">
+         <graphic>
+            <ImageView fx:id="maleImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@man.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="womanButton" layoutX="351.0" layoutY="53.0" mnemonicParsing="false" onAction="#setWoman" prefHeight="37.0" prefWidth="45.0">
+         <graphic>
+            <ImageView fx:id="femaleImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@woman.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Text layoutX="242.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scegli una Foto Profilo:" />
+      <Button fx:id="defaultButton" layoutX="276.0" layoutY="53.0" mnemonicParsing="false" onAction="#setDefault" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fx:id="defaultImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

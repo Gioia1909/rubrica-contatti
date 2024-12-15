@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class InterfacciaAggiungiModificaController implements Initializable {
@@ -37,6 +38,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     private Contatto existingContact;
     private GestioneRubrica addressBook;
     private ObservableList<Contatto> contactList;
+    private String selectedGender ="default";
 
     /**
      * @brief Riferimento al controller dell'interfaccia principale.
@@ -44,6 +46,18 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     private InterfacciaUtenteController userInterfaceController;
     @FXML
     private Button bttnHelp;
+    @FXML
+    private Button maleButton;
+    @FXML
+    private Button womanButton;
+    @FXML
+    private ImageView maleImageView;
+    @FXML
+    private ImageView femaleImageView;
+    @FXML
+    private Button defaultButton;
+    @FXML
+    private ImageView defaultImageView;
 
     /**
      * @brief Inizializza la finestra per modificare un contatto esistente.
@@ -85,16 +99,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         addButton.setOnAction(event -> addAction(event));
         editButton.setOnAction(event -> editAction(event));
-
-        nameField.setFocusTraversable(false);
-        surnameField.setFocusTraversable(false);
-        noteField.setFocusTraversable(false);
-        number1Field.setFocusTraversable(false);
-        number2Field.setFocusTraversable(false);
-        number3Field.setFocusTraversable(false);
-        email1Field.setFocusTraversable(false);
-        email2Field.setFocusTraversable(false);
-        email3Field.setFocusTraversable(false);
     }
 
     /**
@@ -122,10 +126,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             String surname = surnameField.getText().trim();
 
             List<String> emails = collectEmails();
-            List<String> numbers = collectNumbers(); 
+            List<String> numbers = collectNumbers();
             String note = noteField.getText().trim();
-         
-            addressBook.addContact(name, surname, numbers, emails, note);
+
+            addressBook.addContact(name, surname, numbers, emails, note, selectedGender);
             closeWindow();
 
         } catch (CampoNonValidoException e) {
@@ -167,10 +171,9 @@ public class InterfacciaAggiungiModificaController implements Initializable {
             List<String> emails = collectEmails();
             String note = noteField.getText().trim();
 
-            addressBook.editContact(existingContact, name, surname, numbers, emails, note);
+            addressBook.editContact(existingContact, name, surname, numbers, emails, note, selectedGender);
             // Aggiorna la lista filtrata se vengo da una ricerca 
             //updateFilteredList();
-            
 
             closeWindow();
 
@@ -207,8 +210,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
                 checkField(email3Field.getText())
         ));
     }
-
-
 
     private void populateFields(Contatto contact) {
         nameField.setText(contact.getName());
@@ -263,6 +264,30 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         number2Field.setText("2345678901");
         number3Field.setText("3456789012");
         noteField.setText("Note");
+    }
+
+    @FXML
+    private void setMale(ActionEvent event) {
+        selectedGender = "male";
+        maleButton.setStyle("-fx-background-color: lightblue;"); // Evidenzia il pulsante
+        womanButton.setStyle(""); // Rimuovi evidenziazione dall'altro
+        defaultButton.setStyle("");
+    }
+
+    @FXML
+    private void setWoman(ActionEvent event) {
+        selectedGender = "female";
+        womanButton.setStyle("-fx-background-color: lightpink;"); // Evidenzia il pulsante
+        maleButton.setStyle(""); // Rimuovi evidenziazione dall'altro
+        defaultButton.setStyle("");
+    }
+    
+    @FXML
+    private void setDefault(ActionEvent event) {
+        selectedGender = "default";
+        defaultButton.setStyle("-fx-background-color: grey;"); // Evidenzia il pulsante
+        womanButton.setStyle(""); // Rimuovi evidenziazione dall'altro
+        maleButton.setStyle(""); // Rimuovi evidenziazione dall'altro
     }
 
 }

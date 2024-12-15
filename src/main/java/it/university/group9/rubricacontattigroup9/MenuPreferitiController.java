@@ -42,6 +42,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
 
     @FXML
     private ImageView favoriteImageView;
+    @FXML
+    private ImageView profilePicImageView;
 
     public ListView<Contatto> getFavoriteListView() {
         return favoriteListView;
@@ -205,7 +207,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
             Parent root = loader.load();
             InterfacciaAggiungiModificaController modificaController = loader.getController();
-            modificaController.initializeForEdit(addressBook, selectedContact, favoriteList);
+            modificaController.initializeForEdit((Rubrica) addressBook, selectedContact, favoriteList);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);

@@ -1,5 +1,3 @@
-
-
 package it.university.group9.rubricacontattigroup9;
 
 import java.util.LinkedList;
@@ -11,7 +9,7 @@ import java.util.*;
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a
  * tre numeri di telefono, da una a tre email e delle note.
- * 
+ *
  *
  * @author Gruppo09
  * @date 11/12/2024
@@ -22,17 +20,19 @@ public class Contatto implements Comparable<Contatto> {
 
     //JsonProperty serve a definire il campo che conterrà questi elementi sul file JSON
     @JsonProperty("name")
-    private String name="";
+    private String name = "";
     @JsonProperty("surname")
-    private String surname="";
+    private String surname = "";
     @JsonProperty("numbers")
     private List<String> numbers;
     @JsonProperty("emails")
     private List<String> emails;
     @JsonProperty("note")
-    private String note="";
+    private String note = "";
     @JsonProperty("fav")
-    private boolean fav=false;
+    private boolean fav = false;
+    @JsonProperty("gen")
+    private String gen;
 
     /**
      * @brief Costruttore della classe Contatto.
@@ -44,20 +44,21 @@ public class Contatto implements Comparable<Contatto> {
      * @param[in] emails Lista di email associate al contatto.
      * @param[in] note Note aggiuntive relative al contatto.
      */
-    public Contatto(String name, String surname, List<String> numbers, List<String> emails, String note) {
+    public Contatto(String name, String surname, List<String> numbers, List<String> emails, String note, String gen) {
         this.name = name;
         this.surname = surname;
         this.numbers = numbers;
         this.emails = emails;
         this.note = note;
         this.fav = false;
+        this.gen = gen;
     }
-  
-    public void setFav(boolean flag){
-        this.fav=flag;
+
+    public void setFav(boolean flag) {
+        this.fav = flag;
     }
-    
-    public boolean isFav(){
+
+    public boolean isFav() {
         return fav;
     }
 
@@ -117,6 +118,14 @@ public class Contatto implements Comparable<Contatto> {
         return note;
     }
 
+    public String getGen() {
+        return gen;
+    }
+
+    public void setGen(String gen) {
+        this.gen = gen;
+    }
+
     /**
      * @brief Restituisce una rappresentazione testuale dei dati del contatto
      *
@@ -152,13 +161,13 @@ public class Contatto implements Comparable<Contatto> {
      * sempre in ordine alfabetico. Il confronto è case-insensitive.
      *
      * @param[in] obj Il contatto da confrontare con l'oggetto corrente.
-     * @return Un intero che rappresenta il risultato del confronto: 
-     * - Un valore negativo se l'oggetto corrente precede il contatto `obj`. 
-     * - Zero se i due contatti sono considerati equivalenti. 
-     * - Un valore positivo se l'oggetto corrente segue il contatto `obj`.
+     * @return Un intero che rappresenta il risultato del confronto: - Un valore
+     * negativo se l'oggetto corrente precede il contatto `obj`. - Zero se i due
+     * contatti sono considerati equivalenti. - Un valore positivo se l'oggetto
+     * corrente segue il contatto `obj`.
      *
      * @pre L'oggetto `obj` non deve essere null.
-     * 
+     *
      */
     @Override
     public int compareTo(Contatto obj) {
