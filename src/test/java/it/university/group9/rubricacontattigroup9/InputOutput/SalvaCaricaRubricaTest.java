@@ -62,8 +62,8 @@ public class SalvaCaricaRubricaTest {
     @Test
     public void testSaveAddressBook() {
        testContacts = FXCollections.observableArrayList(
-                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1"),
-                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2")
+                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1", ""),
+                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2", "")
         );
         SalvaCaricaRubrica.saveAddressBook(testContacts);
          // Verifica che il file esista
@@ -77,8 +77,8 @@ public class SalvaCaricaRubricaTest {
     @Test
     public void testLoadAddressBook() {
             testContacts = FXCollections.observableArrayList(
-                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1"),
-                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2")
+                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1", ""),
+                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2", "")
         );
        
          SalvaCaricaRubrica.saveAddressBook(testContacts);
@@ -103,8 +103,8 @@ public class SalvaCaricaRubricaTest {
     @Test
     public void testExportToCSV() throws Exception {
          testContacts = FXCollections.observableArrayList(
-                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1"),
-                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2")
+                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1", ""),
+                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2", "")
         );
        // Esporta i contatti in un file CSV
         SalvaCaricaRubrica.exportToCSV(testContacts);

@@ -41,8 +41,8 @@ public class SalvaCaricaPreferitiTest {
     @Test
     public void testSaveFavoritesAddressBook() {
         testFavorites = FXCollections.observableArrayList(
-                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1"),
-                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2")
+                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1", ""),
+                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2", "")
         );
         SalvaCaricaPreferiti.saveFavoritesAddressBook(testFavorites);
         File file = new File(TEST_FILE);
@@ -55,8 +55,8 @@ public class SalvaCaricaPreferitiTest {
     @Test
     public void testLoadFavoritesAddressBook() {
         testFavorites = FXCollections.observableArrayList(
-                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1"),
-                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2")
+                new Contatto("Arianna", "Paletta", Arrays.asList("123456789"), Arrays.asList("arianna.paletta@gmail.com"), "Nota 1", ""),
+                new Contatto("Gioia", "Iannuzzi", Arrays.asList("0987654321"), Arrays.asList("gioia.iannuzzi@gmail.com"), "Nota 2", "")
         );
         SalvaCaricaPreferiti.saveFavoritesAddressBook(testFavorites);
         ObservableList<Contatto> loadedFavorites = SalvaCaricaPreferiti.loadFavoritesAddressBook();

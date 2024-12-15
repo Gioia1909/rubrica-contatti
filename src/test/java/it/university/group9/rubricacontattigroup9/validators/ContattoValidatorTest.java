@@ -30,8 +30,8 @@ public class ContattoValidatorTest {
         // Creazione di contatti con nome valido e non valido
         List<String> numeri = new ArrayList<>(Arrays.asList("1234567890"));
         List<String> emails = new ArrayList<>(Arrays.asList("email@gmail.com"));
-        Contatto validContatto = new Contatto("Luigi", "Montonetti", numeri, emails, " ");
-        Contatto invalidContatto = new Contatto("1Debora", "Villano", numeri, emails, " ");
+        Contatto validContatto = new Contatto("Luigi", "Montonetti", numeri, emails, " ", "");
+        Contatto invalidContatto = new Contatto("1Debora", "Villano", numeri, emails, " ", "");
 
         // Test per nome valido (non deve sollevare eccezioni)
         assertDoesNotThrow(() -> ContattoValidator.validateName(validContatto.getName()));
@@ -45,8 +45,8 @@ public class ContattoValidatorTest {
         // Creazione di contatti con cognome valido e non valido
         List<String> numeri = new ArrayList<>(Arrays.asList("1234567890"));
         List<String> emails = new ArrayList<>(Arrays.asList("email@gmail.com"));
-        Contatto validContatto = new Contatto("Luigi", "Montonetti", numeri, emails, " ");
-        Contatto invalidContatto = new Contatto("Debora", "1Villano", numeri, emails, " ");
+        Contatto validContatto = new Contatto("Luigi", "Montonetti", numeri, emails, " ", "");
+        Contatto invalidContatto = new Contatto("Debora", "1Villano", numeri, emails, " ", "");
 
         // Test per cognome valido (non deve sollevare eccezioni)
         assertDoesNotThrow(() -> ContattoValidator.validateSurname(validContatto.getSurname()));;
@@ -86,10 +86,10 @@ public class ContattoValidatorTest {
         // Creazione di contatti con numeri e campi validi e non validi
         List<String> validNumbers = new ArrayList<>(Arrays.asList("1234567890"));
         List<String> invalidNumbers = new ArrayList<>(Arrays.asList("", "", ""));
-        Contatto validContatto = new Contatto("Luigi", "Montonetti", validNumbers, Arrays.asList("email@gmail.com"), " ");
-        Contatto invalidContatto = new Contatto("", "", invalidNumbers, Arrays.asList("email@example.com"), " ");
-        Contatto invalidContatto2 = new Contatto("", "", validNumbers, Arrays.asList("email@example.com"), " ");
-        Contatto invalidContatto3 = new Contatto("Luigi", "Montonetti", invalidNumbers, Arrays.asList("email@example.com"), " ");
+        Contatto validContatto = new Contatto("Luigi", "Montonetti", validNumbers, Arrays.asList("email@gmail.com"), " ", "");
+        Contatto invalidContatto = new Contatto("", "", invalidNumbers, Arrays.asList("email@example.com"), " ", "");
+        Contatto invalidContatto2 = new Contatto("", "", validNumbers, Arrays.asList("email@example.com"), " ", "");
+        Contatto invalidContatto3 = new Contatto("Luigi", "Montonetti", invalidNumbers, Arrays.asList("email@example.com"), " ", "");
 
         // Test per campi validi (non deve sollevare eccezioni)
         assertDoesNotThrow(() -> ContattoValidator.validateFields(validContatto.getName(), validContatto.getSurname(), validContatto.getNumbers()));

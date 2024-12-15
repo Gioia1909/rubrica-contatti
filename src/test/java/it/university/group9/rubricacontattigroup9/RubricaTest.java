@@ -39,7 +39,7 @@ public class RubricaTest {
         String note = "Test note";
 
         // Act
-        rubrica.addContact(name, surname, numbers, emails, note);
+        rubrica.addContact(name, surname, numbers, emails, note, "");
 
         // Assert
         ObservableList<Contatto> contactList = rubrica.getContactList();
@@ -65,14 +65,14 @@ public class RubricaTest {
         String note = "Test note";
 
         try {
-            rubrica.addContact(name, surname, numbers, emails, note);
+            rubrica.addContact(name, surname, numbers, emails, note, "");
         } catch (CampoNonValidoException e) {
             fail("Non dovresti ottenere un'eccezione nella prima aggiunta!");
         }
 
         // Act & Assert
         assertThrows(CampoNonValidoException.class, () ->
-                rubrica.addContact(name, surname, numbers, emails, note));
+                rubrica.addContact(name, surname, numbers, emails, note, ""));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class RubricaTest {
         rubrica.setContactList(FXCollections.observableArrayList());
         rubrica.setFavoriteList(FXCollections.observableArrayList());
         // Arrange
-        Contatto oldContact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890", "", ""), Arrays.asList("mario.rossi@gmail.com", "", ""), "note vecchie");
+        Contatto oldContact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890", "", ""), Arrays.asList("mario.rossi@gmail.com", "", ""), "note vecchie", "");
         rubrica.getContactList().add(oldContact);
 
         String newName = "Maria";
@@ -91,7 +91,7 @@ public class RubricaTest {
         String newNote = "note nuove";
 
         // Act
-        rubrica.editContact(oldContact, newName, newSurname, newNumbers, newEmails, newNote);
+        rubrica.editContact(oldContact, newName, newSurname, newNumbers, newEmails, newNote, "");
 
         // Assert
         ObservableList<Contatto> contactList = rubrica.getContactList();
@@ -114,7 +114,7 @@ public class RubricaTest {
         rubrica.setContactList(FXCollections.observableArrayList());
         rubrica.setFavoriteList(FXCollections.observableArrayList());
         // Arrange
-        Contatto contact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Note Test");
+        Contatto contact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Note Test", "");
         rubrica.getContactList().add(contact);
 
         // Act
@@ -131,7 +131,7 @@ public class RubricaTest {
         rubrica.setFavoriteList(FXCollections.observableArrayList());
         
         // Arrange
-        Contatto contact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Note Test");
+        Contatto contact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Note Test", "");
         rubrica.getContactList().add(contact);
 
         // Act
@@ -150,7 +150,7 @@ public class RubricaTest {
         rubrica.setFavoriteList(FXCollections.observableArrayList());
         
         // Arrange
-        Contatto contact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Note Test");
+        Contatto contact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Note Test", "");
         rubrica.getContactList().add(contact);
         rubrica.addToFavorites(contact);
 
@@ -170,7 +170,7 @@ public class RubricaTest {
         rubrica.setFavoriteList(FXCollections.observableArrayList());
         
         // Arrange
-        Contatto contact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Note Test");
+        Contatto contact = new Contatto("Mario", "Rossi", Arrays.asList("1234567890"), Arrays.asList("mario.rossi@gmail.com"), "Note Test", "");
         rubrica.getContactList().add(contact);
         rubrica.addToFavorites(contact);
 
