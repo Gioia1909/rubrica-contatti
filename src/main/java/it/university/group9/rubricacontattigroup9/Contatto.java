@@ -8,12 +8,11 @@ import java.util.*;
 /**
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a
- * tre numeri di telefono, da una a tre email e delle note.
+ * tre numeri di telefono, da una a tre email, delle note, un campo 'preferito' e il genere
  *
  *
  * @author Gruppo09
  * @date 11/12/2024
- * @version
  *
  */
 public class Contatto implements Comparable<Contatto> {
@@ -43,6 +42,7 @@ public class Contatto implements Comparable<Contatto> {
      * @param[in] numbers Lista di numeri di telefono associati al contatto.
      * @param[in] emails Lista di email associate al contatto.
      * @param[in] note Note aggiuntive relative al contatto.
+     * @param[in] gen  Genere del contatto.
      */
     public Contatto(String name, String surname, List<String> numbers, List<String> emails, String note, String gen) {
         this.name = name;
@@ -52,14 +52,6 @@ public class Contatto implements Comparable<Contatto> {
         this.note = note;
         this.fav = false;
         this.gen = gen;
-    }
-
-    public void setFav(boolean flag) {
-        this.fav = flag;
-    }
-
-    public boolean isFav() {
-        return fav;
     }
 
     /**
@@ -118,10 +110,34 @@ public class Contatto implements Comparable<Contatto> {
         return note;
     }
 
+      /**
+     * @brief Imposta lo stato di preferito del contatto.
+     * @param[in] flag True se il contatto è preferito, false altrimenti.
+     */
+    public void setFav(boolean flag) {
+        this.fav = flag;
+    }
+
+       /**
+     * @brief Verifica se il contatto è preferito.
+     * @return True se il contatto è preferito, false altrimenti.
+     */
+    public boolean isFav() {
+        return fav;
+    }
+
+     /**
+     * @brief Restituisce il genere del contatto.
+     * @return Stringa contenente il genere.
+     */
     public String getGen() {
         return gen;
     }
 
+    /**
+     * @brief Imposta il genere del contatto.
+     * @param[in] gen Stringa con il genere.
+     */ 
     public void setGen(String gen) {
         this.gen = gen;
     }
