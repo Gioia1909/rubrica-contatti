@@ -92,7 +92,7 @@ public class Rubrica implements GestioneRubrica {
             throw new CampoNonValidoException("Il contatto è già presente nella rubrica.");
         }
         contactList.add(newContact);
-        sort(contactList);
+        FXCollections.sort(contactList);
         saveData();
     }
 
@@ -118,7 +118,6 @@ public class Rubrica implements GestioneRubrica {
         //int index = contactList.indexOf(oldContact);
         //contactList.set(index, updatedContact);
 
-        saveFavorites();
         saveData();
     }
 
@@ -154,7 +153,6 @@ public class Rubrica implements GestioneRubrica {
         }
 
         // Forza il salvataggio dopo la sincronizzazione
-        saveFavorites();
         saveData();
 
     }
@@ -177,8 +175,7 @@ public class Rubrica implements GestioneRubrica {
         if (contactList.contains(contact) && !favoriteList.contains(contact)) {
             favoriteList.add(contact);
             contact.setFav(true);
-            sort(favoriteList);
-            saveFavorites();
+            FXCollections.sort(favoriteList);
             saveData();
         }
     }
@@ -189,7 +186,6 @@ public class Rubrica implements GestioneRubrica {
     public void removeFromFavorites(Contatto contact) {
         if (favoriteList.remove(contact)) {
             contact.setFav(false);
-            saveFavorites();
             saveData();
         }
     }
@@ -226,35 +222,15 @@ public class Rubrica implements GestioneRubrica {
     }
 
     /**
-     * @brief Salva i dati dei contatti nella rubrica.
-     *
-     * Questo metodo salva la lista dei contatti chiamando la funzione di
-     * salvataggio della rubrica e successivamente salva la lista dei preferiti.
+     * @brief Salva i dati dei contatti nella rubrica e in quella dei preferiti
+     * 
+     * @see SalvaCaricaRubrica
      */
     private void saveData() {
         SalvaCaricaRubrica.saveAddressBook(contactList);
-        saveFavorites();
-    }
-
-    /**
-     * @brief Salva i dati dei contatti preferiti.
-     *
-     * Questo metodo salva la lista dei contatti preferiti utilizzando il metodo
-     * di salvataggio dei preferiti.
-     */
-    private void saveFavorites() {
         SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
     }
 
-    /**
-     * @brief Ordina una lista di contatti.
-     *
-     * Questo metodo ordina la lista di contatti (o preferiti) in base al cognome e al nome
-     *
-     * @param list La lista osservabile di contatti da ordinare.
+
    
-     */
-    private void sort(ObservableList<Contatto> list) {
-        FXCollections.sort(list);
-    }
 }
