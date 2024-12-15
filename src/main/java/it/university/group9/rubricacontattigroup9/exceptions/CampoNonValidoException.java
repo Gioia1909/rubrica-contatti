@@ -18,7 +18,7 @@ public class CampoNonValidoException extends Exception {
      * 
      * Questo costruttore crea una nuova istanza dell'eccezione con un messaggio personalizzato.
      * 
-     * @param field Il nome del campo che ha causato l'errore (ad esempio "nome" o "cognome").
+     * @param msg messaggio d'errore che indica quale campo non è valido
      */
     public CampoNonValidoException(String msg) {
         super(msg);
