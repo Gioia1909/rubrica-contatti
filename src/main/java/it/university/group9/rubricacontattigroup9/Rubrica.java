@@ -13,8 +13,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-// Modello della Rubrica : Edit, Add, Delete
 
+/**
+ * @file Rubrica.java
+ * @brief Implementazione di metodi per la gestione dei contatti e dei preferiti
+ * in una rubrica.
+ *
+ * @see GestioneRubrica
+ */
 public class Rubrica implements GestioneRubrica {
 
     private ObservableList<Contatto> contactList;
@@ -28,23 +34,47 @@ public class Rubrica implements GestioneRubrica {
         System.out.println("Lista iniziale dei preferiti: " + favoriteList.size());
     }
 
+    /**
+     * @brief Imposta la lista dei contatti.
+     *
+     * @param contactList La lista osservabile di contatti da impostare.
+     */
     public void setContactList(ObservableList<Contatto> contactList) {
         this.contactList = contactList;
     }
 
+    /**
+     * @brief Imposta la lista dei contatti preferiti.
+     *
+     * Questo metodo imposta la lista dei contatti preferiti a quella fornita
+     * come parametro. Viene utilizzato per aggiornare la lista dei contatti
+     * preferiti della rubrica.
+     *
+     * @param favoriteList La lista osservabile di contatti preferiti da
+     * impostare.
+     */
     public void setFavoriteList(ObservableList<Contatto> favoriteList) {
         this.favoriteList = favoriteList;
     }
 
+    /**
+     * @see GestioneRubrica
+     */
     @Override
     public ObservableList<Contatto> getContactList() {
         return contactList;
     }
 
+    /**
+     * @see GestioneRubrica
+     */
     public ObservableList<Contatto> getFavoriteList() {
         return favoriteList;
     }
 
+    /**
+     * @see GestioneRubrica
+     */
     @Override
     public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note, String selectedGender)
             throws CampoNonValidoException {
@@ -66,6 +96,9 @@ public class Rubrica implements GestioneRubrica {
         saveData();
     }
 
+    /**
+     * @see GestioneRubrica
+     */
     @Override
     public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note, String selectedGender)
             throws CampoNonValidoException {
@@ -77,7 +110,7 @@ public class Rubrica implements GestioneRubrica {
         ContattoValidator.validateFields(name, surname, numbers);
         Contatto updatedContact = new Contatto(name, surname, numbers, emails, note, selectedGender);
         // Controllo validità della modifica
-        if (!GestioneDuplicati.isModifyValid(oldContact, updatedContact,contactList)) {
+        if (!GestioneDuplicati.isModifyValid(oldContact, updatedContact, contactList)) {
             throw new CampoNonValidoException("Le modifiche generano un duplicato nella rubrica.");
         }
         synchronizeContacts(oldContact, updatedContact);
@@ -89,6 +122,25 @@ public class Rubrica implements GestioneRubrica {
         saveData();
     }
 
+    /**
+     * @see GestioneRubrica
+     */
+    @Override
+    public ObservableList<Contatto> searchContact(String param) {
+        return contactList.stream()
+                .filter(contact -> matchesContact(contact, param))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+    }
+
+    /**
+     * @brief Sincronizza un contatto aggiornato in entrambe le liste (contatti
+     * e preferiti).
+     *
+     *
+     * @param oldContact Il contatto originale da aggiornare.
+     * @param updatedContact Il contatto con i dati aggiornati.
+     *
+     */
     public void synchronizeContacts(Contatto oldContact, Contatto updatedContact) {
         int favoriteIndex = favoriteList.indexOf(oldContact);
         int contactIndex = contactList.indexOf(oldContact);
@@ -107,6 +159,9 @@ public class Rubrica implements GestioneRubrica {
 
     }
 
+    /**
+     * @see GestioneRubrica
+     */
     @Override
     public void deleteContact(Contatto contact) {
         if (contactList.remove(contact)) {
@@ -115,6 +170,9 @@ public class Rubrica implements GestioneRubrica {
         }
     }
 
+    /**
+     * @see GestioneRubrica
+     */
     public void addToFavorites(Contatto contact) {
         if (contactList.contains(contact) && !favoriteList.contains(contact)) {
             favoriteList.add(contact);
@@ -125,6 +183,9 @@ public class Rubrica implements GestioneRubrica {
         }
     }
 
+    /**
+     * @see GestioneRubrica
+     */
     public void removeFromFavorites(Contatto contact) {
         if (favoriteList.remove(contact)) {
             contact.setFav(false);
@@ -133,19 +194,29 @@ public class Rubrica implements GestioneRubrica {
         }
     }
 
-    @Override
-    public ObservableList<Contatto> searchContact(String param) {
-        return contactList.stream()
-                .filter(contact -> matchesContact(contact, param))
-                .collect(Collectors.toCollection(FXCollections::observableArrayList));
-    }
-
+    /**
+     * @see GestioneRubrica
+     */
     public ObservableList<Contatto> searchFavoriteContact(String param) {
         return favoriteList.stream()
                 .filter(contact -> matchesContact(contact, param))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
+    /**
+     * @brief Verifica se un contatto corrisponde ai parametri di ricerca.
+     *
+     * Questo metodo confronta il nome, cognome, numeri di telefono ed email del
+     * contatto con il parametro di ricerca fornito, restituendo `true` se c'è
+     * una corrispondenza, altrimenti `false`. La ricerca è insensibile al
+     * maiuscolo/minuscolo.
+     *
+     * @param contact Il contatto da confrontare.
+     * @param param Il parametro di ricerca (nome, cognome, numero di telefono o
+     * email).
+     * @return `true` se il contatto corrisponde al parametro, altrimenti
+     * `false`.
+     */
     private boolean matchesContact(Contatto contact, String param) {
         String lowerParam = param.toLowerCase();
         return contact.getName().toLowerCase().contains(lowerParam)
@@ -154,15 +225,35 @@ public class Rubrica implements GestioneRubrica {
                 || contact.getEmails().stream().anyMatch(email -> email.contains(param));
     }
 
+    /**
+     * @brief Salva i dati dei contatti nella rubrica.
+     *
+     * Questo metodo salva la lista dei contatti chiamando la funzione di
+     * salvataggio della rubrica e successivamente salva la lista dei preferiti.
+     */
     private void saveData() {
         SalvaCaricaRubrica.saveAddressBook(contactList);
         saveFavorites();
     }
 
+    /**
+     * @brief Salva i dati dei contatti preferiti.
+     *
+     * Questo metodo salva la lista dei contatti preferiti utilizzando il metodo
+     * di salvataggio dei preferiti.
+     */
     private void saveFavorites() {
         SalvaCaricaPreferiti.saveFavoritesAddressBook(favoriteList);
     }
 
+    /**
+     * @brief Ordina una lista di contatti.
+     *
+     * Questo metodo ordina la lista di contatti (o preferiti) in base al cognome e al nome
+     *
+     * @param list La lista osservabile di contatti da ordinare.
+   
+     */
     private void sort(ObservableList<Contatto> list) {
         FXCollections.sort(list);
     }
