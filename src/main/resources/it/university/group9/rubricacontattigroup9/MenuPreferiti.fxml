@@ -25,18 +25,18 @@
         <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
     </stylesheets>
     <children>
-        <SplitPane dividerPositions="0.36977886977886976" prefHeight="503.0" prefWidth="849.0">
+        <SplitPane dividerPositions="0.40153452685422" prefHeight="503.0" prefWidth="849.0">
             <items>
                 <!-- Pannello sinistro -->
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="300.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="292.0">
                     <children>
                         <Text layoutX="16.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferiti" wrappingWidth="152.21630859375" AnchorPane.bottomAnchor="451.73828125" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="181.78369140625" AnchorPane.topAnchor="21.9921875">
                             <font>
                                 <Font name="SansSerif Bold" size="24.0" />
                             </font>
                         </Text>
-                        <ListView fx:id="favoriteListView" layoutX="15.0" layoutY="93.0" prefHeight="322.0" prefWidth="264.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="100.0" />
-                        <Button fx:id="secondaryButton" layoutX="80.0" layoutY="440.0" maxHeight="27.0" onAction="#switchToInterface" prefHeight="27.0" prefWidth="120.0" text="Torna alla Rubrica" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="440.0" />
+                        <ListView fx:id="favoriteListView" layoutX="15.0" layoutY="93.0" prefHeight="343.0" prefWidth="234.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="100.0" />
+                        <Button fx:id="secondaryButton" layoutX="80.0" layoutY="451.0" maxHeight="27.0" onAction="#switchToInterface" prefHeight="27.0" prefWidth="120.0" text="Torna alla Rubrica" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="451.0" />
                         <Button fx:id="searchButton" layoutX="251.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchAction" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="52.0">
                             <graphic>
                                 <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -56,7 +56,7 @@
                     <children>
                         
                         <!-- Default Text -->
-                        <Label fx:id="defaultText" layoutX="105.0" layoutY="136.0" text="Seleziona un Contatto">
+                        <Label fx:id="defaultText" alignment="CENTER" layoutX="105.0" layoutY="136.0" text="Seleziona un Contatto" AnchorPane.bottomAnchor="339.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="136.0">
                             <font>
                                 <Font name="Hiragino Sans W4" size="25.0" />
                             </font>

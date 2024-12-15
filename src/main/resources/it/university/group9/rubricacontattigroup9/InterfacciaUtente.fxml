@@ -29,13 +29,13 @@
         <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
     </stylesheets>
     <children>
-        <SplitPane fx:id="splitPane" dividerPositions="0.4227330779054917" prefHeight="503.0" prefWidth="751.0">
+        <SplitPane fx:id="splitPane" dividerPositions="0.40102171136653897" prefHeight="503.0" prefWidth="751.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="329.0">
                     <children>
                         <ListView fx:id="listViewFavorites" layoutX="47.0" layoutY="123.0" prefHeight="200.0" prefWidth="300.0" visible="false" />
 
-                        <ListView fx:id="contactListView" editable="true" layoutX="12.0" layoutY="123.0" prefHeight="322.0" prefWidth="300.0" />
+                        <ListView fx:id="contactListView" editable="true" layoutX="12.0" layoutY="123.0" prefHeight="322.0" prefWidth="295.0" />
                         <Button fx:id="searchButton" layoutX="235.0" layoutY="75.0" mnemonicParsing="false" onAction="#searchAction" AnchorPane.leftAnchor="235.0" AnchorPane.topAnchor="75.0">
                      
                             <graphic>
@@ -73,7 +73,7 @@
                             </font>
                         </Text>
                         <TextField fx:id="searchBar" layoutX="11.0" layoutY="80.0" prefWidth="219.0" promptText="Cerca contatto..." />
-                        <MenuButton  fx:id="File" mnemonicParsing="false" text="File">
+                        <MenuButton fx:id="File" mnemonicParsing="false" text="File">
                             <items>
                                 <MenuItem fx:id="exportButton" mnemonicParsing="false" onAction="#exportAction" text="Esporta Rubrica" />
                             </items>
@@ -87,7 +87,7 @@
                     <children>
                         
                         <!-- Default Text -->
-                        <Label fx:id="defaultText" layoutX="94.0" layoutY="136.0" prefHeight="27.0" prefWidth="283.0" text="Seleziona un Contatto">
+                        <Label fx:id="defaultText" alignment="CENTER" layoutX="94.0" layoutY="136.0" text="Seleziona un Contatto" AnchorPane.bottomAnchor="339.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="136.0">
                             <font>
                                 <Font name="Hiragino Sans W4" size="25.0" />
                             </font>
