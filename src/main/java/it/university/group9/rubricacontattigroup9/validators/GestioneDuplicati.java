@@ -1,9 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package it.university.group9.rubricacontattigroup9.validators;
+
+
+/**
+ * @file GestioneDuplicati.java
+ * @brief Classe che verifica se l'aggiunta di un contatto o la modifica sono corrette. 
+ *
+ *
+ * @author Gruppo09
+ * @see Contatto
+ *
+ */package it.university.group9.rubricacontattigroup9.validators;
 
 import it.university.group9.rubricacontattigroup9.Contatto;
 import java.util.List;
@@ -15,6 +20,16 @@ import javafx.collections.ObservableList;
  * @author Gruppo09
  */
 public class GestioneDuplicati {
+    
+    
+/**
+ * @brief Verifica che un contatto aggiornato non causi duplicati nella lista esistente, controllando numeri di telefono, email e nome e cognome
+ * @param[in] oldContact Il contatto originale, prima dell'aggiornamento.
+ * @param[in] updatedContact Il contatto aggiornato.
+ * @param[in] contactList La lista di contatti esistenti da confrontare.
+ * @return true Se il contatto aggiornato è valido (nessun duplicato), false se ci sono duplicati.
+ * @throws NullPointerException Se la lista di contatti è nulla.
+ */
     public static boolean isModifyValid(Contatto oldContact, Contatto updatedContact, ObservableList<Contatto>contactList) {
         for (Contatto contact : contactList) {
             // Salta il confronto con il contatto originale
@@ -60,7 +75,14 @@ public class GestioneDuplicati {
         }
         return true; // Nessun duplicato trovato
     }
-
+    
+/**
+ * @brief Verifica che un nuovo contatto non causi duplicati nella lista esistente.
+ * @param[in] newContact Il nuovo contatto da aggiungere.
+ * @param[in] contactList La lista di contatti esistenti da confrontare.
+ * @return true Se il nuovo contatto è valido (nessun duplicato), false se ci sono duplicati.
+ * @throws NullPointerException Se la lista di contatti è nulla.
+ */
     public static boolean isAddValid(Contatto newContact, ObservableList<Contatto>contactList) {
         for (Contatto contact : contactList) {
             System.out.println("[DEBUG] Confronto nuovo contatto: " + newContact + " con contatto esistente: " + contact);
@@ -95,13 +117,26 @@ public class GestioneDuplicati {
         return true; // Nessun duplicato trovato
     }
 
+/**
+ * @brief Rimuove spazi bianchi e valori vuoti o nulli dalla lista di numeri.
+ * 
+ * @param[in] numbers La lista di numeri di telefono da normalizzare.
+ * @return Una lista di numeri di telefono normalizzati.
+ */
     private static List<String> normalizeNumbers(List<String> numbers) {
         return numbers.stream()
                 .filter(number -> number != null && !number.trim().isEmpty()) // Rimuove email vuote o nulle
                 .map(number -> number.replaceAll("\\s+", "").trim())
                 .collect(Collectors.toList());
     }
-
+    
+    
+/**
+ * @brief Rimuove spazi bianchi e valori vuoti o nulli dalla lista delle emails.
+ * 
+ * @param[in] emails La lista delle emails da normalizzare.
+ * @return Una lista di emails normalizzate.
+ */    
     private static List<String> normalizeEmails(List<String> emails) {
         return emails.stream()
                 .filter(email -> email != null && !email.trim().isEmpty()) // Rimuove email vuote o nulle
