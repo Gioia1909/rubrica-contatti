@@ -138,6 +138,8 @@ public class Rubrica implements GestioneRubrica {
      *
      * @param oldContact Il contatto originale da aggiornare.
      * @param updatedContact Il contatto con i dati aggiornati.
+     * 
+     * @see savaData()
      *
      */
     public void synchronizeContacts(Contatto oldContact, Contatto updatedContact) {
@@ -225,6 +227,7 @@ public class Rubrica implements GestioneRubrica {
      * @brief Salva i dati dei contatti nella rubrica e in quella dei preferiti
      * 
      * @see SalvaCaricaRubrica
+     * @see SalvaCaricaPreferiti
      */
     private void saveData() {
         SalvaCaricaRubrica.saveAddressBook(contactList);
