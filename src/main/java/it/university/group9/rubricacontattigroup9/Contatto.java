@@ -169,14 +169,27 @@ public class Contatto implements Comparable<Contatto> {
      * @pre L'oggetto `obj` non deve essere null.
      *
      */
-    @Override
-    public int compareTo(Contatto obj) {
+@Override
+public int compareTo(Contatto obj) {
+    // Prima verifica se entrambi i contatti hanno un cognome
+    if (this.surname.isEmpty() && obj.surname.isEmpty()) {
+        // Se entrambi non hanno cognome, confronta per nome
+        return this.name.compareToIgnoreCase(obj.name);
+    } else if (this.surname.isEmpty()) {
+        // Se questo contatto non ha cognome, confronta per nome come se fosse un cognome
+        return this.name.compareToIgnoreCase(obj.surname);
+    } else if (obj.surname.isEmpty()) {
+        // Se l'altro contatto non ha cognome, confronta il cognome con il nome di questo contatto
+        return this.surname.compareToIgnoreCase(obj.name);
+    } else {
+        // Se entrambi hanno il cognome, ordina per cognome prima e poi per nome
         int result = this.surname.compareToIgnoreCase(obj.surname);
-        if (result == 0) {       // se hanno lo stesso cognome
-            return this.name.compareToIgnoreCase(obj.name); // Se i cognomi sono uguali, ordina per nome
+        if (result == 0) { // Se i cognomi sono uguali, ordina per nome
+            return this.name.compareToIgnoreCase(obj.name);
         }
         return result;
     }
+}
 
     /**
      * @brief Metodo che determina l'uguaglianza tra due oggetti Contatto. Due
