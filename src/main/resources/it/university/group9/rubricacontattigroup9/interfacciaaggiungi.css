@@ -2,6 +2,19 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
 
-}
+    
+    #defaultButton{
+        -fx-cursor: hand;
+        -fx-background-color: transparent;    
+    }
+    #maleButton{
+        -fx-cursor: hand;
+        -fx-background-color: transparent;    
+    }
+    
+    #womanButton{
+        -fx-cursor: hand;
+        -fx-background-color: transparent;    
+    }
+
