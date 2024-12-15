@@ -119,16 +119,15 @@ public abstract class VisualizzazioneContatti {
             emails = Collections.emptyList();
         }
 
-        emailLabel.setVisible(emails.isEmpty()); // Mostra/ nasconde l'etichetta email
-
+        if(emails.get(0) == "" && emails.get(1) == "" && emails.get(2) == ""){
+            emailLabel.setVisible(false);
+        }else emailLabel.setVisible(true);
         if (emails.size() > 0) {
             email1Field.setText(emails.get(0));
             email1Field.setVisible(true);
             email1Field.setManaged(true);
-            emailLabel.setVisible(true); // Mostra/ nasconde l'etichetta email
-        } else {
-            email1Field.setVisible(false);
-        }
+            //emailLabel.setVisible(true); // Mostra/ nasconde l'etichetta email
+        } 
 
         if (emails.size() > 1) {
             email2Field.setText(emails.get(1));
@@ -136,17 +135,14 @@ public abstract class VisualizzazioneContatti {
             email2Field.setManaged(true);
         } else {
             email2Field.setVisible(false);
-            emailLabel.setVisible(true); // Mostra/ nasconde l'etichetta email
         }
 
         if (emails.size() > 2) {
             email3Field.setText(emails.get(2));
             email3Field.setVisible(true);
             email3Field.setManaged(true);
-            emailLabel.setVisible(true); // Mostra/ nasconde l'etichetta email
-        } else {
-            email3Field.setVisible(false);
-        }
+        } 
+    
 
         // Aggiorna nota
         if (!selectedContact.getNote().equals("")) {
@@ -159,7 +155,7 @@ public abstract class VisualizzazioneContatti {
         }
 
         // Aggiorna immagine profilo
-        if (selectedContact.getGen() == null) {
+        if (selectedContact.getGen().equals("default")) {
             profilePicImageView.setImage(new Image(getClass().getResourceAsStream("user.png")));
         } else if ("male".equals(selectedContact.getGen())) {
             profilePicImageView.setImage(new Image(getClass().getResourceAsStream("man.png")));

@@ -510,6 +510,12 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @FXML
     private void exportAction(ActionEvent event) throws IOException {
         SalvaCaricaRubrica.exportToCSV(contactList);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Esportazione file");
+        alert.setHeaderText("Rubrica salvata con successo");
+        alert.setContentText("Rubrica salvata come rubrica.csv");
+        alert.showAndWait();
+        
     }
 
     /*  protected void refreshContactList() {
