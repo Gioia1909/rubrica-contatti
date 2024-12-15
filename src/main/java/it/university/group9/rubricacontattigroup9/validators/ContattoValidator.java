@@ -6,6 +6,7 @@
  * telefono e dei contatti.
  *
  * @author Gruppo09
+ * @see Contatto
  *
  */
 package it.university.group9.rubricacontattigroup9.validators;
@@ -26,10 +27,8 @@ public class ContattoValidator {
     /**
      * @brief Verifica se un numero di telefono è duplicato.
      *
-     * Controlla se il numero di telefono è già presente tra i contatti.
-     *
-     * @param contacts La lista di contatti da esaminare.
-     * @param numbers La lista dei numeri di telefono da verificare.
+     * @param[in] contacts La lista di contatti da esaminare.
+     * @param[in] contactToCheck il contatto da verificare
      * @return true se il numero è già presente, false altrimenti.
      */
     public static boolean isNumberDuplicate(ObservableList<Contatto> contacts, Contatto contactToCheck) {
@@ -68,12 +67,10 @@ public class ContattoValidator {
     /**
      * @brief Verifica se un contatto è duplicato.
      *
-     * Controlla se esiste un contatto con lo stesso nome, cognome e numero.
-     *
-     * @param contacts La lista di contatti da esaminare.
-     * @param name Il nome del contatto.
-     * @param surname Il cognome del contatto.
-     * @param numbers I numeri di telefono del contatto.
+     * @param[in] contacts La lista di contatti da esaminare.
+     * @param[in] name Il nome del contatto.
+     * @param[in] surname Il cognome del contatto.
+     * @param[in] numbers I numeri di telefono del contatto.
      * @return true se il contatto esiste già, false altrimenti.
      */
     public static boolean isContactDuplicate(ObservableList<Contatto> contacts, String name, String surname, List<String> numbers) {
@@ -93,17 +90,15 @@ public class ContattoValidator {
             }
 
         }
-        return false; // Contatto non duplicato
+        return false; 
     }
 
     /**
-     * @brief Verifica se un numero di telefono è duplicato.
+     * @brief Verifica se un email è duplicata.
      *
-     * Controlla se il numero di telefono è già presente tra i contatti.
-     *
-     * @param contacts La lista di contatti da esaminare.
-     * @param emails La lista delle email da verificare.
-     * @return true se il numero è già presente, false altrimenti.
+     * @param[in] contacts La lista di contatti da esaminare.
+     * @param[in] emails La lista delle email da verificare.
+     * @return true se l'email è già presente, false altrimenti.
      */
     public static boolean isEmailDuplicate(List<Contatto> contacts, List<String> emails) {
         for (Contatto contact : contacts) {
@@ -125,11 +120,21 @@ public class ContattoValidator {
         return false;  // Numero non trovato
     }
 
+/**
+ * @brief Verifica che il nome inizi con una lettera alfabetica.
+ * @param[in] name Il nome da validare.
+ * @throws CampoNonValidoException Se il formato del nome non è valido.
+ */  
     public static void validateName(String name) throws CampoNonValidoException {
         if (!name.isEmpty() && !Character.isAlphabetic(name.charAt(0))) {
             throw new CampoNonValidoException("il formato del nome non è valido");
         }
     }
+/**
+ * @brief Verifica che il cognome inizi con una lettera alfabetica.
+ * @param[in] surname Il cognome da validare.
+ * @throws CampoNonValidoException Se il formato del cognome non è valido.
+ */ 
 
     public static void validateSurname(String surname) throws CampoNonValidoException {
         if (!surname.isEmpty() && !Character.isAlphabetic(surname.charAt(0))) {    //surname.trim() elimina eventuali spazi all'inizio o alla fine della stringa per evitare che un 
@@ -138,6 +143,12 @@ public class ContattoValidator {
         }
     }
 
+/**
+ * @brief Verifica che ogni numero di telefono sia nel formato valido (opzionale "+" seguito da 10-13 cifre).
+ *
+ * @param[in] numbers La lista di numeri di telefono da validare.
+ * @throws CampoNonValidoException Se uno dei numeri di telefono non è valido.
+ */
     public static void validatePhoneNumber(List<String> numbers) throws CampoNonValidoException {
         for (String number : numbers) {
 
@@ -150,7 +161,13 @@ public class ContattoValidator {
             }
         }
     }
+    
+/**
+ * @brief Verifica che ogni indirizzo email sia nel formato corretto (es. nome@dominio.com).
 
+ * @param[in] emails La lista di email da validare.
+ * @throws CampoNonValidoException Se uno degli indirizzi email non è valido.
+ */
     public static void validateEmail(List<String> emails) throws CampoNonValidoException {
         for (String email : emails) {
             if (!email.isEmpty() && !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
@@ -159,6 +176,14 @@ public class ContattoValidator {
         }
     }
 
+/**
+ * @brief Verifica che almeno un nome o cognome e almeno un numero di telefono siano inseriti.
+ *
+ * @param[in] name Il nome da validare.
+ * @param[in] surname Il cognome da validare.
+ * @param[in] numbers La lista di numeri di telefono da controllare.
+ * @throws CampoNonValidoException Se non viene inserito almeno un nome o cognome o almeno un numero di telefono.
+ */
     public static void validateFields(String name, String surname, List<String> numbers) throws CampoNonValidoException {
         if (name.isEmpty() && surname.isEmpty()) {
             throw new CampoNonValidoException("Devi inserire almeno un nome o un cognome ");
