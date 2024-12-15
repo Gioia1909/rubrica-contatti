@@ -24,18 +24,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="565.0" prefWidth="921.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaUtenteController">
+<VBox alignment="CENTER" prefHeight="565.0" prefWidth="825.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.university.group9.rubricacontattigroup9.InterfacciaUtenteController">
     <stylesheets>
         <String fx:value="it/university/group9/rubricacontattigroup9/style.css" />
     </stylesheets>
     <children>
-        <SplitPane dividerPositions="0.39113636363636356" prefHeight="503.0" prefWidth="751.0">
+        <SplitPane fx:id="splitPane" dividerPositions="0.4227330779054917" prefHeight="503.0" prefWidth="751.0">
             <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="353.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="329.0">
                     <children>
                         <ListView fx:id="listViewFavorites" layoutX="47.0" layoutY="123.0" prefHeight="200.0" prefWidth="300.0" visible="false" />
 
-                        <ListView fx:id="contactListView" editable="true" layoutX="12.0" layoutY="123.0" prefHeight="322.0" prefWidth="306.0" />
+                        <ListView fx:id="contactListView" editable="true" layoutX="12.0" layoutY="123.0" prefHeight="322.0" prefWidth="300.0" />
                         <Button fx:id="searchButton" layoutX="235.0" layoutY="75.0" mnemonicParsing="false" onAction="#searchAction" AnchorPane.leftAnchor="235.0" AnchorPane.topAnchor="75.0">
                      
                             <graphic>
@@ -58,6 +58,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
+                        
                         <Text layoutX="10.0" layoutY="59.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="167.205078125">
                             <font>
                                 <Font name="Georgia" size="24.0" />
@@ -68,63 +69,173 @@
                         </Text>
                         <Text layoutX="12.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La Mia Rubrica" wrappingWidth="199.205078125" AnchorPane.topAnchor="45.9921875">
                             <font>
-                                <Font name="Georgia Bold" size="24.0" />
+                                <Font name="SansSerif Bold" size="24.0" />
                             </font>
                         </Text>
                         <TextField fx:id="searchBar" layoutX="11.0" layoutY="80.0" prefWidth="219.0" promptText="Cerca contatto..." />
-                  <MenuButton mnemonicParsing="false" text="File">
-                     <items>
-                        <MenuItem fx:id="exportButton" mnemonicParsing="false" onAction="#exportAction" text="Esporta Rubrica" />
-                     </items>
-                  </MenuButton>
+                        <MenuButton  fx:id="File" mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem fx:id="exportButton" mnemonicParsing="false" onAction="#exportAction" text="Esporta Rubrica" />
+                            </items>
+                        </MenuButton>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="414.0">
+                
+                <!-- Parte Centrale - Dettagli Contatto -->
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="501.0" prefWidth="441.0">
+                    
                     <children>
-                        <Label fx:id="nameField" layoutX="60.0" layoutY="100.0" styleClass="dati" visible="false" />
-                        <Label fx:id="surnameField" layoutX="280.0" layoutY="100.0" styleClass="dati" visible="false" />
-                        <Label fx:id="number1Field" layoutX="60.0" layoutY="200.0" styleClass="dati" visible="false" />
-                        <Label fx:id="number2Field" layoutX="60.0" layoutY="250.0" styleClass="dati" visible="false" />
-                        <Label fx:id="number3Field" layoutX="60.0" layoutY="300.0" styleClass="dati" visible="false" />
-                        <Label fx:id="email1Field" layoutX="280.0" layoutY="200.0" styleClass="dati" visible="false" />
-                        <Label fx:id="email2Field" layoutX="280.0" layoutY="250.0" styleClass="dati" visible="false" />
-                        <Label fx:id="email3Field" layoutX="280.0" layoutY="300.0" styleClass="dati" visible="false" />
-                        <Button fx:id="deleteButton" layoutX="462.0" layoutY="442.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="45.0" prefWidth="53.0" visible="false">
-                            <graphic>
-                                <ImageView id="deleteImageView" fx:id="deleteImageView" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                    <image>
-                                        <Image url="@delete.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button fx:id="editButton" layoutX="14.0" layoutY="442.0" mnemonicParsing="false" onAction="#editAction" prefHeight="45.0" prefWidth="53.0" visible="false">
-                            <graphic>
-                                <ImageView id="editImageView" fx:id="editImageView" fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                    <image>
-                                        <Image url="@edit.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Label fx:id="noteField" layoutX="150.0" layoutY="371.0" styleClass="dati" visible="false" />
-                        <Label fx:id="defaultText" layoutX="186.0" layoutY="228.0" text="Seleziona un contatto">
+                        
+                        <!-- Default Text -->
+                        <Label fx:id="defaultText" layoutX="94.0" layoutY="136.0" prefHeight="27.0" prefWidth="283.0" text="Seleziona un Contatto">
                             <font>
-                                <Font name="Neue Haas Grotesk Text Pro Italic" size="16.0" />
+                                <Font name="Hiragino Sans W4" size="25.0" />
                             </font>
                         </Label>
-                  <ToggleButton fx:id="favoriteButton" layoutX="237.0" layoutY="440.0" mnemonicParsing="false" onAction="#toggleFavorite" prefHeight="50.0" prefWidth="58.0" visible="false">
-                     <graphic>
-                        <ImageView fx:id="favoriteImageView" fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                           <image>
-                              <Image url="@stellaVuota.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </ToggleButton>
-                  <ImageView fx:id="profilePicImageView" fitHeight="94.0" fitWidth="118.0" layoutX="207.0" pickOnBounds="true" preserveRatio="true" />
+                        <!-- Foto Profilo -->
+                        <ImageView fx:id="profilePicImageView" fitHeight="85.0" fitWidth="94.0" layoutX="100.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+                        <VBox layoutX="205.0" layoutY="72.0" spacing="5">
+                            <children>
+                                <Label fx:id="nameField" prefHeight="32.0" prefWidth="234.0" style="-fx-text-fill: black" text="Nome" visible="false">
+                                    <font>
+                                        <Font name="Hiragino Sans W6" size="30.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="surnameField" prefHeight="32.0" prefWidth="237.0" style="-fx-text-fill: black" text="Cognome" visible="false">
+                                    <font>
+                                        <Font name="Hiragino Sans W6" size="30.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Dettagli del Contatto -->
+
+                        <GridPane hgap="10" layoutX="70.0" layoutY="184.0" vgap="10">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" minWidth="100" />
+                                <ColumnConstraints halignment="LEFT" minWidth="200" />
+                            </columnConstraints>
+                            <children>
+   
+                                <!-- Numeri di Telefono -->
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <children>
+                                        <Label fx:id="number3Field" style="-fx-text-fill: black" text="1234567890" visible="false">
+                                            <font>
+                                                <Font name="Hiragino Sans W2" size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="number1Field" managed="false" style="-fx-text-fill: black" text="2345678901" visible="false">
+                                            <font>
+                                                <Font name="Hiragino Sans W2" size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="number2Field" managed="false" style="-fx-text-fill: black" text="3456789012" visible="false">
+                                            <font>
+                                                <Font name="Hiragino Sans W2" size="15.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+   
+                                <Label fx:id="phoneLabel" style="-fx-text-fill: #9e9e9e;" text="Telefono:" visible="false" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="Hiragino Sans W4" size="15.0" />
+                                    </font>
+                                </Label>
+   
+                                <!-- Email -->
+                                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <children>
+                                        <Label fx:id="email3Field" style="-fx-text-fill: black" text="email1@g.com" visible="false">
+                                            <font>
+                                                <Font name="Hiragino Sans W2" size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="email1Field" managed="false" style="-fx-text-fill: black" text="email2@g.com" visible="false">
+                                            <font>
+                                                <Font name="Hiragino Sans W2" size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="email2Field" managed="false" style="-fx-text-fill: black" text="email3@g.com" visible="false">
+                                            <font>
+                                                <Font name="Hiragino Sans W2" size="15.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+   
+                                <Label fx:id="emailLabel" style="-fx-text-fill: #9e9e9e;" text="Email:" visible="false" GridPane.rowIndex="2">
+                                    <font>
+                                        <Font name="Hiragino Sans W4" size="15.0" />
+                                    </font>
+                                </Label>
+      
+                                <!-- Nota -->
+                                <Label fx:id="noteLabel" style="-fx-text-fill: #9e9e9e;" text="Nota:" visible="false" GridPane.rowIndex="3">
+                                    <font>
+                                        <Font name="Hiragino Sans W4" size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="noteField" style="-fx-text-fill: black" text="Nota del contatto" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <font>
+                                        <Font name="Hiragino Sans W2" size="15.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                                <RowConstraints maxHeight="65.0" minHeight="27.0" prefHeight="59.0" />
+                                <RowConstraints maxHeight="89.0" minHeight="51.0" prefHeight="57.0" />
+                                <RowConstraints />
+                                <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                                <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                                <RowConstraints />
+                                <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                                <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                        <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                            </rowConstraints>
+                        </GridPane>
+                    
+                        <!-- Bottoni -->
+                        <HBox alignment="CENTER" layoutX="94.0" layoutY="423.0" spacing="20">
+                            <children>
+                         
+                                <!-- Eliminazione -->
+                                <Button fx:id="deleteButton" onAction="#deleteAction" prefHeight="33.0" prefWidth="74.0" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Elimina" visible="false">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Button>
+                       
+                                <!-- Edit Button-->
+                                <Button fx:id="editButton" onAction="#editAction" prefHeight="33.0" prefWidth="80.0" style="-fx-background-color: #4caf50; -fx-text-fill: white;" text="Modifica" visible="false">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Button>
+   
+                                <!-- Favorite Button -->
+                                <ToggleButton fx:id="favoriteButton" onAction="#toggleFavorite" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: #ffc107; -fx-text-fill: black;" text="Preferito" visible="false">
+                                    <graphic>
+                                        <ImageView fx:id="favoriteImageView" fitHeight="24.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                            <image>
+                                                <Image url="@stellaVuota.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                                </ToggleButton>
+                            </children>
+                        </HBox>
+                  
                     </children>
+
                 </AnchorPane>
+                
             </items>
         </SplitPane>
     </children>

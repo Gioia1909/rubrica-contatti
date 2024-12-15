@@ -5,6 +5,7 @@
  */
 package it.university.group9.rubricacontattigroup9;
 
+import java.util.Collections;
 import java.util.List;
 import javafx.collections.*;
 import javafx.fxml.*;
@@ -25,61 +26,141 @@ public abstract class VisualizzazioneContatti {
     @FXML
     private ToggleButton favoriteButton;
     @FXML
-    private ImageView editImageView, deleteImageView, favoriteImageView, profilePicImageView;
+    private ImageView favoriteImageView, profilePicImageView;
     @FXML
     private Label nameField, surnameField, number1Field, number2Field, number3Field;
     @FXML
     private Label email1Field, email2Field, email3Field, noteField, defaultText;
 
+    @FXML
+    private Label phoneLabel, emailLabel, noteLabel;
+
     public void updateContactDetails(Contatto selectedContact) {
+        // Verifica iniziale
+        System.out.println("Verifica campi FXML:");
+        System.out.println("number1Field: " + (number1Field == null ? "null" : "OK"));
+        System.out.println("nameField: " + (nameField == null ? "null" : "OK"));
+        System.out.println("surnameField: " + (surnameField == null ? "null" : "OK"));
+
+        // Se nessun contatto è selezionato, pulisce i campi e termina
         if (selectedContact == null) {
             clearFields();
             return;
         }
+
+        // Verifica che tutti i campi FXML siano inizializzati
+        if (number1Field == null || nameField == null || surnameField == null) {
+            System.err.println("Errore: uno o più campi FXML non sono stati inizializzati.");
+            return;
+        }
+
+        // Nasconde il testo predefinito e mostra i pulsanti principali
         defaultText.setVisible(false);
-        //deleteButton.setVisible(false); // Nascondi il pulsante elimina
-        //deleteImageView.setVisible(true);
         editButton.setVisible(true);
         favoriteButton.setVisible(true);
-        editImageView.setVisible(true);
         favoriteImageView.setVisible(true);
 
-        // Aggiorna i campi con visibilità
-        nameField.setText(selectedContact.getName() != null ? selectedContact.getName() : "");
-        nameField.setVisible(true);
+        // Aggiorna nome
+        if (selectedContact.getName() != null) {
+            nameField.setText(selectedContact.getName());
+            nameField.setVisible(true);
+        } else {
+            nameField.setText("");
+            nameField.setVisible(false);
+        }
 
-        surnameField.setText(selectedContact.getSurname() != null ? selectedContact.getSurname() : "");
-        surnameField.setVisible(true);
+        // Aggiorna cognome
+        if (selectedContact.getSurname() != null) {
+            surnameField.setText(selectedContact.getSurname());
+            surnameField.setVisible(true);
+        } else {
+            surnameField.setText("");
+            surnameField.setVisible(false);
+        }
 
-        number1Field.setText(selectedContact.getNumbers().size() > 0 ? selectedContact.getNumbers().get(0) : "");
-        number1Field.setVisible(true);
+        // Aggiorna numeri di telefono
+        List<String> numbers = selectedContact.getNumbers();
+        if (numbers == null) {
+            numbers = Collections.emptyList();
+        }
 
-        number2Field.setText(selectedContact.getNumbers().size() > 1 ? selectedContact.getNumbers().get(1) : "");
-        number2Field.setVisible(selectedContact.getNumbers().size() > 1);
+        phoneLabel.setVisible(!numbers.isEmpty()); // Mostra/ nasconde l'etichetta telefono
 
-        number3Field.setText(selectedContact.getNumbers().size() > 2 ? selectedContact.getNumbers().get(2) : "");
-        number3Field.setVisible(selectedContact.getNumbers().size() > 2);
+        if (numbers.size() > 0) {
+            number1Field.setText(numbers.get(0));
+            number1Field.setVisible(true);
+            number1Field.setManaged(true);
+        } else {
+            number1Field.setText("");
+            number1Field.setVisible(false);
+        }
 
-        email1Field.setText(selectedContact.getEmails().size() > 0 ? selectedContact.getEmails().get(0) : "");
-        email1Field.setVisible(true);
+        if (numbers.size() > 1) {
+            number2Field.setText(numbers.get(1));
+            number2Field.setVisible(true);
+            number2Field.setManaged(true);
+        } else {
+            number2Field.setText("");
+            number2Field.setVisible(false);
+        }
 
-        email2Field.setText(selectedContact.getEmails().size() > 1 ? selectedContact.getEmails().get(1) : "");
-        email2Field.setVisible(selectedContact.getEmails().size() > 1);
+        if (numbers.size() > 2) {
+            number3Field.setText(numbers.get(2));
+            number3Field.setVisible(true);
+            number3Field.setManaged(true);
+        } else {
+            number3Field.setText("");
+            number3Field.setVisible(false);
+        }
 
-        email3Field.setText(selectedContact.getEmails().size() > 2 ? selectedContact.getEmails().get(2) : "");
-        email3Field.setVisible(selectedContact.getEmails().size() > 2);
+        // Aggiorna email
+        List<String> emails = selectedContact.getEmails();
+        if (emails == null) {
+            emails = Collections.emptyList();
+        }
 
-        noteField.setText(selectedContact.getNote() != null ? selectedContact.getNote() : "");
-        noteField.setVisible(true);
+        emailLabel.setVisible(emails.isEmpty()); // Mostra/ nasconde l'etichetta email
 
-        defaultText.setVisible(false); // Nasconde il messaggio predefinito
-        
-        //foto profilo 
-        if(selectedContact.getGen().equals("default")){
+        if (emails.size() > 0) {
+            email1Field.setText(emails.get(0));
+            email1Field.setVisible(true);
+            email1Field.setManaged(true);
+        } else {
+            email1Field.setVisible(false);
+        }
+
+        if (emails.size() > 1) {
+            email2Field.setText(emails.get(1));
+            email2Field.setVisible(true);
+            email2Field.setManaged(true);
+        } else {
+            email2Field.setVisible(false);
+        }
+
+        if (emails.size() > 2) {
+            email3Field.setText(emails.get(2));
+            email3Field.setVisible(true);
+            email3Field.setManaged(true);
+        } else {
+            email3Field.setVisible(false);
+        }
+
+        // Aggiorna nota
+        if (!selectedContact.getNote().equals("")) {
+            noteField.setText(selectedContact.getNote());
+            noteField.setVisible(true);
+            noteLabel.setVisible(true);
+        } else {
+            noteField.setVisible(false);
+            noteLabel.setVisible(false);
+        }
+
+        // Aggiorna immagine profilo
+        if (selectedContact.getGen() == null) {
             profilePicImageView.setImage(new Image(getClass().getResourceAsStream("user.png")));
-        }else if(selectedContact.getGen().equals("male")){
+        } else if ("male".equals(selectedContact.getGen())) {
             profilePicImageView.setImage(new Image(getClass().getResourceAsStream("man.png")));
-        }else{
+        } else {
             profilePicImageView.setImage(new Image(getClass().getResourceAsStream("woman.png")));
         }
         profilePicImageView.setVisible(true);
@@ -116,72 +197,32 @@ public abstract class VisualizzazioneContatti {
         defaultText.setVisible(true); // Mostra il messaggio predefinito
     }
 
-    private void visibleNumberDetails(Contatto selectedContact) {
-        List<String> numbers = selectedContact.getNumbers();
-        number1Field.setVisible(true);
-        number1Field.setText(numbers.get(0));
-        if (numbers.size() > 1) {
-            number2Field.setVisible(true);
-            number2Field.setText(numbers.get(1));
-
-        } else {
-            number2Field.setVisible(false);
-        }
-
-        if (numbers.size() > 2) {
-            number3Field.setVisible(true);
-            number3Field.setText(numbers.get(2));
-        } else {
-            number3Field.setVisible(false);
-        }
-
-    }
-
-    private void visibleEmailDetails(Contatto selectedContact) {
-        List<String> emails = selectedContact.getEmails();
-        if (!emails.isEmpty()) {
-            email1Field.setVisible(true);
-            email1Field.setText(emails.get(0));
-        } else {
-            email1Field.setVisible(false);
-        }
-
-        if (emails.size() > 1) {
-            email2Field.setVisible(true);
-            email2Field.setText(emails.get(1));
-        } else {
-            email2Field.setVisible(false);
-        }
-
-        if (emails.size() > 2) {
-            email3Field.setVisible(true);
-            email3Field.setText(emails.get(2));
-        } else {
-            email3Field.setVisible(false);
-        }
-
-    }
-
     protected void resetContactDetails() {
         defaultText.setVisible(true); // Mostra il testo di default
-        //deleteButton.setVisible(false); // Nascondi il pulsante elimina
-        //deleteImageView.setVisible(false); // Nascondi l'icona di eliminazione
         editButton.setVisible(false); // Nascondi il pulsante modifica
-        editImageView.setVisible(false); // Nascondi l'icona di modifica
         favoriteButton.setVisible(false);
         favoriteImageView.setVisible(false);
-        
+        emailLabel.setVisible(false);
+        noteLabel.setVisible(false);
+        phoneLabel.setVisible(false);
+
         profilePicImageView.setVisible(false);
         nameField.setVisible(false);
         surnameField.setVisible(false);
         number1Field.setVisible(false);
+        number1Field.setManaged(false);
         number2Field.setVisible(false);
+        number2Field.setManaged(false);
         number3Field.setVisible(false);
+        number3Field.setManaged(false);
         email1Field.setVisible(false);
+        email1Field.setManaged(false);
         email2Field.setVisible(false);
+        email2Field.setManaged(false);
         email3Field.setVisible(false);
+        email3Field.setManaged(false);
         noteField.setVisible(false);
-        
+
     }
 
 }
