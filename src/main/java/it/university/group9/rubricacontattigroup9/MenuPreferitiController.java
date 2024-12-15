@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 
 public class MenuPreferitiController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
 
-    private Rubrica addressBook;
+    private GestioneRubrica addressBook;
 
     /**
      * @brief Lista grafica dei contatti preferiti

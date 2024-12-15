@@ -17,9 +17,13 @@ import javafx.collections.ObservableList;
 public interface GestioneRubrica {
     
     public ObservableList<Contatto> getContactList();
-    public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException, IOException;
-    public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException, IOException ;
-    public void deleteContact(Contatto contact) throws IOException;
+    public ObservableList<Contatto> getFavoriteList();
+    public void addContact(String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException;
+    public void editContact(Contatto oldContact, String name, String surname, List<String> numbers, List<String> emails, String note) throws CampoNonValidoException ;
+    public void deleteContact(Contatto contact);
     public ObservableList<Contatto> searchContact(String param);
-        
+    public void addToFavorites(Contatto contact);
+    public void removeFromFavorites(Contatto contact);
+    public ObservableList<Contatto> searchFavoriteContact(String param);
+
 }

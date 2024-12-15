@@ -35,7 +35,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
     private boolean isEditing = false;
     private Contatto existingContact;
-    private Rubrica addressBook;
+    private GestioneRubrica addressBook;
     private ObservableList<Contatto> contactList;
 
     /**
@@ -55,7 +55,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * @post La finestra è configurata per modificare i dati del contatto
      * fornito.
      */
-    public void initializeForEdit(Rubrica addressBook, Contatto contact, ObservableList<Contatto> contactList) {
+    public void initializeForEdit(GestioneRubrica addressBook, Contatto contact, ObservableList<Contatto> contactList) {
         this.addressBook = addressBook; // Salva il riferimento alla Rubrica
         this.contactList = contactList;
         this.existingContact = contact;
@@ -64,7 +64,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         editButton.setVisible(true);
     }
 
-    public void initializeForAdd(Rubrica addressBook, ObservableList<Contatto> contactList) {
+    public void initializeForAdd(GestioneRubrica addressBook, ObservableList<Contatto> contactList) {
         this.addressBook = addressBook; // Salva il riferimento alla Rubrica
         this.contactList = contactList;
         addButton.setVisible(true);

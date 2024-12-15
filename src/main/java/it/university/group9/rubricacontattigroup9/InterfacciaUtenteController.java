@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
 
     // MODEL della rubrica. Gestisce le funzioni di Add, Delete, Edit, Search
-    public Rubrica addressBook;
+    public GestioneRubrica addressBook;
 
     /**
      * @name Componenti FXML della interfaccia

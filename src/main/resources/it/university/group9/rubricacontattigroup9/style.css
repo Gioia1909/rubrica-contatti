@@ -84,3 +84,8 @@ AnchorPane {
 #delButton{
     -fx-background-color: transparent;
 }
+
+#favoriteButton {
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}

@@ -25,23 +25,23 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author ari19
  */
 public class SalvaCaricaRubricaTest {
-    
+   
     private static final String TEST_FILE = "rubrica.json";
     private static final String TEST_FILE_CSV = "rubrica.csv";
     private ObservableList<Contatto> testContacts;
 
-    
+   
     public SalvaCaricaRubricaTest() {
     }
-    
+   
     @BeforeAll
     public static void setUpClass() {
     }
-    
+   
     @AfterAll
     public static void tearDownClass() {
     }
-    
+   
       @BeforeEach
     public void setUp() throws IOException {
         // Pulizia dei file di test prima di ogni test
@@ -118,14 +118,5 @@ public class SalvaCaricaRubricaTest {
 
    
     }
-    
+   
 }
-
-   
-
-    
-
-
-
-   
-

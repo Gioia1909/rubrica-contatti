@@ -11,35 +11,27 @@ import java.util.Arrays;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
 
 
 public class GestioneDuplicatiTest {
      private ObservableList<Contatto> contactList;
 
-    
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
+   
+   
+   
+    @BeforeEach
     public void setUp() {
     }
-    
-    @After
+   
+    @AfterEach
     public void tearDown() {
     }
-    
+   
     @Test
     public void testIsAddValid() {
         // Caso base: Un contatto iniziale di riferimento
@@ -86,7 +78,7 @@ public class GestioneDuplicatiTest {
     List<String> numeri9 = new ArrayList<>(Arrays.asList("3344556677"));
     List<String> email9 = new ArrayList<>(Arrays.asList("email9@gmail.com"));
     Contatto contatto9 = new Contatto("Sara", "Conti", numeri9, email9, " ");
-    
+   
     ObservableList<Contatto> contactList = FXCollections.observableArrayList();
     contactList.add(contatto1);
     boolean result1=GestioneDuplicati.isAddValid(contatto2, contactList);
@@ -115,19 +107,19 @@ public class GestioneDuplicatiTest {
 
 
 
-    
+   
 
     }
-    
-    
+   
+   
     @Test
     public void testModifyValid() {
        // Contatto da modificare
     List<String> numeri1 = new ArrayList<>(Arrays.asList("1234567890"));
     List<String> email1 = new ArrayList<>(Arrays.asList("email1@gmail.com"));
     Contatto oldContact = new Contatto("Mario", "Rossi", numeri1, email1, " ");
-    
-    //contatto in rubrica con cui testare: 
+   
+    //contatto in rubrica con cui testare:
     Contatto testContact= new Contatto("Luigi", "Bianchi", Arrays.asList("9988776655"), Arrays.asList("email9@gmail.com"), " ");
 
     // Lista iniziale dei contatti
@@ -141,12 +133,12 @@ public class GestioneDuplicatiTest {
     List<String> email2 = new ArrayList<>(Arrays.asList("email2@gmail.com"));
     Contatto contatto1 = new Contatto("Luigi", "Bianchi", numeri2, email2, " "); // Nome e cognome uguali
 
-    // Caso 2: Contatto aggiornato con numero duplicato 
+    // Caso 2: Contatto aggiornato con numero duplicato
     List<String> numeri3 = new ArrayList<>(Arrays.asList("1234567890", "9988776655")); // Uno duplicato
     List<String> email3 = new ArrayList<>(Arrays.asList("email1@gmail.com"));
     Contatto contatto2 = new Contatto("Mario", "Rossi", numeri3, email3, " ");
 
-    // Caso 3: Contatto aggiornato con email duplicata 
+    // Caso 3: Contatto aggiornato con email duplicata
     List<String> numeri4 = new ArrayList<>(Arrays.asList("6677889900"));
     List<String> email4 = new ArrayList<>(Arrays.asList("email9@gmail.com")); // Email duplicata
     Contatto contatto3 = new Contatto("Mario", "Rossi", numeri4, email4, " ");
@@ -168,10 +160,10 @@ public class GestioneDuplicatiTest {
     List<String> numeri8 = new ArrayList<>(Arrays.asList("9988776655", "5566778899")); // Uno duplicato
     List<String> email8 = new ArrayList<>(Arrays.asList("email9@gmail.com", "email8@gmail.com")); // Una duplicata
     Contatto contatto7 = new Contatto("Luca", "Bianchi", numeri8, email8, " ");
-    
-    
-    
-    
+   
+   
+   
+   
 
     // Caso 1: Nome e cognome duplicati
     boolean result1 = GestioneDuplicati.isModifyValid(oldContact, contatto1, contactList);
