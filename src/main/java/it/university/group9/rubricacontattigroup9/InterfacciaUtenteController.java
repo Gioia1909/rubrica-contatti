@@ -341,15 +341,23 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * @param[in] event Evento del mouse che ha attivato l'azione, il click sul bottone
      * 
      */
-    @FXML
+@FXML
     @Override
     public void deleteAction(ActionEvent event) {
         int selected = contactListView.getSelectionModel().getSelectedIndex();
 
         if (selected >= 0) {
-            Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();        
+            Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();
+            //System.out.println("sto passando al gestore della rubrica il contatto " + );
+            System.out.println("Ho selezionato da eliminare " + contactToRemove);
+
+            //invio messaggio di conferma prima di eliminare
+            boolean confirmed = showConfirmationDialog("Conferma Eliminazione", "Sei sicuro di voler eliminare " + contactToRemove.getName() + " " +  contactToRemove.getSurname() + "?");
+
+            if (confirmed) {
                 addressBook.deleteContact(contactToRemove);
-            
+            }
+
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
             super.resetContactDetails();
 
@@ -444,16 +452,33 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     /**
      * @brief Mostra una finestra di dialogo con un messaggio di errore.
      *
-     * @param titolo Il titolo della finestra di dialogo.
-     * @param messaggio Il messaggio da visualizzare nella finestra di dialogo.
+     * @param title Il titolo della finestra di dialogo.
+     * @param message Il messaggio da visualizzare nella finestra di dialogo.
      *
      */
     @Override
-    public void showErrorDialog(String titolo, String messaggio) {
+    public void showErrorDialog(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titolo);
-        alert.setContentText(messaggio);
+        alert.setTitle(title);
+        alert.setContentText(message);
         alert.showAndWait();
+    }
+
+/**
+     * @brief Mostra una finestra di dialogo con un messaggio di conferma.
+     *
+     * @param title Il titolo della finestra di dialogo.
+     * @param message Il messaggio da visualizzare nella finestra di dialogo.
+     * @return true se l'utente conferma l'azione, false se annulla.
+     */
+    public boolean showConfirmationDialog(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(message);
+
+        // Mostra la finestra di dialogo e restituisce la risposta dell'utente
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.OK;
     }
 
     /**
