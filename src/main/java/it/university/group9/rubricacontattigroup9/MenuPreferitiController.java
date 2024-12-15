@@ -34,37 +34,61 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     private GestioneRubrica addressBook;
 
     /**
-     * @brief Lista grafica dei contatti preferiti
-     */
+    * @brief Lista dei contatti preferiti visualizzati nella GUI
+    */
     @FXML
     private ListView<Contatto> favoriteListView;
 
+    /**
+    * @brief Bottone per l'aggiunta o rimozione di un contatto dai preferiti 
+    */
     @FXML
     private ToggleButton favoriteButton;
 
+    /**
+    * @brief ImageView per visualizzare l'icona dei preferiti
+    */
     @FXML
     private ImageView favoriteImageView;
+
+    /**
+    * @brief ImageView per visualizzare la foto del profilo del contatto.
+    */
     @FXML
     private ImageView profilePicImageView;
 
-    public ListView<Contatto> getFavoriteListView() {
-        return favoriteListView;
-    }
-
-    public void setListViewFavorites(ListView<Contatto> listViewFavorites) {
-        this.favoriteListView = listViewFavorites;
-    }
-
-    @FXML
+    /**
+    * @brief Bottoni per la modifica, ricerca e ritorno alla rubrica
+    */
+   @FXML
     private Button editButton, searchButton, secondaryButton;
 
+    /**
+    * @brief ImageView per l'icona di modifica
+    */
     @FXML
     private ImageView editImageView;
 
     @FXML
     private TextField searchBar;
+
     @FXML
     private Label nameField, surnameField, number1Field, number2Field, number3Field, email1Field, email2Field, email3Field, noteField, defaultText;
+
+
+    /**
+    * @brief Restituisce la lista dei contatti preferiti
+    */
+    public ListView<Contatto> getFavoriteListView() {
+        return favoriteListView;
+    }
+
+    /**
+    *@brief Imposta la lista dei contatti preferiti
+    */
+    public void setListViewFavorites(ListView<Contatto> listViewFavorites) {
+        this.favoriteListView = listViewFavorites;
+    }
 
     public void setDefaultText(Label defaultText) {
         this.defaultText = defaultText;
@@ -82,8 +106,6 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
 
     /**
      * @brief Inizializza il controller e configura la lista dei preferiti
-     * nell'elemento ListView. Configura una Label per la visualizzazione delle
-     * celle della lista, chiamando la funzione creaLabelContatto.
      *
      * @param[in] location URL di localizzazione del file FXML.
      * @param[in] resources Risorse per la localizzazione.
@@ -125,6 +147,11 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
 
     }
 
+    /**
+     * @brief Aggiorna l'icona dei preferiti in base allo stato del contatto.
+     *
+     * @param[in] selectedContact Il contatto selezionato.
+     */
     private void updateFavoriteIcon(Contatto selectedContact) {
         if (selectedContact.isFav()) {
             favoriteImageView.setImage(new Image(getClass().getResourceAsStream("stellaPiena.png")));
@@ -167,10 +194,9 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     }
 
     /**
-     * @brief Gestisce l'azione di eliminazione di un contatto dalla lista
-     * preferiti.
+     * @brief Gestisce l'azione di rimozione di un contatto dalla lista preferiti.
      *
-     * @param event L'evento che ha attivato l'azione di eliminazione.
+     * @param event[in] L'evento che ha attivato l'azione di eliminazione.
      *
      * @pre Deve essere selezionato un contatto dalla `ListView`.
      * @post Il contatto selezionato viene rimosso dalla `ListView` e i contatti
@@ -191,7 +217,6 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     }
 
     /**
-     * @throws java.io.IOException
      * @brief Gestisce l'azione di modifica di un contatto selezionato dalla
      * lista dei preferiti.
      *
@@ -200,6 +225,8 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
      * @pre Il contatto selezionato nella `ListView` deve essere non nullo.
      * @post Viene aperta una nuova finestra di modifica con i dettagli del
      * contatto selezionato, pronti per essere modificati.
+     *
+     * @throws java.io.IOException
      */
     @FXML
     @Override
@@ -223,7 +250,7 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
     /**
      * @brief Gestisce l'azione di ricerca dei contatti nella lista preferiti
      *
-     * @param event L'evento che ha attivato l'azione di ricerca
+     * @param[in] event L'evento che ha attivato l'azione di ricerca
      *
      * @pre La barra di ricerca contiene il testo da cercare
      * @post La ListView dei preferiti viene aggiornata con i contatti che
@@ -255,28 +282,26 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
 
     /**
      * @brief Mostra una finestra di dialogo di errore con un messaggio
-     * personalizzato,una finestra di dialogo di tipo errore con un titolo e un
-     * messaggio.
+     * personalizzato.
      *
-     * @param titolo Il titolo della finestra di dialogo.
-     * @param messaggio Il contenuto del messaggio da visualizzare nella
+     * @param[in] title Il titolo della finestra di dialogo.
+     * @param[in] message Il contenuto del messaggio da visualizzare nella
      * finestra di dialogo.
      *
      * @post Viene mostrata una finestra di dialogo con il titolo e il messaggio
      * forniti.
      */
     @Override
-    public void showErrorDialog(String titolo, String messaggio) {
+    public void showErrorDialog(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titolo);
-        alert.setContentText(messaggio);
+        alert.setTitle(title);
+        alert.setContentText(message);
         alert.showAndWait();
     }
 
     /**
      * @brief Cambia la scena all'interfaccia utente.
      *
-     * @param[in] event L'evento che ha generato l'azione di switch.
      * @throws IOException Se il caricamento della scena fallisce.
      */
     @FXML
@@ -298,11 +323,27 @@ public class MenuPreferitiController extends VisualizzazioneContatti implements 
         controller.refreshContactList();
     }
 
+    /**
+     * @brief Rinfresca la lista dei contatti preferiti.
+     *
+     * @post La lista `favoriteListView` è aggiornata con i contatti
+     * preferiti correnti.
+     */
     private void refreshFavoriteList() {
         ObservableList<Contatto> favoriteList = addressBook.getFavoriteList(); // Assumendo che restituisca una ObservableList
         favoriteListView.setItems(favoriteList);
     }
 
+    /**
+     * @brief Gestisce l'azione di rimozione dei contatti preferiti.
+     *
+     * @param[in] event L'evento che ha attivato l'azione di modifica del preferito.
+     *
+     * @pre Il contatto selezionato nella `favoriteListView` deve essere non nullo.
+     * @post La lista dei contatti preferiti viene aggiornata con il nuovo stato
+     * del contatto selezionato. I dati vengono sincronizzati con la rubrica e
+     * i preferiti vengono salvati nei file.
+     */
     @FXML
     private void toggleFavorite(ActionEvent event) {
         // Ottieni il contatto selezionato
