@@ -115,7 +115,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di
      * aggiunta contatti aggiornando la rubrica
      *
-     * @pre I parametri da inserire nel contatto non devono essere vuoti
      * @post Viene aggiunto un contatto nella lista
      *
      * @param[in] event Evento del mouse che ha scatenato l'azione.
