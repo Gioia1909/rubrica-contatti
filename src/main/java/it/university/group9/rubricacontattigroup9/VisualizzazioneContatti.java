@@ -125,6 +125,7 @@ public abstract class VisualizzazioneContatti {
             email1Field.setText(emails.get(0));
             email1Field.setVisible(true);
             email1Field.setManaged(true);
+            emailLabel.setVisible(true); // Mostra/ nasconde l'etichetta email
         } else {
             email1Field.setVisible(false);
         }
@@ -135,12 +136,14 @@ public abstract class VisualizzazioneContatti {
             email2Field.setManaged(true);
         } else {
             email2Field.setVisible(false);
+            emailLabel.setVisible(true); // Mostra/ nasconde l'etichetta email
         }
 
         if (emails.size() > 2) {
             email3Field.setText(emails.get(2));
             email3Field.setVisible(true);
             email3Field.setManaged(true);
+            emailLabel.setVisible(true); // Mostra/ nasconde l'etichetta email
         } else {
             email3Field.setVisible(false);
         }

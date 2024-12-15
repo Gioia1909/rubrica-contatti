@@ -205,7 +205,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
                     // Aggiorna i dettagli del contatto
                     super.updateContactDetails(selectedContact);
                     deleteButton.setVisible(true);
-                    deleteImageView.setVisible(true);
 
                     // Aggiorna l'icona dei preferiti
                     updateFavoriteIcon(selectedContact);
