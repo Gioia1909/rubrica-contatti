@@ -176,7 +176,9 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
                     updateFavoriteIcon(selectedContact);
                 } else {
                     // Se nessun contatto è selezionato, nascondi l'icona
-                    favoriteImageView.setImage(null);
+                    favoriteImageView.setVisible(false);
+                    deleteButton.setVisible(false);
+                    deleteImageView.setVisible(false);
                 }
             });
 
