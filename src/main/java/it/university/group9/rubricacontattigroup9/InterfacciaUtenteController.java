@@ -24,7 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
+public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, GestioneRubricaController {
 
     // MODEL della rubrica. Gestisce le funzioni di Add, Delete, Edit, Search
     public GestioneRubrica addressBook;
