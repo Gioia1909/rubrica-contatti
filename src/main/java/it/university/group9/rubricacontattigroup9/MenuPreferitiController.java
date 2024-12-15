@@ -1,9 +1,13 @@
 /**
  * @file MenuPreferitiController.java
+ *
  * @brief Controller per la gestione del menu dei contatti preferiti.
- * @see Contatto
+ *
+ * @see VisualizzazioneContatti
+ * @see GestioneRubrica
+ * @see AddressBookManager
+ *
  * @author Gruppo09
- * @date 05/12/2024
  */
 package it.university.group9.rubricacontattigroup9;
 
@@ -11,7 +15,6 @@ import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaPreferi
 import it.university.group9.rubricacontattigroup9.InputOutput.SalvaCaricaRubrica;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,10 +27,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MenuPreferitiController extends VisualizzazioneContatti implements Initializable, AddressBookManager {
+public class MenuPreferitiController extends VisualizzazioneContatti implements Initializable, GestioneRubricaController {
 
     private GestioneRubrica addressBook;
 

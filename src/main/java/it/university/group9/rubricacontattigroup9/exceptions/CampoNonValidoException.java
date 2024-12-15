@@ -11,8 +11,6 @@ package it.university.group9.rubricacontattigroup9.exceptions;
  * Questa classe estende l'eccezione `Exception` per segnalare errori relativi a campi non validi, come un nome o un cognome.
  *
  * @author Gruppo09
- * @date 05/12/2024
- * @version 1.0
  */
 public class CampoNonValidoException extends Exception {
     /**

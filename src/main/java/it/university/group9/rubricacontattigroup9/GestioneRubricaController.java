@@ -12,7 +12,7 @@ import javafx.scene.control.Alert;
  *
  * @author Gruppo09
  */
-public interface AddressBookManager {
+public interface GestioneRubricaController {
     public void deleteAction(ActionEvent event);
 
     public void editAction(ActionEvent event) throws IOException;

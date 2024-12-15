@@ -6,7 +6,6 @@
  * telefono e dei contatti.
  *
  * @author Gruppo09
- * @date 05/12/2024
  *
  */
 package it.university.group9.rubricacontattigroup9.validators;
