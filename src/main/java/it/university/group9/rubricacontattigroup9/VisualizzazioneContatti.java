@@ -1,24 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.university.group9.rubricacontattigroup9;
 
 import java.util.Collections;
 import java.util.List;
-import javafx.collections.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- *
+ * @brief Classe astratta per visualizzare i dettagli del contatto nell'interfaccia grafica.
+ * Gestisce l'aggiornamento, la cancellazione e il reset delle informazioni del contatto.
+ * 
  * @author Gruppo09
  */
 public abstract class VisualizzazioneContatti {
 
+    // Componenti FXML dell'interfaccia utente
     @FXML
     private Button editButton;
     //deleteButton; // Nascondi il pulsante elimina
@@ -35,6 +32,15 @@ public abstract class VisualizzazioneContatti {
     @FXML
     private Label phoneLabel, emailLabel, noteLabel;
 
+
+    /**
+     * @brief Aggiorna i dettagli del contatto visualizzato in base al contatto selezionato.
+     * Se nessun contatto è selezionato, cancella i campi.
+     *
+     * @param[in] selectedContact il contatto i cui dettagli verranno visualizzati
+     *
+     * @post I dettagli del contatto vengono aggiornati nei campi dell'interfaccia utente.
+     */
     public void updateContactDetails(Contatto selectedContact) {
         // Verifica iniziale
         System.out.println("Verifica campi FXML:");
@@ -165,6 +171,12 @@ public abstract class VisualizzazioneContatti {
         profilePicImageView.setVisible(true);
     }
 
+    /**
+     * @brief Pulisce tutti i campi della GUI.
+     * 
+     * @pre I campi devono essere visibili e correttamente settati per evitare visibilità errata.
+     * @post Tutti i campi dell'interfaccia utente vengono resettati e il messaggio predefinito viene visualizzato.
+     */
     private void clearFields() {
         nameField.setText("");
         nameField.setVisible(false);
