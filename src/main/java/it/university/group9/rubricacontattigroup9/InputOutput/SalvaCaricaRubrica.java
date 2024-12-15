@@ -75,7 +75,7 @@ public class SalvaCaricaRubrica implements Serializable {
     public static ObservableList<Contatto> loadAddressBook() {
         ObjectMapper mapper = new ObjectMapper();
 
-        File filepath = new File(file); //crea un oggetto file che punta al percorso con rubricapreferiti.json
+        File filepath = new File(file); 
         if (!filepath.exists()) {
             System.out.println("File " + file + " non trovato. Creazione di una rubrica vuota.");
             return FXCollections.observableArrayList();

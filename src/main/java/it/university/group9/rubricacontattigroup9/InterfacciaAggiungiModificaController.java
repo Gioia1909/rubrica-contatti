@@ -188,10 +188,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     }
 
 /**
- * @brief Verifica se la stringa e null, se si la setta vuota
+ * @brief Verifica se la stringa è null, se si la setta vuota
  *
  * @param[in] csValue La stringa da verificare.
- * @return Una stringa sicura: una stringa vuota se l'input è null, altrimenti la stessa stringa di input.
+ * @return Una stringa vuota se l'input è null, altrimenti la stessa stringa di input.
  */
     private String checkField(String csValue) {
         if (csValue == null) {
@@ -221,7 +221,7 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     }
 
 /**
- * @brief Colleziona le emailscontatto e le verifica
+ * @brief Colleziona le emails contatto e le verifica
  *
  * @return Una lista di emails.
  * @throws CampoNonValidoException Se nessuna email è stata inserita.
@@ -239,7 +239,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
  * 
  *
  * @param[in] contact Il contatto da cui estrarre le informazioni per popolare i campi.
- * @post I campi dell'interfaccia utente sono popolati con i dati del contatto.
  */
     private void populateFields(Contatto contact) {
         nameField.setText(contact.getName());
