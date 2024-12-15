@@ -6,9 +6,11 @@
  * Questa classe gestisce gli eventi e le interazioni dell'utente per aggiungere
  * e modificare contatti. Include la validazione dei dati inseriti, la gestione
  * di duplicati e l'aggiornamento della rubrica persistente.
- * @version 2.0
- * @date 11/12/2024
  * @author Gruppo09
+ * 
+ * @see GestioneRubrica
+ * @see Contatto
+ * @see ContattoValidator
  */
 package it.university.group9.rubricacontattigroup9;
 
@@ -62,10 +64,10 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     /**
      * @brief Inizializza la finestra per modificare un contatto esistente.
      *
-     * @param contact Contatto da modificare.
-     * @param addressBook La lista osservabile dei contatti della rubrica.
-     *
-     * @pre `contact` e `addressBook` devono essere non null.
+     * @param[in] contact Contatto da modificare.
+     * @param[in] addressBook riferimento al'interfaccia GestioneRubrica
+     * @param[in] contactList Lista dei contatti
+     * @pre `contact` non deve essere null.
      * @post La finestra è configurata per modificare i dati del contatto
      * fornito.
      */
@@ -78,6 +80,14 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         editButton.setVisible(true);
     }
 
+    /**
+     * @brief Inizializza la finestra per aggiungere un contatto.
+     *
+     * @param[in] addressBook riferimento al'interfaccia GestioneRubrica
+     * @param[in] contactList Lista dei contatti
+     * @post La finestra è configurata per modificare i dati del contatto
+     * fornito.
+     */
     public void initializeForAdd(GestioneRubrica addressBook, ObservableList<Contatto> contactList) {
         this.addressBook = addressBook; // Salva il riferimento alla Rubrica
         this.contactList = contactList;
@@ -104,11 +114,6 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     /**
      * @brief Aggiunge un nuovo contatto alla lista e chiude la finestra di
      * aggiunta contatti aggiornando la rubrica
-     *
-     * Questo metodo permette di aggiungere un nuovo contatto con nome, cognome,
-     * numeri di telefono, email e note alla rubrica. Valida i dati inseriti,
-     * verifica la presenza di duplicati e aggiorna la rubrica sia nella lista
-     * in memoria che nel file di salvataggio.
      *
      * @pre I parametri da inserire nel contatto non devono essere vuoti
      * @post Viene aggiunto un contatto nella lista
@@ -142,12 +147,8 @@ public class InterfacciaAggiungiModificaController implements Initializable {
      * @brief Gestisce gli errori di validazione mostrando un messaggio di
      * errore all'utente.
      *
-     * Questo metodo visualizza una finestra di dialogo di tipo alert con un
-     * messaggio di errore, consentendo all'utente di comprendere quale problema
-     * si è verificato durante il processo di validazione dei dati.
      *
-     * @param[in] message Il messaggio di errore da mostrare all'utente. Non
-     * deve essere null o vuoto.
+     * @param[in] message Il messaggio di errore da mostrare all'utente. 
      */
     private void handleValidationError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -159,8 +160,13 @@ public class InterfacciaAggiungiModificaController implements Initializable {
     /**
      * @brief Modifica i dati di un contatto esistente nella rubrica.
      *
+     * @pre Il contatto deve esistere nella rubrica
+     * @post contatto modificato correttamente
+     * 
      * @param[in] event L'evento ActionEvent generato dal click sul pulsante
      * "Modifica".
+     * 
+     * @throws CampoNonValidoException Se i campi modificati non sono validi
      */
     @FXML
     protected void editAction(ActionEvent event) {
@@ -182,6 +188,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         }
     }
 
+/**
+ * @brief Verifica se la stringa e null, se si la setta vuota
+ *
+ * @param[in] csValue La stringa da verificare.
+ * @return Una stringa sicura: una stringa vuota se l'input è null, altrimenti la stessa stringa di input.
+ */
     private String checkField(String csValue) {
         if (csValue == null) {
             return "";
@@ -189,6 +201,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         return csValue;
     }
 
+/**
+ * @brief Colleziona i numeri di telefono del contatto e li verifica
+ *
+ * @return Una lista di numeri di telefono.
+ * @throws CampoNonValidoException Se nessun numero di telefono è stato inserito.
+ */
     private List<String> collectNumbers() throws CampoNonValidoException {
         List<String> numbers = new ArrayList<>(Arrays.asList(
                 checkField(number1Field.getText()),
@@ -203,6 +221,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         return numbers;
     }
 
+/**
+ * @brief Colleziona le emailscontatto e le verifica
+ *
+ * @return Una lista di emails.
+ * @throws CampoNonValidoException Se nessuna email è stata inserita.
+ */
     private List<String> collectEmails() {
         return new ArrayList<>(Arrays.asList(
                 checkField(email1Field.getText()),
@@ -211,6 +235,13 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         ));
     }
 
+/**
+ * @brief Popola i campi dell'interfaccia utente con le informazioni di un contatto.
+ * 
+ *
+ * @param[in] contact Il contatto da cui estrarre le informazioni per popolare i campi.
+ * @post I campi dell'interfaccia utente sono popolati con i dati del contatto.
+ */
     private void populateFields(Contatto contact) {
         nameField.setText(contact.getName());
         surnameField.setText(contact.getSurname());
@@ -240,16 +271,35 @@ public class InterfacciaAggiungiModificaController implements Initializable {
 
     }
 
+/**
+ * @brief Annulla l'operazione corrente e chiude la finestra.
+ *
+ *
+ * @param[in] event L'evento che attiva l'azione di annullamento.
+ * @post La finestra viene chiusa senza salvare le modifiche.
+ */
     @FXML
     private void cancelOperation(ActionEvent event) {
         closeWindow();
     }
 
+/**
+ * @brief Chiude la finestra corrente. 
+ * @post La finestra viene chiusa.
+ */
     private void closeWindow() {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
+    
 
+/**
+ * @brief Popola automaticamente i campi dell'interfaccia utente con valori di esempio predefiniti.
+ * 
+ *
+ * @param[in] event L'evento che attiva l'azione di compilazione automatica.
+ * @post I campi dell'interfaccia utente vengono riempiti con valori di esempio.
+ */
     @FXML
     private void doFillValue(ActionEvent event) {
         if (nameField == null) {
@@ -266,6 +316,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         noteField.setText("Note");
     }
 
+/**
+ * @brief Imposta il genere selezionato su "maschio" e evidenzia il pulsante corrispondente.
+ *
+ * @param[in] event L'evento che attiva la selezione del genere maschile.
+ * @post Il genere selezionato viene impostato su "maschio" e il pulsante viene evidenziato con il colore di sfondo blu chiaro.
+ */
     @FXML
     private void setMale(ActionEvent event) {
         selectedGender = "male";
@@ -274,6 +330,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         defaultButton.setStyle("");
     }
 
+/**
+ * @brief Imposta il genere selezionato su "femmina" e evidenzia il pulsante corrispondente.
+ * 
+ * @param[in] event L'evento che attiva la selezione del genere femminile.
+ * @post Il genere selezionato viene impostato su "femmina" e il pulsante viene evidenziato con il colore di sfondo rosa chiaro.
+ */
     @FXML
     private void setWoman(ActionEvent event) {
         selectedGender = "female";
@@ -282,6 +344,12 @@ public class InterfacciaAggiungiModificaController implements Initializable {
         defaultButton.setStyle("");
     }
     
+/**
+ * @brief Imposta il genere selezionato su "default" e evidenzia il pulsante corrispondente.
+ *
+ * @param[in] event L'evento che attiva la selezione del genere predefinito.
+ * @post Il genere selezionato viene impostato su "default" e il pulsante viene evidenziato con il colore di sfondo grigio.
+ */
     @FXML
     private void setDefault(ActionEvent event) {
         selectedGender = "default";
