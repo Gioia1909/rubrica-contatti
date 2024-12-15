@@ -53,8 +53,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     private ToggleButton favoriteButton; ///< Bottone per aggiungere/rimuovere un contatto dai preferiti.
     @FXML
     private ImageView editImageView;  ///< Icona per la funzione di modifica.
-    @FXML
-    private ImageView deleteImageView; ///< Icona per la funzione di eliminazione.
+    
     @FXML
     private TextField searchBar;    ///< Barra di ricerca 
 
@@ -212,7 +211,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
                     // Se nessun contatto è selezionato, nascondi l'icona
                     favoriteImageView.setVisible(false);
                     deleteButton.setVisible(false);
-                    deleteImageView.setVisible(false);
                 }
             });
 
