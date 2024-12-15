@@ -18,7 +18,6 @@ public abstract class VisualizzazioneContatti {
     // Componenti FXML dell'interfaccia utente
     @FXML
     private Button editButton;
-    //deleteButton; // Nascondi il pulsante elimina
 
     @FXML
     private ToggleButton favoriteButton;
