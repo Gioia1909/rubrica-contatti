@@ -84,11 +84,11 @@ public class ContattoValidatorTest {
     @Test
     public void testValidateFields() throws Exception {
         // Creazione di contatti con numeri e campi validi e non validi
-        List<String> validNumbers = new ArrayList<>(Arrays.asList("1234567890"));
+        List<String> validNumbers = new ArrayList<>(Arrays.asList("1234567890", "", ""));
         List<String> invalidNumbers = new ArrayList<>(Arrays.asList("", "", ""));
-        Contatto validContatto = new Contatto("Luigi", "Montonetti", validNumbers, Arrays.asList("email@gmail.com"), " ", "");
-        Contatto invalidContatto = new Contatto("", "", invalidNumbers, Arrays.asList("email@example.com"), " ", "");
-        Contatto invalidContatto2 = new Contatto("", "", validNumbers, Arrays.asList("email@example.com"), " ", "");
+        Contatto validContatto = new Contatto("Luigi", "Montonetti", validNumbers, Arrays.asList("email@gmail.com", "", "" ), " ", "");
+        Contatto invalidContatto = new Contatto("", "", invalidNumbers, Arrays.asList("email@example.com", "", ""), " ", "");
+        Contatto invalidContatto2 = new Contatto("", "", validNumbers, Arrays.asList("email@example.com", "", ""), " ", "");
         Contatto invalidContatto3 = new Contatto("Luigi", "Montonetti", invalidNumbers, Arrays.asList("email@example.com"), " ", "");
 
         // Test per campi validi (non deve sollevare eccezioni)
