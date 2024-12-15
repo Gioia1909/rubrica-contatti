@@ -2,11 +2,10 @@
  * @file SalvaCaricaPreferiti.java
  * @brief Classe per la gestione del salvataggio e caricamento della rubrica preferiti.
  * 
- * Questa classe fornisce i metodi per salvare una lista di contatti (rubrica) in un file JSON 
- * e per caricarla da un file JSON esistente.
+ * Questa classe fornisce i metodi per salvare una lista di contatti in un file JSON 
+ * o per caricarla da un file JSON esistente.
  * 
  * @author Gruppo09
- * @date 11/12/2024
  * @see Contatto
  */
 package it.university.group9.rubricacontattigroup9.InputOutput;
@@ -26,10 +25,8 @@ public class SalvaCaricaPreferiti implements Serializable {
     private static final String fileCSV = "rubricapreferiti.CSV"; //nome del file che si creerà
     
     /**
-     * @brief Salva la rubrica su file JSON.
+     * @brief Salva la rubrica dei preferiti su file JSON serializzando la lista dei contatti.
      *
-     * Questo metodo salva la rubrica fornita come parametro in un file JSON utilizzando la libreria Jackson.
-     * La lista di contatti viene convertita in un formato serializzabile e scritta nel file specificato.
      * 
      * @param[in] addressBook La lista osservabile di contatti da salvare nel file JSON.
      * 
@@ -37,18 +34,17 @@ public class SalvaCaricaPreferiti implements Serializable {
      * @post Il file JSON viene creato o sovrascritto con i dati contenuti in addressBook.
      * @throws IOException Se si verifica un errore durante il processo di salvataggio.
      * 
-     * In caso di errore durante la scrittura del file, viene stampato un messaggio di errore
-     * e viene tracciata l'eccezione con uno stack trace.
      * 
+     *
      * @see ObjectMapper
      */
-    public static void saveFavoritesAddressBook(ObservableList<Contatto> addressBook) { //ObservableList<Contatto> rubrica Lista dei contatti da 
+    public static void saveFavoritesAddressBook(ObservableList<Contatto> addressBook) { 
       if(addressBook== null) {
              throw new IllegalArgumentException("La lista dei preferiti non può essere null o vuota.");
       }
 
         //ObjectMapper trasforma gli oggetti in file JSON (serializzazione)
-        ObjectMapper mapper = new ObjectMapper(); //https://javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.8/com/fasterxml/jackson/databind/ObjectMapper.html
+        ObjectMapper mapper = new ObjectMapper(); 
         
         try{
             //Jackson non può serializzare un'osservable, quindi deve diventare una stringa
@@ -63,7 +59,7 @@ public class SalvaCaricaPreferiti implements Serializable {
     }
     
      /**
-     * @brief Carica la rubrica da un file JSON, se esiste.
+     * @brief Carica la rubrica dei preferiti da un file JSON, se esiste.
      * 
      * @pre Il file rubricapreferiti.json deve essere presente nel percorso specificato per il corretto funzionamento.
      * @post Se il file esiste, i contatti vengono caricati nella rubrica, altrimenti viene restituita una rubrica vuota.

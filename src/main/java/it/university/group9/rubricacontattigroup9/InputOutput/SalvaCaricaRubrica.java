@@ -4,7 +4,7 @@
  * Questa classe fornisce i metodi per salvare una lista di contatti in un file JSON
  * e per caricarla da un file JSON esistente.
  *
- *@version 2.0
+ * @version 2.0
  * @author Gruppo09
  * @date 11/12/2024
  */
@@ -27,14 +27,11 @@ public class SalvaCaricaRubrica implements Serializable {
     private static final String fileCSV = "rubrica.csv";  //nome del file che si creerà
 
     /**
-     * @brief Salva la rubrica su file JSON.
+     * @brief Salva la rubrica su file JSON serializzando la lista dei contatti.
      *
-     * Questo metodo salva la rubrica fornita come parametro in un file JSON
-     * utilizzando la libreria Jackson. La lista di contatti viene convertita in
-     * un formato serializzabile e scritta nel file specificato.
-     *
-     * @param[in] addressBook La lista osservabile di contatti da salvare nel
-     * file JSON.
+     * 
+     * @param[in] addressBook La lista osservabile di contatti da salvare nel file JSON.
+     * 
      *
      * @pre addressBook non deve essere null.
      * @post Il file JSON viene creato o sovrascritto con i dati contenuti in
@@ -42,8 +39,6 @@ public class SalvaCaricaRubrica implements Serializable {
      * @throws IOException Se si verifica un errore durante il processo di
      * salvataggio.
      *
-     * In caso di errore durante la scrittura del file, viene stampato un
-     * messaggio di errore e viene tracciata l'eccezione con uno stack trace.
      *
      * @see ObjectMapper
      */
@@ -65,22 +60,17 @@ public class SalvaCaricaRubrica implements Serializable {
     }
 
     /**
-     * @brief Carica la rubrica da un file JSON se esiste.
-     *
-     * Questo metodo carica i dati da un file JSON e li converte in una
-     * ObservableList Se il file non esiste, viene restituita una lista vuota e
-     * viene gestito l'eventuale errore di creazione ,viene stampato un messaggio.
+     * @brief Carica la rubrica da un file JSON se esiste e li converte in una ObservableList. Se il file non esiste, 
+     * viene restituita una lista vuota 
      *
      * @return Una ObservableList che contenente i contatti caricati oppure una
-     * lista vuota se il file non esiste o si verifica un errore durante il
-     * caricamento.
+     * lista vuota se il file non esiste o si verifica un errore durante il caricamento.
      *
      * @pre Il file rubrica.json deve essere presente nel percorso specificato
      * per il corretto funzionamento.
      * @post Se il file esiste, i contatti vengono caricati nella rubrica,
      * altrimenti viene restituita una rubrica vuota.
-     * @throws IOException Se si verifica un errore durante il caricamento del
-     * file.
+     * @throws IOException Se si verifica un errore durante il caricamento del file.
      */
     public static ObservableList<Contatto> loadAddressBook() {
         ObjectMapper mapper = new ObjectMapper();
@@ -105,6 +95,17 @@ public class SalvaCaricaRubrica implements Serializable {
         }
     }
 
+/**
+ * @brief Esporta i contatti presenti in una ObservableList in un file CSV. Crea o sovrascrive un file CSV contenente i contatti 
+ * memorizzati nella rubrica. 
+ *
+ * @param[in] addressBook La lista ObservableList che contiene i contatti da esportare.
+ * 
+ * @pre La ObservableList passata come parametro deve contenere oggetti Contatto correttamente inizializzati.
+ * @post Un file CSV contenente i contatti viene generato o aggiornato con i dati forniti.
+ * @throws IOException Se si verifica un errore durante la scrittura del file.
+ * 
+ */
     public static void exportToCSV(ObservableList<Contatto> addressBook) throws IOException {
         try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(fileCSV)))) {
             // Intestazione del CSV
