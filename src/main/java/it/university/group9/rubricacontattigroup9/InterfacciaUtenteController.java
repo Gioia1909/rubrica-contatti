@@ -1,8 +1,16 @@
 /**
  * @file InterfacciaUtenteController.java
  * @brief Controller per gestire l'interfaccia utente dell'applicazione.
- * @date 05/12/2024
+ * 
+ * Questa classe controlla la gestione della GUI e fornisce funzionalità per aggiungere,
+ * modificare, eliminare e cercare contatti. Inoltre permette l'aggiunta o la rimozione dei contatti dai preferiti
+ * 
  * @author Gruppo09
+ * 
+ * @see Rubrica
+ * @see VisualizzazioneContatti
+ * @see GestioneRubricaController
+ * 
  */
 package it.university.group9.rubricacontattigroup9;
 
@@ -26,50 +34,46 @@ import javafx.stage.Stage;
 
 public class InterfacciaUtenteController extends VisualizzazioneContatti implements Initializable, GestioneRubricaController {
 
-    // MODEL della rubrica. Gestisce le funzioni di Add, Delete, Edit, Search
+
     public GestioneRubrica addressBook;
 
     /**
-     * @name Componenti FXML della interfaccia
+     * @brief Componenti FXML della interfaccia
      */
     ///@{
     @FXML
-    private Button viewAddButton;
+    private Button viewAddButton;   ///< Bottone per accedere all'interfaccia di aggiunta contatti.
+    @FXML
+    private Button deleteButton;   ///< Bottone per eliminare un contatto selezionato.
+    @FXML
+    private Button searchButton;  ///<  Bottone per cercare un contatto.
+    @FXML
+    private Button editButton;  ///< Bottone per modificare un contatto selezionato.
+    @FXML
+    private ToggleButton favoriteButton; ///< Bottone per aggiungere/rimuovere un contatto dai preferiti.
+    @FXML
+    private ImageView editImageView;  ///< Icona per la funzione di modifica.
+    @FXML
+    private ImageView deleteImageView; ///< Icona per la funzione di eliminazione.
+    @FXML
+    private TextField searchBar;    ///< Barra di ricerca 
 
+    @FXML
+    private MenuItem exportButton; ///< Opzione per esportare la rubrica in CSV.
+    @FXML
+    private ListView<Contatto> contactListView;  ///< Vista della lista principale dei contatti.
+    @FXML
+    private ListView<Contatto> listViewFavorites; ///< Vista della lista dei contatti preferiti.
+    @FXML
+    private Button switchToFavoriteButton;  ///< Bottone per andare alla rubrica dei preferiti
+    @FXML
+    private ImageView favoriteImageView;    ///< Icona per la funzione di aggiunta contatto ai preferiti
+    @FXML
+    private ImageView profilePicImageView;  ///< Icona per l'immagina di profilo
+    ///@}
+    
     /**
-     * < Bottone per accedere all'interfaccia di aggiunta contatti.
-     */
-    @FXML
-    private Button deleteButton;
-    /**
-     * < Bottone per eliminare un contatto selezionato.
-     */
-    @FXML
-    private Button searchButton;
-    /**
-     * < Bottone per cercare un contatto.
-     */
-
-    @FXML
-    private Button editButton;
-
-    @FXML
-    private ToggleButton favoriteButton;
-
-    @FXML
-    private ImageView editImageView;
-
-    @FXML
-    private ImageView deleteImageView;
-
-    @FXML
-    private TextField searchBar;
-    /**
-     * <Barra di testo per input di ricerca.
-     */
-
-    /**
-     * @name Campi dell'anagrafica del Contatto
+     * @brief Campi dell'anagrafica del Contatto
      */
     ///@{
     @FXML
@@ -91,27 +95,18 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
     @FXML
     private Label noteField;
     @FXML
-    private Label defaultText;
-    /**
-     * <Label Testo di Default
-     */
+    private Label defaultText; ///< Scritta di default quando nessun contatto è selezionato
     ///@}
 
-    @FXML
-    private MenuItem exportButton;
 
-    // Vista della Rubrica
-    @FXML
-    private ListView<Contatto> contactListView;
-    @FXML
-    private ListView<Contatto> listViewFavorites;
-    @FXML
-    private Button switchToFavoriteButton;
-    @FXML
-    private ImageView favoriteImageView;
-    @FXML
-    private ImageView profilePicImageView;
-
+    
+       /**
+     * @brief Restituisce la vista della lista dei contatti.
+     *
+     *
+     * @throws IOException Se la `ListView` è null o non valida.
+     * @return Una `ListView` contenente i contatti
+     */
     public ListView<Contatto> getContactListView() throws IOException {
         if (contactListView == null) {
             throw new IOException("contactListView non valida");
@@ -119,6 +114,15 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         return contactListView;
     }
 
+    
+      /**
+     * @brief Imposta una nuova `ListView` per visualizzare i contatti.
+     *
+     * @param[in] contactListView Una `ListView` di tipo `Contatto` da associare 
+     * all'interfaccia utente.
+     *
+     * @throws IOException Se la `ListView` fornita è null o non valida.
+     */
     public void setListView(ListView<Contatto> contactListView) throws IOException {
         if (contactListView == null) {
             throw new IOException("contactListView : Argomento non valido");
@@ -126,9 +130,18 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.contactListView = contactListView;
     }
 
-    // Reattore alla lista dei contatti (Add, Edit, Delete)
+   /**
+     * @brief Lista osservabile dei contatti.
+     */
     private ObservableList<Contatto> contactList;
 
+    
+     /**
+     * @brief Restituisce la lista dei contatti.
+     *
+     * @throws IOException Se la lista dei contatti non è valida (null).
+     * @return Una ObservableList contenente i contatti dell'applicazione.
+     */
     public ObservableList<Contatto> getContactList() throws IOException {
         if (contactList == null) {
             throw new IOException("Contact List non valida");
@@ -136,6 +149,13 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         return contactList;
     }
 
+    
+    /**
+     * @brief Imposta una nuova lista di contatti.
+     *
+     * @param[in] contactList Una ObservableList che rappresenta la nuova lista dei contatti da impostare.
+     * @throws IOException Se la lista fornita è null.
+     */
     public void setContactList(ObservableList<Contatto> contactList) throws IOException {
         if (contactList == null) {
             throw new IOException("contactList: Argomento non valido");
@@ -143,9 +163,24 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         this.contactList = contactList;
     }
 
-    // Lista dei preferiti
+      /**
+     * @brief Lista osservabile dei contatti preferiti.
+     */
     private ObservableList<Contatto> favoriteList;
 
+    
+     /**
+     * @brief Inizializza il controller con i dati della rubrica e configura la vista dei contatti.
+     * 
+     * Questo metodo configura le ListView per la visualizzazione dei contatti e dei preferiti, 
+     * e imposta i listener per la selezione di contatti e la ricerca.
+     * 
+     * @param location URL della risorsa FXML.
+     * @param resources Risorse localizzate per l'interfaccia utente.
+     * @throws Exception Se si verifica un errore durante l'inizializzazione.
+     * 
+     */
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -192,6 +227,19 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
     }
 
+    
+     /**
+     * @brief Aggiorna l'icona dei preferiti per il contatto selezionato.
+     *
+     * Se il contatto è nei preferiti, viene visualizzata una stella piena, 
+     * altrimenti una stella vuota.
+     * 
+     * 
+     * @param selectedContact Il contatto selezionato la cui icona dei preferiti deve essere aggiornata.
+     * 
+     * @pre Il contatto `selectedContact` deve essere valido.
+     * @post L'icona dei preferiti è aggiornata in base allo stato `isFav` del contatto.
+     */
     private void updateFavoriteIcon(Contatto selectedContact) {
         if (selectedContact.isFav()) {
             favoriteImageView.setImage(new Image(getClass().getResourceAsStream("stellaPiena.png")));
@@ -200,17 +248,16 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         }
     }
 
-    /**
-     * @brief Configura la ListView per visualizzare e gestire i contatti.
-     *
-     *
-     * @pre La ListView `contactListView` deve essere inizializzata
-     * @post La ListView La ListView viene configurata per visualizzare solo
-     * Cognome e Nome del contatto
+    
+    
+     /**
+     * @brief Configura la ListView per visualizzare i contatti, mostrando solo il cognome e il nome.
+     * 
+     * Inoltre, l'icona dei preferiti viene aggiornata in base allo stato del contatto.
+     * 
      */
     private void configureContactListView() {
         contactListView.setCellFactory(listView -> new ListCell<Contatto>() {
-
             @Override
             protected void updateItem(Contatto contact, boolean empty) {
                 super.updateItem(contact, empty);
@@ -232,6 +279,22 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         });
     }
 
+    /**
+ * @brief Gestisce l'azione di apertura della finestra per aggiungere o modificare un contatto.
+ * 
+ * Carica la vista di aggiunta o modifica contatto tramite il file FXML 
+ * "InterfacciaAggiungiModifica.fxml" e inizializza il controller corrispondente 
+ * per la modalità di aggiunta.
+ * 
+ * 
+ * @param event L'evento che ha attivato l'azione, il click sul bottone
+ * 
+ * @throws IOException Se si verifica un errore durante il caricamento del file FXML.
+ * 
+ * @pre Il file FXML "InterfacciaAggiungiModifica.fxml" deve essere presente nel percorso 
+ * di risorse.
+ * @post Una nuova finestra viene aperta per aggiungere o modificare un contatto.
+ */
     @FXML
     public void addAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfacciaAggiungiModifica.fxml"));
@@ -246,34 +309,37 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         stage.show();
     }
 
+    
+    /**
+ * @brief Gestisce l'azione per aggiungere un contatto ai preferiti.
+ * 
+ * Se un contatto è selezionato dalla ListView e non è già nei preferiti, 
+ * questo metodo lo aggiunge ai preferiti.
+ * 
+ * @param event L'evento che ha attivato l'azione, il click sul bottone
+ * 
+ * @post Il contatto selezionato viene aggiunto alla lista dei preferiti.
+ */
     void addToFavoriteAction(ActionEvent event) {
         Contatto selectedContact = contactListView.getSelectionModel().getSelectedItem();
         if (selectedContact != null && !selectedContact.isFav()) {
             selectedContact.setFav(true);
 
             addressBook.addToFavorites(selectedContact);
-            /*Mostra un messaggio di conferma con un popup
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Contatto aggiunto ai preferiti");
-            alert.setHeaderText("Il contatto è stato aggiunto ai preferiti con successo!");
-            //       alert.setContentText("Il file CSV è stato salvato correttamente in: \n" + fileCSV);
-            alert.showAndWait(); */
-
         }
     }
 
     /**
-     * @brief Elimina il contatto selezionato dalla lista.
+     * @brief Gestisce l'azione di eliminazione di un contatto dalla rubrica.
+     * 
+     * Se un contatto è selezionato nella ListView, questo metodo lo rimuove dalla rubrica,
+     * ripristina le etichette dei dettagli e aggiorna la lista dei contatti visualizzati.
      *
-     * Questo metodo rimuove il contatto selezionato dalla lista dei contatti
-     * visualizzata nell'interfaccia utente. Dopo aver rimosso il contatto, il
-     * metodo salva la lista aggiornata nel file per persistente i dati.
-     *
-     * @pre Il contatto selezionato deve esistere nella lista.
      * @post Il contatto selezionato è stato rimosso dalla lista dei contatti e
      * la lista aggiornata è stata salvata nel file.
      *
-     * @param[in] event Evento del mouse che ha attivato l'azione.
+     * @param[in] event Evento del mouse che ha attivato l'azione, il click sul bottone
+     * 
      */
     @FXML
     @Override
@@ -281,11 +347,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         int selected = contactListView.getSelectionModel().getSelectedIndex();
 
         if (selected >= 0) {
-            Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();
-            //System.out.println("sto passando al gestore della rubrica il contatto " + );
-            System.out.println("Ho selezionato da eliminare " + contactToRemove);
-
-            
+            Contatto contactToRemove = contactListView.getSelectionModel().getSelectedItem();        
                 addressBook.deleteContact(contactToRemove);
             
             // Ripristina le etichette e nascondi i dettagli del contatto eliminato
@@ -315,9 +377,10 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
      * @throws IOException Se si verifica un errore durante il caricamento della
      * scena FXML.
      *
-     * @pre Il contatto selezionato deve essere presente nella ListView.
      * @post La finestra di modifica viene visualizzata con il contatto
      * selezionato caricato nel relativo controller.
+     * 
+     * @see InterfacciaAggiungiModificaController
      */
     @FXML
     @Override
@@ -333,9 +396,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             Parent root = loader.load();
             // Ottieni il controller della scena di modifica
             InterfacciaAggiungiModificaController editController = loader.getController();
-            //editController: Oggetto del controller della scena di modifica contatto. Permette di interagire con i metodi e le variabili definiti in quel controller.
-            //getController(): Ottiene il controller associato al file FXML appena caricato
-            // Passa il contatto selezionato al controller della scena di modifica
+            // Permette di interagire con i metodi e le variabili definiti in quel controller.
             editController.initializeForEdit(addressBook, selectedContact, contactList);
 
             Stage stage = new Stage();
@@ -343,23 +404,23 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
             stage.show();
 
         }
-        //     refreshContactList();
 
     }
 
+
     /**
-     * @brief Cerca un contatto nella lista in base al testo inserito nella
-     * barra di ricerca.
+     * @brief Gestisce l'azione di ricerca dei contatti nella rubrica.
      *
-     * Questo metodo filtra la lista dei contatti in base al testo inserito
-     * nella barra di ricerca textBar. La ricerca viene effettuata considerando
-     * il nome, il cognome e il numero di telefono del contatto.
+     * Se la barra di ricerca è vuota, viene restituita la lista completa dei contatti, altrimenti chiama la searchContact
+     * Se il testo di ricerca non corrisponde a nessun contatto, viene mostrato un messaggio di errore.
      *
-     * @pre La lista di contatti contactList è già popolata.
-     * @post La myListView mostra la lista filtrata di contatti che soddisfano i
-     * criteri di ricerca.
+     * @pre  La `contactListView` deve essere inizializzata e contenere la lista dei contatti.
+     * 
+     * @post Se il testo di ricerca è vuoto, viene mostrata la lista completa; 
+     * altrimenti, viene mostrata la lista filtrata in base al termine di ricerca. 
+     * Se il testo di ricerca non corrisponde a nessun contatto, viene mostrato un messaggio di errore.
      *
-     * @param[in] event Evento associato al bottone di ricerca.
+     * @param[in] event Evento associato al bottone di ricerca, il click
      */
     @FXML
     @Override
@@ -379,17 +440,13 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         contactListView.setItems(filteredList);
     }
 
+
     /**
-     * @brief Mostra una finestra di dialogo di errore con un messaggio
-     * personalizzato,una finestra di dialogo di tipo errore con un titolo e un
-     * messaggio.
+     * @brief Mostra una finestra di dialogo con un messaggio di errore.
      *
      * @param titolo Il titolo della finestra di dialogo.
-     * @param messaggio Il contenuto del messaggio da visualizzare nella
-     * finestra di dialogo.
+     * @param messaggio Il messaggio da visualizzare nella finestra di dialogo.
      *
-     * @post Viene mostrata una finestra di dialogo con il titolo e il messaggio
-     * forniti.
      */
     @Override
     public void showErrorDialog(String titolo, String messaggio) {
@@ -417,6 +474,17 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         scene.setRoot(root);
     }
 
+    
+    /**
+     * @brief Esporta la lista dei contatti in un file CSV.
+     * 
+     *
+     * @param[in] event L'evento che attiva l'azione di esportazione
+     * @throws IOException Se si verifica un errore durante l'esportazione dei
+     * dati nel file CSV.
+     * @see SalvaCaricaRubrica
+     */
+    
     @FXML
     private void exportAction(ActionEvent event) throws IOException {
         SalvaCaricaRubrica.exportToCSV(contactList);
@@ -427,12 +495,27 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         contactListView.setItems(contactList);
         //contactListView.getSelectionModel().clearSelection(); // Deseleziona qualsiasi elemento
     }*/
+    
+    
+ /**
+ * @brief Rinfresca la visualizzazione della lista dei contatti.
+ * 
+ *
+ */
     public void refreshContactList() {
-        ObservableList<Contatto> contactList = addressBook.getContactList(); // Assumendo che restituisca una ObservableList
+        ObservableList<Contatto> contactList = addressBook.getContactList(); 
         contactListView.setItems(contactList);
-        //contactListView.getSelectionModel().clearSelection();
     }
 
+    
+    /**
+ * @brief Gestisce l'azione di aggiungere o rimuovere un contatto dai preferiti.
+ *
+ * @post Lo stato del contatto selezionato viene aggiornato, e il contatto viene aggiunto o rimosso dai preferiti.
+ *       I dati aggiornati vengono salvati nei rispettivi file di rubrica e preferiti.
+ * 
+ * @param[in] event L'evento che attiva l'azione di toggling : il click
+ */
     @FXML
     private void toggleFavorite(ActionEvent event) {
         System.out.println("Sono in toggle favorite");

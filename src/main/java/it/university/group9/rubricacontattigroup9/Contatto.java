@@ -8,11 +8,11 @@ import java.util.*;
 /**
  * @file Contatto.java
  * @brief Classe che rappresenta un contatto con un nome, un cognome, da uno a
- * tre numeri di telefono, da una a tre email, delle note, un campo 'preferito' e il genere
+ * tre numeri di telefono, da una a tre email, delle note, un campo 'preferito'
+ * e il genere
  *
  *
  * @author Gruppo09
- * @date 11/12/2024
  *
  */
 public class Contatto implements Comparable<Contatto> {
@@ -42,7 +42,7 @@ public class Contatto implements Comparable<Contatto> {
      * @param[in] numbers Lista di numeri di telefono associati al contatto.
      * @param[in] emails Lista di email associate al contatto.
      * @param[in] note Note aggiuntive relative al contatto.
-     * @param[in] gen  Genere del contatto.
+     * @param[in] gen Genere del contatto.
      */
     public Contatto(String name, String surname, List<String> numbers, List<String> emails, String note, String gen) {
         this.name = name;
@@ -110,7 +110,7 @@ public class Contatto implements Comparable<Contatto> {
         return note;
     }
 
-      /**
+    /**
      * @brief Imposta lo stato di preferito del contatto.
      * @param[in] flag True se il contatto è preferito, false altrimenti.
      */
@@ -118,7 +118,7 @@ public class Contatto implements Comparable<Contatto> {
         this.fav = flag;
     }
 
-       /**
+    /**
      * @brief Verifica se il contatto è preferito.
      * @return True se il contatto è preferito, false altrimenti.
      */
@@ -126,7 +126,7 @@ public class Contatto implements Comparable<Contatto> {
         return fav;
     }
 
-     /**
+    /**
      * @brief Restituisce il genere del contatto.
      * @return Stringa contenente il genere.
      */
@@ -137,7 +137,7 @@ public class Contatto implements Comparable<Contatto> {
     /**
      * @brief Imposta il genere del contatto.
      * @param[in] gen Stringa con il genere.
-     */ 
+     */
     public void setGen(String gen) {
         this.gen = gen;
     }
@@ -185,27 +185,27 @@ public class Contatto implements Comparable<Contatto> {
      * @pre L'oggetto `obj` non deve essere null.
      *
      */
-@Override
-public int compareTo(Contatto obj) {
-    // Prima verifica se entrambi i contatti hanno un cognome
-    if (this.surname.isEmpty() && obj.surname.isEmpty()) {
-        // Se entrambi non hanno cognome, confronta per nome
-        return this.name.compareToIgnoreCase(obj.name);
-    } else if (this.surname.isEmpty()) {
-        // Se questo contatto non ha cognome, confronta per nome come se fosse un cognome
-        return this.name.compareToIgnoreCase(obj.surname);
-    } else if (obj.surname.isEmpty()) {
-        // Se l'altro contatto non ha cognome, confronta il cognome con il nome di questo contatto
-        return this.surname.compareToIgnoreCase(obj.name);
-    } else {
-        // Se entrambi hanno il cognome, ordina per cognome prima e poi per nome
-        int result = this.surname.compareToIgnoreCase(obj.surname);
-        if (result == 0) { // Se i cognomi sono uguali, ordina per nome
+    @Override
+    public int compareTo(Contatto obj) {
+        // Prima verifica se entrambi i contatti hanno un cognome
+        if (this.surname.isEmpty() && obj.surname.isEmpty()) {
+            // Se entrambi non hanno cognome, confronta per nome
             return this.name.compareToIgnoreCase(obj.name);
+        } else if (this.surname.isEmpty()) {
+            // Se questo contatto non ha cognome, confronta per nome come se fosse un cognome
+            return this.name.compareToIgnoreCase(obj.surname);
+        } else if (obj.surname.isEmpty()) {
+            // Se l'altro contatto non ha cognome, confronta il cognome con il nome di questo contatto
+            return this.surname.compareToIgnoreCase(obj.name);
+        } else {
+            // Se entrambi hanno il cognome, ordina per cognome prima e poi per nome
+            int result = this.surname.compareToIgnoreCase(obj.surname);
+            if (result == 0) { // Se i cognomi sono uguali, ordina per nome
+                return this.name.compareToIgnoreCase(obj.name);
+            }
+            return result;
         }
-        return result;
     }
-}
 
     /**
      * @brief Metodo che determina l'uguaglianza tra due oggetti Contatto. Due
