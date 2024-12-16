@@ -1,0 +1,218 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Namespace List}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Namespace Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Package it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9}{9}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Package it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}exceptions}{9}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Package it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output}{10}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{10}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Package it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}validators}{10}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Class Documentation}{11}{chapter.6}%
+\contentsline {section}{\numberline {6.1}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App Class Reference}{11}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{11}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Member Function Documentation}{11}{subsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.1}main()}{11}{subsubsection.6.1.2.1}%
+\contentsline {subsubsection}{\numberline {6.1.2.2}start()}{12}{subsubsection.6.1.2.2}%
+\contentsline {section}{\numberline {6.2}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}exceptions.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Campo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Non\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Valido\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Exception Class Reference}{12}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Constructor \& Destructor Documentation}{12}{subsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.1.1}CampoNonValidoException()}{12}{subsubsection.6.2.1.1}%
+\contentsline {section}{\numberline {6.3}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatto Class Reference}{13}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Constructor \& Destructor Documentation}{14}{subsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.1}Contatto()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{14}{subsubsection.6.3.1.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.2}Contatto()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{14}{subsubsection.6.3.1.2}%
+\contentsline {subsection}{\numberline {6.3.2}Member Function Documentation}{14}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}compareTo()}{14}{subsubsection.6.3.2.1}%
+\contentsline {subsubsection}{\numberline {6.3.2.2}equals()}{15}{subsubsection.6.3.2.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.3}getEmails()}{15}{subsubsection.6.3.2.3}%
+\contentsline {subsubsection}{\numberline {6.3.2.4}getGen()}{15}{subsubsection.6.3.2.4}%
+\contentsline {subsubsection}{\numberline {6.3.2.5}getName()}{15}{subsubsection.6.3.2.5}%
+\contentsline {subsubsection}{\numberline {6.3.2.6}getNote()}{16}{subsubsection.6.3.2.6}%
+\contentsline {subsubsection}{\numberline {6.3.2.7}getNumbers()}{16}{subsubsection.6.3.2.7}%
+\contentsline {subsubsection}{\numberline {6.3.2.8}getSurname()}{16}{subsubsection.6.3.2.8}%
+\contentsline {subsubsection}{\numberline {6.3.2.9}hashCode()}{16}{subsubsection.6.3.2.9}%
+\contentsline {subsubsection}{\numberline {6.3.2.10}isFav()}{16}{subsubsection.6.3.2.10}%
+\contentsline {subsubsection}{\numberline {6.3.2.11}setFav()}{16}{subsubsection.6.3.2.11}%
+\contentsline {subsubsection}{\numberline {6.3.2.12}setGen()}{17}{subsubsection.6.3.2.12}%
+\contentsline {subsubsection}{\numberline {6.3.2.13}toString()}{17}{subsubsection.6.3.2.13}%
+\contentsline {section}{\numberline {6.4}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatto\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{17}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Member Function Documentation}{17}{subsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.1.1}testCompareTo()}{17}{subsubsection.6.4.1.1}%
+\contentsline {subsubsection}{\numberline {6.4.1.2}testContattoConstructor()}{18}{subsubsection.6.4.1.2}%
+\contentsline {subsubsection}{\numberline {6.4.1.3}testContattoDefaultConstructor()}{18}{subsubsection.6.4.1.3}%
+\contentsline {subsubsection}{\numberline {6.4.1.4}testEquals()}{18}{subsubsection.6.4.1.4}%
+\contentsline {subsubsection}{\numberline {6.4.1.5}testHashCode()}{18}{subsubsection.6.4.1.5}%
+\contentsline {subsubsection}{\numberline {6.4.1.6}testSetFav()}{18}{subsubsection.6.4.1.6}%
+\contentsline {section}{\numberline {6.5}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}validators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatto\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Validator Class Reference}{18}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Member Function Documentation}{18}{subsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.1.1}validateEmail()}{18}{subsubsection.6.5.1.1}%
+\contentsline {subsubsection}{\numberline {6.5.1.2}validateFields()}{19}{subsubsection.6.5.1.2}%
+\contentsline {subsubsection}{\numberline {6.5.1.3}validateName()}{19}{subsubsection.6.5.1.3}%
+\contentsline {subsubsection}{\numberline {6.5.1.4}validatePhoneNumber()}{19}{subsubsection.6.5.1.4}%
+\contentsline {subsubsection}{\numberline {6.5.1.5}validateSurname()}{20}{subsubsection.6.5.1.5}%
+\contentsline {section}{\numberline {6.6}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}validators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatto\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Validator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{20}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{20}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Member Function Documentation}{21}{subsection.6.6.2}%
+\contentsline {subsubsection}{\numberline {6.6.2.1}testValidateEmail()}{21}{subsubsection.6.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.6.2.2}testValidateFields()}{21}{subsubsection.6.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.6.2.3}testValidateName()}{21}{subsubsection.6.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.6.2.4}testValidatePhoneNumber()}{21}{subsubsection.6.6.2.4}%
+\contentsline {subsubsection}{\numberline {6.6.2.5}testValidateSurname()}{21}{subsubsection.6.6.2.5}%
+\contentsline {section}{\numberline {6.7}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}validators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Duplicati Class Reference}{21}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{22}{subsection.6.7.1}%
+\contentsline {subsection}{\numberline {6.7.2}Member Function Documentation}{22}{subsection.6.7.2}%
+\contentsline {subsubsection}{\numberline {6.7.2.1}isAddValid()}{22}{subsubsection.6.7.2.1}%
+\contentsline {subsubsection}{\numberline {6.7.2.2}isModifyValid()}{22}{subsubsection.6.7.2.2}%
+\contentsline {section}{\numberline {6.8}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}validators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Duplicati\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{23}{section.6.8}%
+\contentsline {subsection}{\numberline {6.8.1}Member Function Documentation}{23}{subsection.6.8.1}%
+\contentsline {subsubsection}{\numberline {6.8.1.1}setUp()}{23}{subsubsection.6.8.1.1}%
+\contentsline {subsubsection}{\numberline {6.8.1.2}tearDown()}{23}{subsubsection.6.8.1.2}%
+\contentsline {subsubsection}{\numberline {6.8.1.3}testIsAddValid()}{23}{subsubsection.6.8.1.3}%
+\contentsline {subsubsection}{\numberline {6.8.1.4}testModifyValid()}{23}{subsubsection.6.8.1.4}%
+\contentsline {section}{\numberline {6.9}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica Interface Reference}{24}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Member Function Documentation}{24}{subsection.6.9.1}%
+\contentsline {subsubsection}{\numberline {6.9.1.1}addContact()}{24}{subsubsection.6.9.1.1}%
+\contentsline {subsubsection}{\numberline {6.9.1.2}addToFavorites()}{25}{subsubsection.6.9.1.2}%
+\contentsline {subsubsection}{\numberline {6.9.1.3}deleteContact()}{25}{subsubsection.6.9.1.3}%
+\contentsline {subsubsection}{\numberline {6.9.1.4}editContact()}{26}{subsubsection.6.9.1.4}%
+\contentsline {subsubsection}{\numberline {6.9.1.5}getContactList()}{26}{subsubsection.6.9.1.5}%
+\contentsline {subsubsection}{\numberline {6.9.1.6}getFavoriteList()}{27}{subsubsection.6.9.1.6}%
+\contentsline {subsubsection}{\numberline {6.9.1.7}removeFromFavorites()}{27}{subsubsection.6.9.1.7}%
+\contentsline {subsubsection}{\numberline {6.9.1.8}searchContact()}{27}{subsubsection.6.9.1.8}%
+\contentsline {subsubsection}{\numberline {6.9.1.9}searchFavoriteContact()}{27}{subsubsection.6.9.1.9}%
+\contentsline {section}{\numberline {6.10}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Interface Reference}{28}{section.6.10}%
+\contentsline {subsection}{\numberline {6.10.1}Member Function Documentation}{28}{subsection.6.10.1}%
+\contentsline {subsubsection}{\numberline {6.10.1.1}deleteAction()}{28}{subsubsection.6.10.1.1}%
+\contentsline {subsubsection}{\numberline {6.10.1.2}editAction()}{29}{subsubsection.6.10.1.2}%
+\contentsline {subsubsection}{\numberline {6.10.1.3}searchAction()}{29}{subsubsection.6.10.1.3}%
+\contentsline {subsubsection}{\numberline {6.10.1.4}showErrorDialog()}{30}{subsubsection.6.10.1.4}%
+\contentsline {section}{\numberline {6.11}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interfaccia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Aggiungi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modifica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{30}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}Member Function Documentation}{31}{subsection.6.11.1}%
+\contentsline {subsubsection}{\numberline {6.11.1.1}addAction()}{31}{subsubsection.6.11.1.1}%
+\contentsline {subsubsection}{\numberline {6.11.1.2}editAction()}{31}{subsubsection.6.11.1.2}%
+\contentsline {subsubsection}{\numberline {6.11.1.3}initialize()}{32}{subsubsection.6.11.1.3}%
+\contentsline {subsubsection}{\numberline {6.11.1.4}initializeForAdd()}{32}{subsubsection.6.11.1.4}%
+\contentsline {subsubsection}{\numberline {6.11.1.5}initializeForEdit()}{32}{subsubsection.6.11.1.5}%
+\contentsline {section}{\numberline {6.12}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interfaccia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Utente\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{33}{section.6.12}%
+\contentsline {subsection}{\numberline {6.12.1}Member Function Documentation}{34}{subsection.6.12.1}%
+\contentsline {subsubsection}{\numberline {6.12.1.1}addAction()}{34}{subsubsection.6.12.1.1}%
+\contentsline {subsubsection}{\numberline {6.12.1.2}deleteAction()}{35}{subsubsection.6.12.1.2}%
+\contentsline {subsubsection}{\numberline {6.12.1.3}editAction()}{35}{subsubsection.6.12.1.3}%
+\contentsline {subsubsection}{\numberline {6.12.1.4}getContactList()}{35}{subsubsection.6.12.1.4}%
+\contentsline {subsubsection}{\numberline {6.12.1.5}getContactListView()}{35}{subsubsection.6.12.1.5}%
+\contentsline {subsubsection}{\numberline {6.12.1.6}initialize()}{36}{subsubsection.6.12.1.6}%
+\contentsline {subsubsection}{\numberline {6.12.1.7}refreshContactList()}{36}{subsubsection.6.12.1.7}%
+\contentsline {subsubsection}{\numberline {6.12.1.8}searchAction()}{36}{subsubsection.6.12.1.8}%
+\contentsline {subsubsection}{\numberline {6.12.1.9}setContactList()}{36}{subsubsection.6.12.1.9}%
+\contentsline {subsubsection}{\numberline {6.12.1.10}setListView()}{37}{subsubsection.6.12.1.10}%
+\contentsline {subsubsection}{\numberline {6.12.1.11}showConfirmationDialog()}{37}{subsubsection.6.12.1.11}%
+\contentsline {subsubsection}{\numberline {6.12.1.12}showErrorDialog()}{37}{subsubsection.6.12.1.12}%
+\contentsline {subsubsection}{\numberline {6.12.1.13}switchToFavorite()}{37}{subsubsection.6.12.1.13}%
+\contentsline {subsection}{\numberline {6.12.2}Member Data Documentation}{38}{subsection.6.12.2}%
+\contentsline {subsubsection}{\numberline {6.12.2.1}addressBook}{38}{subsubsection.6.12.2.1}%
+\contentsline {section}{\numberline {6.13}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preferiti\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{38}{section.6.13}%
+\contentsline {subsection}{\numberline {6.13.1}Member Function Documentation}{39}{subsection.6.13.1}%
+\contentsline {subsubsection}{\numberline {6.13.1.1}deleteAction()}{39}{subsubsection.6.13.1.1}%
+\contentsline {subsubsection}{\numberline {6.13.1.2}editAction()}{39}{subsubsection.6.13.1.2}%
+\contentsline {subsubsection}{\numberline {6.13.1.3}getFavoriteList()}{40}{subsubsection.6.13.1.3}%
+\contentsline {subsubsection}{\numberline {6.13.1.4}getFavoriteListView()}{40}{subsubsection.6.13.1.4}%
+\contentsline {subsubsection}{\numberline {6.13.1.5}initialize()}{40}{subsubsection.6.13.1.5}%
+\contentsline {subsubsection}{\numberline {6.13.1.6}searchAction()}{41}{subsubsection.6.13.1.6}%
+\contentsline {subsubsection}{\numberline {6.13.1.7}setDefaultText()}{41}{subsubsection.6.13.1.7}%
+\contentsline {subsubsection}{\numberline {6.13.1.8}setFavoriteList()}{41}{subsubsection.6.13.1.8}%
+\contentsline {subsubsection}{\numberline {6.13.1.9}setListViewFavorites()}{41}{subsubsection.6.13.1.9}%
+\contentsline {subsubsection}{\numberline {6.13.1.10}showErrorDialog()}{41}{subsubsection.6.13.1.10}%
+\contentsline {section}{\numberline {6.14}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica Class Reference}{42}{section.6.14}%
+\contentsline {subsection}{\numberline {6.14.1}Constructor \& Destructor Documentation}{43}{subsection.6.14.1}%
+\contentsline {subsubsection}{\numberline {6.14.1.1}Rubrica()}{43}{subsubsection.6.14.1.1}%
+\contentsline {subsection}{\numberline {6.14.2}Member Function Documentation}{43}{subsection.6.14.2}%
+\contentsline {subsubsection}{\numberline {6.14.2.1}addContact()}{43}{subsubsection.6.14.2.1}%
+\contentsline {subsubsection}{\numberline {6.14.2.2}addToFavorites()}{43}{subsubsection.6.14.2.2}%
+\contentsline {subsubsection}{\numberline {6.14.2.3}deleteContact()}{43}{subsubsection.6.14.2.3}%
+\contentsline {subsubsection}{\numberline {6.14.2.4}editContact()}{44}{subsubsection.6.14.2.4}%
+\contentsline {subsubsection}{\numberline {6.14.2.5}getContactList()}{44}{subsubsection.6.14.2.5}%
+\contentsline {subsubsection}{\numberline {6.14.2.6}getFavoriteList()}{44}{subsubsection.6.14.2.6}%
+\contentsline {subsubsection}{\numberline {6.14.2.7}removeFromFavorites()}{44}{subsubsection.6.14.2.7}%
+\contentsline {subsubsection}{\numberline {6.14.2.8}searchContact()}{45}{subsubsection.6.14.2.8}%
+\contentsline {subsubsection}{\numberline {6.14.2.9}searchFavoriteContact()}{45}{subsubsection.6.14.2.9}%
+\contentsline {subsubsection}{\numberline {6.14.2.10}setContactList()}{45}{subsubsection.6.14.2.10}%
+\contentsline {subsubsection}{\numberline {6.14.2.11}setFavoriteList()}{45}{subsubsection.6.14.2.11}%
+\contentsline {subsubsection}{\numberline {6.14.2.12}synchronizeContacts()}{45}{subsubsection.6.14.2.12}%
+\contentsline {section}{\numberline {6.15}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{46}{section.6.15}%
+\contentsline {subsection}{\numberline {6.15.1}Member Function Documentation}{46}{subsection.6.15.1}%
+\contentsline {subsubsection}{\numberline {6.15.1.1}testAddContact\_DuplicateContact\_ShouldThrowException()}{46}{subsubsection.6.15.1.1}%
+\contentsline {subsubsection}{\numberline {6.15.1.2}testAddContact\_ValidContact\_ShouldAddSuccessfully()}{46}{subsubsection.6.15.1.2}%
+\contentsline {subsubsection}{\numberline {6.15.1.3}testAddToFavorites\_ValidContact\_ShouldAddToFavorites()}{46}{subsubsection.6.15.1.3}%
+\contentsline {subsubsection}{\numberline {6.15.1.4}testDeleteContact\_ExistingContact\_ShouldRemoveContact()}{47}{subsubsection.6.15.1.4}%
+\contentsline {subsubsection}{\numberline {6.15.1.5}testDeleteContact\_ShouldRemoveAlsoFromFavorites()}{47}{subsubsection.6.15.1.5}%
+\contentsline {subsubsection}{\numberline {6.15.1.6}testEditContact\_ValidEdit\_ShouldUpdateContact()}{47}{subsubsection.6.15.1.6}%
+\contentsline {subsubsection}{\numberline {6.15.1.7}testRemoveFromFavorites\_ExistingFavorite\_ShouldRemoveFromFavorites()}{47}{subsubsection.6.15.1.7}%
+\contentsline {section}{\numberline {6.16}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preferiti Class Reference}{47}{section.6.16}%
+\contentsline {subsection}{\numberline {6.16.1}Member Function Documentation}{48}{subsection.6.16.1}%
+\contentsline {subsubsection}{\numberline {6.16.1.1}loadFavoritesAddressBook()}{48}{subsubsection.6.16.1.1}%
+\contentsline {subsubsection}{\numberline {6.16.1.2}saveFavoritesAddressBook()}{48}{subsubsection.6.16.1.2}%
+\contentsline {section}{\numberline {6.17}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preferiti\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{49}{section.6.17}%
+\contentsline {subsection}{\numberline {6.17.1}Member Function Documentation}{49}{subsection.6.17.1}%
+\contentsline {subsubsection}{\numberline {6.17.1.1}setUp()}{49}{subsubsection.6.17.1.1}%
+\contentsline {subsubsection}{\numberline {6.17.1.2}tearDown()}{49}{subsubsection.6.17.1.2}%
+\contentsline {subsubsection}{\numberline {6.17.1.3}testLoadFavoritesAddressBook()}{49}{subsubsection.6.17.1.3}%
+\contentsline {subsubsection}{\numberline {6.17.1.4}testSaveFavoritesAddressBook()}{50}{subsubsection.6.17.1.4}%
+\contentsline {section}{\numberline {6.18}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica Class Reference}{50}{section.6.18}%
+\contentsline {subsection}{\numberline {6.18.1}Member Function Documentation}{50}{subsection.6.18.1}%
+\contentsline {subsubsection}{\numberline {6.18.1.1}exportToCSV()}{50}{subsubsection.6.18.1.1}%
+\contentsline {subsubsection}{\numberline {6.18.1.2}loadAddressBook()}{51}{subsubsection.6.18.1.2}%
+\contentsline {subsubsection}{\numberline {6.18.1.3}saveAddressBook()}{51}{subsubsection.6.18.1.3}%
+\contentsline {section}{\numberline {6.19}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{52}{section.6.19}%
+\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{52}{subsection.6.19.1}%
+\contentsline {subsection}{\numberline {6.19.2}Constructor \& Destructor Documentation}{52}{subsection.6.19.2}%
+\contentsline {subsubsection}{\numberline {6.19.2.1}SalvaCaricaRubricaTest()}{52}{subsubsection.6.19.2.1}%
+\contentsline {subsection}{\numberline {6.19.3}Member Function Documentation}{52}{subsection.6.19.3}%
+\contentsline {subsubsection}{\numberline {6.19.3.1}setUp()}{52}{subsubsection.6.19.3.1}%
+\contentsline {subsubsection}{\numberline {6.19.3.2}setUpClass()}{53}{subsubsection.6.19.3.2}%
+\contentsline {subsubsection}{\numberline {6.19.3.3}tearDown()}{53}{subsubsection.6.19.3.3}%
+\contentsline {subsubsection}{\numberline {6.19.3.4}tearDownClass()}{53}{subsubsection.6.19.3.4}%
+\contentsline {subsubsection}{\numberline {6.19.3.5}testExportToCSV()}{53}{subsubsection.6.19.3.5}%
+\contentsline {subsubsection}{\numberline {6.19.3.6}testLoadAddressBook()}{53}{subsubsection.6.19.3.6}%
+\contentsline {subsubsection}{\numberline {6.19.3.7}testSaveAddressBook()}{53}{subsubsection.6.19.3.7}%
+\contentsline {section}{\numberline {6.20}it.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}university.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}group9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}rubricacontattigroup9.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visualizzazione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatti Class Reference}{54}{section.6.20}%
+\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{54}{subsection.6.20.1}%
+\contentsline {subsection}{\numberline {6.20.2}Member Function Documentation}{54}{subsection.6.20.2}%
+\contentsline {subsubsection}{\numberline {6.20.2.1}resetContactDetails()}{54}{subsubsection.6.20.2.1}%
+\contentsline {subsubsection}{\numberline {6.20.2.2}updateContactDetails()}{54}{subsubsection.6.20.2.2}%
+\contentsline {chapter}{\numberline {7}File Documentation}{57}{chapter.7}%
+\contentsline {section}{\numberline {7.1}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}App.java File Reference}{57}{section.7.1}%
+\contentsline {section}{\numberline {7.2}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatto.java File Reference}{57}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Detailed Description}{58}{subsection.7.2.1}%
+\contentsline {section}{\numberline {7.3}src/main/java/it/university/group9/rubricacontattigroup9/exceptions/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Campo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Non\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Valido\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Exception.java File Reference}{58}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Detailed Description}{58}{subsection.7.3.1}%
+\contentsline {section}{\numberline {7.4}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica.java File Reference}{58}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Detailed Description}{59}{subsection.7.4.1}%
+\contentsline {section}{\numberline {7.5}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java File Reference}{59}{section.7.5}%
+\contentsline {section}{\numberline {7.6}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preferiti.java File Reference}{59}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Detailed Description}{60}{subsection.7.6.1}%
+\contentsline {section}{\numberline {7.7}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica.java File Reference}{60}{section.7.7}%
+\contentsline {section}{\numberline {7.8}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interfaccia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Aggiungi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Modifica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java File Reference}{60}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}Detailed Description}{61}{subsection.7.8.1}%
+\contentsline {section}{\numberline {7.9}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interfaccia\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Utente\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java File Reference}{61}{section.7.9}%
+\contentsline {subsection}{\numberline {7.9.1}Detailed Description}{61}{subsection.7.9.1}%
+\contentsline {section}{\numberline {7.10}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Menu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preferiti\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java File Reference}{62}{section.7.10}%
+\contentsline {subsection}{\numberline {7.10.1}Detailed Description}{62}{subsection.7.10.1}%
+\contentsline {section}{\numberline {7.11}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica.java File Reference}{62}{section.7.11}%
+\contentsline {subsection}{\numberline {7.11.1}Detailed Description}{63}{subsection.7.11.1}%
+\contentsline {section}{\numberline {7.12}src/main/java/it/university/group9/rubricacontattigroup9/validators/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatto\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Validator.java File Reference}{63}{section.7.12}%
+\contentsline {subsection}{\numberline {7.12.1}Detailed Description}{63}{subsection.7.12.1}%
+\contentsline {section}{\numberline {7.13}src/main/java/it/university/group9/rubricacontattigroup9/validators/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Duplicati.java File Reference}{63}{section.7.13}%
+\contentsline {subsection}{\numberline {7.13.1}Detailed Description}{64}{subsection.7.13.1}%
+\contentsline {section}{\numberline {7.14}src/main/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visualizzazione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatti.java File Reference}{64}{section.7.14}%
+\contentsline {section}{\numberline {7.15}src/main/java/module-\/info.java File Reference}{64}{section.7.15}%
+\contentsline {section}{\numberline {7.16}src/test/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatto\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{64}{section.7.16}%
+\contentsline {section}{\numberline {7.17}src/test/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preferiti\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{65}{section.7.17}%
+\contentsline {section}{\numberline {7.18}src/test/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Output/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{65}{section.7.18}%
+\contentsline {section}{\numberline {7.19}src/test/java/it/university/group9/rubricacontattigroup9/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rubrica\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{65}{section.7.19}%
+\contentsline {section}{\numberline {7.20}src/test/java/it/university/group9/rubricacontattigroup9/validators/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Contatto\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Validator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{66}{section.7.20}%
+\contentsline {section}{\numberline {7.21}src/test/java/it/university/group9/rubricacontattigroup9/validators/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Duplicati\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{66}{section.7.21}%
