@@ -1,0 +1,263 @@
+\doxysection{it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica Interface Reference}
+\hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica}{}\label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+Inheritance diagram for it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a11fbe68ef6ec5efdde0de3dc2b55be72}{get\+Contact\+List}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la lista dei contatti. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_af0f8f58890cf82ae6a4d78eaf3a77a1f}{get\+Favorite\+List}} ()
+\begin{DoxyCompactList}\small\item\em Restituisce la lista dei contatti preferiti. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a30ee0e133b4a5f0c90bffc3509a539bb}{add\+Contact}} (String name, String surname, List$<$ String $>$ numbers, List$<$ String $>$ emails, String note, String selected\+Gender)  throws \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_campo_non_valido_exception}{Campo\+Non\+Valido\+Exception}}
+\begin{DoxyCompactList}\small\item\em Aggiunge un nuovo contatto alla rubrica se tutti i campi sono validi e il contatto non è un duplicato. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a7dc2d0c738c000f2aa7c3da7ff3f10f0}{edit\+Contact}} (\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} old\+Contact, String name, String surname, List$<$ String $>$ numbers, List$<$ String $>$ emails, String note, String selected\+Gender)  throws \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_campo_non_valido_exception}{Campo\+Non\+Valido\+Exception}}
+\begin{DoxyCompactList}\small\item\em Modifica un contatto esistente nella rubrica se tutti i campi sono validi e la modifica non genera un duplicato. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_acd86a058bf3c9c0f08ecc69377b50d47}{delete\+Contact}} (\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} contact)
+\begin{DoxyCompactList}\small\item\em Elimina un contatto dalla rubrica. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a17c7b99457847d58e0d81baa78f3fbd7}{search\+Contact}} (String param)
+\begin{DoxyCompactList}\small\item\em Cerca un contatto nella rubrica utilizzando un parametro specifico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a44757283c7ef12f6f7ee2cc365a35eff}{add\+To\+Favorites}} (\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} contact)
+\begin{DoxyCompactList}\small\item\em Aggiunge un contatto alla lista dei preferiti. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_af27098a4a686cd705e7ef51f1724236a}{remove\+From\+Favorites}} (\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} contact)
+\begin{DoxyCompactList}\small\item\em Rimuove un contatto dalla lista dei preferiti. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a065a7d52afe9ceada7ed36ed5ef74460}{search\+Favorite\+Contact}} (String param)
+\begin{DoxyCompactList}\small\item\em Cerca un contatto tra i preferiti utilizzando un parametro specifico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a30ee0e133b4a5f0c90bffc3509a539bb}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!addContact@{addContact}}
+\index{addContact@{addContact}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{addContact()}{addContact()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a30ee0e133b4a5f0c90bffc3509a539bb} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+add\+Contact (\begin{DoxyParamCaption}\item[{String}]{name}{, }\item[{String}]{surname}{, }\item[{List$<$ String $>$}]{numbers}{, }\item[{List$<$ String $>$}]{emails}{, }\item[{String}]{note}{, }\item[{String}]{selected\+Gender}{}\end{DoxyParamCaption}) throws \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_campo_non_valido_exception}{Campo\+Non\+Valido\+Exception}}}
+
+
+
+Aggiunge un nuovo contatto alla rubrica se tutti i campi sono validi e il contatto non è un duplicato. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Il nome del contatto. \\
+\hline
+{\em surname} & Il cognome del contatto. \\
+\hline
+{\em numbers} & Lista di numeri di telefono del contatto. \\
+\hline
+{\em emails} & Lista di indirizzi email del contatto. \\
+\hline
+{\em note} & Note aggiuntive sul contatto. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Campo\+Non\+Valido\+Exception} & Se uno dei campi forniti non è valido. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+Contatto\+Validator 
+
+Gestione\+Duplicati 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_a2ba77e31873750db3043a92dd4b44a0d}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a44757283c7ef12f6f7ee2cc365a35eff}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!addToFavorites@{addToFavorites}}
+\index{addToFavorites@{addToFavorites}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{addToFavorites()}{addToFavorites()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a44757283c7ef12f6f7ee2cc365a35eff} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+add\+To\+Favorites (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}}]{contact}{}\end{DoxyParamCaption})}
+
+
+
+Aggiunge un contatto alla lista dei preferiti. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & Il contatto da aggiungere ai preferiti. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+il valore del campo "{}fav"{} viene settato a true 
+\end{DoxyPostcond}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_a3e2f6a3529d42de386e72b0658c749e5}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_acd86a058bf3c9c0f08ecc69377b50d47}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!deleteContact@{deleteContact}}
+\index{deleteContact@{deleteContact}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{deleteContact()}{deleteContact()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_acd86a058bf3c9c0f08ecc69377b50d47} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+delete\+Contact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}}]{contact}{}\end{DoxyParamCaption})}
+
+
+
+Elimina un contatto dalla rubrica. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & Il contatto da eliminare.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+il contatto viene eliminato sia dalla rubrica che dalla rubrica dei preferiti 
+\end{DoxyPostcond}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_a963e3e2262790309d39ad70bc56f0521}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a7dc2d0c738c000f2aa7c3da7ff3f10f0}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!editContact@{editContact}}
+\index{editContact@{editContact}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{editContact()}{editContact()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a7dc2d0c738c000f2aa7c3da7ff3f10f0} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+edit\+Contact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}}]{old\+Contact}{, }\item[{String}]{name}{, }\item[{String}]{surname}{, }\item[{List$<$ String $>$}]{numbers}{, }\item[{List$<$ String $>$}]{emails}{, }\item[{String}]{note}{, }\item[{String}]{selected\+Gender}{}\end{DoxyParamCaption}) throws \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_campo_non_valido_exception}{Campo\+Non\+Valido\+Exception}}}
+
+
+
+Modifica un contatto esistente nella rubrica se tutti i campi sono validi e la modifica non genera un duplicato. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+Contact} & Il contatto originale da modificare. \\
+\hline
+{\em name} & Il nuovo nome del contatto. \\
+\hline
+{\em surname} & Il nuovo cognome del contatto. \\
+\hline
+{\em numbers} & Lista aggiornata di numeri di telefono. \\
+\hline
+{\em emails} & Lista aggiornata di indirizzi email. \\
+\hline
+{\em note} & Note aggiornate sul contatto. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Campo\+Non\+Valido\+Exception} & Se uno dei nuovi campi forniti non è valido. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+Contatto\+Validator 
+
+Gestione\+Duplicati 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_adca79d209424a51ce8142e68f42f1ff9}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a11fbe68ef6ec5efdde0de3dc2b55be72}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!getContactList@{getContactList}}
+\index{getContactList@{getContactList}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{getContactList()}{getContactList()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a11fbe68ef6ec5efdde0de3dc2b55be72} 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+get\+Contact\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la lista dei contatti. 
+
+\begin{DoxyReturn}{Returns}
+Una lista osservabile contenente i contatti. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_ad1edc8047653ff2d7b097a64d3706ce6}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_af0f8f58890cf82ae6a4d78eaf3a77a1f}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!getFavoriteList@{getFavoriteList}}
+\index{getFavoriteList@{getFavoriteList}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{getFavoriteList()}{getFavoriteList()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_af0f8f58890cf82ae6a4d78eaf3a77a1f} 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+get\+Favorite\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restituisce la lista dei contatti preferiti. 
+
+\begin{DoxyReturn}{Returns}
+Una lista osservabile contenente i contatti preferiti. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_a8492b89b5883c1e7e86ba27eb3c927c6}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_af27098a4a686cd705e7ef51f1724236a}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!removeFromFavorites@{removeFromFavorites}}
+\index{removeFromFavorites@{removeFromFavorites}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{removeFromFavorites()}{removeFromFavorites()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_af27098a4a686cd705e7ef51f1724236a} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+remove\+From\+Favorites (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}}]{contact}{}\end{DoxyParamCaption})}
+
+
+
+Rimuove un contatto dalla lista dei preferiti. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & Il contatto da rimuovere dai preferiti. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+il valore del campo "{}fav"{} viene settato a false 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+matches\+Contact 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_ad70417df9e68e66d1fd2e4bdbffa1ee1}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a17c7b99457847d58e0d81baa78f3fbd7}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!searchContact@{searchContact}}
+\index{searchContact@{searchContact}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{searchContact()}{searchContact()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a17c7b99457847d58e0d81baa78f3fbd7} 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+search\+Contact (\begin{DoxyParamCaption}\item[{String}]{param}{}\end{DoxyParamCaption})}
+
+
+
+Cerca un contatto nella rubrica utilizzando un parametro specifico. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & Il parametro di ricerca (nome, cognome, numero di telefono o email). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Una lista di contatti che corrispondono al parametro. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_a54d67d5d9df97287cdefd92c47d2f2ef}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a065a7d52afe9ceada7ed36ed5ef74460}\index{it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}!searchFavoriteContact@{searchFavoriteContact}}
+\index{searchFavoriteContact@{searchFavoriteContact}!it.university.group9.rubricacontattigroup9.GestioneRubrica@{it.university.group9.rubricacontattigroup9.GestioneRubrica}}
+\doxysubsubsection{\texorpdfstring{searchFavoriteContact()}{searchFavoriteContact()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_a065a7d52afe9ceada7ed36ed5ef74460} 
+Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$ it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica.\+search\+Favorite\+Contact (\begin{DoxyParamCaption}\item[{String}]{param}{}\end{DoxyParamCaption})}
+
+
+
+Cerca un contatto tra i preferiti utilizzando un parametro specifico. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & Il parametro di ricerca (nome, cognome, numero di telefono o email). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Una lista osservabile di contatti preferiti che corrispondono al parametro. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+matches\+Contact() 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_a43c8a6f53e114cd98d05f1b41381b30d}{it.\+university.\+group9.\+rubricacontattigroup9.\+Rubrica}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/it/university/group9/rubricacontattigroup9/\mbox{\hyperlink{_gestione_rubrica_8java}{Gestione\+Rubrica.\+java}}\end{DoxyCompactItemize}
