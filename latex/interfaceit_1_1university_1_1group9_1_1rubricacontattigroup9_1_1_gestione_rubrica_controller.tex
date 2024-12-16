@@ -1,0 +1,124 @@
+\doxysection{it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica\+Controller Interface Reference}
+\hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller}{}\label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller}\index{it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}}
+Inheritance diagram for it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.369193cm]{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_acf001cfe736f17e52fefa12f85066efe}{delete\+Action}} (Action\+Event event)
+\begin{DoxyCompactList}\small\item\em Gestisce l\textquotesingle{}azione di eliminazione di un contatto dalla rubrica. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_a39caafd4aa8c066c8fd52cc1de542251}{edit\+Action}} (Action\+Event event)  throws IOException
+\begin{DoxyCompactList}\small\item\em Gestisce il passaggio alla schermata di modifica di un contatto selezionato. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_a2c7254912f54044dbfa19eab3a8099a3}{search\+Action}} (Action\+Event event)
+\begin{DoxyCompactList}\small\item\em Gestisce l\textquotesingle{}azione di ricerca dei contatti nella rubrica. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_ab8fc62c98b02e4ea003a4d76f9fd5e45}{show\+Error\+Dialog}} (String titolo, String messaggio)
+\begin{DoxyCompactList}\small\item\em Mostra una finestra di dialogo con un messaggio di errore. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_acf001cfe736f17e52fefa12f85066efe}\index{it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}!deleteAction@{deleteAction}}
+\index{deleteAction@{deleteAction}!it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}}
+\doxysubsubsection{\texorpdfstring{deleteAction()}{deleteAction()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_acf001cfe736f17e52fefa12f85066efe} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica\+Controller.\+delete\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Gestisce l\textquotesingle{}azione di eliminazione di un contatto dalla rubrica. 
+
+Se un contatto è selezionato nella List\+View, questo metodo lo rimuove dalla rubrica, ripristina le etichette dei dettagli e aggiorna la lista dei contatti visualizzati.
+
+\begin{DoxyPostcond}{Postcondition}
+Il contatto selezionato è stato rimosso dalla lista dei contatti e la lista aggiornata è stata salvata nel file.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & Evento del mouse che ha attivato l\textquotesingle{}azione, il click sul bottone \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_ad215eb8dc4e023f05ec85bd87ced68a0}{it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller}}, and \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_a51fc6a9a80d38eac1d477eb5ac120521}{it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_a39caafd4aa8c066c8fd52cc1de542251}\index{it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}!editAction@{editAction}}
+\index{editAction@{editAction}!it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}}
+\doxysubsubsection{\texorpdfstring{editAction()}{editAction()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_a39caafd4aa8c066c8fd52cc1de542251} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica\+Controller.\+edit\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption}) throws IOException}
+
+
+
+Gestisce il passaggio alla schermata di modifica di un contatto selezionato. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se si verifica un errore durante il caricamento della scena FXML.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyPostcond}{Postcondition}
+La finestra di modifica viene visualizzata con il contatto selezionato caricato nel relativo controller.
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_modifica_controller}{Interfaccia\+Aggiungi\+Modifica\+Controller} 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_a4e6a5e5caada74d901a95d94e6d8a37d}{it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller}}, and \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_ab2fe28170f05e1103816072855f56642}{it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_a2c7254912f54044dbfa19eab3a8099a3}\index{it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}!searchAction@{searchAction}}
+\index{searchAction@{searchAction}!it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}}
+\doxysubsubsection{\texorpdfstring{searchAction()}{searchAction()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_a2c7254912f54044dbfa19eab3a8099a3} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica\+Controller.\+search\+Action (\begin{DoxyParamCaption}\item[{Action\+Event}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Gestisce l\textquotesingle{}azione di ricerca dei contatti nella rubrica. 
+
+Se la barra di ricerca è vuota, viene restituita la lista completa dei contatti, altrimenti chiama la search\+Contact Se il testo di ricerca non corrisponde a nessun contatto, viene mostrato un messaggio di errore.
+
+\begin{DoxyPrecond}{Precondition}
+La {\ttfamily contact\+List\+View} deve essere inizializzata e contenere la lista dei contatti.
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Se il testo di ricerca è vuoto, viene mostrata la lista completa; altrimenti, viene mostrata la lista filtrata in base al termine di ricerca. Se il testo di ricerca non corrisponde a nessun contatto, viene mostrato un messaggio di errore.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event} & Evento associato al bottone di ricerca, il click \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aa1dfb7622b6d34109edbd60ae9450e77}{it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller}}, and \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_acfb7bbec57acac71c18bb099bf9e417d}{it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller}}.
+
+\Hypertarget{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_ab8fc62c98b02e4ea003a4d76f9fd5e45}\index{it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}!showErrorDialog@{showErrorDialog}}
+\index{showErrorDialog@{showErrorDialog}!it.university.group9.rubricacontattigroup9.GestioneRubricaController@{it.university.group9.rubricacontattigroup9.GestioneRubricaController}}
+\doxysubsubsection{\texorpdfstring{showErrorDialog()}{showErrorDialog()}}
+{\footnotesize\ttfamily \label{interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica_controller_ab8fc62c98b02e4ea003a4d76f9fd5e45} 
+void it.\+university.\+group9.\+rubricacontattigroup9.\+Gestione\+Rubrica\+Controller.\+show\+Error\+Dialog (\begin{DoxyParamCaption}\item[{String}]{titolo}{, }\item[{String}]{messaggio}{}\end{DoxyParamCaption})}
+
+
+
+Mostra una finestra di dialogo con un messaggio di errore. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Il titolo della finestra di dialogo. \\
+\hline
+{\em message} & Il messaggio da visualizzare nella finestra di dialogo. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller_aa00c0ad26ab350b797f5ae77d9853cca}{it.\+university.\+group9.\+rubricacontattigroup9.\+Interfaccia\+Utente\+Controller}}, and \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_menu_preferiti_controller_aa200f9b42103f6c5f7037f1f6be96809}{it.\+university.\+group9.\+rubricacontattigroup9.\+Menu\+Preferiti\+Controller}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/it/university/group9/rubricacontattigroup9/\mbox{\hyperlink{_gestione_rubrica_controller_8java}{Gestione\+Rubrica\+Controller.\+java}}\end{DoxyCompactItemize}

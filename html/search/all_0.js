@@ -1,0 +1,9 @@
+var searchData=
+[
+  ['addaction_0',['addAction',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_modifica_controller.html#a4fc7e80fdc38ec422b7d9acf9e83cb4b',1,'it.university.group9.rubricacontattigroup9.InterfacciaAggiungiModificaController.addAction()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller.html#aa2aea0e643267c8edc28c78d99d001d9',1,'it.university.group9.rubricacontattigroup9.InterfacciaUtenteController.addAction()']]],
+  ['addcontact_1',['addContact',['../interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica.html#a30ee0e133b4a5f0c90bffc3509a539bb',1,'it.university.group9.rubricacontattigroup9.GestioneRubrica.addContact()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica.html#a2ba77e31873750db3043a92dd4b44a0d',1,'it.university.group9.rubricacontattigroup9.Rubrica.addContact()']]],
+  ['addressbook_2',['addressBook',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller.html#a79173ddf1e878f9c2b968cae60317145',1,'it::university::group9::rubricacontattigroup9::InterfacciaUtenteController']]],
+  ['addtofavorites_3',['addToFavorites',['../interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica.html#a44757283c7ef12f6f7ee2cc365a35eff',1,'it.university.group9.rubricacontattigroup9.GestioneRubrica.addToFavorites()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica.html#a3e2f6a3529d42de386e72b0658c749e5',1,'it.university.group9.rubricacontattigroup9.Rubrica.addToFavorites()']]],
+  ['app_4',['App',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_app.html',1,'it::university::group9::rubricacontattigroup9']]],
+  ['app_2ejava_5',['App.java',['../_app_8java.html',1,'']]]
+];
