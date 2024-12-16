@@ -6,9 +6,8 @@
 - [Arianna Paletta](https://github.com/ariannapal)
 - [Debora Villano](https://github.com/deboravillano)
 
-## Specifica dei Requisiti del Software (SRS)
+## Specifica dei Requisiti del Software (SRS) e Documentazione di Progettazione 
 
-Il documento SRS del progetto può essere scaricato o visualizzato [qui](Requirements_Engineering/SRS_Gruppo09.pdf).
+Il documento SRS e la Documentazione di Progettazione del progetto possono essere scaricate o visualizzate [qui](Documentazione/DocumentazioneGruppo09).
 
-## Documentazione di Progettazione 
-La Documentazione di Progettazione del progetto può essere scaricata o visualizzata [qui](Design/DocumentazioneProgettazione.pdf).
+
