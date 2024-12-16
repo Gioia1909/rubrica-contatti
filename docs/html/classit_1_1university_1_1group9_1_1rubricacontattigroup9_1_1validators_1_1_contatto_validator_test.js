@@ -1,0 +1,4 @@
+var classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_test =
+[
+    [ "testValidateName", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_test.html#ab1ca4d521e546fd8bf74e081ac971f0a", null ]
+];

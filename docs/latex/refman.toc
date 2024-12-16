@@ -157,3 +157,4 @@
 \contentsline {subsection}{\numberline {7.9.1}Detailed Description}{56}{subsection.7.9.1}%
 \contentsline {section}{\numberline {7.10}src/main/java/it/university/group9/rubricacontattigroup9/validators/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Gestione\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Duplicati.java File Reference}{56}{section.7.10}%
 \contentsline {subsection}{\numberline {7.10.1}Detailed Description}{56}{subsection.7.10.1}%
+\contentsline {chapter}{Index}{57}{section*.59}%

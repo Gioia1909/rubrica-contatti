@@ -1,0 +1,7 @@
+var namespaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output =
+[
+    [ "SalvaCaricaPreferiti", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti.html", null ],
+    [ "SalvaCaricaPreferitiTest", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti_test.html", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti_test" ],
+    [ "SalvaCaricaRubrica", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_rubrica.html", null ],
+    [ "SalvaCaricaRubricaTest", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_rubrica_test.html", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_rubrica_test" ]
+];
