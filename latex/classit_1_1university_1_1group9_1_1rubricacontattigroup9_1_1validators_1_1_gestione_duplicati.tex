@@ -1,0 +1,75 @@
+\doxysection{it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Gestione\+Duplicati Class Reference}
+\hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_gestione_duplicati}{}\label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_gestione_duplicati}\index{it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati@{it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static boolean \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_gestione_duplicati_a6b24e61be228f99a1ed58b789fea70b7}{is\+Modify\+Valid}} (\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} old\+Contact, \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} updated\+Contact, Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$contact\+List)
+\begin{DoxyCompactList}\small\item\em Verifica che un contatto aggiornato non causi duplicati nella lista esistente, controllando numeri di telefono, email e nome e cognome. \end{DoxyCompactList}\item 
+static boolean \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_gestione_duplicati_a6ab41c6df9fb7282d20567892821b52d}{is\+Add\+Valid}} (\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} new\+Contact, Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$contact\+List)
+\begin{DoxyCompactList}\small\item\em Verifica che un nuovo contatto non causi duplicati nella lista esistente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gruppo09 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_gestione_duplicati_a6ab41c6df9fb7282d20567892821b52d}\index{it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati@{it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati}!isAddValid@{isAddValid}}
+\index{isAddValid@{isAddValid}!it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati@{it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati}}
+\doxysubsubsection{\texorpdfstring{isAddValid()}{isAddValid()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_gestione_duplicati_a6ab41c6df9fb7282d20567892821b52d} 
+static boolean it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Gestione\+Duplicati.\+is\+Add\+Valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}}]{new\+Contact}{, }\item[{Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$}]{contact\+List}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Verifica che un nuovo contatto non causi duplicati nella lista esistente. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Contact} & Il nuovo contatto da aggiungere. \\
+\hline
+\mbox{\texttt{ in}}  & {\em contact\+List} & La lista di contatti esistenti da confrontare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Se il nuovo contatto è valido (nessun duplicato), false se ci sono duplicati. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Null\+Pointer\+Exception} & Se la lista di contatti è nulla. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_gestione_duplicati_a6b24e61be228f99a1ed58b789fea70b7}\index{it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati@{it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati}!isModifyValid@{isModifyValid}}
+\index{isModifyValid@{isModifyValid}!it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati@{it.university.group9.rubricacontattigroup9.validators.GestioneDuplicati}}
+\doxysubsubsection{\texorpdfstring{isModifyValid()}{isModifyValid()}}
+{\footnotesize\ttfamily \label{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_gestione_duplicati_a6b24e61be228f99a1ed58b789fea70b7} 
+static boolean it.\+university.\+group9.\+rubricacontattigroup9.\+validators.\+Gestione\+Duplicati.\+is\+Modify\+Valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}}]{old\+Contact}{, }\item[{\mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}}}]{updated\+Contact}{, }\item[{Observable\+List$<$ \mbox{\hyperlink{classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto}{Contatto}} $>$}]{contact\+List}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Verifica che un contatto aggiornato non causi duplicati nella lista esistente, controllando numeri di telefono, email e nome e cognome. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em old\+Contact} & Il contatto originale, prima dell\textquotesingle{}aggiornamento. \\
+\hline
+\mbox{\texttt{ in}}  & {\em updated\+Contact} & Il contatto aggiornato. \\
+\hline
+\mbox{\texttt{ in}}  & {\em contact\+List} & La lista di contatti esistenti da confrontare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Se il contatto aggiornato è valido (nessun duplicato), false se ci sono duplicati. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Null\+Pointer\+Exception} & Se la lista di contatti è nulla. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/it/university/group9/rubricacontattigroup9/validators/\mbox{\hyperlink{_gestione_duplicati_8java}{Gestione\+Duplicati.\+java}}\end{DoxyCompactItemize}
