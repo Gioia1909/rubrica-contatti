@@ -368,7 +368,6 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 /**
  * 
  * @see GestioneRubricaController
- * @throws IOException 
  */
     @FXML
     @Override
