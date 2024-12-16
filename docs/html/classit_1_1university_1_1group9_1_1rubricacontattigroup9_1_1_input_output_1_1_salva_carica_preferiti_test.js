@@ -1,5 +1,0 @@
-var classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti_test =
-[
-    [ "testLoadFavoritesAddressBook", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti_test.html#a08a40519c54b4c2ddbc107c17b84325c", null ],
-    [ "testSaveFavoritesAddressBook", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti_test.html#a00f4681e3e646af96000bf56d6cad75c", null ]
-];

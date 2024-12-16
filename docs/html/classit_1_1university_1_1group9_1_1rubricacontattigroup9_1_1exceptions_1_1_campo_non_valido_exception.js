@@ -1,4 +1,0 @@
-var classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_campo_non_valido_exception =
-[
-    [ "CampoNonValidoException", "classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1exceptions_1_1_campo_non_valido_exception.html#a6ab62a038247c48bf35f2645dfbcc668", null ]
-];

@@ -99,7 +99,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
 
     
-       /**
+     /**
      * @brief Restituisce la vista della lista dei contatti.
      *
      *
@@ -326,18 +326,9 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         }
     }
 
-    /**
-     * @brief Gestisce l'azione di eliminazione di un contatto dalla rubrica.
-     * 
-     * Se un contatto è selezionato nella ListView, questo metodo lo rimuove dalla rubrica,
-     * ripristina le etichette dei dettagli e aggiorna la lista dei contatti visualizzati.
-     *
-     * @post Il contatto selezionato è stato rimosso dalla lista dei contatti e
-     * la lista aggiornata è stata salvata nel file.
-     *
-     * @param[in] event Evento del mouse che ha attivato l'azione, il click sul bottone
-     * 
-     */
+/**
+ * @see GestioneRubricaController 
+ */
 @FXML
     @Override
     public void deleteAction(ActionEvent event) {
@@ -374,19 +365,10 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
         contactListView.getSelectionModel().clearSelection();
     }
 
-    /**
-     * @brief Gestisce il passaggio alla schermata di modifica di un contatto
-     * selezionato.
-     *
-     *
-     * @throws IOException Se si verifica un errore durante il caricamento della
-     * scena FXML.
-     *
-     * @post La finestra di modifica viene visualizzata con il contatto
-     * selezionato caricato nel relativo controller.
-     * 
-     * @see InterfacciaAggiungiModificaController
-     */
+/**
+ * 
+ * @see GestioneRubricaController
+ */
     @FXML
     @Override
     public void editAction(ActionEvent event) throws IOException {
@@ -414,18 +396,8 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
 
     /**
-     * @brief Gestisce l'azione di ricerca dei contatti nella rubrica.
+     *@see GestioneRubricaController
      *
-     * Se la barra di ricerca è vuota, viene restituita la lista completa dei contatti, altrimenti chiama la searchContact
-     * Se il testo di ricerca non corrisponde a nessun contatto, viene mostrato un messaggio di errore.
-     *
-     * @pre  La `contactListView` deve essere inizializzata e contenere la lista dei contatti.
-     * 
-     * @post Se il testo di ricerca è vuoto, viene mostrata la lista completa; 
-     * altrimenti, viene mostrata la lista filtrata in base al termine di ricerca. 
-     * Se il testo di ricerca non corrisponde a nessun contatto, viene mostrato un messaggio di errore.
-     *
-     * @param[in] event Evento associato al bottone di ricerca, il click
      */
     @FXML
     @Override
@@ -447,10 +419,7 @@ public class InterfacciaUtenteController extends VisualizzazioneContatti impleme
 
 
     /**
-     * @brief Mostra una finestra di dialogo con un messaggio di errore.
-     *
-     * @param title Il titolo della finestra di dialogo.
-     * @param message Il messaggio da visualizzare nella finestra di dialogo.
+     *@see GestioneRubricaController
      *
      */
     @Override
