@@ -124,7 +124,7 @@ public abstract class VisualizzazioneContatti {
             emails = Collections.emptyList();
         }
 
-        if(emails.get(0) == "" && emails.get(1) == "" && emails.get(2) == ""){
+        if(emails.get(0).equals("") && emails.get(1).equals("") && emails.get(2).equals("")){
             emailLabel.setVisible(false);
         }else emailLabel.setVisible(true);
         if (emails.size() > 0) {
