@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.university.group9.rubricacontattigroup9;
 
 import it.university.group9.rubricacontattigroup9.exceptions.CampoNonValidoException;
@@ -11,6 +7,8 @@ import java.util.List;
 import javafx.collections.ObservableList;
 
 /**
+ * 
+ * 
  * @file GestioneRubrica.java
  *
  * @brief Interfaccia per la gestione della rubrica di contatti
@@ -19,7 +17,10 @@ import javafx.collections.ObservableList;
  * nella rubrica dei preferiti, come l'aggiunta, la modifica, l'eliminazione e
  * la ricerca dei contatti.
  *
+ * 
  */
+
+
 public interface GestioneRubrica {
 
     /**
