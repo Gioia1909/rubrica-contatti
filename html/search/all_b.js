@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['refreshcontactlist_0',['refreshContactList',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller.html#a3471d5e40212c9a11787885f6198e52c',1,'it::university::group9::rubricacontattigroup9::InterfacciaUtenteController']]],
-  ['removefromfavorites_1',['removeFromFavorites',['../interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica.html#af27098a4a686cd705e7ef51f1724236a',1,'it.university.group9.rubricacontattigroup9.GestioneRubrica.removeFromFavorites()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica.html#ad70417df9e68e66d1fd2e4bdbffa1ee1',1,'it.university.group9.rubricacontattigroup9.Rubrica.removeFromFavorites()']]],
-  ['requisiti_20del_20software_20srs_20e_20documentazione_20di_20progettazione_2',['Specifica dei Requisiti del Software (SRS) e Documentazione di Progettazione',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
-  ['rubrica_3',['Rubrica',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica.html',1,'it::university::group9::rubricacontattigroup9']]],
-  ['rubrica_20contatti_20progetto_20di_20ingegneria_20del_20software_20gruppo_2009_4',['Rubrica Contatti - Progetto di Ingegneria del Software - Gruppo 09',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['rubrica_2ejava_5',['Rubrica.java',['../_rubrica_8java.html',1,'']]],
-  ['rubricatest_6',['RubricaTest',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica_test.html',1,'it::university::group9::rubricacontattigroup9']]]
+  ['testexporttocsv_0',['testExportToCSV',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_rubrica_test.html#ae160b924859a0e964126405cbeb88cab',1,'it::university::group9::rubricacontattigroup9::InputOutput::SalvaCaricaRubricaTest']]],
+  ['testloadaddressbook_1',['testLoadAddressBook',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_rubrica_test.html#a844ef2734f91ca22e0c3262d8a164a7d',1,'it::university::group9::rubricacontattigroup9::InputOutput::SalvaCaricaRubricaTest']]],
+  ['testloadfavoritesaddressbook_2',['testLoadFavoritesAddressBook',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti_test.html#a08a40519c54b4c2ddbc107c17b84325c',1,'it::university::group9::rubricacontattigroup9::InputOutput::SalvaCaricaPreferitiTest']]],
+  ['testsaveaddressbook_3',['testSaveAddressBook',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_rubrica_test.html#af6ac7803a1d2c028884f3be6ba072f9a',1,'it::university::group9::rubricacontattigroup9::InputOutput::SalvaCaricaRubricaTest']]],
+  ['testsavefavoritesaddressbook_4',['testSaveFavoritesAddressBook',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_input_output_1_1_salva_carica_preferiti_test.html#a00f4681e3e646af96000bf56d6cad75c',1,'it::university::group9::rubricacontattigroup9::InputOutput::SalvaCaricaPreferitiTest']]],
+  ['testvalidatename_5',['testValidateName',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1validators_1_1_contatto_validator_test.html#ab1ca4d521e546fd8bf74e081ac971f0a',1,'it::university::group9::rubricacontattigroup9::validators::ContattoValidatorTest']]],
+  ['tostring_6',['toString',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_contatto.html#aa776b5ce82077a130cde8fd7a72d69cf',1,'it::university::group9::rubricacontattigroup9::Contatto']]]
 ];

@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['09_0',['Rubrica Contatti - Progetto di Ingegneria del Software - Gruppo 09',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['addaction_0',['addAction',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_aggiungi_modifica_controller.html#a4fc7e80fdc38ec422b7d9acf9e83cb4b',1,'it.university.group9.rubricacontattigroup9.InterfacciaAggiungiModificaController.addAction()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_interfaccia_utente_controller.html#aa2aea0e643267c8edc28c78d99d001d9',1,'it.university.group9.rubricacontattigroup9.InterfacciaUtenteController.addAction()']]],
+  ['addcontact_1',['addContact',['../interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica.html#a30ee0e133b4a5f0c90bffc3509a539bb',1,'it.university.group9.rubricacontattigroup9.GestioneRubrica.addContact()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica.html#a2ba77e31873750db3043a92dd4b44a0d',1,'it.university.group9.rubricacontattigroup9.Rubrica.addContact()']]],
+  ['addtofavorites_2',['addToFavorites',['../interfaceit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_gestione_rubrica.html#a44757283c7ef12f6f7ee2cc365a35eff',1,'it.university.group9.rubricacontattigroup9.GestioneRubrica.addToFavorites()'],['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_rubrica.html#a3e2f6a3529d42de386e72b0658c749e5',1,'it.university.group9.rubricacontattigroup9.Rubrica.addToFavorites()']]],
+  ['app_3',['App',['../classit_1_1university_1_1group9_1_1rubricacontattigroup9_1_1_app.html',1,'it::university::group9::rubricacontattigroup9']]]
 ];
